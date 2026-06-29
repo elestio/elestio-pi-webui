@@ -1,0 +1,30 @@
+@elestio/pi-webui
+=================
+
+This package is a frozen, customized fork of:
+
+    @firstpick/pi-package-webui@0.5.8
+    Copyright (c) 2026 Firstpick
+    https://github.com/Firstp1ck/npm-packages/tree/main/pi-package-webui
+    Licensed under the MIT License (see LICENSE).
+
+Changes made by Elestio in this fork (all baked into source, no runtime patching):
+
+  - public/styles.css ......... Elestio brand theme + customer lock-down appended at the
+                                end of the file. NOTE: a separate CSS file is NOT possible —
+                                bin/pi-webui.mjs (normalizeStaticPath) serves a hardcoded
+                                static whitelist, so any non-whitelisted file 404s. The CSS
+                                must live inside styles.css.
+  - public/index.html ......... composer placeholder "Ask Pi…" -> "Ask Elestio AI DevOps…";
+                                theme-color meta -> #091020.
+  - public/app.js ............. busyPromptBehavior default "followUp" -> "steer"; PWA service
+                                worker registration disabled (never registers on a fresh
+                                browser, so the UI is correct on first paint — no theme flash).
+  - public/service-worker.js .. replaced with a self-unregistering stub that purges caches,
+                                to kill any SW already installed on returning clients.
+  - package.json .............. renamed to @elestio/pi-webui; removed all optionalDependencies
+                                (incl. @firstpick/pi-extension-safety-guard "Dangerous bash
+                                command" modal) and pruned pi.* resource arrays to ./index.ts
+                                only; pinned @earendil-works/pi-coding-agent to 0.80.2.
+
+The original MIT license and copyright notice are retained in LICENSE.

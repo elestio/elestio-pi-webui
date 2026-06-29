@@ -1,0 +1,60 @@
+{
+  "name": "@elestio/pi-webui",
+  "version": "0.5.8",
+  "description": "Elestio frozen fork of @firstpick/pi-package-webui@0.5.8 with the Elestio theme, customer lock-down, steer-mode default, neutralized PWA service worker, and safety-guard/optional companions removed. Pinned to @earendil-works/pi-coding-agent@0.80.2.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elestio/pi-webui.git"
+  },
+  "type": "module",
+  "keywords": [
+    "pi-package",
+    "pi",
+    "pi-coding-agent",
+    "coding-agent",
+    "webui",
+    "rpc",
+    "extension",
+    "elestio"
+  ],
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "bin": {
+    "pi-webui": "./bin/pi-webui.mjs"
+  },
+  "scripts": {
+    "check": "node --check public/app.js && node --check public/service-worker.js && node --check bin/pi-webui.mjs && node --check webui-rpc-helper.mjs && node --check lib/trust-boundaries.mjs && node --check lib/native-command-adapter.mjs && node --check lib/session-actions.mjs && node --check lib/auth-actions.mjs && node --check lib/temp-artifacts.mjs && node tests/run-all.mjs",
+    "test": "node tests/run-all.mjs"
+  },
+  "dependencies": {
+    "@earendil-works/pi-coding-agent": "0.80.2",
+    "mermaid": "^11.15.0"
+  },
+  "files": [
+    "index.ts",
+    "lib",
+    "webui-rpc-helper.mjs",
+    "bin",
+    "public",
+    "images",
+    "tests",
+    "lib/WEBUI_TUI_NATIVE_PARITY.json",
+    "README.md",
+    "LICENSE",
+    "NOTICE"
+  ],
+  "engines": {
+    "node": ">=22.19.0"
+  },
+  "overrides": {
+    "@earendil-works/pi-coding-agent": {
+      "protobufjs": "7.6.3",
+      "undici": "8.5.0",
+      "ws": "8.21.0"
+    }
+  }
+}

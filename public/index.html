@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+    <title>Pi Web UI</title>
+    <meta name="theme-color" content="#091020" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-title" content="Pi Web" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="manifest" href="/manifest.webmanifest" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="stylesheet" href="/styles.css?v=59" />
+  </head>
+  <body>
+    <button id="sidePanelExpandButton" class="side-panel-expand-button" type="button" aria-controls="sidePanel" aria-expanded="false" aria-label="Expand side panel" title="Expand side panel">
+      <span class="side-panel-button-icon" aria-hidden="true">
+        <span></span><span></span><span></span>
+      </span>
+      <span class="side-panel-button-chevron" aria-hidden="true">‹</span>
+    </button>
+
+    <section id="serverOfflinePanel" class="server-offline-panel" aria-live="assertive" hidden>
+      <div class="server-offline-card" role="status">
+        <span class="server-offline-kicker">Backend unavailable</span>
+        <h1>Pi Web UI server is offline</h1>
+        <p>Run this on the machine that hosts Pi Web UI, then retry the connection.</p>
+        <code id="serverOfflineCommand" class="server-offline-command">pi-webui</code>
+        <div class="server-offline-actions">
+          <button id="copyServerCommandButton" class="primary" type="button">Copy start command</button>
+          <button id="retryServerConnectionButton" type="button">Retry connection</button>
+        </div>
+        <p class="server-offline-note muted">From an existing Pi terminal you can also run <code id="serverOfflineSlashCommand">/webui-start</code>.</p>
+      </div>
+    </section>
+
+    <section id="serverRestartPanel" class="server-restart-panel" aria-live="assertive" hidden>
+      <div class="server-restart-card" role="status">
+        <div class="server-restart-spinner" aria-hidden="true"></div>
+        <span class="server-restart-kicker">Restarting</span>
+        <h1>Restarting Pi Web UI server</h1>
+        <p id="serverRestartMessage">Waiting for the server to come back…</p>
+      </div>
+    </section>
+
+    <section id="updateNotification" class="update-notification" aria-live="polite" hidden>
+      <div class="update-notification-card" role="status">
+        <span class="update-notification-kicker">Update available</span>
+        <h2 id="updateNotificationTitle">Pi update available</h2>
+        <p id="updateNotificationMessage">A newer Pi version is available.</p>
+        <p id="updateNotificationDetail" class="update-notification-detail muted"></p>
+        <div class="update-notification-actions">
+          <button id="updateNotificationUpdateButton" class="primary" type="button">Update Pi &amp; restart</button>
+          <button id="updateNotificationUpdateAllButton" type="button">Update all &amp; restart</button>
+          <button id="updateNotificationDismissButton" type="button">Later</button>
+        </div>
+      </div>
+    </section>
+
+    <main class="layout">
+      <section class="chat-panel">
+        <header class="terminal-tabs-shell">
+          <button id="terminalTabsToggleButton" class="terminal-tabs-toggle-button" type="button" aria-controls="tabBar" aria-expanded="false">Tabs</button>
+          <div id="tabBar" class="terminal-tabs" role="tablist" aria-label="Pi terminal tabs">
+            <div id="newTabMenu" class="terminal-new-tab-menu composer-publish-menu">
+              <button id="newTabButton" class="terminal-new-tab-button" type="button" aria-label="Start a separate isolated Pi terminal" aria-haspopup="menu" aria-expanded="false" aria-controls="newTabMenuPanel">+ Tab ▾</button>
+              <div id="newTabMenuPanel" class="terminal-new-tab-menu-panel composer-publish-menu-panel" role="menu" aria-labelledby="newTabButton">
+                <button id="newTabCurrentDirectoryButton" class="terminal-new-tab-menu-item composer-publish-menu-item" type="button" role="menuitem"><span>Current Directory</span></button>
+                <button id="newTabChooseDirectoryButton" class="terminal-new-tab-menu-item composer-publish-menu-item" type="button" role="menuitem"><span>Choose Directory</span></button>
+                <button id="newTabWorktreeButton" class="terminal-new-tab-menu-item composer-publish-menu-item" type="button" role="menuitem" aria-label="Open branch worktree picker: create or open a separate Git checkout in a new Pi tab. Keeps this tab on its current branch; does not commit, push, delete files, or copy ignored dependencies such as node_modules or .venv." data-tooltip="Branch worktree:&#10;• Create or open a separate Git checkout in a new Pi tab.&#10;• Keeps this tab on its current branch.&#10;• Does not commit, push, delete files, or copy ignored deps like node_modules/.venv."><span>Branch Worktree…</span></button>
+              </div>
+            </div>
+          </div>
+          <button id="commandPaletteButton" class="terminal-command-palette-button" type="button" aria-label="Open command palette" data-tooltip="Command palette:&#10;• Search and run actions, slash commands, models, and tabs.&#10;• Shortcut: Ctrl/Cmd+K."><svg class="composer-icon command-palette-launcher-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 7.5h14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 12h9" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M5 16.5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 14.5 19.5 17 17 19.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button id="workspaceDashboardToggleButton" class="terminal-dashboard-button" type="button" aria-controls="workspaceDashboard" aria-expanded="false" aria-label="Show workspace overview" data-tooltip="Workspace overview:&#10;• Shows current tab, cwd, model, context, session, and queue.&#10;• Opens common workspace/session actions from one place."><svg class="composer-icon workspace-overview-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 11.4 12 4l8 7.4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6.5 10.5V20h11v-9.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 20v-5h4v5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+          <button id="closeAllTabsButton" class="terminal-close-all-button" type="button" aria-label="Close all terminal tabs">Close all Tabs</button>
+        </header>
+        <section id="workspaceDashboard" class="workspace-dashboard" aria-label="Workspace dashboard"></section>
+        <div id="widgetArea" class="widget-area"></div>
+        <div id="chatSearchBar" class="chat-search-bar" role="search" hidden>
+          <input id="chatSearchInput" class="chat-search-input" type="search" placeholder="Search transcript…" autocomplete="off" spellcheck="false" aria-label="Search transcript" />
+          <span id="chatSearchCount" class="chat-search-count muted" aria-live="polite"></span>
+          <button id="chatSearchPrevButton" class="chat-search-button" type="button" aria-label="Previous match" title="Previous match (Shift+Enter)">↑</button>
+          <button id="chatSearchNextButton" class="chat-search-button" type="button" aria-label="Next match" title="Next match (Enter)">↓</button>
+          <button id="chatSearchCloseButton" class="chat-search-button" type="button" aria-label="Close search" title="Close (Escape)">✕</button>
+        </div>
+        <div id="chat" class="chat" aria-live="polite">
+          <button id="stickyUserPromptButton" class="sticky-user-prompt-button" type="button" aria-controls="chat" hidden></button>
+        </div>
+        <div id="feedbackTray" class="feedback-tray" aria-live="polite" hidden>
+          <span id="feedbackTraySummary">No action feedback queued.</span>
+          <button id="sendFeedbackButton" type="button">Send &amp; create LEARNING</button>
+        </div>
+        <button id="jumpToLatestButton" class="jump-to-latest-button" type="button" hidden>Latest ↓</button>
+        <div id="statusBar" class="statusbar" aria-live="polite"></div>
+        <section id="contextMeterBar" class="context-meter-bar" aria-live="polite"></section>
+        <section id="gitWorkflowPanel" class="git-workflow-panel" aria-live="polite" hidden>
+          <div class="git-workflow-header">
+            <div>
+              <span id="gitWorkflowKicker" class="git-workflow-kicker">Git workflow</span>
+              <strong id="gitWorkflowTitle">Ready</strong>
+              <p id="gitWorkflowHint" class="muted">Stage changes, generate a commit message, commit, and push.</p>
+            </div>
+            <button id="gitWorkflowCancelButton" type="button">Cancel</button>
+          </div>
+          <div id="gitWorkflowSteps" class="git-workflow-steps"></div>
+          <pre id="gitWorkflowOutput" class="git-workflow-output"></pre>
+          <div id="gitWorkflowActions" class="git-workflow-actions"></div>
+        </section>
+        <form id="composer" class="composer">
+          <div id="commandSuggest" class="command-suggest" role="listbox" aria-label="Command and path suggestions" hidden></div>
+          <div class="composer-input-row">
+            <div class="composer-context-tags">
+              <button
+                id="busyPromptBehaviorTag"
+                class="composer-busy-mode-tag"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="busyPromptBehaviorMenu"
+                aria-live="polite"
+              >Follow-up</button>
+              <div id="sessionSkillTags" class="composer-skill-tags" aria-live="polite" hidden></div>
+            </div>
+            <div id="busyPromptBehaviorMenu" class="composer-busy-mode-menu" role="menu" aria-labelledby="busyPromptBehaviorTag" hidden>
+              <button class="composer-busy-mode-menu-item" type="button" role="menuitemradio" data-busy-prompt-behavior="followUp" aria-checked="true">
+                <span class="composer-busy-mode-menu-label">Follow-up</span>
+                <span class="composer-busy-mode-menu-description">Queue as the next prompt after this run.</span>
+              </button>
+              <button class="composer-busy-mode-menu-item" type="button" role="menuitemradio" data-busy-prompt-behavior="steer" aria-checked="false">
+                <span class="composer-busy-mode-menu-label">Steer</span>
+                <span class="composer-busy-mode-menu-description">Guide the active run immediately.</span>
+              </button>
+            </div>
+            <textarea id="promptInput" rows="1" enterkeyhint="enter" placeholder="Ask Elestio AI DevOps…" autofocus></textarea>
+            <button
+              id="attachButton"
+              class="composer-icon-button composer-attach-button"
+              type="button"
+              title="Attach files"
+              aria-label="Attach images, videos, documents, audio, or other files"
+              data-tooltip="Attach files:&#10;• Click to choose images, videos, audio, PDFs, docs, text/code, or other files.&#10;• Paste images/docs from the clipboard.&#10;• Drag and drop files onto the composer."
+            ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M21.44 11.05 12.25 20.24a6 6 0 0 1-8.49-8.49l9.19-9.19a4 4 0 0 1 5.66 5.66l-9.2 9.19a2 2 0 0 1-2.82-2.82l8.48-8.49" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <input id="attachmentInput" class="attachment-input" type="file" multiple accept="image/*,video/*,audio/*,text/*,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,application/json,application/xml,.md,.markdown,.csv,.ts,.tsx,.js,.jsx,.mjs,.cjs,.py,.rs,.go,.java,.c,.cpp,.h,.hpp,.sh,.bash,.zsh,.fish,.yaml,.yml,.toml,.ini,.log" />
+          </div>
+          <div id="attachmentTray" class="attachment-tray" aria-live="polite" hidden></div>
+          <div class="composer-row">
+            <button id="composerActionsButton" class="composer-actions-button" type="button" aria-controls="composerActionsPanel" aria-expanded="false" title="Open session, workflow, and follow-up actions">Actions</button>
+            <div id="composerActionsPanel" class="composer-actions-panel" aria-label="Composer actions">
+              <button id="newSessionButton" class="composer-new-button" type="button">New</button>
+              <button id="compactButton" class="composer-compact-button" type="button" title="Compact the current Pi session context">Compact</button>
+              <button
+                id="gitWorkflowButton"
+                class="composer-icon-button composer-git-button"
+                type="button"
+                hidden
+                title="Guided Git workflow"
+                aria-label="Start guided Git workflow: stage all changes, generate and preview staged commit messages, optionally open a PR branch worktree, commit short or long there, then push or create a pull request. Cancel is available at each step."
+                data-tooltip="Guided Git workflow:&#10;1. Stage all changes with git add .&#10;2. Generate and preview staged commit messages.&#10;3. Optional: create or type a PR branch worktree before committing.&#10;4. Commit with the short or long message in the worktree tab.&#10;5. Push normally, or push the PR worktree branch, generate/review /pr, and create the PR.&#10;Cancel is available at each step."
+              ><svg class="composer-icon composer-icon-github" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg></button>
+              <div class="composer-publish-menu" hidden>
+                <button
+                  id="publishButton"
+                  class="composer-icon-button composer-publish-button"
+                  type="button"
+                  title="Choose a publish workflow"
+                  aria-label="Open publish workflows"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="publishMenu"
+                  data-tooltip="Publish workflows: choose an npm or AUR release flow."
+                ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 16V4m0 0 5 5m-5-5-5 5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M5 16v3a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                <div id="publishMenu" class="composer-publish-menu-panel" role="menu" aria-label="Publish workflows">
+                  <button id="releaseNpmButton" class="composer-publish-menu-item" type="button" role="menuitem" data-command="/release-npm">
+                    <span>NPM Release</span>
+                  </button>
+                  <button id="releaseAurButton" class="composer-publish-menu-item" type="button" role="menuitem" data-command="/release-aur">
+                    <span>AUR Release</span>
+                  </button>
+                </div>
+              </div>
+              <div class="composer-publish-menu composer-native-command-menu" hidden>
+                <button
+                  id="nativeCommandMenuButton"
+                  class="composer-icon-button composer-publish-button composer-native-command-button"
+                  type="button"
+                  title="Open skills and tools commands"
+                  aria-label="Open /skills and /tools commands"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="nativeCommandMenu"
+                  data-tooltip="Skills/tools setup: open skill or tool setup."
+                ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 5h16v14H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="m7 10 2.5 2L7 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12 15h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+                <div id="nativeCommandMenu" class="composer-publish-menu-panel composer-native-command-menu-panel" role="menu" aria-label="Skills and tools setup">
+                  <button id="nativeSkillsButton" class="composer-publish-menu-item composer-native-command-menu-item" type="button" role="menuitem" data-command="/skills">
+                    <span>Skills Setup</span>
+                  </button>
+                  <button id="nativeToolsButton" class="composer-publish-menu-item composer-native-command-menu-item" type="button" role="menuitem" data-command="/tools">
+                    <span>Tools Setup</span>
+                  </button>
+                </div>
+              </div>
+              <div class="composer-publish-menu composer-options-menu">
+                <button
+                  id="optionsMenuButton"
+                  class="composer-icon-button composer-publish-button composer-options-button"
+                  type="button"
+                  title="Open common Pi options"
+                  aria-label="Open common Pi options"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="optionsMenu"
+                  data-tooltip="Options: command palette, resume, reload, remote, name, clone, settings, export, fork, or tree."
+                ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="8" cy="7" r="1.6" fill="currentColor"/><circle cx="16" cy="12" r="1.6" fill="currentColor"/><circle cx="11" cy="17" r="1.6" fill="currentColor"/></svg></button>
+                <div id="optionsMenu" class="composer-publish-menu-panel composer-options-menu-panel" role="menu" aria-label="Common Pi options">
+                  <button id="optionsCommandPaletteButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem">
+                    <span>Command Palette</span>
+                  </button>
+                  <button id="optionsTreeButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/tree">
+                    <span>Tree</span>
+                  </button>
+                  <button id="optionsStatsButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/stats-webui" hidden>
+                    <span>Stats Dashboard</span>
+                  </button>
+                  <button id="optionsForkButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/fork">
+                    <span>Fork</span>
+                  </button>
+                  <button id="optionsExportButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/export">
+                    <span>Export</span>
+                  </button>
+                  <button id="optionsSettingsButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/settings">
+                    <span>Settings</span>
+                  </button>
+                  <button id="optionsCloneButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/clone">
+                    <span>Clone Session</span>
+                  </button>
+                  <button id="optionsNameButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/name">
+                    <span>Name Session</span>
+                  </button>
+                  <button id="optionsRemoteButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/remote" hidden>
+                    <span>Open Remote</span>
+                  </button>
+                  <button id="optionsReloadButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/reload">
+                    <span>Reload Pi</span>
+                  </button>
+                  <button id="optionsResumeButton" class="composer-publish-menu-item composer-options-menu-item" type="button" role="menuitem" data-command="/resume">
+                    <span>Resume Session</span>
+                  </button>
+                </div>
+              </div>
+              <div id="appRunnerMenu" class="composer-publish-menu composer-app-runner-menu" hidden>
+                <button
+                  id="appRunnerInfoButton"
+                  class="composer-icon-button composer-app-runner-info-button"
+                  type="button"
+                  title="Explain app runners"
+                  aria-label="Explain app runners"
+                  aria-controls="appRunnerInfoDialog"
+                  data-tooltip="App runner help: supported runners, detection, and process controls."
+                  hidden
+                ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M9.75 9.2a2.4 2.4 0 1 1 4.1 1.7c-.95.9-1.85 1.28-1.85 2.6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17" r="1" fill="currentColor"/></svg></button>
+                <button
+                  id="appRunnerMenuButton"
+                  class="composer-icon-button composer-publish-button composer-app-runner-button"
+                  type="button"
+                  title="Run a detected app runner"
+                  aria-label="Open detected app runners"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="appRunnerMenuPanel"
+                  data-tooltip="App runners: run detected project commands in this tab's working directory."
+                ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z" fill="currentColor"/></svg></button>
+                <div id="appRunnerMenuPanel" class="composer-publish-menu-panel composer-app-runner-menu-panel" role="menu" aria-label="Detected app runners"></div>
+              </div>
+            </div>
+            <div class="spacer"></div>
+            <button
+              id="steerButton"
+              type="button"
+              title="Type your message first, then tap Steer to guide the active Pi run without sending a normal prompt. Use it for corrections or direction changes while Pi is working."
+              aria-label="Steer: type your message first, then tap this button to guide the active Pi run."
+              data-tooltip="Steer usage:&#10;1. Type your steering message in the textarea.&#10;2. Tap Steer to guide the active Pi run.&#10;Use for corrections or direction changes while Pi is working."
+            >Steer</button>
+            <button
+              id="followUpButton"
+              type="button"
+              title="Type your message first, then tap Follow-up to send it as a follow-up instead of a normal prompt. Use it to add extra context or the next request."
+              aria-label="Follow-up: type your message first, then tap this button to send it as a follow-up."
+              data-tooltip="Follow-up usage:&#10;1. Type your message in the textarea.&#10;2. Tap Follow-up to send it as a follow-up.&#10;Use for extra context or the next request."
+            >Follow-up</button>
+            <button id="abortButton" class="composer-abort-button danger" type="button" title="Hold Esc or the Abort button for 3 seconds to abort the active Pi run" aria-label="Hold Esc or the Abort button for 3 seconds to abort the active Pi run" hidden disabled>Abort</button>
+            <button
+              id="btwButton"
+              class="composer-icon-button composer-btw-button"
+              type="button"
+              title="Ask as a /btw side question"
+              aria-label="Ask the current composer text as a /btw side question"
+              data-tooltip="/btw side question:&#10;Type a question, then tap /btw to ask without adding it to the main conversation."
+              hidden
+            ><svg class="composer-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5.5 6.5h10.75a2.25 2.25 0 0 1 2.25 2.25v4.5a2.25 2.25 0 0 1-2.25 2.25h-4.4L8 18.25V15.5H5.5a2.25 2.25 0 0 1-2.25-2.25v-4.5A2.25 2.25 0 0 1 5.5 6.5Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/><path d="m15.75 5.25 1.1-2.1 1.1 2.1 2.3 1.1-2.3 1.1-1.1 2.1-1.1-2.1-2.3-1.1 2.3-1.1Z" fill="currentColor"/><path d="M7.25 10.25h5.8M7.25 12.75h4.1" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round"/></svg></button>
+            <button id="sendButton" type="submit" class="primary" title="Send prompt">Send</button>
+          </div>
+        </form>
+      </section>
+
+      <button id="sidePanelBackdrop" class="side-panel-backdrop" type="button" aria-label="Close side panel" hidden></button>
+      <aside id="sidePanel" class="side-panel">
+        <div class="side-panel-header">
+          <div>
+            <span class="side-panel-kicker">Pi Web UI</span>
+            <strong class="side-panel-title">
+              <span>Control Deck</span>
+              <span id="webuiVersionBadge" class="webui-version-badge" aria-label="Pi Web UI version" hidden></span>
+              <span id="webuiDevBadge" class="webui-dev-badge" aria-label="Pi Web UI dev server" hidden>DEV</span>
+            </strong>
+          </div>
+          <button id="toggleSidePanelButton" class="side-panel-toggle-button" type="button" aria-controls="sidePanel" aria-expanded="true" aria-label="Collapse side panel" title="Collapse side panel">
+            <span class="side-panel-button-icon" aria-hidden="true">
+              <span></span><span></span><span></span>
+            </span>
+            <span class="side-panel-button-chevron" aria-hidden="true">›</span>
+          </button>
+        </div>
+        <div class="side-panel-body">
+          <section class="side-panel-section collapsed" data-side-panel-section="controls">
+            <h2>
+              <button id="sidePanelSectionToggleControls" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionControls" aria-label="Expand Controls section" title="Expand Controls section" data-side-panel-section-toggle="controls">
+                <span class="side-panel-section-label">Controls</span>
+                <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionControls" class="side-panel-section-content" hidden>
+              <div class="side-panel-controls">
+                <div class="control-field">
+                  <label id="modelControlLabel" for="modelSelect" title="Open or close model search" tabindex="0">Model</label>
+                  <input id="modelSearchInput" class="model-search-input" type="search" placeholder="Search models…" autocomplete="off" spellcheck="false" hidden />
+                  <select id="modelSelect" title="Model"></select>
+                  <div id="modelSearchResults" class="model-search-results" role="listbox" aria-label="Model search results" hidden></div>
+                  <button id="setModelButton" type="button">Set model</button>
+                </div>
+                <div class="control-field">
+                  <label for="thinkingSelect">Thinking</label>
+                  <select id="thinkingSelect" title="Thinking level">
+                    <option value="off">off</option>
+                    <option value="minimal">minimal</option>
+                    <option value="low">low</option>
+                    <option value="medium">medium</option>
+                    <option value="high">high</option>
+                    <option value="xhigh">xhigh</option>
+                  </select>
+                  <button id="setThinkingButton" type="button">Set thinking</button>
+                </div>
+                <div class="control-field thinking-visibility-control-field">
+                  <span class="control-label">Output</span>
+                  <label class="toggle-control" for="thinkingVisibilityToggle">
+                    <input id="thinkingVisibilityToggle" type="checkbox" checked />
+                    <span>
+                      <span class="toggle-control-label">Show thinking output</span>
+                      <span id="thinkingVisibilityStatus" class="toggle-control-hint">Visible</span>
+                    </span>
+                  </label>
+                </div>
+                <div class="control-field terminal-tabs-layout-control-field">
+                  <label for="terminalTabsLayoutSelect">Tabs layout</label>
+                  <select id="terminalTabsLayoutSelect" title="Terminal tabs layout" aria-describedby="terminalTabsLayoutStatus">
+                    <option value="top">Top bar</option>
+                    <option value="left">Left sidebar</option>
+                  </select>
+                  <div id="terminalTabsLayoutStatus" class="terminal-tabs-layout-status toggle-control-hint">Top bar</div>
+                </div>
+                <div class="control-field">
+                  <label for="themeSelect" id="themeControlLabel" title="Open or close theme search" tabindex="0">Theme</label>
+                  <input id="themeSearchInput" class="model-search-input theme-search-input" type="search" placeholder="Search themes…" autocomplete="off" spellcheck="false" hidden />
+                  <select id="themeSelect" title="Theme"></select>
+                  <div id="themeSearchResults" class="model-search-results theme-search-results" role="listbox" aria-label="Theme search results" hidden></div>
+                </div>
+                <div class="control-field background-control-field">
+                  <label for="backgroundInput">Background</label>
+                  <input id="backgroundInput" class="background-input" type="file" accept="image/png,image/jpeg,image/webp,image/gif" />
+                  <div class="background-control-row">
+                    <button id="backgroundChooseButton" type="button">Change background</button>
+                    <button id="backgroundClearButton" class="background-clear-button" type="button" aria-label="Remove custom background" title="Remove custom background" hidden>×</button>
+                  </div>
+                  <div id="backgroundStatus" class="background-status muted">Theme default</div>
+                </div>
+                <div id="networkControlField" class="control-field network-control-field" hidden>
+                  <label>Remote WebUI</label>
+                  <div id="networkStatus" class="network-status closed">Local only</div>
+                  <label class="toggle-control remote-auth-toggle" for="remoteAuthToggle">
+                    <input id="remoteAuthToggle" type="checkbox" />
+                    <span>
+                      <span class="toggle-control-label">Remote PIN auth</span>
+                      <span id="remoteAuthStatus" class="toggle-control-hint">Off</span>
+                    </span>
+                  </label>
+                  <button id="openNetworkButton" type="button">Open to network</button>
+                </div>
+                <div class="control-field server-control-field">
+                  <label for="serverActionSelect">Server</label>
+                  <div class="server-action-row">
+                    <select id="serverActionSelect" title="Server action" aria-label="Server action">
+                      <option value="" selected>Choose action…</option>
+                      <option value="restart">Restart Server</option>
+                      <option value="update">Update Pi &amp; Restart</option>
+                      <option value="update-all">Update Pi + Packages &amp; Restart</option>
+                      <option value="stop">Stop Server</option>
+                    </select>
+                    <button id="runServerActionButton" type="button" disabled>Run</button>
+                  </div>
+                  <div id="serverActionStatus" class="server-action-status muted" role="status" aria-live="polite"></div>
+                </div>
+                <div class="control-field notification-control-field">
+                  <span class="control-label">Notifications</span>
+                  <label class="toggle-control" for="agentDoneNotificationsToggle">
+                    <input id="agentDoneNotificationsToggle" type="checkbox" />
+                    <span>
+                      <span class="toggle-control-label">Agent done notifications</span>
+                      <span id="agentDoneNotificationsStatus" class="toggle-control-hint">Off</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </section>
+          <section class="side-panel-section collapsed" data-side-panel-section="optional-features">
+            <h2>
+              <button id="sidePanelSectionToggleOptionalFeatures" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionOptionalFeatures" aria-label="Expand Optional features section" title="Expand Optional features section" data-side-panel-section-toggle="optional-features">
+                <span class="side-panel-section-label">Optional features</span>
+                <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionOptionalFeatures" class="side-panel-section-content" hidden>
+              <p class="optional-features-description muted">
+                For additional WebUI feature requests, please
+                <a href="https://github.com/Firstp1ck/npm-packages/issues/new" target="_blank" rel="noopener noreferrer">open a GitHub issue</a>
+                so they can be reviewed and considered for implementation.
+              </p>
+              <div id="optionalFeaturesBox" class="optional-features-box muted">Checking optional features…</div>
+            </div>
+          </section>
+          <section class="side-panel-section collapsed" data-side-panel-section="codex-usage">
+            <h2>
+              <button id="sidePanelSectionToggleCodexUsage" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionCodexUsage" aria-label="Expand Codex Usage section" title="Expand Codex Usage section" data-side-panel-section-toggle="codex-usage">
+                <span class="side-panel-section-label">Codex Usage</span>
+                <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionCodexUsage" class="side-panel-section-content" hidden>
+              <div class="codex-usage-actions">
+                <button id="refreshCodexUsageButton" type="button">Refresh usage</button>
+              </div>
+              <div id="codexUsageBox" class="codex-usage-box muted">Checking Codex usage…</div>
+            </div>
+          </section>
+          <section class="side-panel-section collapsed" data-side-panel-section="session">
+            <h2>
+              <button id="sidePanelSectionToggleSession" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionSession" aria-label="Expand Session section" title="Expand Session section" data-side-panel-section-toggle="session">
+                <span class="side-panel-section-label">Session</span>
+                <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionSession" class="side-panel-section-content" hidden>
+              <dl id="stateDetails" class="details"></dl>
+            </div>
+          </section>
+          <section class="side-panel-section collapsed" data-side-panel-section="queue">
+            <h2>
+              <button id="sidePanelSectionToggleQueue" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionQueue" aria-label="Expand Queue section" title="Expand Queue section" data-side-panel-section-toggle="queue">
+                <span class="side-panel-section-label">Queue</span>
+                <span class="side-panel-section-trailing">
+                  <span id="queueCountBadge" class="side-panel-section-badge" hidden>0</span>
+                  <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+                </span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionQueue" class="side-panel-section-content" hidden>
+              <div class="prompt-list-controls" aria-label="Prompt lists">
+                <button id="createPromptListButton" type="button">Create prompt list</button>
+                <div class="prompt-list-side-actions">
+                  <button id="loadPromptListButton" type="button">Load List</button>
+                  <button id="runLoadedPromptListButton" type="button" disabled>Run</button>
+                </div>
+                <div id="loadedPromptListBox" class="loaded-prompt-list-box muted">No prompt list loaded.</div>
+              </div>
+              <div id="queueBox" class="queue-box muted">No queued messages.</div>
+            </div>
+          </section>
+          <section class="side-panel-section collapsed" data-side-panel-section="commands">
+            <h2>
+              <button id="sidePanelSectionToggleCommands" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionCommands" aria-label="Expand Commands section" title="Expand Commands section" data-side-panel-section-toggle="commands">
+                <span class="side-panel-section-label">Commands</span>
+                <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionCommands" class="side-panel-section-content" hidden>
+              <input id="commandSearchInput" class="commands-search" type="search" placeholder="Search commands…" autocomplete="off" spellcheck="false" aria-label="Search commands" />
+              <div id="commandsBox" class="commands-box muted">Loading…</div>
+            </div>
+          </section>
+          <section class="side-panel-section collapsed" data-side-panel-section="events">
+            <h2>
+              <button id="sidePanelSectionToggleEvents" class="side-panel-section-toggle" type="button" aria-expanded="false" aria-controls="sidePanelSectionEvents" aria-label="Expand Events section" title="Expand Events section" data-side-panel-section-toggle="events">
+                <span class="side-panel-section-label">Events</span>
+                <span class="side-panel-section-chevron" aria-hidden="true">›</span>
+              </button>
+            </h2>
+            <div id="sidePanelSectionEvents" class="side-panel-section-content" hidden>
+              <div id="eventLog" class="event-log"></div>
+            </div>
+          </section>
+        </div>
+      </aside>
+    </main>
+
+    <dialog id="extensionDialog" class="extension-dialog">
+      <form id="dialogForm" method="dialog">
+        <h2 id="dialogTitle">Pi request</h2>
+        <p id="dialogMessage" class="muted"></p>
+        <div id="dialogBody"></div>
+        <menu id="dialogActions"></menu>
+      </form>
+    </dialog>
+
+    <dialog id="gitPrDialog" class="extension-dialog git-pr-dialog">
+      <form method="dialog">
+        <h2>Review pull request</h2>
+        <p class="muted">Confirm or edit the generated /pr description before Web UI runs <code>gh pr create</code>.</p>
+        <label class="git-pr-field" for="gitPrTitleInput">
+          <span>Title</span>
+          <input id="gitPrTitleInput" class="dialog-input" type="text" autocomplete="off" placeholder="Pull request title" />
+        </label>
+        <label class="git-pr-field" for="gitPrBodyEditor">
+          <span>Description</span>
+          <textarea id="gitPrBodyEditor" class="dialog-editor git-pr-body-editor" spellcheck="true" aria-label="Pull request description"></textarea>
+        </label>
+        <p id="gitPrStatus" class="git-pr-status muted" role="status" aria-live="polite"></p>
+        <menu>
+          <button id="gitPrCancelButton" type="button">Cancel</button>
+          <button id="gitPrCreateButton" class="primary" type="button">Create PR</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="gitChangesDialog" class="extension-dialog git-changes-dialog">
+      <form method="dialog">
+        <div class="git-changes-header">
+          <div>
+            <span class="git-changes-kicker">Git diff</span>
+            <h2 id="gitChangesTitle">Uncommitted Changes</h2>
+            <p id="gitChangesSubtitle" class="muted">Current tab git diff</p>
+          </div>
+          <div class="git-changes-actions">
+            <button id="gitChangesRefreshButton" type="button">Refresh</button>
+            <button id="gitChangesPullButton" class="primary" type="button" disabled>Pull</button>
+          </div>
+        </div>
+        <p id="gitChangesStatus" class="git-changes-status muted" role="status" aria-live="polite"></p>
+        <div id="gitChangesBody" class="git-changes-body"></div>
+        <menu>
+          <button id="gitChangesCloseButton" type="button">Close</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="statsOverlayDialog" class="extension-dialog stats-overlay-dialog">
+      <form method="dialog">
+        <div class="stats-overlay-header">
+          <div>
+            <span class="stats-overlay-kicker">Pi stats</span>
+            <h2>Usage dashboard</h2>
+            <p id="statsOverlaySubtitle" class="muted">Run stats to load the browser dashboard.</p>
+          </div>
+          <div class="stats-overlay-controls">
+            <label for="statsOverlayScope">Range</label>
+            <select id="statsOverlayScope" title="Stats range" aria-label="Stats range">
+              <option value="14">14 days</option>
+              <option value="30">30 days</option>
+              <option value="90">90 days</option>
+              <option value="custom">Custom…</option>
+              <option value="all">All</option>
+            </select>
+            <input id="statsOverlayCustomDays" class="stats-overlay-custom-days" type="number" min="1" max="3650" step="1" value="14" aria-label="Custom stats range in days" hidden />
+            <button id="statsOverlayRefreshButton" type="button">Refresh</button>
+            <button id="statsOverlayCloseButton" class="stats-overlay-close-button" type="button" aria-label="Close stats dashboard">Close</button>
+          </div>
+        </div>
+        <p id="statsOverlayStatus" class="stats-overlay-status muted" role="status" aria-live="polite" hidden></p>
+        <div id="statsOverlayTabs" class="stats-overlay-tabs" role="tablist" aria-label="Stats dashboard views"></div>
+        <div id="statsOverlayBody" class="stats-overlay-body"></div>
+      </form>
+    </dialog>
+
+    <dialog id="pathPickerDialog" class="extension-dialog path-picker-dialog">
+      <form method="dialog">
+        <h2 id="pathPickerTitle">Choose working directory</h2>
+        <div class="path-picker-current-row">
+          <p id="pathPickerCurrent" class="path-picker-current"></p>
+          <button id="pathPickerAddFastPickButton" type="button" class="path-picker-add-fast-pick">Add fast pick</button>
+        </div>
+        <div id="pathPickerFastPicks" class="path-picker-fast-picks" aria-label="Fast picks"></div>
+        <div id="pathPickerRoots" class="path-picker-roots"></div>
+        <div class="path-picker-create-row" aria-label="Create a new directory in the current directory">
+          <input id="pathPickerCreateNameInput" class="path-picker-create-input" type="text" placeholder="New directory name" autocomplete="off" spellcheck="false" maxlength="255" aria-label="New directory name" />
+          <button id="pathPickerCreateButton" type="button" class="path-picker-create-button">Create directory</button>
+        </div>
+        <div class="path-picker-search-row" aria-label="Search directories in the current directory">
+          <input id="pathPickerSearchInput" class="path-picker-search-input" type="search" placeholder="Search current directory…" autocomplete="off" spellcheck="false" aria-label="Search current directory" />
+          <button id="pathPickerClearSearchButton" type="button" class="path-picker-clear-search-button" hidden>Clear</button>
+        </div>
+        <p id="pathPickerSearchStatus" class="path-picker-search-status muted" role="status" aria-live="polite"></p>
+        <div id="pathPickerList" class="path-picker-list" role="listbox" aria-label="Directories"></div>
+        <p id="pathPickerError" class="path-picker-error" hidden></p>
+        <menu>
+          <button id="pathPickerCancelButton" type="button">Cancel</button>
+          <button id="pathPickerChooseButton" type="button" class="primary">Use this directory</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="commandPaletteDialog" class="extension-dialog command-palette-dialog">
+      <form method="dialog">
+        <div class="command-palette-header">
+          <div>
+            <span class="command-palette-kicker">Quick launcher</span>
+            <h2>Command palette</h2>
+          </div>
+          <div class="command-palette-header-actions">
+            <span class="command-palette-shortcut">Ctrl/Cmd+K</span>
+            <button id="commandPaletteCloseButton" class="command-palette-close-button" type="button" aria-label="Close command palette" title="Close command palette">Close</button>
+          </div>
+        </div>
+        <input id="commandPaletteInput" class="dialog-input command-palette-input" type="search" autocomplete="off" spellcheck="false" placeholder="Search commands, tabs, models, sessions…" aria-label="Search command palette" />
+        <div id="commandPaletteList" class="command-palette-list" role="listbox" aria-label="Command palette results"></div>
+        <p id="commandPaletteHint" class="command-palette-hint muted">Use ↑/↓ then Enter. Escape closes.</p>
+      </form>
+    </dialog>
+
+    <dialog id="editRetryDialog" class="extension-dialog edit-retry-dialog">
+      <form method="dialog">
+        <h2>Edit &amp; retry from here</h2>
+        <p id="editRetryMessage" class="muted">Fork the session from this user message, optionally edit it, then run the new prompt.</p>
+        <textarea id="editRetryText" class="dialog-editor edit-retry-text" spellcheck="true" aria-label="Edited prompt"></textarea>
+        <p id="editRetryStatus" class="edit-retry-status muted" role="status" aria-live="polite"></p>
+        <menu>
+          <button id="editRetryCancelButton" type="button">Cancel</button>
+          <button id="editRetryForkButton" type="button">Fork only</button>
+          <button id="editRetrySendButton" class="primary" type="button">Fork &amp; run</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="remoteQrDialog" class="extension-dialog remote-qr-dialog">
+      <form method="dialog">
+        <div class="remote-qr-header">
+          <div>
+            <span class="remote-qr-kicker">/remote</span>
+            <h2>Remote WebUI QR</h2>
+            <p id="remoteQrMessage" class="muted">Scan this QR code from a trusted local-network device.</p>
+          </div>
+          <button id="remoteQrCloseButton" class="remote-qr-close-button" type="button" aria-label="Close Remote WebUI QR popup">Close</button>
+        </div>
+        <div id="remoteQrBody" class="remote-qr-body"></div>
+        <menu>
+          <button id="remoteQrCopyButton" type="button" disabled>Copy URL</button>
+          <button id="remoteQrOpenButton" type="button" disabled>Open URL</button>
+          <button id="remoteQrCloseMenuButton" class="primary" type="button">Done</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="nativeCommandDialog" class="extension-dialog native-command-dialog">
+      <form method="dialog">
+        <h2 id="nativeCommandTitle">Pi command</h2>
+        <p id="nativeCommandMessage" class="muted"></p>
+        <input id="nativeCommandSearch" class="dialog-input native-command-search" type="search" placeholder="Filter choices…" autocomplete="off" hidden />
+        <div id="nativeCommandBody" class="native-command-body"></div>
+        <p id="nativeCommandError" class="path-picker-error" hidden></p>
+        <menu id="nativeCommandActions"></menu>
+      </form>
+    </dialog>
+
+    <dialog id="appRunnerInfoDialog" class="extension-dialog app-runner-info-dialog">
+      <form method="dialog">
+        <h2>App runners</h2>
+        <p class="muted">Run detected project entrypoints directly from the active tab’s working directory, with live output pinned above the chat.</p>
+        <div id="appRunnerInfoBody" class="app-runner-info-body"></div>
+        <menu>
+          <button id="appRunnerInfoCloseButton" type="submit" value="close">Close</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="skillEditorDialog" class="extension-dialog skill-editor-dialog">
+      <form method="dialog">
+        <h2 id="skillEditorTitle">Edit skill</h2>
+        <p id="skillEditorMeta" class="skill-editor-meta muted"></p>
+        <textarea id="skillEditorText" class="dialog-editor skill-editor-text" spellcheck="false" aria-label="Skill file contents"></textarea>
+        <p id="skillEditorStatus" class="skill-editor-status muted" role="status" aria-live="polite" hidden></p>
+        <menu>
+          <button id="skillEditorCancelButton" type="button">Cancel</button>
+          <button id="skillEditorSaveButton" class="primary" type="button">Save skill</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="promptListDialog" class="extension-dialog prompt-list-dialog">
+      <form method="dialog">
+        <h2 id="promptListDialogTitle">Create prompt list</h2>
+        <p class="muted">Create one start prompt, then add any number of follow-up prompts to queue behind it.</p>
+        <label class="prompt-list-name-field" for="promptListNameInput">
+          <span>List name</span>
+          <input id="promptListNameInput" class="dialog-input" type="text" autocomplete="off" placeholder="Optional name" />
+        </label>
+        <div id="promptListEditorRows" class="prompt-list-editor-rows"></div>
+        <button id="promptListAddPromptButton" class="prompt-list-add-button" type="button">+ Add follow-up prompt</button>
+        <div id="promptListLoadPanel" class="prompt-list-load-panel" hidden>
+          <label for="promptListSelect">Saved lists</label>
+          <div class="prompt-list-load-row">
+            <select id="promptListSelect" title="Saved prompt lists"></select>
+            <button id="promptListLoadSelectedButton" type="button">Load selected</button>
+            <button id="promptListDeleteSelectedButton" class="danger" type="button">Delete</button>
+          </div>
+        </div>
+        <p id="promptListStatus" class="prompt-list-status muted" role="status" aria-live="polite"></p>
+        <menu>
+          <button id="promptListCloseButton" type="button">Cancel</button>
+          <button id="promptListDialogLoadButton" type="button">Load</button>
+          <button id="promptListSaveButton" type="button">Save</button>
+          <button id="promptListRunListButton" class="primary" type="button">Run List</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <dialog id="attachmentTextDialog" class="extension-dialog attachment-text-dialog">
+      <form method="dialog">
+        <h2 id="attachmentTextTitle">Edit text attachment</h2>
+        <p id="attachmentTextMeta" class="attachment-text-meta muted"></p>
+        <textarea id="attachmentTextEditor" class="dialog-editor attachment-text-editor" spellcheck="false" aria-label="Text attachment contents"></textarea>
+        <p id="attachmentTextStatus" class="attachment-text-status muted" role="status" aria-live="polite"></p>
+        <menu>
+          <button id="attachmentTextCancelButton" type="button">Cancel</button>
+          <button id="attachmentTextSaveButton" class="primary" type="button">Save changes</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script type="module" src="/app.js?v=58"></script>
+  </body>
+</html>

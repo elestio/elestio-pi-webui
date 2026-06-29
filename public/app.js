@@ -1,0 +1,21935 @@
+const $ = (selector) => document.querySelector(selector);
+
+const elements = {
+  webuiVersionBadge: $("#webuiVersionBadge"),
+  webuiDevBadge: $("#webuiDevBadge"),
+  tabBar: $("#tabBar"),
+  terminalTabsToggleButton: $("#terminalTabsToggleButton"),
+  newTabMenu: $("#newTabMenu"),
+  newTabButton: $("#newTabButton"),
+  newTabMenuPanel: $("#newTabMenuPanel"),
+  newTabCurrentDirectoryButton: $("#newTabCurrentDirectoryButton"),
+  newTabChooseDirectoryButton: $("#newTabChooseDirectoryButton"),
+  newTabWorktreeButton: $("#newTabWorktreeButton"),
+  closeAllTabsButton: $("#closeAllTabsButton"),
+  commandPaletteButton: $("#commandPaletteButton"),
+  workspaceDashboardToggleButton: $("#workspaceDashboardToggleButton"),
+  workspaceDashboard: $("#workspaceDashboard"),
+  statusBar: $("#statusBar"),
+  contextMeterBar: $("#contextMeterBar"),
+  serverOfflinePanel: $("#serverOfflinePanel"),
+  serverRestartPanel: $("#serverRestartPanel"),
+  serverRestartMessage: $("#serverRestartMessage"),
+  updateNotification: $("#updateNotification"),
+  updateNotificationTitle: $("#updateNotificationTitle"),
+  updateNotificationMessage: $("#updateNotificationMessage"),
+  updateNotificationDetail: $("#updateNotificationDetail"),
+  updateNotificationUpdateButton: $("#updateNotificationUpdateButton"),
+  updateNotificationUpdateAllButton: $("#updateNotificationUpdateAllButton"),
+  updateNotificationDismissButton: $("#updateNotificationDismissButton"),
+  serverOfflineCommand: $("#serverOfflineCommand"),
+  serverOfflineSlashCommand: $("#serverOfflineSlashCommand"),
+  copyServerCommandButton: $("#copyServerCommandButton"),
+  retryServerConnectionButton: $("#retryServerConnectionButton"),
+  widgetArea: $("#widgetArea"),
+  stickyUserPromptButton: $("#stickyUserPromptButton"),
+  chat: $("#chat"),
+  chatSearchBar: $("#chatSearchBar"),
+  chatSearchInput: $("#chatSearchInput"),
+  chatSearchCount: $("#chatSearchCount"),
+  chatSearchPrevButton: $("#chatSearchPrevButton"),
+  chatSearchNextButton: $("#chatSearchNextButton"),
+  chatSearchCloseButton: $("#chatSearchCloseButton"),
+  feedbackTray: $("#feedbackTray"),
+  feedbackTraySummary: $("#feedbackTraySummary"),
+  sendFeedbackButton: $("#sendFeedbackButton"),
+  jumpToLatestButton: $("#jumpToLatestButton"),
+  composer: $("#composer"),
+  composerRow: $(".composer-row"),
+  composerActionsButton: $("#composerActionsButton"),
+  composerActionsPanel: $("#composerActionsPanel"),
+  promptInput: $("#promptInput"),
+  busyPromptBehaviorTag: $("#busyPromptBehaviorTag"),
+  busyPromptBehaviorMenu: $("#busyPromptBehaviorMenu"),
+  sessionSkillTags: $("#sessionSkillTags"),
+  skillEditorDialog: $("#skillEditorDialog"),
+  skillEditorTitle: $("#skillEditorTitle"),
+  skillEditorMeta: $("#skillEditorMeta"),
+  skillEditorText: $("#skillEditorText"),
+  skillEditorStatus: $("#skillEditorStatus"),
+  skillEditorCancelButton: $("#skillEditorCancelButton"),
+  skillEditorSaveButton: $("#skillEditorSaveButton"),
+  sendButton: $("#sendButton"),
+  btwButton: $("#btwButton"),
+  commandSuggest: $("#commandSuggest"),
+  attachmentTray: $("#attachmentTray"),
+  attachButton: $("#attachButton"),
+  attachmentInput: $("#attachmentInput"),
+  steerButton: $("#steerButton"),
+  followUpButton: $("#followUpButton"),
+  abortButton: $("#abortButton"),
+  newSessionButton: $("#newSessionButton"),
+  compactButton: $("#compactButton"),
+  gitWorkflowButton: $("#gitWorkflowButton"),
+  publishButton: $("#publishButton"),
+  publishMenu: $("#publishMenu"),
+  releaseNpmButton: $("#releaseNpmButton"),
+  releaseAurButton: $("#releaseAurButton"),
+  nativeCommandMenuButton: $("#nativeCommandMenuButton"),
+  nativeCommandMenu: $("#nativeCommandMenu"),
+  nativeSkillsButton: $("#nativeSkillsButton"),
+  nativeToolsButton: $("#nativeToolsButton"),
+  appRunnerMenu: $("#appRunnerMenu"),
+  appRunnerInfoButton: $("#appRunnerInfoButton"),
+  appRunnerMenuButton: $("#appRunnerMenuButton"),
+  appRunnerMenuPanel: $("#appRunnerMenuPanel"),
+  optionsMenuButton: $("#optionsMenuButton"),
+  optionsMenu: $("#optionsMenu"),
+  optionsCommandPaletteButton: $("#optionsCommandPaletteButton"),
+  optionsResumeButton: $("#optionsResumeButton"),
+  optionsReloadButton: $("#optionsReloadButton"),
+  optionsRemoteButton: $("#optionsRemoteButton"),
+  optionsNameButton: $("#optionsNameButton"),
+  optionsCloneButton: $("#optionsCloneButton"),
+  optionsSettingsButton: $("#optionsSettingsButton"),
+  optionsExportButton: $("#optionsExportButton"),
+  optionsForkButton: $("#optionsForkButton"),
+  optionsTreeButton: $("#optionsTreeButton"),
+  optionsStatsButton: $("#optionsStatsButton"),
+  gitWorkflowPanel: $("#gitWorkflowPanel"),
+  gitWorkflowKicker: $("#gitWorkflowKicker"),
+  gitWorkflowTitle: $("#gitWorkflowTitle"),
+  gitWorkflowHint: $("#gitWorkflowHint"),
+  gitWorkflowSteps: $("#gitWorkflowSteps"),
+  gitWorkflowOutput: $("#gitWorkflowOutput"),
+  gitWorkflowActions: $("#gitWorkflowActions"),
+  gitWorkflowCancelButton: $("#gitWorkflowCancelButton"),
+  gitPrDialog: $("#gitPrDialog"),
+  gitPrTitleInput: $("#gitPrTitleInput"),
+  gitPrBodyEditor: $("#gitPrBodyEditor"),
+  gitPrStatus: $("#gitPrStatus"),
+  gitPrCancelButton: $("#gitPrCancelButton"),
+  gitPrCreateButton: $("#gitPrCreateButton"),
+  gitChangesDialog: $("#gitChangesDialog"),
+  gitChangesTitle: $("#gitChangesTitle"),
+  gitChangesSubtitle: $("#gitChangesSubtitle"),
+  gitChangesStatus: $("#gitChangesStatus"),
+  gitChangesBody: $("#gitChangesBody"),
+  gitChangesRefreshButton: $("#gitChangesRefreshButton"),
+  gitChangesPullButton: $("#gitChangesPullButton"),
+  gitChangesCloseButton: $("#gitChangesCloseButton"),
+  modelControlLabel: $("#modelControlLabel"),
+  modelSearchInput: $("#modelSearchInput"),
+  modelSearchResults: $("#modelSearchResults"),
+  modelSelect: $("#modelSelect"),
+  setModelButton: $("#setModelButton"),
+  thinkingSelect: $("#thinkingSelect"),
+  setThinkingButton: $("#setThinkingButton"),
+  thinkingVisibilityToggle: $("#thinkingVisibilityToggle"),
+  thinkingVisibilityStatus: $("#thinkingVisibilityStatus"),
+  terminalTabsLayoutSelect: $("#terminalTabsLayoutSelect"),
+  terminalTabsLayoutStatus: $("#terminalTabsLayoutStatus"),
+  themeControlLabel: $("#themeControlLabel"),
+  themeSearchInput: $("#themeSearchInput"),
+  themeSearchResults: $("#themeSearchResults"),
+  themeSelect: $("#themeSelect"),
+  backgroundInput: $("#backgroundInput"),
+  backgroundChooseButton: $("#backgroundChooseButton"),
+  backgroundClearButton: $("#backgroundClearButton"),
+  backgroundStatus: $("#backgroundStatus"),
+  networkControlField: $("#networkControlField"),
+  networkStatus: $("#networkStatus"),
+  remoteAuthToggle: $("#remoteAuthToggle"),
+  remoteAuthStatus: $("#remoteAuthStatus"),
+  openNetworkButton: $("#openNetworkButton"),
+  remoteQrDialog: $("#remoteQrDialog"),
+  remoteQrMessage: $("#remoteQrMessage"),
+  remoteQrBody: $("#remoteQrBody"),
+  remoteQrCopyButton: $("#remoteQrCopyButton"),
+  remoteQrOpenButton: $("#remoteQrOpenButton"),
+  remoteQrCloseButton: $("#remoteQrCloseButton"),
+  remoteQrCloseMenuButton: $("#remoteQrCloseMenuButton"),
+  serverActionSelect: $("#serverActionSelect"),
+  runServerActionButton: $("#runServerActionButton"),
+  serverActionStatus: $("#serverActionStatus"),
+  agentDoneNotificationsToggle: $("#agentDoneNotificationsToggle"),
+  agentDoneNotificationsStatus: $("#agentDoneNotificationsStatus"),
+  optionalFeaturesBox: $("#optionalFeaturesBox"),
+  codexUsageBox: $("#codexUsageBox"),
+  refreshCodexUsageButton: $("#refreshCodexUsageButton"),
+  toggleSidePanelButton: $("#toggleSidePanelButton"),
+  sidePanelExpandButton: $("#sidePanelExpandButton"),
+  sidePanelBackdrop: $("#sidePanelBackdrop"),
+  sidePanel: $("#sidePanel"),
+  stateDetails: $("#stateDetails"),
+  queueBox: $("#queueBox"),
+  queueCountBadge: $("#queueCountBadge"),
+  createPromptListButton: $("#createPromptListButton"),
+  loadPromptListButton: $("#loadPromptListButton"),
+  runLoadedPromptListButton: $("#runLoadedPromptListButton"),
+  loadedPromptListBox: $("#loadedPromptListBox"),
+  promptListDialog: $("#promptListDialog"),
+  promptListDialogTitle: $("#promptListDialogTitle"),
+  promptListNameInput: $("#promptListNameInput"),
+  promptListEditorRows: $("#promptListEditorRows"),
+  promptListAddPromptButton: $("#promptListAddPromptButton"),
+  promptListLoadPanel: $("#promptListLoadPanel"),
+  promptListSelect: $("#promptListSelect"),
+  promptListLoadSelectedButton: $("#promptListLoadSelectedButton"),
+  promptListDeleteSelectedButton: $("#promptListDeleteSelectedButton"),
+  promptListStatus: $("#promptListStatus"),
+  promptListCloseButton: $("#promptListCloseButton"),
+  promptListDialogLoadButton: $("#promptListDialogLoadButton"),
+  promptListSaveButton: $("#promptListSaveButton"),
+  promptListRunListButton: $("#promptListRunListButton"),
+  attachmentTextDialog: $("#attachmentTextDialog"),
+  attachmentTextTitle: $("#attachmentTextTitle"),
+  attachmentTextMeta: $("#attachmentTextMeta"),
+  attachmentTextEditor: $("#attachmentTextEditor"),
+  attachmentTextStatus: $("#attachmentTextStatus"),
+  attachmentTextCancelButton: $("#attachmentTextCancelButton"),
+  attachmentTextSaveButton: $("#attachmentTextSaveButton"),
+  commandSearchInput: $("#commandSearchInput"),
+  commandsBox: $("#commandsBox"),
+  eventLog: $("#eventLog"),
+  dialog: $("#extensionDialog"),
+  dialogTitle: $("#dialogTitle"),
+  dialogMessage: $("#dialogMessage"),
+  dialogBody: $("#dialogBody"),
+  dialogActions: $("#dialogActions"),
+  pathPickerDialog: $("#pathPickerDialog"),
+  pathPickerTitle: $("#pathPickerTitle"),
+  pathPickerCurrent: $("#pathPickerCurrent"),
+  pathPickerAddFastPickButton: $("#pathPickerAddFastPickButton"),
+  pathPickerCreateNameInput: $("#pathPickerCreateNameInput"),
+  pathPickerCreateButton: $("#pathPickerCreateButton"),
+  pathPickerSearchInput: $("#pathPickerSearchInput"),
+  pathPickerClearSearchButton: $("#pathPickerClearSearchButton"),
+  pathPickerSearchStatus: $("#pathPickerSearchStatus"),
+  pathPickerFastPicks: $("#pathPickerFastPicks"),
+  pathPickerRoots: $("#pathPickerRoots"),
+  pathPickerList: $("#pathPickerList"),
+  pathPickerError: $("#pathPickerError"),
+  pathPickerCancelButton: $("#pathPickerCancelButton"),
+  pathPickerChooseButton: $("#pathPickerChooseButton"),
+  commandPaletteDialog: $("#commandPaletteDialog"),
+  commandPaletteInput: $("#commandPaletteInput"),
+  commandPaletteList: $("#commandPaletteList"),
+  commandPaletteHint: $("#commandPaletteHint"),
+  commandPaletteCloseButton: $("#commandPaletteCloseButton"),
+  editRetryDialog: $("#editRetryDialog"),
+  editRetryMessage: $("#editRetryMessage"),
+  editRetryText: $("#editRetryText"),
+  editRetryStatus: $("#editRetryStatus"),
+  editRetryCancelButton: $("#editRetryCancelButton"),
+  editRetryForkButton: $("#editRetryForkButton"),
+  editRetrySendButton: $("#editRetrySendButton"),
+  nativeCommandDialog: $("#nativeCommandDialog"),
+  nativeCommandTitle: $("#nativeCommandTitle"),
+  nativeCommandMessage: $("#nativeCommandMessage"),
+  nativeCommandSearch: $("#nativeCommandSearch"),
+  nativeCommandBody: $("#nativeCommandBody"),
+  nativeCommandError: $("#nativeCommandError"),
+  nativeCommandActions: $("#nativeCommandActions"),
+  appRunnerInfoDialog: $("#appRunnerInfoDialog"),
+  appRunnerInfoBody: $("#appRunnerInfoBody"),
+  appRunnerInfoCloseButton: $("#appRunnerInfoCloseButton"),
+  statsOverlayDialog: $("#statsOverlayDialog"),
+  statsOverlaySubtitle: $("#statsOverlaySubtitle"),
+  statsOverlayScope: $("#statsOverlayScope"),
+  statsOverlayCustomDays: $("#statsOverlayCustomDays"),
+  statsOverlayRefreshButton: $("#statsOverlayRefreshButton"),
+  statsOverlayStatus: $("#statsOverlayStatus"),
+  statsOverlayTabs: $("#statsOverlayTabs"),
+  statsOverlayBody: $("#statsOverlayBody"),
+  statsOverlayCloseButton: $("#statsOverlayCloseButton"),
+};
+
+let currentState = null;
+let tabs = [];
+let activeTabId = null;
+let activeTabGeneration = 0;
+let tabDrafts = new Map();
+let tabAttachments = new Map();
+let activeTextAttachmentEditor = null;
+let activeSkillEditor = null;
+let tabActivities = new Map();
+let tabSeenCompletionSerials = new Map();
+let streamBubble = null;
+let streamText = null;
+let streamRawText = "";
+let streamThinkingRawText = "";
+let streamDerivedTextCache = { rawText: null, assistantText: "", thinkingFormat: null, finalText: "" };
+let streamBubbleVisibleSince = 0;
+let streamBubbleHideTimer = null;
+let streamTextRenderTimer = null;
+let streamTextRenderFrame = null;
+let streamToolCallSeen = false;
+let streamToolCallBubble = null;
+let streamToolCallText = null;
+let streamToolCallRawArguments = "";
+let streamToolCallName = "";
+let streamToolCallId = "";
+let streamToolCallContentIndex = null;
+let streamToolCallComplete = false;
+let streamThinkingBubble = null;
+let streamThinking = null;
+let streamMessageActive = false;
+let runIndicatorBubble = null;
+let runIndicatorText = null;
+let runIndicatorMeta = null;
+let runIndicatorTimer = null;
+let runIndicatorRenderFrame = null;
+let runIndicatorRenderScroll = false;
+let runIndicatorGraceCheckTimer = null;
+let runIndicatorLastStateCheckAt = 0;
+let runIndicatorLocallyActive = false;
+let runIndicatorStartedAt = null;
+let runIndicatorActivity = "Waiting for output or action…";
+let refreshMessagesTimer = null;
+let refreshStateTimer = null;
+let refreshFooterTimer = null;
+let refreshTabsTimer = null;
+let tabsRenderFrame = null;
+let foregroundReconcileTimer = null;
+let eventSource = null;
+let activeDialog = null;
+let activeGitPrDialogResolve = null;
+let gitChangesState = { loading: false, pulling: false, error: "", message: "", data: null, tabId: null };
+let gitChangesRequestSerial = 0;
+const gitChangesUntrackedContentRequests = new Set();
+let nativeCommandTabId = null;
+let pathPickerState = null;
+let firstTerminalCwdPromptShown = false;
+let pathFastPicks = [];
+let pathFastPicksReady = false;
+let pathFastPicksLoadPromise = null;
+let mobileTabsExpanded = false;
+let openTerminalTabGroupKey = null;
+let terminalCustomGroups = new Map();
+let terminalCustomGroupSerial = 1;
+let terminalTabDragId = null;
+let newTabMenuOpen = false;
+let nativeCommandMenuOpen = false;
+let appRunnerMenuOpen = false;
+let busyPromptBehaviorMenuOpen = false;
+const skillUsageByTab = new Map();
+let appRunnerCustomDraft = { id: "", label: "", command: "./", path: "", args: "" };
+let appRunnerCustomFeedback = { type: "", message: "" };
+let appRunnerFileBrowserState = { open: false, loading: false, path: "", data: null, error: "" };
+let optionsMenuOpen = false;
+let availableCommands = [];
+let rawAvailableCommands = [];
+let commandSuggestions = [];
+let pathSuggestions = [];
+let suggestionMode = "none";
+let commandSuggestIndex = 0;
+let lastPointerPosition = null;
+let pathSuggestActiveQuery = null;
+let pathSuggestRequestSerial = 0;
+let pathSuggestAbortController = null;
+let latestStats = null;
+let statsOverlayActiveTab = "overview";
+let statsOverlayLoading = false;
+let statsOverlayError = "";
+let statsOverlayLastScope = "14";
+let statsOverlayCalibrationMessage = "";
+let statsOverlayCalibrationBusy = "";
+let latestStatsOverlayPayload = null;
+let latestBtwWidgetPayload = null;
+let btwWidgetDismissedId = "";
+let btwWidgetComposerOpen = false;
+let btwWidgetInputDraft = "";
+let btwWidgetFocusAfterRender = false;
+let latestWorkspace = null;
+let latestNetwork = null;
+let latestRemoteWebuiQrUrl = "";
+let remoteQrAutoPopupShown = false;
+let networkStatusLoaded = false;
+let webuiVersion = "";
+let webuiDevServer = false;
+let latestCodexUsage = null;
+let codexUsageError = null;
+let codexUsageLoading = false;
+let refreshCodexUsageTimer = null;
+let codexUsageRenderTimer = null;
+let backendOffline = false;
+let serverRestartInProgress = false;
+let updateRequestInProgress = false;
+let latestUpdateStatus = null;
+let updateStatusRefreshTimer = null;
+let updateNotificationHideTimer = null;
+let backendOfflineNoticeShown = false;
+let latestMessages = [];
+let latestMessagesSessionKey = "";
+const tabMessagesCache = new Map();
+let promptHistoryByTab = new Map();
+let promptHistoryNavigation = null;
+let transientMessages = [];
+let actionEntrySeenKeysByTab = new Map();
+let actionEntryAnimationPrimedTabs = new Set();
+let lastUserPromptByTab = new Map();
+let actionFeedbackByTab = new Map();
+let actionFeedbackSendBusy = false;
+let blockedTabNotificationKeys = new Set();
+let blockedTabNotificationPermissionRequested = false;
+let blockedTabNotificationFallbackNoted = false;
+let agentDoneNotificationsEnabled = false;
+let thinkingOutputVisible = true;
+let terminalTabsLayout = "top";
+let webuiSettings = {};
+let busyPromptBehavior = "steer";
+let composerModeRenderSignature = "";
+let composerModeButtonsFrame = null;
+let autocompleteMaxVisible = 12;
+let doubleEscapeAction = "none";
+let treeFilterMode = "default";
+let lastEmptyPromptEscapeTime = 0;
+let toolOutputGloballyExpanded = false;
+let agentDoneNotificationPermissionRequested = false;
+let agentDoneNotificationFallbackNoted = false;
+let agentDoneNotificationKeys = new Set();
+let pendingAgentDoneNotificationTimers = new Map();
+let autoRetryingTabs = new Set();
+let availableModels = [];
+let availableThemes = [];
+let currentThemeName = "catppuccin-mocha";
+let customBackground = null;
+let customBackgroundObjectUrl = null;
+let customBackgroundLoading = false;
+let footerScopedModels = [];
+let footerScopedModelPatterns = [];
+let footerScopedModelSource = "none";
+const contextUsageUnknownAfterCompactionByTab = new Map();
+let autoFollowChat = true;
+let chatFollowFrame = null;
+let chatFollowSettleTimer = null;
+let chatFollowNeedsSettle = false;
+let liveWidgetRenderFrame = null;
+let liveTodoProgressSyncFrame = null;
+let liveTodoProgressPendingText = "";
+let liveTodoProgressPendingTabId = null;
+let lastChatProgrammaticScrollAt = 0;
+let chatUserScrollIntentUntil = 0;
+let mobileFooterExpanded = false;
+let footerModelPickerOpen = false;
+let footerThinkingPickerOpen = false;
+let footerAutoCompactionToggleInFlight = false;
+let footerBranchPickerOpen = false;
+let footerBranchPickerState = { loading: false, error: "", branches: [], current: "", root: "", repoRoot: "", currentWorktreePath: "", defaultWorktreesRoot: "", worktrees: [], occupiedBranches: [], switching: "", tabId: null };
+let footerBranchCreateDraft = { type: "", name: "" };
+let footerBranchPickerRequestSerial = 0;
+let footerScopedModelDragKey = "";
+let footerScopedModelLastDragOverKey = "";
+let footerScopedModelPointerDrag = null;
+let footerScopedModelSuppressClickUntil = 0;
+let publishMenuOpen = false;
+let maxVisualViewportHeight = 0;
+let abortRequestInFlight = false;
+let userBashByTab = new Map();
+let userBashQueuesByTab = new Map();
+let latestQueuedMessagesByTab = new Map();
+let loadedPromptList = null;
+let promptListRunning = false;
+let workspaceDashboardCollapsed = false;
+let commandPaletteIndex = 0;
+let commandPaletteItems = [];
+let activeEditRetry = null;
+let activePointerActivation = null;
+let pointerActivationTimeout = null;
+let deferredChatFollowScroll = false;
+const deferredUiRenderCallbacks = new Map();
+let abortLongPressTimer = null;
+let abortLongPressTickTimer = null;
+let abortLongPressResetTimer = null;
+let abortLongPressStartedAt = 0;
+let abortLongPressDeadlineAt = 0;
+let abortLongPressSource = "long-press";
+let abortLongPressReleasePending = false;
+let abortLongPressHandled = false;
+let escapeAbortHoldSuppressesDoubleEscape = false;
+let suppressEmptyPromptEscapeUntil = 0;
+const dialogQueue = [];
+const SIDE_PANEL_STORAGE_KEY = "pi-webui-side-panel-collapsed";
+const SIDE_PANEL_SECTION_STORAGE_KEY = "pi-webui-side-panel-sections-collapsed";
+const TAB_STORAGE_KEY = "pi-webui-active-tab";
+const PATH_FAST_PICKS_STORAGE_KEY = "pi-webui-path-fast-picks";
+const AGENT_DONE_NOTIFICATIONS_STORAGE_KEY = "pi-webui-agent-done-notifications";
+const UPDATE_NOTIFICATION_DISMISS_STORAGE_KEY = "pi-webui-update-notification-dismissed";
+const THINKING_VISIBILITY_STORAGE_KEY = "pi-webui-thinking-visible";
+const BUSY_PROMPT_BEHAVIOR_STORAGE_KEY = "pi-webui-busy-prompt-behavior";
+const SKILL_USAGE_STORAGE_KEY = "pi-webui-skill-usage-v1";
+const TERMINAL_TABS_LAYOUT_STORAGE_KEY = "pi-webui-terminal-tabs-layout";
+const TERMINAL_CUSTOM_GROUPS_STORAGE_KEY = "pi-webui-terminal-custom-groups-v1";
+const TERMINAL_TAB_DRAG_MIME = "application/x-pi-terminal-tab-id";
+const FOOTER_SCOPED_MODEL_ORDER_STORAGE_KEY = "pi-webui-footer-scoped-model-order-v1";
+const FOOTER_SCOPED_MODEL_POINTER_DRAG_THRESHOLD_PX = 6;
+const TOOL_OUTPUT_EXPANDED_STORAGE_KEY = "pi-webui-tool-output-expanded";
+const THEME_STORAGE_KEY = "pi-webui-theme";
+const CUSTOM_BACKGROUND_STORAGE_KEY = "pi-webui-custom-background";
+const CUSTOM_BACKGROUNDS_STORAGE_KEY = "pi-webui-custom-backgrounds";
+const CUSTOM_BACKGROUND_IDB_NAME = "pi-webui-custom-background";
+const CUSTOM_BACKGROUND_IDB_STORE = "backgrounds";
+const CUSTOM_BACKGROUND_LEGACY_ID = "active";
+const SERVER_START_CWD_STORAGE_KEY = "pi-webui-last-server-cwd";
+const DEFAULT_WEBUI_PORT = "31415";
+const CUSTOM_BACKGROUND_MAX_FILE_BYTES = 24 * 1024 * 1024;
+const OPTIONAL_FEATURES_STORAGE_KEY = "pi-webui-optional-features-disabled";
+const GIT_FOOTER_WEBUI_STATUS_KEY = "git-footer-webui";
+const GIT_FOOTER_WEBUI_PAYLOAD_TYPE = "firstpick.git-footer-status.footer";
+const GIT_FOOTER_WEBUI_PAYLOAD_VERSION = 1;
+const GIT_FOOTER_WEBUI_PAYLOAD_CACHE_KEY = "pi-webui-git-footer-webui-payload-cache";
+const GIT_FOOTER_STATUS_SETUP_STORAGE_KEY = "pi-webui-git-footer-status-setup";
+const GIT_INIT_STACK_STORAGE_KEY = "pi-webui-git-init-stack";
+const STATS_WEBUI_STATUS_KEY = "stats-webui";
+const STATS_WEBUI_PAYLOAD_TYPE = "firstpick.pi-extension-stats.overlay";
+const STATS_WEBUI_PAYLOAD_VERSION = 1;
+const REMOTE_WEBUI_CONTROLS_STATUS_KEY = "pi-remote-webui:controls";
+const REMOTE_WEBUI_CONTROLS_PAYLOAD_TYPE = "firstpick.pi-package-remote-webui.controls";
+const REMOTE_WEBUI_CONTROLS_PAYLOAD_VERSION = 1;
+const BTW_WEBUI_STATUS_KEY = "btw-webui";
+const BTW_OUTPUT_WIDGET_KEY = "btw:output";
+const BTW_FOOTER_WIDGET_KEY = "btw:footer";
+const BTW_WIDGET_PAYLOAD_PREFIX = "BTW_WEBUI_PAYLOAD ";
+const BTW_WEBUI_PAYLOAD_TYPES = new Set(["firstpick.pi-extension-btw.overlay", "firstpick.pi-extension-btw.output"]);
+const WORKFLOW_WIDGET_PAYLOAD_PREFIX = "WORKFLOW_WEBUI_PAYLOAD ";
+const WORKFLOW_SUBPROCESS_PAYLOAD_TYPE = "firstpick.pi-extension-workflows.subprocess";
+const WORKFLOW_SUBPROCESS_PAYLOAD_VERSION = 1;
+const GIT_CHANGES_RENDER_ROW_LIMIT = 4000;
+const LAST_USER_PROMPT_STORAGE_KEY = "pi-webui-last-user-prompts";
+const PROMPT_HISTORY_STORAGE_KEY = "pi-webui-prompt-history";
+const PROMPT_LIST_STORAGE_KEY = "pi-webui-prompt-lists";
+const WORKSPACE_DASHBOARD_STORAGE_KEY = "pi-webui-workspace-dashboard-collapsed";
+const POINTER_ACTIVATION_SELECTOR = "button, a[href], input, select, textarea, summary, [role='button'], [tabindex]:not([tabindex='-1'])";
+const POINTER_ACTIVATION_RENDER_DEFER_MAX_MS = 1200;
+const PROMPT_HISTORY_LIMIT_PER_TAB = 50;
+const ATTACHMENT_MAX_FILES = 12;
+const ATTACHMENT_MAX_FILE_BYTES = 64 * 1024 * 1024;
+const ATTACHMENT_MAX_TOTAL_BYTES = 64 * 1024 * 1024;
+const ATTACHMENT_INLINE_IMAGE_MAX_BYTES = 8 * 1024 * 1024;
+const ATTACHMENT_INLINE_IMAGE_TOTAL_MAX_BYTES = 16 * 1024 * 1024;
+const LONG_INPUT_ATTACHMENT_LINE_THRESHOLD = 20;
+const LONG_INPUT_ATTACHMENT_MIME_TYPE = "text/plain";
+const INLINE_IMAGE_MIME_TYPES = new Set(["image/png", "image/jpeg", "image/webp", "image/gif"]);
+const BACKGROUND_IMAGE_MIME_TYPES = new Set(["image/png", "image/jpeg", "image/webp", "image/gif"]);
+const DEFAULT_THEME_NAME = "catppuccin-mocha";
+const TERMINAL_TABS_LAYOUTS = new Set(["top", "left"]);
+const TERMINAL_TABS_LAYOUT_LABELS = { top: "Top bar", left: "Left sidebar" };
+const BUSY_PROMPT_BEHAVIOR_VALUES = new Set(["followUp", "steer"]);
+const BUSY_PROMPT_BEHAVIOR_LABELS = { followUp: "Follow-up", steer: "Steer" };
+const SKILL_TAG_MAX_VISIBLE = 6;
+const SKILL_USAGE_LIMIT_PER_TAB = 32;
+const MOBILE_VIEW_QUERY = "(max-width: 720px), (max-device-width: 720px), (pointer: coarse) and (hover: none)";
+const SIDE_PANEL_OVERLAY_QUERY = "(max-width: 1050px), (max-device-width: 720px), (pointer: coarse) and (hover: none)";
+const CHAT_BOTTOM_THRESHOLD_PX = 96;
+const STICKY_USER_PROMPT_PREVIEW_LIMIT = 220;
+const STICKY_USER_PROMPT_TOP_GAP_PX = 12;
+const CHAT_FOLLOW_SETTLE_DELAY_MS = 80;
+const CHAT_PROGRAMMATIC_SCROLL_GRACE_MS = 500;
+const CHAT_USER_SCROLL_INTENT_MS = 700;
+const CODEX_USAGE_REFRESH_MS = 5 * 60 * 1000;
+const CODEX_USAGE_RENDER_TICK_MS = 30 * 1000;
+const UPDATE_STATUS_REFRESH_MS = 6 * 60 * 60 * 1000;
+const UPDATE_STATUS_INITIAL_DELAY_MS = 1800;
+const RUN_INDICATOR_TICK_MS = 1000;
+const RUN_INDICATOR_START_GRACE_MS = 2500;
+const RUN_INDICATOR_STATE_RECHECK_MS = 5000;
+const ABORT_LONG_PRESS_MS = 3000;
+const ABORT_LONG_PRESS_TICK_MS = 100;
+const ABORT_LONG_PRESS_RELEASE_GRACE_MS = 350;
+const EMPTY_PROMPT_ESCAPE_AFTER_ABORT_GRACE_MS = 1000;
+const STREAM_OUTPUT_HIDE_DELAY_MS = 300;
+const STREAM_OUTPUT_TOOLCALL_GUARD_MS = 220;
+const STREAM_OUTPUT_MIN_VISIBLE_MS = 900;
+const TOOL_LIVE_UPDATE_THROTTLE_MS = 80;
+const UNEXPOSED_THINKING_TEXT = "No thinking content was exposed by the provider.";
+const THINKING_FORMAT_OPEN_TAG_REGEX = /^<think\b[^>]*>/i;
+const THINKING_FORMAT_CLOSE_TAG_REGEX = /<\/think\s*>/i;
+const CHANNEL_THINKING_FORMAT_OPEN_TAG_REGEX = /^<\|([a-z][\w-]*)>/i;
+const TODO_PROGRESS_LINE_REGEX = /^\s*(?:(?:[-*]|\d+[.)])\s*)?\[(?: |x|X|-)\]\s+.+$/;
+const TODO_PROGRESS_PARTIAL_LINE_REGEX = /^\s*(?:(?:[-*]|\d+[.)])\s*)?\[(?: |x|X|-)?\]?\s*.*$/;
+const CHAT_SCROLL_KEYS = new Set(["ArrowDown", "ArrowUp", "End", "Home", "PageDown", "PageUp", " "]);
+const TAB_ACTIVITY_IDLE_RECONCILE_GRACE_MS = 1200;
+const AGENT_DONE_NOTIFICATION_RETRY_GRACE_MS = 1200;
+const FOREGROUND_RECONCILE_DELAY_MS = 120;
+const TAB_GROUP_STATUS_PRIORITY = ["blocked", "done", "working", "idle"];
+const EXTENSION_UI_BLOCKING_METHODS = new Set(["select", "confirm", "input", "editor"]);
+const BLOCKED_TAB_NOTIFICATION_TAG_PREFIX = "pi-webui-blocked-tab";
+const AGENT_DONE_NOTIFICATION_TAG_PREFIX = "pi-webui-agent-done";
+const BLOCKED_TAB_NOTIFICATION_ICON = "/icon-192.png";
+const mobileViewMedia = window.matchMedia?.(MOBILE_VIEW_QUERY) || null;
+const sidePanelOverlayMedia = window.matchMedia?.(SIDE_PANEL_OVERLAY_QUERY) || mobileViewMedia;
+const statusEntries = new Map();
+const widgets = new Map();
+const widgetsByTab = new Map();
+const todoProgressWidgetExpandedByTab = new Map();
+const todoProgressGoalByTab = new Map();
+const todoProgressSignatureByTab = new Map();
+const releaseNpmOutputExpandedByTab = new Map();
+const appRunnerDataByTab = new Map();
+const appRunnerInputDraftByRun = new Map();
+const appRunnerContextLineDraftByRun = new Map();
+const liveToolRuns = new Map();
+const liveToolCards = new Map();
+const liveToolRenderQueue = new Map();
+let liveToolRenderTimer = null;
+// Optional feature detection intentionally checks loaded Pi capabilities (RPC-visible
+// commands and live widget events), not npm package folders. This keeps local dev
+// symlinks and independently installed packages working.
+const optionalFeatureAvailability = {
+  btwCommand: false,
+  gitWorkflow: false,
+  releaseNpm: false,
+  releaseAur: false,
+  workflows: false,
+  safetyGuard: false,
+  statsCommand: false,
+  gitFooterStatus: false,
+  tuiSkillsCommand: false,
+  todoProgressWidget: false,
+  tuiToolsCommand: false,
+  remoteWebui: false,
+  themeBundle: false,
+};
+const APP_RUNNER_CONTEXT_DEFAULT_LINES = 80;
+const APP_RUNNER_CONTEXT_MAX_LINES = 1000;
+const OPTIONAL_FEATURES = [
+  {
+    id: "btwCommand",
+    label: "/btw side questions",
+    packageName: "@firstpick/pi-extension-btw",
+    capabilityLabel: "/btw or btw:output widget event",
+    description: "Ephemeral side-question command with TUI overlay and browser output-widget rendering.",
+  },
+  {
+    id: "gitWorkflow",
+    label: "Guided Git workflow",
+    packageName: "@firstpick/pi-prompts-git-pr",
+    capabilityLabel: "/git-staged-msg",
+    description: "Generate staged commit messages for the guided Git workflow.",
+  },
+  {
+    id: "releaseNpm",
+    label: "NPM Release",
+    packageName: "@firstpick/pi-extension-release-npm",
+    capabilityLabel: "/release-npm",
+    description: "Publish menu action and live npm release widgets.",
+  },
+  {
+    id: "releaseAur",
+    label: "AUR Release",
+    packageName: "@firstpick/pi-extension-release-aur",
+    capabilityLabel: "/release-aur",
+    description: "Publish menu action, setup helpers, skills, and AUR release widgets.",
+  },
+  {
+    id: "workflows",
+    label: "Workflows",
+    packageName: "@firstpick/pi-extension-workflows",
+    capabilityLabel: "/workflow or workflow subprocess widget event",
+    description: "Modular workflow runner with live subprocess output shown in a non-blocking Web UI widget.",
+  },
+  {
+    id: "safetyGuard",
+    label: "Safety guard",
+    packageName: "@firstpick/pi-extension-safety-guard",
+    capabilityLabel: "/safety-guard command or safety-guard status event",
+    description: "Interactive guardrails for dangerous bash commands and protected file edits.",
+  },
+  {
+    id: "tuiSkillsCommand",
+    label: "TUI Skills command",
+    packageName: "@firstpick/pi-extension-setup-skills",
+    capabilityLabel: "RPC /skills from setup-skills extension",
+    description: "Terminal-native skill setup command alongside WebUI-native /skills toggles.",
+  },
+  {
+    id: "todoProgressWidget",
+    label: "Todo progress widget",
+    packageName: "@firstpick/pi-extension-todo-progress",
+    capabilityLabel: "/todo-progress-status or todo-progress widget event",
+    description: "Styled live checklist rendering for assistant todo updates.",
+  },
+  {
+    id: "tuiToolsCommand",
+    label: "TUI Tools command",
+    packageName: "@firstpick/pi-extension-tools",
+    capabilityLabel: "RPC /tools from tools extension",
+    description: "Terminal-native active-tool manager alongside WebUI-native /tools toggles.",
+  },
+  {
+    id: "remoteWebui",
+    label: "Remote WebUI",
+    packageName: "@firstpick/pi-package-remote-webui",
+    capabilityLabel: "/remote",
+    description: "Trusted-LAN QR helper for opening the Web UI from mobile browsers.",
+  },
+  {
+    id: "gitFooterStatus",
+    label: "Git footer status",
+    packageName: "@firstpick/pi-extension-git-footer-status",
+    capabilityLabel: "/git-footer-refresh or git-footer-webui status event",
+    description: "Extension-owned enhanced footer/status telemetry when loaded by Pi.",
+  },
+  {
+    id: "statsCommand",
+    label: "Stats dashboard",
+    packageName: "@firstpick/pi-extension-stats",
+    capabilityLabel: "/stats",
+    description: "Token and cost usage analytics commands plus the browser dashboard overlay.",
+  },
+  {
+    id: "themeBundle",
+    label: "Theme bundle",
+    packageName: "@firstpick/pi-themes-bundle",
+    capabilityLabel: "/api/themes returned themes",
+    description: "Additional browser theme-picker and Pi theme resources.",
+  },
+];
+const OPTIONAL_FEATURE_BY_ID = new Map(OPTIONAL_FEATURES.map((feature) => [feature.id, feature]));
+const OPTIONAL_COMMAND_FEATURES = new Map([
+  ["btw", "btwCommand"],
+  ["btw-transfer", "btwCommand"],
+  ["btw-status", "btwCommand"],
+  ["git-staged-msg", "gitWorkflow"],
+  ["git-branch-name", "gitWorkflow"],
+  ["pr", "gitWorkflow"],
+  ["release-npm", "releaseNpm"],
+  ["release-aur", "releaseAur"],
+  ["workflow", "workflows"],
+  ["workflow-clear", "workflows"],
+  ["safety-guard", "safetyGuard"],
+  ["skills", "tuiSkillsCommand"],
+  ["tools", "tuiToolsCommand"],
+  ["remote", "remoteWebui"],
+  ["stats", "statsCommand"],
+  ["git-footer-refresh", "gitFooterStatus"],
+  ["todo-progress-status", "todoProgressWidget"],
+]);
+const HIDDEN_COMMAND_NAMES = new Set(["webui-tree-navigate", "webui-helper"]);
+HIDDEN_COMMAND_NAMES.add("stats-webui");
+HIDDEN_COMMAND_NAMES.add("btw-status");
+HIDDEN_COMMAND_NAMES.add("btw-transfer");
+const NATIVE_SELECTOR_COMMANDS = new Set(["model", "settings", "theme", "fork", "clone", "name", "resume", "tree", "login", "logout", "scoped-models", "tools", "skills"]);
+const SETTINGS_THINKING_OPTIONS = ["off", "minimal", "low", "medium", "high", "xhigh"];
+const SETTINGS_TRANSPORT_OPTIONS = ["sse", "websocket", "websocket-cached", "auto"];
+const SETTINGS_HTTP_IDLE_TIMEOUT_OPTIONS = [
+  { value: "30000", label: "30 sec" },
+  { value: "60000", label: "1 min" },
+  { value: "120000", label: "2 min" },
+  { value: "300000", label: "5 min" },
+  { value: "0", label: "disabled" },
+];
+const SETTINGS_DOUBLE_ESCAPE_OPTIONS = [
+  { value: "tree", label: "open /tree" },
+  { value: "fork", label: "open /fork" },
+  { value: "none", label: "do nothing" },
+];
+const SETTINGS_TREE_FILTER_OPTIONS = ["default", "no-tools", "user-only", "labeled-only", "all"];
+const SETTINGS_IMAGE_WIDTH_OPTIONS = ["60", "80", "120"];
+const SETTINGS_EDITOR_PADDING_OPTIONS = ["0", "1", "2", "3"];
+const SETTINGS_AUTOCOMPLETE_OPTIONS = ["3", "5", "7", "10", "15", "20"];
+const optionalFeatureInstallInProgress = new Set();
+const optionalFeaturePackageStatuses = new Map();
+const optionalFeatureInstallMessages = new Map();
+const gitFooterPayloadRefreshInFlightByTab = new Set();
+const gitFooterPiCalibrationInFlightByTab = new Set();
+
+function createGitWorkflowActionsDone(patch = {}) {
+  return {
+    init: false,
+    stack: false,
+    readme: false,
+    gitignore: false,
+    stage: false,
+    message: false,
+    commit: false,
+    branch: false,
+    remote: false,
+    push: false,
+    ...patch,
+  };
+}
+
+function gitWorkflowActionDone(workflow, process) {
+  return !!createGitWorkflowActionsDone(workflow?.actionsDone)[process];
+}
+
+function gitWorkflowActionDonePatch(workflow, process) {
+  return { actionsDone: createGitWorkflowActionsDone({ ...workflow?.actionsDone, [process]: true }) };
+}
+
+function resetGitWorkflowManualCommitDefaultPatch() {
+  return {
+    manualCommitMessageDefault: "",
+    manualCommitMessageDefaultReason: "",
+    manualCommitMessageDefaultPath: "",
+    manualCommitMessageDefaultAction: "",
+    manualCommitMessageDefaultRequestedAt: 0,
+    manualCommitMessageDefaultLoading: false,
+  };
+}
+
+function gitWorkflowManualCommitInputMessage(workflow) {
+  return String(workflow?.manualCommitMessage || "").trim() || String(workflow?.manualCommitMessageDefault || "").trim();
+}
+
+function createGitWorkflowState() {
+  return {
+    active: false,
+    mode: "standard",
+    step: "idle",
+    process: "stage",
+    busy: false,
+    runId: 0,
+    output: "",
+    error: "",
+    githubUsername: "",
+    repoName: "",
+    remoteUrl: "",
+    stack: "",
+    readmeRequestedAt: 0,
+    gitignoreRequestedAt: 0,
+    initFilesStatus: null,
+    message: null,
+    manualCommitMessage: "",
+    ...resetGitWorkflowManualCommitDefaultPatch(),
+    messageRequestedAt: 0,
+    branchName: "",
+    branchNameRequestedAt: 0,
+    actionsDone: createGitWorkflowActionsDone(),
+    prMode: false,
+    prBranch: "",
+    pr: null,
+    prRequestedAt: 0,
+  };
+}
+
+const gitWorkflowsByTab = new Map();
+let gitWorkflow = createGitWorkflowState();
+
+function gitWorkflowForTab(tabId = activeTabId, { create = true } = {}) {
+  if (!tabId) return null;
+  let workflow = gitWorkflowsByTab.get(tabId);
+  if (!workflow && create) {
+    workflow = createGitWorkflowState();
+    gitWorkflowsByTab.set(tabId, workflow);
+  }
+  return workflow || null;
+}
+
+function bindGitWorkflowToActiveTab() {
+  gitWorkflow = gitWorkflowForTab(activeTabId) || createGitWorkflowState();
+  return gitWorkflow;
+}
+
+function gitWorkflowActionTabId() {
+  return activeTabId;
+}
+
+function resetGitWorkflowForTab(tabId = activeTabId) {
+  if (!tabId) return;
+  gitWorkflowsByTab.set(tabId, createGitWorkflowState());
+  if (tabId === activeTabId) {
+    bindGitWorkflowToActiveTab();
+    renderGitWorkflow();
+  }
+}
+
+function clearGitWorkflowForTab(tabId) {
+  if (!tabId) return;
+  gitWorkflowsByTab.delete(tabId);
+  if (tabId === activeTabId) {
+    bindGitWorkflowToActiveTab();
+    renderGitWorkflow();
+  }
+}
+
+const GIT_WORKFLOW_PROCESSES = [
+  { value: "stage", label: "Stage" },
+  { value: "message", label: "Message" },
+  { value: "commit", label: "Commit" },
+  { value: "push", label: "Push" },
+];
+const GIT_WORKFLOW_PROCESS_VALUES = new Set(GIT_WORKFLOW_PROCESSES.map((process) => process.value));
+const GIT_INIT_WORKFLOW_PROCESSES = [
+  { value: "init", label: "Init" },
+  { value: "stack", label: "Stack" },
+  { value: "readme", label: "Files" },
+  { value: "commit", label: "Commit" },
+  { value: "branch", label: "Main" },
+  { value: "remote", label: "Remote" },
+  { value: "push", label: "Push" },
+];
+const GIT_INIT_WORKFLOW_PROCESS_VALUES = new Set(GIT_INIT_WORKFLOW_PROCESSES.map((process) => process.value));
+const ACTION_FEEDBACK_REACTIONS = {
+  up: { icon: "👍", label: "Good job", title: "Good job!" },
+  down: { icon: "👎", label: "Avoid this", title: "Avoid this" },
+  question: { icon: "?", label: "Explain this", title: "Explain this in the final output" },
+};
+const ACTION_FEEDBACK_SNIPPET_LIMIT = 1200;
+const GIT_WORKFLOW_ACTIVE_INDEX = {
+  add: 0,
+  generate: 1,
+  generating: 1,
+  message: 2,
+  branchNaming: 2,
+  branching: 2,
+  committing: 2,
+  push: 3,
+  pushing: 3,
+  prGenerating: 3,
+  prReview: 3,
+  prCreating: 3,
+  done: 4,
+};
+const GIT_INIT_WORKFLOW_ACTIVE_INDEX = {
+  initSetup: 0,
+  initRepo: 0,
+  initializingRepo: 0,
+  initStack: 1,
+  readme: 2,
+  readmeCreating: 2,
+  readmeGenerating: 2,
+  gitignoreGenerating: 2,
+  initialCommit: 3,
+  initialCommitting: 3,
+  mainBranch: 4,
+  mainBranching: 4,
+  remote: 5,
+  remoteAdding: 5,
+  initialPush: 6,
+  initialPushing: 6,
+  done: 7,
+};
+const GIT_WORKFLOW_CREATE_PR_TOOLTIP = [
+  "Create PR worktree:",
+  "1. Ask Pi to generate a type/feature-name branch from staged changes.",
+  "2. Read dev/COMMIT/staged-branch-name.txt.",
+  "3. Let you confirm or edit the generated branch name.",
+  "4. Create or open a Git worktree for that branch instead of switching this checkout.",
+  "5. Copy staged changes and commit message files into the worktree, then switch to its tab.",
+  "6. Commit short, long, or typed input in the worktree tab.",
+  "7. Push and Create PR will push upstream, run /pr, let you review, then run gh pr create.",
+].join("\n");
+const GIT_WORKFLOW_MANUAL_BRANCH_TOOLTIP = [
+  "Manual PR worktree:",
+  "1. Skip agent branch-name generation.",
+  "2. Prefill a branch from the commit message if possible.",
+  "3. Let you type or edit the type/feature-name branch name.",
+  "4. Create or open a Git worktree for that branch instead of switching this checkout.",
+  "5. Copy staged changes and commit message files into the worktree, then switch to its tab.",
+  "6. Commit short, long, or typed input in the worktree tab.",
+  "7. Push and Create PR will push upstream, run /pr, let you review, then run gh pr create.",
+].join("\n");
+const GIT_BRANCH_TYPE_SUGGESTIONS = ["feat", "fix", "change", "perf", "test", "chore", "refactor", "docs", "style", "build", "ci", "revert"];
+const GIT_FOOTER_STATUS_SETUP_TOOLTIP = [
+  "git-footer-status-setup:",
+  "Store the GitHub username used when the Web UI initializes a no-repo directory.",
+  "The remote URL is https://github.com/USERNAME/REPO_NAME.git.",
+  "The repository name is asked per initialization and defaults to the current folder name.",
+].join("\n");
+const GIT_INIT_REMOTE_TOOLTIP = [
+  "Add origin remote:",
+  "1. Confirm the GitHub username from git-footer-status-setup.",
+  "2. Ask for the repository name if needed.",
+  "3. Run git remote add origin https://github.com/USERNAME/REPO_NAME.git.",
+].join("\n");
+const GIT_INIT_STACK_OPTIONS = [
+  { value: "", label: "Auto-detect from codebase" },
+  { value: "Node.js / TypeScript", label: "Node.js / TypeScript" },
+  { value: "React / Vite", label: "React / Vite" },
+  { value: "Next.js", label: "Next.js" },
+  { value: "Python", label: "Python" },
+  { value: "Django", label: "Django" },
+  { value: "FastAPI", label: "FastAPI" },
+  { value: "Rust", label: "Rust" },
+  { value: "Go", label: "Go" },
+  { value: "Java / Gradle", label: "Java / Gradle" },
+  { value: "Docker", label: "Docker" },
+  { value: "Custom", label: "Custom…" },
+];
+const GIT_INIT_STACK_TOOLTIP = [
+  "Repository stack:",
+  "Choose a known stack or type one. The value is saved in this browser.",
+  "If left blank, Pi will inspect the codebase and fall back to sane default .gitignore patterns.",
+].join("\n");
+const MERMAID_MODULE_URL = "/vendor/mermaid/mermaid.esm.min.mjs";
+const MERMAID_LANGUAGES = new Set(["mermaid", "mmd"]);
+const MERMAID_MAX_TEXT_SIZE = 100_000;
+let mermaidModulePromise = null;
+let mermaidThemeSignature = "";
+let mermaidRenderSequence = 0;
+
+function make(tag, className, text) {
+  const node = document.createElement(tag);
+  if (className) node.className = className;
+  if (text !== undefined) node.textContent = text;
+  return node;
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function activationControlFromEvent(event) {
+  const target = event?.target instanceof Element ? event.target : null;
+  const control = target?.closest?.(POINTER_ACTIVATION_SELECTOR);
+  if (!control || control === document.body || control === document.documentElement) return null;
+  if (control.disabled || control.getAttribute("aria-disabled") === "true") return null;
+  return control;
+}
+
+function shouldDeferUiRenderForPointerActivation() {
+  return Boolean(
+    activePointerActivation
+      && performance.now() - activePointerActivation.startedAt <= POINTER_ACTIVATION_RENDER_DEFER_MAX_MS,
+  );
+}
+
+function deferUiRenderDuringPointerActivation(key, callback) {
+  if (!shouldDeferUiRenderForPointerActivation()) return false;
+  deferredUiRenderCallbacks.set(key, callback);
+  return true;
+}
+
+function deferChatFollowScrollDuringPointerActivation({ force = false } = {}) {
+  if (force || !shouldDeferUiRenderForPointerActivation()) return false;
+  deferredChatFollowScroll = true;
+  return true;
+}
+
+function isInteractiveDropdownOpen() {
+  return Boolean(
+    document.body.classList.contains("composer-actions-open")
+      || publishMenuOpen
+      || nativeCommandMenuOpen
+      || appRunnerMenuOpen
+      || optionsMenuOpen
+      || busyPromptBehaviorMenuOpen
+      || newTabMenuOpen
+      || isFooterPickerOpen()
+      || elements.commandSuggest?.hidden === false
+      || elements.modelSearchInput?.hidden === false
+      || elements.themeSearchInput?.hidden === false,
+  );
+}
+
+function deferChatFollowScrollDuringInteractiveDropdown({ force = false } = {}) {
+  if (force || !isInteractiveDropdownOpen()) return false;
+  deferredChatFollowScroll = true;
+  return true;
+}
+
+function scheduleDeferredUiFlushAfterDropdownClose() {
+  if (!deferredChatFollowScroll && deferredUiRenderCallbacks.size === 0) return;
+  const flush = () => {
+    if (!isInteractiveDropdownOpen()) flushDeferredUiRenders();
+  };
+  if (typeof requestAnimationFrame === "function") requestAnimationFrame(flush);
+  else setTimeout(flush, 0);
+}
+
+function flushDeferredUiRenders() {
+  const callbacks = [...deferredUiRenderCallbacks.values()];
+  deferredUiRenderCallbacks.clear();
+  const shouldScroll = deferredChatFollowScroll;
+  deferredChatFollowScroll = false;
+
+  for (const callback of callbacks) {
+    try {
+      callback();
+    } catch (error) {
+      console.error("deferred Web UI render failed", error);
+    }
+  }
+  if (shouldScroll) scrollChatToBottom();
+}
+
+function beginPointerActivation(event) {
+  if (event?.button !== undefined && event.button !== 0) return;
+  const control = activationControlFromEvent(event);
+  if (!control) return;
+  clearTimeout(pointerActivationTimeout);
+  const activation = { pointerId: event.pointerId, startedAt: performance.now(), control };
+  activePointerActivation = activation;
+  pointerActivationTimeout = setTimeout(() => {
+    if (activePointerActivation === activation) activePointerActivation = null;
+    pointerActivationTimeout = null;
+    flushDeferredUiRenders();
+  }, POINTER_ACTIVATION_RENDER_DEFER_MAX_MS);
+}
+
+function finishPointerActivation(event) {
+  if (!activePointerActivation) return;
+  if (event?.pointerId !== undefined && activePointerActivation.pointerId !== event.pointerId) return;
+  const activation = activePointerActivation;
+  clearTimeout(pointerActivationTimeout);
+  pointerActivationTimeout = null;
+  setTimeout(() => {
+    if (activePointerActivation === activation) activePointerActivation = null;
+    flushDeferredUiRenders();
+  }, 0);
+}
+
+function cancelPointerActivation() {
+  clearTimeout(pointerActivationTimeout);
+  pointerActivationTimeout = null;
+  activePointerActivation = null;
+  flushDeferredUiRenders();
+}
+
+function isMobileView() {
+  return mobileViewMedia?.matches || false;
+}
+
+function isSidePanelOverlayView() {
+  return sidePanelOverlayMedia?.matches || false;
+}
+
+function mobileDropdownViewportHeight() {
+  return window.visualViewport?.height || window.innerHeight || document.documentElement.clientHeight || 0;
+}
+
+function mobileDropdownConfigs() {
+  return [
+    { menu: elements.publishButton?.parentElement, button: elements.publishButton, panel: elements.publishButton?.parentElement?.querySelector(".composer-publish-menu-panel") },
+    { menu: elements.nativeCommandMenuButton?.parentElement, button: elements.nativeCommandMenuButton, panel: elements.nativeCommandMenuButton?.parentElement?.querySelector(".composer-publish-menu-panel") },
+    { menu: elements.optionsMenuButton?.parentElement, button: elements.optionsMenuButton, panel: elements.optionsMenu },
+    { menu: elements.appRunnerMenu, button: elements.appRunnerMenuButton, panel: elements.appRunnerMenuPanel },
+  ];
+}
+
+function updateMobileDropdownScrollBounds() {
+  const viewportHeight = mobileDropdownViewportHeight();
+  for (const { menu, button, panel } of mobileDropdownConfigs()) {
+    if (!panel) continue;
+    panel.style.removeProperty("--mobile-dropdown-max-height");
+    if (!isMobileView() || !menu?.classList.contains("open") || !viewportHeight) continue;
+    const anchorRect = (button || menu).getBoundingClientRect();
+    const availableAbove = Math.floor(anchorRect.top - 8);
+    const boundedHeight = Math.max(72, Math.min(viewportHeight - 16, availableAbove));
+    panel.style.setProperty("--mobile-dropdown-max-height", `${boundedHeight}px`);
+  }
+}
+
+function scheduleMobileDropdownScrollBoundsUpdate() {
+  requestAnimationFrame(updateMobileDropdownScrollBounds);
+}
+
+function readStoredSidePanelCollapsed() {
+  try {
+    const stored = localStorage.getItem(SIDE_PANEL_STORAGE_KEY);
+    return stored === null ? null : stored === "1";
+  } catch {
+    return null;
+  }
+}
+
+function sidePanelSectionRecords() {
+  return Array.from(elements.sidePanel.querySelectorAll("[data-side-panel-section]"))
+    .map((section) => {
+      const id = section.dataset.sidePanelSection || "";
+      const button = section.querySelector("[data-side-panel-section-toggle]");
+      const contentId = button?.getAttribute("aria-controls") || "";
+      const content = contentId ? document.getElementById(contentId) : null;
+      return { id, section, button, content };
+    })
+    .filter((record) => record.id && record.button && record.content);
+}
+
+function readStoredSidePanelSectionCollapsedIds() {
+  try {
+    const stored = localStorage.getItem(SIDE_PANEL_SECTION_STORAGE_KEY);
+    if (stored === null) return null;
+    const parsed = JSON.parse(stored);
+    return new Set(Array.isArray(parsed) ? parsed.filter((value) => typeof value === "string") : []);
+  } catch {
+    return null;
+  }
+}
+
+function persistSidePanelSectionState() {
+  try {
+    const collapsed = sidePanelSectionRecords()
+      .filter(({ section }) => section.classList.contains("collapsed"))
+      .map(({ id }) => id);
+    localStorage.setItem(SIDE_PANEL_SECTION_STORAGE_KEY, JSON.stringify(collapsed));
+  } catch {
+    // Ignore storage failures; section toggles should still work for this page load.
+  }
+}
+
+function setSidePanelSectionCollapsed(record, collapsed, { persist = true } = {}) {
+  const label = record.button.querySelector(".side-panel-section-label")?.textContent?.trim() || "side panel";
+  record.section.classList.toggle("collapsed", collapsed);
+  record.content.hidden = collapsed;
+  record.button.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  record.button.setAttribute("aria-label", `${collapsed ? "Expand" : "Collapse"} ${label} section`);
+  record.button.setAttribute("title", `${collapsed ? "Expand" : "Collapse"} ${label} section`);
+  if (persist) persistSidePanelSectionState();
+}
+
+function setOnlySidePanelSectionExpanded(targetRecord, { persist = true } = {}) {
+  const targetId = targetRecord?.id || null;
+  for (const record of sidePanelSectionRecords()) {
+    setSidePanelSectionCollapsed(record, record.id !== targetId, { persist: false });
+  }
+  if (persist) persistSidePanelSectionState();
+}
+
+function restoreSidePanelSectionState() {
+  const records = sidePanelSectionRecords();
+  const collapsedIds = readStoredSidePanelSectionCollapsedIds();
+  const expandedRecords = collapsedIds ? records.filter(({ id }) => !collapsedIds.has(id)) : [];
+  const expandedId = expandedRecords.length === 1 ? expandedRecords[0].id : null;
+  for (const record of records) {
+    setSidePanelSectionCollapsed(record, record.id !== expandedId, { persist: false });
+  }
+}
+
+function bindSidePanelSectionToggles() {
+  for (const record of sidePanelSectionRecords()) {
+    record.button.addEventListener("click", () => {
+      if (record.section.classList.contains("collapsed")) {
+        setOnlySidePanelSectionExpanded(record);
+      } else {
+        setSidePanelSectionCollapsed(record, true);
+      }
+    });
+  }
+}
+
+function readStoredAgentDoneNotificationsEnabled() {
+  try {
+    return localStorage.getItem(AGENT_DONE_NOTIFICATIONS_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function persistAgentDoneNotificationsEnabled(enabled) {
+  try {
+    localStorage.setItem(AGENT_DONE_NOTIFICATIONS_STORAGE_KEY, enabled ? "1" : "0");
+  } catch {
+    // Ignore storage failures; the toggle should still work for this page load.
+  }
+}
+
+function agentDoneNotificationsStatusText() {
+  if (!browserNotificationSupported()) return "Unavailable here";
+  const permission = browserNotificationPermission();
+  if (permission === "denied") return "Permission denied";
+  if (agentDoneNotificationsEnabled) return permission === "granted" ? "On" : "Permission needed";
+  return permission === "granted" ? "Off · permission granted" : "Off";
+}
+
+function renderAgentDoneNotificationsToggle() {
+  if (!elements.agentDoneNotificationsToggle) return;
+  const supported = browserNotificationSupported();
+  const permission = browserNotificationPermission();
+  elements.agentDoneNotificationsToggle.checked = agentDoneNotificationsEnabled;
+  elements.agentDoneNotificationsToggle.disabled = !supported || permission === "denied";
+  elements.agentDoneNotificationsToggle.setAttribute("aria-describedby", "agentDoneNotificationsStatus");
+  if (elements.agentDoneNotificationsStatus) elements.agentDoneNotificationsStatus.textContent = agentDoneNotificationsStatusText();
+}
+
+async function setAgentDoneNotificationsEnabled(enabled, { requestPermission = false, announce = false } = {}) {
+  let next = !!enabled;
+  if (next) {
+    if (!browserNotificationSupported()) {
+      addEvent("agent-done notifications require HTTPS or localhost", "warn");
+      next = false;
+    } else if (browserNotificationPermission() === "denied") {
+      addEvent("agent-done notifications are blocked by browser permission", "warn");
+      next = false;
+    } else if (requestPermission && browserNotificationPermission() !== "granted") {
+      next = await ensureAgentDoneNotificationPermission();
+      if (!next) addEvent("agent-done notifications not enabled; browser permission was not granted", "warn");
+    } else if (browserNotificationPermission() !== "granted") {
+      next = false;
+    }
+  }
+  agentDoneNotificationsEnabled = next;
+  persistAgentDoneNotificationsEnabled(next);
+  renderAgentDoneNotificationsToggle();
+  if (announce) addEvent(next ? "agent-done notifications enabled" : "agent-done notifications disabled", next ? "info" : "warn");
+  return next;
+}
+
+function restoreAgentDoneNotificationsSetting() {
+  agentDoneNotificationsEnabled = readStoredAgentDoneNotificationsEnabled();
+  if (agentDoneNotificationsEnabled && (!browserNotificationSupported() || browserNotificationPermission() !== "granted")) {
+    agentDoneNotificationsEnabled = false;
+    persistAgentDoneNotificationsEnabled(false);
+  }
+  renderAgentDoneNotificationsToggle();
+}
+
+function readStoredThinkingOutputVisible() {
+  try {
+    const stored = localStorage.getItem(THINKING_VISIBILITY_STORAGE_KEY);
+    return stored === null ? true : stored === "1";
+  } catch {
+    return true;
+  }
+}
+
+function persistThinkingOutputVisible(visible) {
+  try {
+    localStorage.setItem(THINKING_VISIBILITY_STORAGE_KEY, visible ? "1" : "0");
+  } catch {
+    // Ignore storage failures; the toggle should still work for this page load.
+  }
+}
+
+function normalizeTerminalTabsLayout(value) {
+  return TERMINAL_TABS_LAYOUTS.has(value) ? value : "top";
+}
+
+function readStoredTerminalTabsLayout() {
+  try {
+    return normalizeTerminalTabsLayout(localStorage.getItem(TERMINAL_TABS_LAYOUT_STORAGE_KEY));
+  } catch {
+    return "top";
+  }
+}
+
+function persistTerminalTabsLayout(layout) {
+  try {
+    localStorage.setItem(TERMINAL_TABS_LAYOUT_STORAGE_KEY, normalizeTerminalTabsLayout(layout));
+  } catch {
+    // Ignore storage failures; the layout control should still work for this page load.
+  }
+}
+
+function readStoredToolOutputExpanded() {
+  try {
+    return localStorage.getItem(TOOL_OUTPUT_EXPANDED_STORAGE_KEY) === "1";
+  } catch {
+    return false;
+  }
+}
+
+function persistToolOutputExpanded(expanded) {
+  try {
+    localStorage.setItem(TOOL_OUTPUT_EXPANDED_STORAGE_KEY, expanded ? "1" : "0");
+  } catch {
+    // Ignore storage failures; this can remain a page-local preference.
+  }
+}
+
+function thinkingVisibilityStatusText() {
+  return thinkingOutputVisible ? "Visible" : "Hidden from transcript";
+}
+
+function renderThinkingVisibilityToggle() {
+  if (!elements.thinkingVisibilityToggle) return;
+  elements.thinkingVisibilityToggle.checked = thinkingOutputVisible;
+  elements.thinkingVisibilityToggle.setAttribute("aria-describedby", "thinkingVisibilityStatus");
+  if (elements.thinkingVisibilityStatus) elements.thinkingVisibilityStatus.textContent = thinkingVisibilityStatusText();
+}
+
+function terminalTabsLayoutStatusText(layout = terminalTabsLayout) {
+  return TERMINAL_TABS_LAYOUT_LABELS[normalizeTerminalTabsLayout(layout)] || TERMINAL_TABS_LAYOUT_LABELS.top;
+}
+
+function renderTerminalTabsLayoutControl() {
+  const layout = normalizeTerminalTabsLayout(terminalTabsLayout);
+  if (elements.terminalTabsLayoutSelect) elements.terminalTabsLayoutSelect.value = layout;
+  if (elements.terminalTabsLayoutStatus) elements.terminalTabsLayoutStatus.textContent = terminalTabsLayoutStatusText(layout);
+}
+
+function setTerminalTabsLayout(layout, { persist = true, announce = false } = {}) {
+  const next = normalizeTerminalTabsLayout(layout);
+  terminalTabsLayout = next;
+  document.body.classList.toggle("terminal-tabs-left", next === "left");
+  if (next === "left" && mobileTabsExpanded) setMobileTabsExpanded(false);
+  if (persist) persistTerminalTabsLayout(next);
+  renderTerminalTabsLayoutControl();
+  if (announce) addEvent(`terminal tabs layout changed to ${terminalTabsLayoutStatusText(next).toLowerCase()}`);
+}
+
+function restoreTerminalTabsLayoutSetting() {
+  setTerminalTabsLayout(readStoredTerminalTabsLayout(), { persist: false });
+}
+
+function normalizeTerminalCustomGroupTitle(value, fallback = "Custom group") {
+  const title = String(value || "").replace(/\s+/g, " ").trim();
+  return (title || fallback).slice(0, 40);
+}
+
+function normalizeTerminalCustomGroupTabIds(value) {
+  const ids = [];
+  const seen = new Set();
+  for (const item of Array.isArray(value) ? value : []) {
+    const id = String(item || "").trim();
+    if (!id || seen.has(id)) continue;
+    seen.add(id);
+    ids.push(id);
+  }
+  return ids;
+}
+
+function nextTerminalCustomGroupId() {
+  const id = `group-${Date.now().toString(36)}-${terminalCustomGroupSerial.toString(36)}`;
+  terminalCustomGroupSerial += 1;
+  return id;
+}
+
+function restoreTerminalCustomGroups() {
+  terminalCustomGroups = new Map();
+  terminalCustomGroupSerial = 1;
+  let parsed = null;
+  try {
+    parsed = JSON.parse(localStorage.getItem(TERMINAL_CUSTOM_GROUPS_STORAGE_KEY) || "null");
+  } catch {
+    return;
+  }
+  const records = Array.isArray(parsed?.groups) ? parsed.groups : Array.isArray(parsed) ? parsed : [];
+  const usedTabIds = new Set();
+  for (const record of records) {
+    const rawId = String(record?.id || "").trim();
+    const id = rawId && !terminalCustomGroups.has(rawId) ? rawId : nextTerminalCustomGroupId();
+    const title = normalizeTerminalCustomGroupTitle(record?.title, `Group ${terminalCustomGroups.size + 1}`);
+    const tabIds = normalizeTerminalCustomGroupTabIds(record?.tabIds).filter((tabId) => {
+      if (usedTabIds.has(tabId)) return false;
+      usedTabIds.add(tabId);
+      return true;
+    });
+    if (tabIds.length < 2) continue;
+    terminalCustomGroups.set(id, { id, title, tabIds });
+    const serialMatch = /^Group\s+(\d+)$/i.exec(title);
+    if (serialMatch) terminalCustomGroupSerial = Math.max(terminalCustomGroupSerial, Number(serialMatch[1]) + 1);
+  }
+}
+
+function persistTerminalCustomGroups() {
+  try {
+    const groups = [...terminalCustomGroups.values()].map((group) => ({
+      id: group.id,
+      title: normalizeTerminalCustomGroupTitle(group.title),
+      tabIds: normalizeTerminalCustomGroupTabIds(group.tabIds),
+    })).filter((group) => group.tabIds.length >= 2);
+    localStorage.setItem(TERMINAL_CUSTOM_GROUPS_STORAGE_KEY, JSON.stringify({ version: 1, groups }));
+  } catch {
+    // Ignore storage failures; custom tab groups still work for this page load.
+  }
+}
+
+function terminalCustomGroupByTabId() {
+  const map = new Map();
+  for (const [groupId, group] of terminalCustomGroups) {
+    for (const tabId of group.tabIds || []) {
+      if (!map.has(tabId)) map.set(tabId, groupId);
+    }
+  }
+  return map;
+}
+
+function terminalCustomGroupIdForTab(tabId) {
+  const id = String(tabId || "").trim();
+  if (!id) return null;
+  for (const [groupId, group] of terminalCustomGroups) {
+    if (group.tabIds?.includes(id)) return groupId;
+  }
+  return null;
+}
+
+function syncTerminalCustomGroupsWithTabs(currentTabs = tabs, { persist = true } = {}) {
+  const validTabIds = new Set((currentTabs || []).map((tab) => tab.id).filter(Boolean));
+  const claimedTabIds = new Set();
+  let changed = false;
+  for (const [groupId, group] of [...terminalCustomGroups]) {
+    const filtered = [];
+    for (const tabId of normalizeTerminalCustomGroupTabIds(group.tabIds)) {
+      if (!validTabIds.has(tabId) || claimedTabIds.has(tabId)) {
+        changed = true;
+        continue;
+      }
+      claimedTabIds.add(tabId);
+      filtered.push(tabId);
+    }
+    if (filtered.length < 2) {
+      terminalCustomGroups.delete(groupId);
+      changed = true;
+      continue;
+    }
+    if (filtered.length !== group.tabIds.length || filtered.some((tabId, index) => tabId !== group.tabIds[index])) {
+      group.tabIds = filtered;
+      changed = true;
+    }
+  }
+  if (changed && persist) persistTerminalCustomGroups();
+  return changed;
+}
+
+function removeTabsFromOtherTerminalCustomGroups(tabIds, keepGroupId = null) {
+  const moving = new Set(normalizeTerminalCustomGroupTabIds(tabIds));
+  if (!moving.size) return false;
+  let changed = false;
+  for (const [groupId, group] of [...terminalCustomGroups]) {
+    if (groupId === keepGroupId) continue;
+    const filtered = normalizeTerminalCustomGroupTabIds(group.tabIds).filter((tabId) => !moving.has(tabId));
+    if (filtered.length === group.tabIds.length) continue;
+    changed = true;
+    if (filtered.length < 2) terminalCustomGroups.delete(groupId);
+    else group.tabIds = filtered;
+  }
+  return changed;
+}
+
+function createTerminalCustomGroup(tabIds) {
+  const validTabIds = new Set(tabs.map((tab) => tab.id).filter(Boolean));
+  const unique = normalizeTerminalCustomGroupTabIds(tabIds).filter((tabId) => validTabIds.has(tabId));
+  if (unique.length < 2) return null;
+  removeTabsFromOtherTerminalCustomGroups(unique);
+  const title = `Group ${terminalCustomGroupSerial}`;
+  const id = nextTerminalCustomGroupId();
+  const group = { id, title, tabIds: unique };
+  terminalCustomGroups.set(id, group);
+  syncTerminalCustomGroupsWithTabs(tabs, { persist: false });
+  persistTerminalCustomGroups();
+  return terminalCustomGroups.get(id) || group;
+}
+
+function addTabsToTerminalCustomGroup(groupId, tabIds) {
+  const group = terminalCustomGroups.get(groupId);
+  if (!group) return null;
+  const validTabIds = new Set(tabs.map((tab) => tab.id).filter(Boolean));
+  const unique = normalizeTerminalCustomGroupTabIds(tabIds).filter((tabId) => validTabIds.has(tabId) && !group.tabIds.includes(tabId));
+  if (!unique.length) return group;
+  removeTabsFromOtherTerminalCustomGroups(unique, groupId);
+  group.tabIds = normalizeTerminalCustomGroupTabIds([...group.tabIds, ...unique]);
+  syncTerminalCustomGroupsWithTabs(tabs, { persist: false });
+  persistTerminalCustomGroups();
+  return terminalCustomGroups.get(groupId) || null;
+}
+
+function terminalTabById(tabId) {
+  return tabs.find((tab) => tab.id === tabId) || null;
+}
+
+function terminalTabDragIdFromEvent(event) {
+  return event?.dataTransfer?.getData?.(TERMINAL_TAB_DRAG_MIME) || terminalTabDragId || "";
+}
+
+function canDropTerminalTabOnTarget(sourceTabId, target) {
+  if (!sourceTabId || !terminalTabById(sourceTabId) || !target) return false;
+  if (target.type === "group") {
+    const groupTabs = target.group?.tabs || [];
+    return groupTabs.length > 0 && !groupTabs.some((tab) => tab.id === sourceTabId);
+  }
+  return Boolean(target.tabId && target.tabId !== sourceTabId && terminalTabById(target.tabId));
+}
+
+function clearTerminalTabDragState() {
+  terminalTabDragId = null;
+  document.body.classList.remove("terminal-tab-dragging");
+  elements.tabBar?.querySelectorAll(".terminal-tab-dragging, .terminal-tab-drag-over").forEach((item) => {
+    item.classList.remove("terminal-tab-dragging", "terminal-tab-drag-over");
+  });
+}
+
+function bindTerminalTabDragAndDrop(element, { sourceTabId = "", target = null } = {}) {
+  if (!element) return;
+  if (sourceTabId) {
+    element.draggable = true;
+    element.dataset.dragTabId = sourceTabId;
+    element.addEventListener("dragstart", (event) => {
+      if (event.target?.closest?.(".terminal-tab-close, .terminal-tab-group-add")) {
+        event.preventDefault();
+        return;
+      }
+      terminalTabDragId = sourceTabId;
+      document.body.classList.add("terminal-tab-dragging");
+      element.classList.add("terminal-tab-dragging");
+      try {
+        event.dataTransfer?.setData(TERMINAL_TAB_DRAG_MIME, sourceTabId);
+        event.dataTransfer?.setData("text/plain", terminalTabById(sourceTabId)?.title || sourceTabId);
+        if (event.dataTransfer) event.dataTransfer.effectAllowed = "move";
+      } catch {
+        // Ignore browser drag payload restrictions; same-page state still carries the tab id.
+      }
+    });
+    element.addEventListener("dragend", clearTerminalTabDragState);
+  }
+  if (!target) return;
+  element.addEventListener("dragover", (event) => {
+    const sourceTabIdFromEvent = terminalTabDragIdFromEvent(event);
+    if (!canDropTerminalTabOnTarget(sourceTabIdFromEvent, target)) return;
+    event.preventDefault();
+    if (event.dataTransfer) event.dataTransfer.dropEffect = "move";
+    element.classList.add("terminal-tab-drag-over");
+    if (target.type === "group") setOpenTerminalTabGroup(target.group?.key);
+  });
+  element.addEventListener("dragleave", (event) => {
+    if (event.relatedTarget && element.contains(event.relatedTarget)) return;
+    element.classList.remove("terminal-tab-drag-over");
+  });
+  element.addEventListener("drop", (event) => {
+    const sourceTabIdFromEvent = terminalTabDragIdFromEvent(event);
+    element.classList.remove("terminal-tab-drag-over");
+    if (!canDropTerminalTabOnTarget(sourceTabIdFromEvent, target)) return;
+    event.preventDefault();
+    event.stopPropagation();
+    handleTerminalTabDrop(sourceTabIdFromEvent, target);
+  });
+}
+
+function handleTerminalTabDrop(sourceTabId, target) {
+  const sourceTab = terminalTabById(sourceTabId);
+  if (!sourceTab) return;
+  let group = null;
+  if (target.type === "group" && target.group) {
+    if (target.group.custom && target.group.customGroupId) {
+      group = addTabsToTerminalCustomGroup(target.group.customGroupId, [sourceTabId]);
+    } else {
+      group = createTerminalCustomGroup([...target.group.tabs.map((tab) => tab.id), sourceTabId]);
+    }
+  } else if (target.tabId) {
+    const targetTab = terminalTabById(target.tabId);
+    if (!targetTab || targetTab.id === sourceTabId) return;
+    const targetGroupId = terminalCustomGroupIdForTab(targetTab.id);
+    group = targetGroupId ? addTabsToTerminalCustomGroup(targetGroupId, [sourceTabId]) : createTerminalCustomGroup([targetTab.id, sourceTabId]);
+  }
+  if (!group) return;
+  clearOpenTerminalTabGroup(null, { force: true });
+  clearTerminalTabDragState();
+  renderTabs();
+  addEvent(`added ${sourceTab.title || "tab"} to ${normalizeTerminalCustomGroupTitle(group.title).toLowerCase()}`, "info");
+}
+
+function removeStreamingThinkingBubble() {
+  streamThinkingBubble?.remove();
+  streamThinkingBubble = null;
+  streamThinking = null;
+  renderRunIndicator({ scroll: false });
+}
+
+function setThinkingOutputVisible(visible, { announce = false } = {}) {
+  thinkingOutputVisible = !!visible;
+  persistThinkingOutputVisible(thinkingOutputVisible);
+  renderThinkingVisibilityToggle();
+  if (!thinkingOutputVisible) removeStreamingThinkingBubble();
+  renderAllMessages({ preserveScroll: true });
+  if (announce) addEvent(thinkingOutputVisible ? "thinking output shown" : "thinking output hidden", thinkingOutputVisible ? "info" : "warn");
+}
+
+function applyToolOutputExpansionToDom(expanded = toolOutputGloballyExpanded) {
+  for (const details of elements.chat.querySelectorAll(".tool-output-details, .tool-raw-details, .message.toolResult .message-collapse, .message.toolExecution details, .message.bashExecution .message-collapse")) {
+    details.open = !!expanded;
+  }
+}
+
+function setToolOutputGloballyExpanded(expanded, { announce = false, rerender = false } = {}) {
+  toolOutputGloballyExpanded = !!expanded;
+  persistToolOutputExpanded(toolOutputGloballyExpanded);
+  if (rerender) renderAllMessages({ preserveScroll: true });
+  else applyToolOutputExpansionToDom();
+  if (announce) addEvent(toolOutputGloballyExpanded ? "tool and bash output expanded" : "tool and bash output collapsed", "info");
+}
+
+function restoreToolOutputExpansionSetting() {
+  toolOutputGloballyExpanded = readStoredToolOutputExpanded();
+}
+
+function restoreThinkingVisibilitySetting() {
+  thinkingOutputVisible = readStoredThinkingOutputVisible();
+  renderThinkingVisibilityToggle();
+}
+
+function normalizeBusyPromptBehavior(value) {
+  const normalized = String(value || "").trim();
+  if (normalized === "follow-up" || normalized.toLowerCase() === "followup") return "followUp";
+  return BUSY_PROMPT_BEHAVIOR_VALUES.has(normalized) ? normalized : "followUp";
+}
+
+function readStoredBusyPromptBehavior() {
+  try {
+    return normalizeBusyPromptBehavior(localStorage.getItem(BUSY_PROMPT_BEHAVIOR_STORAGE_KEY));
+  } catch {
+    return "followUp";
+  }
+}
+
+function persistBusyPromptBehavior(behavior) {
+  try {
+    localStorage.setItem(BUSY_PROMPT_BEHAVIOR_STORAGE_KEY, normalizeBusyPromptBehavior(behavior));
+  } catch {
+    // Ignore storage failures; the setting should still work for this page load.
+  }
+}
+
+function busyPromptBehaviorMenuItems() {
+  return Array.from(elements.busyPromptBehaviorMenu?.querySelectorAll("[data-busy-prompt-behavior]") || []);
+}
+
+function renderBusyPromptBehaviorMenu() {
+  const behavior = normalizeBusyPromptBehavior(busyPromptBehavior);
+  for (const item of busyPromptBehaviorMenuItems()) {
+    const checked = normalizeBusyPromptBehavior(item.dataset.busyPromptBehavior) === behavior;
+    item.setAttribute("aria-checked", checked ? "true" : "false");
+    item.classList.toggle("active", checked);
+  }
+}
+
+function normalizeSkillName(value) {
+  const raw = String(value || "").trim().replace(/^\/?skill:/i, "");
+  if (!raw) return "";
+  const match = raw.match(/^[a-z0-9][a-z0-9._-]{0,63}$/i);
+  return match ? match[0].toLowerCase() : "";
+}
+
+function skillUsageMapForTab(tabId = activeTabId, { create = true } = {}) {
+  if (!tabId) return null;
+  let map = skillUsageByTab.get(tabId);
+  if (!map && create) {
+    map = new Map();
+    skillUsageByTab.set(tabId, map);
+  }
+  return map || null;
+}
+
+function clearSkillUsageForTab(tabId = activeTabId) {
+  if (!tabId) return;
+  skillUsageByTab.delete(tabId);
+  persistSkillUsage();
+  if (tabId === activeTabId) renderSessionSkillTags(tabId);
+}
+
+function sortedSkillUsageEntries(tabId = activeTabId) {
+  const map = skillUsageMapForTab(tabId, { create: false });
+  if (!map) return [];
+  return [...map.values()].sort((a, b) => b.lastSeenAt - a.lastSeenAt || a.name.localeCompare(b.name));
+}
+
+function serializeSkillUsageEntry(entry) {
+  const name = normalizeSkillName(entry?.name || "");
+  if (!name) return null;
+  const kinds = entry?.kinds instanceof Set ? [...entry.kinds] : Array.isArray(entry?.kinds) ? entry.kinds : [];
+  const paths = entry?.paths instanceof Set ? [...entry.paths] : Array.isArray(entry?.paths) ? entry.paths : [];
+  const sources = entry?.sources instanceof Set ? [...entry.sources] : Array.isArray(entry?.sources) ? entry.sources : [];
+  const path = entry?.path || paths[paths.length - 1] || "";
+  return {
+    name,
+    firstSeenAt: Number.isFinite(entry?.firstSeenAt) ? entry.firstSeenAt : Date.now(),
+    lastSeenAt: Number.isFinite(entry?.lastSeenAt) ? entry.lastSeenAt : Date.now(),
+    kinds: kinds.includes("read") ? kinds : [...kinds, "read"],
+    sources: sources.slice(-12),
+    path,
+    paths: [...new Set([path, ...paths].filter(Boolean))].slice(-8),
+  };
+}
+
+function persistSkillUsage() {
+  try {
+    const storedTabs = {};
+    for (const [tabId, map] of skillUsageByTab.entries()) {
+      const entries = [...map.values()]
+        .filter((entry) => entry?.kinds?.has("read"))
+        .map(serializeSkillUsageEntry)
+        .filter(Boolean)
+        .slice(0, SKILL_USAGE_LIMIT_PER_TAB);
+      if (entries.length) storedTabs[tabId] = entries;
+    }
+    localStorage.setItem(SKILL_USAGE_STORAGE_KEY, JSON.stringify({ version: 1, tabs: storedTabs }));
+  } catch {
+    // Ignore storage failures; tags still work for the current page lifetime.
+  }
+}
+
+function restoreStoredSkillUsage() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(SKILL_USAGE_STORAGE_KEY) || "{}");
+    const storedTabs = parsed?.tabs && typeof parsed.tabs === "object" ? parsed.tabs : {};
+    for (const [tabId, entries] of Object.entries(storedTabs)) {
+      if (!tabId || !Array.isArray(entries)) continue;
+      const map = skillUsageMapForTab(tabId);
+      if (!map) continue;
+      for (const stored of entries.slice(0, SKILL_USAGE_LIMIT_PER_TAB)) {
+        const name = normalizeSkillName(stored?.name || "");
+        if (!name) continue;
+        const kinds = new Set(Array.isArray(stored?.kinds) ? stored.kinds : ["read"]);
+        if (!kinds.has("read")) continue;
+        const paths = new Set(Array.isArray(stored?.paths) ? stored.paths.filter(Boolean) : []);
+        if (stored?.path) paths.add(stored.path);
+        map.set(name, {
+          name,
+          firstSeenAt: Number.isFinite(stored?.firstSeenAt) ? stored.firstSeenAt : Date.now(),
+          lastSeenAt: Number.isFinite(stored?.lastSeenAt) ? stored.lastSeenAt : Date.now(),
+          kinds,
+          sources: new Set(Array.isArray(stored?.sources) ? stored.sources : ["stored"]),
+          path: stored?.path || [...paths].at(-1) || "",
+          paths,
+        });
+      }
+    }
+  } catch {
+    // Ignore corrupt stored tag data.
+  }
+}
+
+function pruneSkillUsageForKnownTabs(tabIds) {
+  let changed = false;
+  for (const tabId of skillUsageByTab.keys()) {
+    if (tabIds.has(tabId)) continue;
+    skillUsageByTab.delete(tabId);
+    changed = true;
+  }
+  if (changed) persistSkillUsage();
+}
+
+function skillInfoFromPath(pathText) {
+  const normalized = String(pathText || "").trim().replace(/\\/g, "/");
+  const match = normalized.match(/\/skills\/([^/]+)\/SKILL\.md$/i);
+  const name = normalizeSkillName(match?.[1] || "");
+  return name ? { name, path: normalized } : null;
+}
+
+function skillNameFromPath(pathText) {
+  return skillInfoFromPath(pathText)?.name || "";
+}
+
+function skillNamesFromSlashCommands(text) {
+  const names = new Set();
+  for (const match of String(text || "").matchAll(/\/skill:([a-z0-9][a-z0-9._-]{0,63})/gi)) {
+    const normalized = normalizeSkillName(match[1]);
+    if (normalized) names.add(normalized);
+  }
+  return [...names];
+}
+
+function skillKindsLabel(entry) {
+  return entry?.kinds?.has("read") ? "context read" : "tracked";
+}
+
+function renderSessionSkillTags(tabId = activeTabId) {
+  const container = elements.sessionSkillTags;
+  if (!container) return;
+  const entries = sortedSkillUsageEntries(tabId).filter((entry) => entry.kinds.has("read"));
+  container.replaceChildren();
+  if (!entries.length) {
+    container.hidden = true;
+    return;
+  }
+  const visible = entries.slice(0, SKILL_TAG_MAX_VISIBLE);
+  for (const entry of visible) {
+    const classes = ["composer-skill-tag", "read"];
+    const tag = make("button", classes.join(" "), entry.name);
+    tag.type = "button";
+    tag.dataset.skillName = entry.name;
+    tag.dataset.skillPath = skillPathForEntry(entry);
+    tag.title = `Open and edit skill ${entry.name} (${skillKindsLabel(entry)}) tracked in this tab/session.`;
+    tag.setAttribute("aria-label", `Open skill ${entry.name}`);
+    tag.addEventListener("click", () => openSkillEditor(entry));
+    container.append(tag);
+  }
+  if (entries.length > visible.length) {
+    const overflow = make("span", "composer-skill-tag overflow", `+${entries.length - visible.length}`);
+    overflow.title = `${entries.length - visible.length} more tracked skill${entries.length - visible.length === 1 ? "" : "s"}.`;
+    container.append(overflow);
+  }
+  container.hidden = false;
+}
+
+function trackSkillUsage(tabId, skillName, kind = "used", source = "", details = {}) {
+  const name = normalizeSkillName(skillName);
+  if (!tabId || !name) return;
+  const map = skillUsageMapForTab(tabId);
+  if (!map) return;
+  const now = Date.now();
+  const entry = map.get(name) || { name, firstSeenAt: now, lastSeenAt: now, kinds: new Set(), sources: new Set(), paths: new Set() };
+  entry.lastSeenAt = now;
+  if (["used", "loaded", "read"].includes(kind)) entry.kinds.add(kind);
+  else entry.kinds.add("used");
+  if (source) entry.sources.add(source);
+  if (details?.path) {
+    entry.path = details.path;
+    entry.paths ||= new Set();
+    entry.paths.add(details.path);
+  }
+  map.set(name, entry);
+  if (map.size > SKILL_USAGE_LIMIT_PER_TAB) {
+    const keep = [...map.values()].sort((a, b) => b.lastSeenAt - a.lastSeenAt).slice(0, SKILL_USAGE_LIMIT_PER_TAB);
+    map.clear();
+    for (const item of keep) map.set(item.name, item);
+  }
+  persistSkillUsage();
+  if (tabId === activeTabId) renderSessionSkillTags(tabId);
+}
+
+function trackSkillsFromText(tabId, text, { kind = "used", source = "" } = {}) {
+  // Intentionally do not tag /skill:name mentions. A skill tag means the
+  // agent read that skill's full SKILL.md context, not only its command/name.
+}
+
+function trackSkillsFromValue(tabId, value, { keyHint = "", kind = "used", source = "", depth = 0 } = {}) {
+  if (!tabId || value === undefined || value === null || depth > 5) return;
+  if (Array.isArray(value)) {
+    for (const item of value) trackSkillsFromValue(tabId, item, { keyHint, kind, source, depth: depth + 1 });
+    return;
+  }
+  if (typeof value === "string") {
+    const skillInfo = skillInfoFromPath(value);
+    if (skillInfo) trackSkillUsage(tabId, skillInfo.name, "read", source, { path: skillInfo.path });
+    return;
+  }
+  if (typeof value !== "object") return;
+  for (const [key, nested] of Object.entries(value)) {
+    const hint = String(key || "").toLowerCase();
+    trackSkillsFromValue(tabId, nested, { keyHint: hint, kind, source, depth: depth + 1 });
+  }
+}
+
+function trackSkillsFromToolInvocation(tabId, toolName, args, { sourcePrefix = "tool" } = {}) {
+  if (!tabId) return;
+  const name = String(toolName || "").trim();
+  if (name.toLowerCase() !== "read") return;
+  const source = `${sourcePrefix}:${name}`;
+  trackSkillsFromValue(tabId, args, { kind: "read", source });
+}
+
+function trackSkillsFromMessage(tabId, message) {
+  if (!tabId || !message) return;
+  const role = String(message.role || "");
+  if (role === "toolExecution" || role === "toolCall") {
+    trackSkillsFromToolInvocation(tabId, message.toolName || message.name, message.arguments ?? message.args ?? {}, { sourcePrefix: `message:${role}` });
+    return;
+  }
+  if (role === "user" || role === "assistant" || role === "assistantEvent" || role === "native") {
+    trackSkillsFromText(tabId, textFromContent(message.content), { kind: "used", source: `message:${role}` });
+    return;
+  }
+  if (role === "bashExecution") {
+    trackSkillsFromText(tabId, `${message.command || ""}\n${message.output || ""}`, { kind: "used", source: "message:bash" });
+  }
+}
+
+function trackSkillsFromMessages(messages = latestMessages, tabId = activeTabId) {
+  for (const message of messages || []) trackSkillsFromMessage(tabId, message);
+}
+
+function assistantMessageUpdateType(event) {
+  return event?.assistantMessageEvent?.type || "";
+}
+
+function eventMayAffectSkillUsage(event) {
+  const type = event?.type || "";
+  return ["tool_execution_start", "tool_execution_update", "tool_execution_end"].includes(type)
+    || (type === "message_update" && assistantMessageUpdateType(event) === "toolcall_start")
+    || (type === "response" && event.command === "new_session");
+}
+
+function trackSkillsFromEvent(event) {
+  const tabId = event?.tabId || activeTabId;
+  if (!tabId || !event) return;
+  if (["tool_execution_start", "tool_execution_update", "tool_execution_end"].includes(event.type)) {
+    trackSkillsFromToolInvocation(tabId, event.toolName, event.args, { sourcePrefix: `event:${event.type}` });
+    return;
+  }
+  if (assistantMessageUpdateType(event) === "toolcall_start") {
+    const update = event.assistantMessageEvent || {};
+    trackSkillsFromToolInvocation(tabId, update.name || update.toolName || update.toolCall?.name, update.arguments || update.args || update.toolCall?.arguments || {}, { sourcePrefix: "event:message_update" });
+    return;
+  }
+  if (event.type === "response" && event.command === "new_session") {
+    clearSkillUsageForTab(tabId);
+  }
+}
+
+function skillPathForEntry(entry) {
+  if (entry?.path) return entry.path;
+  if (entry?.paths instanceof Set && entry.paths.size) {
+    const paths = [...entry.paths];
+    return paths[paths.length - 1] || "";
+  }
+  return "";
+}
+
+function skillEditorApiPath({ name = "", path = "" } = {}) {
+  const params = new URLSearchParams();
+  if (name) params.set("name", name);
+  if (path) params.set("path", path);
+  const query = params.toString();
+  return query ? `/api/skill-file?${query}` : "/api/skill-file";
+}
+
+function setSkillEditorStatus(message = "", level = "muted") {
+  const status = elements.skillEditorStatus;
+  if (!status) return;
+  status.textContent = message;
+  status.className = `skill-editor-status ${level || "muted"}`;
+  status.hidden = !message;
+}
+
+function closeSkillEditor() {
+  if (elements.skillEditorDialog?.open) elements.skillEditorDialog.close();
+  else activeSkillEditor = null;
+}
+
+function updateSkillEditorMeta(data = activeSkillEditor || {}) {
+  if (!elements.skillEditorMeta) return;
+  const parts = [data.name ? `Skill: ${data.name}` : "Skill", data.path || "path unavailable"].filter(Boolean);
+  elements.skillEditorMeta.textContent = parts.join(" · ");
+}
+
+async function openSkillEditor(entry) {
+  const name = normalizeSkillName(entry?.name || "");
+  const path = skillPathForEntry(entry);
+  if (!name || !elements.skillEditorDialog || !elements.skillEditorText) return;
+  const tabId = activeTabId;
+  activeSkillEditor = { name, path, tabId, mtimeMs: null };
+  if (elements.skillEditorTitle) elements.skillEditorTitle.textContent = `Edit skill: ${name}`;
+  if (elements.skillEditorText) elements.skillEditorText.value = "";
+  if (elements.skillEditorSaveButton) elements.skillEditorSaveButton.disabled = true;
+  updateSkillEditorMeta(activeSkillEditor);
+  setSkillEditorStatus("Loading skill context…", "muted");
+  if (!elements.skillEditorDialog.open) elements.skillEditorDialog.showModal();
+
+  try {
+    const response = await api(skillEditorApiPath({ name, path }), { tabId });
+    if (activeSkillEditor?.tabId !== tabId || activeSkillEditor?.name !== name) return;
+    const data = response.data || {};
+    activeSkillEditor = { name: normalizeSkillName(data.name || name), path: data.path || path, tabId, mtimeMs: data.mtimeMs };
+    if (elements.skillEditorTitle) elements.skillEditorTitle.textContent = `Edit skill: ${activeSkillEditor.name}`;
+    if (elements.skillEditorText) elements.skillEditorText.value = data.content || "";
+    if (elements.skillEditorSaveButton) elements.skillEditorSaveButton.disabled = false;
+    updateSkillEditorMeta(activeSkillEditor);
+    setSkillEditorStatus("Edit this SKILL.md, then save. Reload the tab if title/description metadata should refresh immediately.", "muted");
+    queueMicrotask(() => elements.skillEditorText?.focus());
+  } catch (error) {
+    if (elements.skillEditorSaveButton) elements.skillEditorSaveButton.disabled = true;
+    setSkillEditorStatus(`Failed to open skill: ${error.message || String(error)}`, "error");
+  }
+}
+
+async function saveSkillEditor() {
+  if (!activeSkillEditor || !elements.skillEditorText || !elements.skillEditorSaveButton) return;
+  const editor = activeSkillEditor;
+  const previousLabel = elements.skillEditorSaveButton.textContent;
+  elements.skillEditorSaveButton.disabled = true;
+  elements.skillEditorSaveButton.textContent = "Saving…";
+  setSkillEditorStatus("Saving skill…", "muted");
+  try {
+    const response = await api("/api/skill-file", {
+      method: "POST",
+      tabId: editor.tabId,
+      body: {
+        name: editor.name,
+        path: editor.path,
+        mtimeMs: editor.mtimeMs,
+        content: elements.skillEditorText.value,
+      },
+    });
+    const data = response.data || {};
+    const savedName = normalizeSkillName(data.name || editor.name);
+    activeSkillEditor = { name: savedName, path: data.path || editor.path, tabId: editor.tabId, mtimeMs: data.mtimeMs };
+    const map = skillUsageMapForTab(editor.tabId, { create: false });
+    if (map && savedName !== editor.name) map.delete(editor.name);
+    trackSkillUsage(editor.tabId, savedName, "read", "skill-editor", { path: activeSkillEditor.path });
+    if (elements.skillEditorTitle) elements.skillEditorTitle.textContent = `Edit skill: ${savedName}`;
+    updateSkillEditorMeta(activeSkillEditor);
+    setSkillEditorStatus("Saved SKILL.md. Reload/restart affected tabs before relying on updated skill metadata or newly loaded instructions.", "ok");
+  } catch (error) {
+    setSkillEditorStatus(`Failed to save skill: ${error.message || String(error)}`, "error");
+  } finally {
+    elements.skillEditorSaveButton.textContent = previousLabel || "Save skill";
+    elements.skillEditorSaveButton.disabled = false;
+  }
+}
+
+function renderBusyPromptBehaviorTag() {
+  const tag = elements.busyPromptBehaviorTag;
+  if (!tag) return;
+  const behavior = normalizeBusyPromptBehavior(busyPromptBehavior);
+  const label = BUSY_PROMPT_BEHAVIOR_LABELS[behavior] || BUSY_PROMPT_BEHAVIOR_LABELS.followUp;
+  tag.textContent = label;
+  tag.classList.toggle("follow-up", behavior === "followUp");
+  tag.classList.toggle("steer", behavior === "steer");
+  tag.title = behavior === "steer"
+    ? "While Pi is running, normal prompt submit steers the active run. Click to change."
+    : "While Pi is running, normal prompt submit queues a follow-up. Click to change.";
+  tag.setAttribute("aria-label", tag.title);
+  renderBusyPromptBehaviorMenu();
+  renderSessionSkillTags(activeTabId);
+}
+
+function setBusyPromptBehaviorMenuOpen(open, { focusCurrent = false } = {}) {
+  busyPromptBehaviorMenuOpen = !!open;
+  elements.busyPromptBehaviorTag?.setAttribute("aria-expanded", busyPromptBehaviorMenuOpen ? "true" : "false");
+  elements.busyPromptBehaviorTag?.classList.toggle("menu-open", busyPromptBehaviorMenuOpen);
+  if (elements.busyPromptBehaviorMenu) elements.busyPromptBehaviorMenu.hidden = !busyPromptBehaviorMenuOpen;
+  if (!busyPromptBehaviorMenuOpen) {
+    scheduleDeferredUiFlushAfterDropdownClose();
+    return;
+  }
+  renderBusyPromptBehaviorMenu();
+  if (focusCurrent) {
+    requestAnimationFrame(() => {
+      const current = busyPromptBehaviorMenuItems().find((item) => item.getAttribute("aria-checked") === "true") || busyPromptBehaviorMenuItems()[0];
+      current?.focus({ preventScroll: true });
+    });
+  }
+}
+
+function focusBusyPromptBehaviorMenuItem(direction = 1) {
+  const items = busyPromptBehaviorMenuItems();
+  if (!items.length) return;
+  const currentIndex = Math.max(0, items.indexOf(document.activeElement));
+  const nextIndex = (currentIndex + direction + items.length) % items.length;
+  items[nextIndex].focus({ preventScroll: true });
+}
+
+function chooseBusyPromptBehaviorFromMenu(value) {
+  setBusyPromptBehavior(value);
+  setBusyPromptBehaviorMenuOpen(false);
+  focusPromptInput({ defer: true });
+}
+
+function setBusyPromptBehavior(value, { persist = true } = {}) {
+  const next = normalizeBusyPromptBehavior(value);
+  busyPromptBehavior = next;
+  webuiSettings = { ...webuiSettings, busyPromptBehavior: next };
+  if (persist) persistBusyPromptBehavior(next);
+  renderBusyPromptBehaviorTag();
+}
+
+function restoreBusyPromptBehaviorSetting() {
+  setBusyPromptBehavior(readStoredBusyPromptBehavior(), { persist: false });
+}
+
+function clampAutocompleteMaxVisible(value) {
+  const number = Number(value);
+  if (!Number.isFinite(number)) return 12;
+  return Math.max(3, Math.min(20, Math.floor(number)));
+}
+
+function applyNativeSettingsForBrowser(settings = {}, { syncThinkingVisibility = false } = {}) {
+  if (!settings || typeof settings !== "object") return;
+  webuiSettings = { ...webuiSettings, ...settings, warnings: { ...(webuiSettings.warnings || {}), ...(settings.warnings || {}) } };
+  if (settings.autocompleteMaxVisible !== undefined) autocompleteMaxVisible = clampAutocompleteMaxVisible(settings.autocompleteMaxVisible);
+  if (SETTINGS_DOUBLE_ESCAPE_OPTIONS.some((option) => option.value === settings.doubleEscapeAction)) doubleEscapeAction = settings.doubleEscapeAction;
+  if (SETTINGS_TREE_FILTER_OPTIONS.includes(settings.treeFilterMode)) treeFilterMode = settings.treeFilterMode;
+  if (BUSY_PROMPT_BEHAVIOR_VALUES.has(settings.busyPromptBehavior)) setBusyPromptBehavior(settings.busyPromptBehavior);
+  if (syncThinkingVisibility && typeof settings.hideThinkingBlock === "boolean") setThinkingOutputVisible(!settings.hideThinkingBlock);
+}
+
+async function refreshNativeSettings(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const response = await api("/api/settings", { tabId: tabContext.tabId });
+  if (!isCurrentTabContext(tabContext)) return;
+  applyNativeSettingsForBrowser(response.data?.settings || {});
+}
+
+function setComposerActionsOpen(open) {
+  const shouldOpen = open && isMobileView();
+  document.body.classList.toggle("composer-actions-open", shouldOpen);
+  elements.composerActionsButton.setAttribute("aria-expanded", shouldOpen ? "true" : "false");
+  if (!shouldOpen) {
+    setPublishMenuOpen(false);
+    setNativeCommandMenuOpen(false);
+    setAppRunnerMenuOpen(false);
+    setOptionsMenuOpen(false);
+    setBusyPromptBehaviorMenuOpen(false);
+  }
+  scheduleMobileDropdownScrollBoundsUpdate();
+  if (!shouldOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function isUserBashActive(tabId = activeTabId) {
+  return !!tabId && userBashByTab.has(tabId);
+}
+
+function userBashQueueForTab(tabId) {
+  if (!tabId) return [];
+  let queue = userBashQueuesByTab.get(tabId);
+  if (!queue) {
+    queue = [];
+    userBashQueuesByTab.set(tabId, queue);
+  }
+  return queue;
+}
+
+function queuedUserBashCount(tabId = activeTabId) {
+  return tabId ? userBashQueueForTab(tabId).length : 0;
+}
+
+function isUserBashRunningOrQueued(tabId = activeTabId) {
+  return isUserBashActive(tabId) || queuedUserBashCount(tabId) > 0;
+}
+
+function isRunActive() {
+  return !!currentState?.isStreaming || isUserBashRunningOrQueued() || (runIndicatorLocallyActive && !currentState?.isCompacting);
+}
+
+function isAbortAvailable() {
+  return runIndicatorIsActive() || isUserBashActive();
+}
+
+function resizePromptInput() {
+  const input = elements.promptInput;
+  input.style.height = "auto";
+  const maxHeight = Number.parseFloat(getComputedStyle(input).maxHeight);
+  const nextHeight = Number.isFinite(maxHeight) ? Math.min(input.scrollHeight, maxHeight) : input.scrollHeight;
+  input.style.height = `${Math.ceil(nextHeight)}px`;
+  input.style.overflowY = Number.isFinite(maxHeight) && input.scrollHeight > maxHeight + 1 ? "auto" : "hidden";
+}
+
+function updateComposerModeButtons() {
+  const runActive = isRunActive();
+  const abortAvailable = isAbortAvailable();
+  const abortHoldSnapshot = isAbortLongPressActive();
+  const nextSignature = [
+    activeTabGeneration,
+    runActive ? "run" : "idle",
+    abortAvailable ? "abort" : "no-abort",
+    abortHoldSnapshot ? `hold:${abortLongPressLabel()}` : "no-hold",
+    abortRequestInFlight ? "aborting" : "ready",
+    busyPromptBehavior,
+  ].join("|");
+  if (nextSignature === composerModeRenderSignature) return;
+  composerModeRenderSignature = nextSignature;
+
+  const target = runActive ? elements.composerRow : elements.composerActionsPanel;
+  const before = runActive ? elements.abortButton : null;
+  for (const button of [elements.steerButton, elements.followUpButton]) {
+    if (button.parentElement !== target) target.insertBefore(button, before);
+    button.hidden = !runActive;
+    button.disabled = !runActive;
+  }
+  const abortHoldActive = isAbortLongPressActive();
+  if (!abortAvailable && !abortHoldActive) resetAbortLongPressAffordance();
+  elements.abortButton.hidden = !abortAvailable && !abortHoldActive;
+  elements.abortButton.disabled = (!abortAvailable && !abortHoldActive) || abortRequestInFlight;
+  if (abortHoldActive) {
+    renderAbortLongPressAffordance();
+  } else {
+    const abortText = abortRequestInFlight ? "Aborting…" : "Abort";
+    const abortTitle = abortAvailable ? abortButtonReadyTitle() : "Abort is available while Pi is running";
+    if (elements.abortButton.textContent !== abortText) elements.abortButton.textContent = abortText;
+    if (elements.abortButton.title !== abortTitle) elements.abortButton.title = abortTitle;
+    if (elements.abortButton.getAttribute("aria-label") !== abortTitle) elements.abortButton.setAttribute("aria-label", abortTitle);
+  }
+  renderBusyPromptBehaviorTag();
+  document.body.classList.toggle("pi-run-active", runActive || abortAvailable);
+}
+
+function scheduleComposerModeButtonsUpdate() {
+  if (composerModeButtonsFrame !== null) return;
+  const flush = () => {
+    composerModeButtonsFrame = null;
+    updateComposerModeButtons();
+  };
+  if (typeof requestAnimationFrame === "function") composerModeButtonsFrame = requestAnimationFrame(flush);
+  else composerModeButtonsFrame = setTimeout(flush, 0);
+}
+
+function isFooterPickerOpen() {
+  return footerModelPickerOpen || footerThinkingPickerOpen || footerBranchPickerOpen;
+}
+
+function footerActivePickerTarget() {
+  if (footerBranchPickerOpen) return elements.statusBar.querySelector(".footer-branch.footer-meta-action");
+  if (footerThinkingPickerOpen) return elements.statusBar.querySelector(".footer-thinking.footer-meta-action");
+  if (footerModelPickerOpen) return elements.statusBar.querySelector(".footer-model.footer-meta-action, .footer-tui-model");
+  return null;
+}
+
+function clearFooterPickerPosition() {
+  document.documentElement.style.removeProperty("--footer-model-picker-bottom");
+  document.documentElement.style.removeProperty("--footer-model-picker-left");
+  document.documentElement.style.removeProperty("--footer-model-picker-right");
+}
+
+function updateFooterModelPickerPosition() {
+  if (!isFooterPickerOpen()) {
+    clearFooterPickerPosition();
+    return;
+  }
+  if (isMobileView()) {
+    document.documentElement.style.removeProperty("--footer-model-picker-left");
+    document.documentElement.style.removeProperty("--footer-model-picker-right");
+    const viewportHeight = window.innerHeight || window.visualViewport?.height || document.documentElement.clientHeight;
+    const statusTop = elements.statusBar.getBoundingClientRect().top;
+    const bottom = Math.max(8, Math.round(viewportHeight - statusTop + 6));
+    document.documentElement.style.setProperty("--footer-model-picker-bottom", `${bottom}px`);
+    return;
+  }
+  document.documentElement.style.removeProperty("--footer-model-picker-bottom");
+  const picker = elements.statusBar.querySelector(".footer-model-picker");
+  const target = footerActivePickerTarget();
+  if (!picker || !target) {
+    document.documentElement.style.removeProperty("--footer-model-picker-left");
+    document.documentElement.style.removeProperty("--footer-model-picker-right");
+    return;
+  }
+  const viewportWidth = window.innerWidth || document.documentElement.clientWidth;
+  const statusRect = elements.statusBar.getBoundingClientRect();
+  const targetRect = target.getBoundingClientRect();
+  const pickerWidth = picker.offsetWidth || Math.min(544, viewportWidth - 16);
+  const minLeft = 8 - statusRect.left;
+  const maxLeft = Math.max(minLeft, viewportWidth - pickerWidth - 8 - statusRect.left);
+  const targetCenterLeft = targetRect.left - statusRect.left + (targetRect.width / 2) - (pickerWidth / 2);
+  const left = Math.min(maxLeft, Math.max(minLeft, targetCenterLeft));
+  document.documentElement.style.setProperty("--footer-model-picker-left", `${Math.round(left)}px`);
+  document.documentElement.style.setProperty("--footer-model-picker-right", "auto");
+}
+
+function setMobileFooterExpanded(expanded) {
+  mobileFooterExpanded = expanded && isMobileView();
+  if (mobileFooterExpanded && isFooterPickerOpen()) {
+    footerModelPickerOpen = false;
+    footerThinkingPickerOpen = false;
+    footerBranchPickerOpen = false;
+    document.body.classList.remove("footer-model-picker-open");
+    elements.statusBar.querySelectorAll(".footer-model-picker").forEach((node) => node.remove());
+  }
+  document.body.classList.toggle("footer-details-expanded", mobileFooterExpanded);
+  const button = elements.statusBar.querySelector(".footer-details-toggle");
+  if (button) {
+    button.textContent = mobileFooterExpanded ? "Less" : "Details";
+    button.setAttribute("aria-expanded", mobileFooterExpanded ? "true" : "false");
+  }
+  updateFooterModelPickerPosition();
+}
+
+function setMobileTabsExpanded(expanded) {
+  mobileTabsExpanded = expanded && isMobileView();
+  document.body.classList.toggle("mobile-tabs-expanded", mobileTabsExpanded);
+  elements.terminalTabsToggleButton.setAttribute("aria-expanded", mobileTabsExpanded ? "true" : "false");
+}
+
+function syncMobileSidePanelState(collapsed) {
+  const showBackdrop = !collapsed && isSidePanelOverlayView();
+  elements.sidePanelBackdrop.hidden = !showBackdrop;
+  if (showBackdrop) elements.sidePanel.setAttribute("aria-modal", "true");
+  else elements.sidePanel.removeAttribute("aria-modal");
+}
+
+function setSidePanelCollapsed(collapsed, { persist = true, focusPanel = false } = {}) {
+  document.body.classList.toggle("side-panel-collapsed", collapsed);
+  elements.toggleSidePanelButton.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  elements.toggleSidePanelButton.setAttribute("title", collapsed ? "Expand side panel" : "Collapse side panel");
+  elements.toggleSidePanelButton.setAttribute("aria-label", collapsed ? "Expand side panel" : "Collapse side panel");
+  elements.sidePanelExpandButton.setAttribute("aria-expanded", collapsed ? "false" : "true");
+  syncMobileSidePanelState(collapsed);
+
+  if (!collapsed && focusPanel && isSidePanelOverlayView()) {
+    requestAnimationFrame(() => elements.toggleSidePanelButton.focus());
+  }
+
+  if (!persist || isSidePanelOverlayView()) return;
+  try {
+    localStorage.setItem(SIDE_PANEL_STORAGE_KEY, collapsed ? "1" : "0");
+  } catch {
+    // Ignore storage failures; the toggle should still work for this page load.
+  }
+}
+
+function restoreSidePanelState() {
+  if (isSidePanelOverlayView()) {
+    setSidePanelCollapsed(true, { persist: false });
+    return;
+  }
+  const stored = readStoredSidePanelCollapsed();
+  setSidePanelCollapsed(stored ?? false, { persist: stored !== null });
+}
+
+function readStoredWorkspaceDashboardCollapsed() {
+  try {
+    const stored = localStorage.getItem(WORKSPACE_DASHBOARD_STORAGE_KEY);
+    return stored === null ? true : stored === "1";
+  } catch {
+    return true;
+  }
+}
+
+function persistWorkspaceDashboardCollapsed(collapsed) {
+  try {
+    localStorage.setItem(WORKSPACE_DASHBOARD_STORAGE_KEY, collapsed ? "1" : "0");
+  } catch {
+    // Ignore storage failures; this is only a browser preference.
+  }
+}
+
+function setWorkspaceDashboardCollapsed(collapsed, { persist = true } = {}) {
+  workspaceDashboardCollapsed = !!collapsed;
+  if (elements.workspaceDashboard) elements.workspaceDashboard.hidden = workspaceDashboardCollapsed;
+  if (elements.workspaceDashboardToggleButton) {
+    elements.workspaceDashboardToggleButton.setAttribute("aria-expanded", workspaceDashboardCollapsed ? "false" : "true");
+    const tooltip = workspaceDashboardCollapsed ? "Show workspace overview" : "Hide workspace overview";
+    const tooltipDetail = `${tooltip}:\n• Shows current tab, cwd, model, context, session, and queue.\n• Opens common workspace/session actions from one place.`;
+    elements.workspaceDashboardToggleButton.removeAttribute("title");
+    elements.workspaceDashboardToggleButton.setAttribute("aria-label", tooltip);
+    elements.workspaceDashboardToggleButton.setAttribute("data-tooltip", tooltipDetail);
+  }
+  if (persist) persistWorkspaceDashboardCollapsed(workspaceDashboardCollapsed);
+}
+
+function restoreWorkspaceDashboardState() {
+  setWorkspaceDashboardCollapsed(readStoredWorkspaceDashboardCollapsed(), { persist: false });
+}
+
+function bindMobileViewChanges() {
+  if (!mobileViewMedia) return;
+  const syncForViewport = (event) => {
+    setComposerActionsOpen(false);
+    setMobileFooterExpanded(false);
+    setMobileTabsExpanded(false);
+    if (event.matches || isSidePanelOverlayView()) {
+      setSidePanelCollapsed(true, { persist: false });
+      return;
+    }
+    const stored = readStoredSidePanelCollapsed();
+    setSidePanelCollapsed(stored ?? false, { persist: false });
+  };
+  if (typeof mobileViewMedia.addEventListener === "function") mobileViewMedia.addEventListener("change", syncForViewport);
+  else mobileViewMedia.addListener?.(syncForViewport);
+}
+
+function bindSidePanelOverlayViewChanges() {
+  if (!sidePanelOverlayMedia || sidePanelOverlayMedia === mobileViewMedia) return;
+  const syncForViewport = (event) => {
+    if (event.matches) {
+      setSidePanelCollapsed(true, { persist: false });
+      return;
+    }
+    const stored = readStoredSidePanelCollapsed();
+    setSidePanelCollapsed(stored ?? false, { persist: false });
+  };
+  if (typeof sidePanelOverlayMedia.addEventListener === "function") sidePanelOverlayMedia.addEventListener("change", syncForViewport);
+  else sidePanelOverlayMedia.addListener?.(syncForViewport);
+}
+
+function updateVisualViewportVars() {
+  const viewport = window.visualViewport;
+  const viewportHeight = viewport?.height || window.innerHeight || document.documentElement.clientHeight;
+  const offsetTop = viewport?.offsetTop || 0;
+  const layoutHeight = window.innerHeight || viewportHeight;
+  if (viewportHeight > maxVisualViewportHeight) maxVisualViewportHeight = viewportHeight;
+  const keyboardInset = viewport ? Math.max(0, Math.round(layoutHeight - viewportHeight - offsetTop)) : 0;
+  const promptFocused = document.activeElement === elements.promptInput;
+  const keyboardOpen = isMobileView() && promptFocused && (keyboardInset > 80 || maxVisualViewportHeight - viewportHeight > 120);
+  document.documentElement.style.setProperty("--visual-viewport-height", `${Math.round(viewportHeight)}px`);
+  document.documentElement.style.setProperty("--visual-viewport-offset-top", `${Math.round(offsetTop)}px`);
+  document.documentElement.style.setProperty("--keyboard-inset-bottom", `${keyboardInset}px`);
+  document.body.classList.toggle("mobile-keyboard-open", keyboardOpen);
+  if (keyboardOpen) {
+    setComposerActionsOpen(false);
+    setMobileTabsExpanded(false);
+    setMobileFooterExpanded(false);
+    setFooterModelPickerOpen(false);
+    setFooterBranchPickerOpen(false);
+    syncMobileChatToBottomForInput();
+  }
+  updateFooterModelPickerPosition();
+  updateMobileDropdownScrollBounds();
+}
+
+function installViewportHandlers() {
+  updateVisualViewportVars();
+  const update = () => updateVisualViewportVars();
+  window.visualViewport?.addEventListener("resize", update, { passive: true });
+  window.visualViewport?.addEventListener("scroll", update, { passive: true });
+  window.addEventListener("resize", update, { passive: true });
+  window.addEventListener("orientationchange", () => setTimeout(update, 80));
+}
+
+function registerPwaServiceWorker() {
+  if (!("serviceWorker" in navigator)) return;
+  if (!window.isSecureContext) {
+    addEvent("PWA install needs HTTPS or localhost for service-worker support on most mobile browsers.", "warn");
+    return;
+  }
+  // Elestio fork: PWA service worker disabled. The SW cached index.html/app.js/styles.css,
+  // which made the baked UI flash the upstream theme then "settle" and required hard-refresh.
+  // Never register, so a fresh browser never installs a SW (correct UI on first paint).
+  Promise.reject(new Error("sw-disabled")).catch((error) => {
+    addEvent(`PWA service worker registration failed: ${error.message}`, "warn");
+  });
+}
+
+function readStoredServerStartCwd() {
+  try {
+    return localStorage.getItem(SERVER_START_CWD_STORAGE_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
+function rememberServerStartCwd(cwd) {
+  const value = typeof cwd === "string" ? cwd.trim() : "";
+  if (!value) return;
+  try {
+    localStorage.setItem(SERVER_START_CWD_STORAGE_KEY, value);
+  } catch {
+    // Ignore storage failures; the offline start helper can still show a generic command.
+  }
+  if (backendOffline) renderServerOfflinePanel();
+}
+
+function quoteCommandArg(value) {
+  const text = String(value || ".");
+  if (!/[\s"'`$]/.test(text)) return text;
+  if (!text.includes("'")) return `'${text}'`;
+  return `"${text.replace(/(["`$])/g, "\\$1")}"`;
+}
+
+function currentPortArg() {
+  const port = window.location.port || "";
+  return port && port !== DEFAULT_WEBUI_PORT ? ` --port ${port}` : "";
+}
+
+function serverStartCommandText() {
+  return `pi-webui${currentPortArg()}`;
+}
+
+function serverStartSlashCommandText() {
+  return `/webui-start${currentPortArg()}`;
+}
+
+function renderServerOfflinePanel() {
+  if (elements.serverOfflineCommand) elements.serverOfflineCommand.textContent = serverStartCommandText();
+  if (elements.serverOfflineSlashCommand) elements.serverOfflineSlashCommand.textContent = serverStartSlashCommandText();
+}
+
+function setServerRestartOverlay(active, message = "Waiting for the server to come back…") {
+  serverRestartInProgress = !!active;
+  document.body.classList.toggle("server-restarting", serverRestartInProgress);
+  if (elements.serverRestartPanel) elements.serverRestartPanel.hidden = !serverRestartInProgress;
+  if (elements.serverRestartMessage) elements.serverRestartMessage.textContent = message;
+  if (serverRestartInProgress) hideUpdateNotification();
+  if (serverRestartInProgress && elements.serverOfflinePanel) elements.serverOfflinePanel.hidden = true;
+}
+
+function setBackendOffline(offline, error) {
+  backendOffline = !!offline;
+  const showOfflinePanel = backendOffline && !serverRestartInProgress;
+  document.body.classList.toggle("server-offline", showOfflinePanel);
+  if (elements.serverOfflinePanel) elements.serverOfflinePanel.hidden = !showOfflinePanel;
+  renderServerOfflinePanel();
+  if (backendOffline) {
+    hideUpdateNotification();
+    if (!serverRestartInProgress && !backendOfflineNoticeShown) {
+      backendOfflineNoticeShown = true;
+      addEvent(`Pi Web UI server is offline${error?.message ? `: ${error.message}` : ""}`, "warn");
+    }
+    return;
+  }
+  if (backendOfflineNoticeShown) addEvent("Pi Web UI server is back online", "info");
+  backendOfflineNoticeShown = false;
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText && window.isSecureContext) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.setAttribute("readonly", "");
+  textarea.style.position = "fixed";
+  textarea.style.opacity = "0";
+  document.body.append(textarea);
+  textarea.select();
+  const copied = document.execCommand("copy");
+  textarea.remove();
+  if (!copied) throw new Error("Clipboard copy failed");
+}
+
+function messageCopyFallbackText(body) {
+  return String(body?.innerText || body?.textContent || "").replace(/\n{3,}/g, "\n\n").trimEnd();
+}
+
+function messageCopyText(message, body = null) {
+  if (!message) return messageCopyFallbackText(body);
+  if (message.role === "assistant") {
+    const content = message.content === undefined || message.content === null ? "" : textFromContent(message.content);
+    const text = stripTodoProgressLines(content).trimEnd();
+    return text || messageCopyFallbackText(body);
+  }
+  if (message.role === "bashExecution") return stripAnsi([`$ ${message.command || ""}`, message.output || ""].filter(Boolean).join("\n\n")).trimEnd();
+  if (message.role === "compactionSummary") return String(message.summary || "Context was compacted.").trimEnd();
+  if (message.role === "toolResult") {
+    const content = message.content === undefined || message.content === null ? "" : textFromContent(message.content);
+    return stripAnsi(content).trimEnd() || messageCopyFallbackText(body);
+  }
+  if (message.role === "toolExecution") {
+    const tool = normalizeToolExecution(message);
+    const hasArgs = tool.args && Object.keys(tool.args).length > 0;
+    const sections = [`tool: ${tool.name}`];
+    if (hasArgs) sections.push(`arguments:\n${JSON.stringify(tool.args, null, 2)}`);
+    if (tool.text) sections.push(`${tool.isPartial ? "live output" : "output"}:\n${tool.text}`);
+    if (tool.details?.fullOutputPath) sections.push(`full output: ${tool.details.fullOutputPath}`);
+    return sections.join("\n\n").trimEnd() || messageCopyFallbackText(body);
+  }
+  if (message.role === "thinking") return visibleThinkingText(message.thinking || textFromContent(message.content)).trimEnd() || messageCopyFallbackText(body);
+  if (message.role === "toolCall") return toolCallDisplayText(message).trimEnd() || messageCopyFallbackText(body);
+  if (message.role === "assistantEvent") {
+    return (typeof message.content === "string" ? message.content : JSON.stringify(message.content ?? {}, null, 2)).trimEnd();
+  }
+  const content = message.content === undefined || message.content === null ? "" : textFromContent(message.content);
+  return stripAnsi(content).trimEnd() || messageCopyFallbackText(body);
+}
+
+function setMessageCopyButtonState(button, copied) {
+  clearTimeout(button._messageCopyResetTimer);
+  button.classList.toggle("copied", copied);
+  const icon = button.querySelector(".message-copy-icon");
+  if (icon) icon.textContent = copied ? "✓" : "⧉";
+  button.title = copied ? "Copied" : "Copy message";
+  button.setAttribute("aria-label", button.title);
+  if (copied) {
+    button._messageCopyResetTimer = setTimeout(() => setMessageCopyButtonState(button, false), 1400);
+  }
+}
+
+async function copyMessageBubble(button) {
+  const bubble = button.closest(".message");
+  const body = bubble?._copyBody || bubble?.querySelector(":scope > .message-body, :scope > .message-collapse > .message-body");
+  const text = messageCopyText(bubble?._copyMessage, body);
+  if (!text.trim()) {
+    addEvent("message has no text to copy", "warn");
+    return;
+  }
+  button.disabled = true;
+  try {
+    await copyText(text);
+    setMessageCopyButtonState(button, true);
+  } catch (error) {
+    addEvent(`message copy failed: ${error.message || String(error)}`, "warn");
+  } finally {
+    button.disabled = false;
+  }
+}
+
+function attachMessageCopyButton(bubble, message, body) {
+  if (!bubble || !body) return null;
+  bubble._copyMessage = message;
+  bubble._copyBody = body;
+  const existing = bubble.querySelector(":scope > .message-copy-button");
+  if (existing) return existing;
+  const button = make("button", "message-copy-button");
+  button.type = "button";
+  button.append(make("span", "message-copy-icon", "⧉"));
+  setMessageCopyButtonState(button, false);
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    copyMessageBubble(button);
+  });
+  bubble.classList.add("has-copy-action");
+  bubble.append(button);
+  return button;
+}
+
+function userMessageEditText(message) {
+  return textFromContent(message?.content).trim();
+}
+
+function messageEntryId(message) {
+  for (const key of ["entryId", "id", "sessionEntryId", "messageId"]) {
+    const value = message?.[key];
+    if (typeof value === "string" && value.trim()) return value.trim();
+  }
+  return "";
+}
+
+function userMessageOrdinalAtIndex(messageIndex) {
+  if (!Number.isInteger(messageIndex) || messageIndex < 0) return -1;
+  let ordinal = -1;
+  for (let index = 0; index <= messageIndex && index < latestMessages.length; index += 1) {
+    if (latestMessages[index]?.role === "user") ordinal += 1;
+  }
+  return ordinal;
+}
+
+async function resolveForkMessageForEdit(message, messageIndex, tabId = activeTabId) {
+  const directEntryId = messageEntryId(message);
+  const text = userMessageEditText(message);
+  if (directEntryId) return { entryId: directEntryId, text };
+  const response = await api("/api/fork-messages", { tabId });
+  const forkMessages = Array.isArray(response.data?.messages) ? response.data.messages : [];
+  const ordinal = userMessageOrdinalAtIndex(messageIndex);
+  const ordinalMatch = ordinal >= 0 ? forkMessages[ordinal] : null;
+  if (ordinalMatch?.entryId && userMessageEditText({ content: ordinalMatch.text }) === text) return ordinalMatch;
+  const exactMatches = forkMessages.filter((item) => item?.entryId && String(item.text || "").trim() === text);
+  if (exactMatches.length === 1) return exactMatches[0];
+  if (exactMatches.length > 1 && ordinalMatch?.entryId) return ordinalMatch;
+  throw new Error("Could not map this transcript message to a fork point. Use /fork for the full selector.");
+}
+
+function setEditRetryStatus(message = "", level = "info") {
+  if (!elements.editRetryStatus) return;
+  elements.editRetryStatus.textContent = message;
+  elements.editRetryStatus.hidden = !message;
+  elements.editRetryStatus.className = `edit-retry-status ${level} ${message ? "" : "muted"}`.trim();
+}
+
+function setEditRetryBusy(busy, label = "Working…") {
+  for (const button of [elements.editRetryForkButton, elements.editRetrySendButton, elements.editRetryCancelButton].filter(Boolean)) button.disabled = !!busy;
+  if (elements.editRetrySendButton) elements.editRetrySendButton.textContent = busy ? label : "Fork & run";
+  if (elements.editRetryForkButton) elements.editRetryForkButton.textContent = busy ? "Forking…" : "Fork only";
+}
+
+function openEditRetryDialog(message, messageIndex = -1) {
+  const text = userMessageEditText(message);
+  if (!text) {
+    addEvent("user message has no editable text", "warn");
+    return;
+  }
+  activeEditRetry = { message, messageIndex, tabId: activeTabId };
+  if (elements.editRetryMessage) elements.editRetryMessage.textContent = `Fork from user message #${messageIndex >= 0 ? messageIndex + 1 : "?"}, edit it, then run or leave the edited prompt in the composer.`;
+  if (elements.editRetryText) {
+    elements.editRetryText.value = text;
+    elements.editRetryText.style.height = "auto";
+  }
+  setEditRetryStatus();
+  setEditRetryBusy(false);
+  if (!elements.editRetryDialog.open) elements.editRetryDialog.showModal();
+  queueMicrotask(() => {
+    elements.editRetryText?.focus();
+    elements.editRetryText?.select();
+  });
+}
+
+function closeEditRetryDialog() {
+  activeEditRetry = null;
+  if (elements.editRetryDialog?.open) elements.editRetryDialog.close();
+}
+
+async function submitEditRetry({ send = false } = {}) {
+  if (!activeEditRetry) return;
+  const editedText = String(elements.editRetryText?.value || "").trim();
+  if (!editedText) {
+    setEditRetryStatus("Prompt cannot be empty.", "error");
+    elements.editRetryText?.focus();
+    return;
+  }
+  const { message, messageIndex, tabId } = activeEditRetry;
+  const tabContext = activeTabContext(tabId || activeTabId);
+  setEditRetryBusy(true, "Forking…");
+  setEditRetryStatus("Resolving fork point…");
+  try {
+    const forkMessage = await resolveForkMessageForEdit(message, messageIndex, tabContext.tabId);
+    setEditRetryStatus("Forking session…");
+    const result = await api("/api/fork", { method: "POST", body: { entryId: forkMessage.entryId }, tabId: tabContext.tabId });
+    applyResponseTab(result);
+    if (!isCurrentTabContext(tabContext)) return;
+    closeEditRetryDialog();
+    await refreshAll(tabContext);
+    if (!isCurrentTabContext(tabContext)) return;
+    if (send) {
+      addEvent("forked session; sending edited prompt", "info");
+      await sendPrompt("prompt", editedText, { targetTabId: tabContext.tabId, throwOnError: true });
+    } else {
+      elements.promptInput.value = editedText;
+      resizePromptInput();
+      focusPromptInput({ defer: true });
+      addEvent("forked session; edited prompt restored in composer", "info");
+    }
+  } catch (error) {
+    setEditRetryStatus(error.message || String(error), "error");
+    if (send) {
+      elements.promptInput.value = editedText;
+      resizePromptInput();
+    }
+  } finally {
+    setEditRetryBusy(false);
+  }
+}
+
+function attachMessageEditRetryButton(bubble, message, messageIndex, { streaming = false, transient = false } = {}) {
+  if (!bubble || streaming || transient || message?.role !== "user") return null;
+  const text = userMessageEditText(message);
+  if (!text) return null;
+  const existing = bubble.querySelector(":scope > .message-edit-retry-button");
+  if (existing) return existing;
+  const button = make("button", "message-edit-retry-button", "↺");
+  button.type = "button";
+  button.title = "Edit this prompt and retry from here";
+  button.setAttribute("aria-label", button.title);
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    openEditRetryDialog(message, messageIndex);
+  });
+  bubble.classList.add("has-edit-retry-action");
+  bubble.append(button);
+  return button;
+}
+
+function safeHttpUrl(value, base = window.location.href) {
+  const text = String(value || "").trim();
+  if (!text) return "";
+  try {
+    const url = new URL(text, base);
+    return url.protocol === "http:" || url.protocol === "https:" ? url.href : "";
+  } catch {
+    return "";
+  }
+}
+
+function triggerNativeDownload(download) {
+  const url = safeHttpUrl(download?.url);
+  if (!url) return false;
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = String(download.fileName || "");
+  anchor.rel = "noopener";
+  anchor.hidden = true;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  return true;
+}
+
+function isStandalonePwaWindow() {
+  return window.matchMedia?.("(display-mode: standalone)")?.matches === true || window.navigator.standalone === true;
+}
+
+function alternateLoopbackBrowserUrl(value) {
+  const url = safeHttpUrl(value);
+  if (!url) return "";
+  try {
+    const parsed = new URL(url);
+    const hostname = parsed.hostname.toLowerCase();
+    if (hostname === "127.0.0.1" || hostname === "[::1]" || hostname === "::1") parsed.hostname = "localhost";
+    else if (hostname === "localhost") parsed.hostname = "127.0.0.1";
+    else return "";
+    return parsed.href;
+  } catch {
+    return "";
+  }
+}
+
+function nativeDownloadOpenUrl(download, { externalBrowser = false } = {}) {
+  const rawUrl = download?.openUrl || download?.url;
+  const url = safeHttpUrl(rawUrl);
+  if (!url) return "";
+  let openUrl = url;
+  if (!download?.openUrl) {
+    try {
+      const inlineUrl = new URL(url);
+      inlineUrl.searchParams.set("disposition", "inline");
+      openUrl = inlineUrl.href;
+    } catch {
+      openUrl = url;
+    }
+  }
+  return externalBrowser && isStandalonePwaWindow() ? alternateLoopbackBrowserUrl(openUrl) || openUrl : openUrl;
+}
+
+function openNativeDownloadInBrowser(download) {
+  const url = nativeDownloadOpenUrl(download, { externalBrowser: true });
+  if (!url) return false;
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.target = "_blank";
+  anchor.rel = "noopener";
+  anchor.hidden = true;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  return true;
+}
+
+function openNativeExportDownloadPrompt(download) {
+  const url = nativeDownloadOpenUrl(download, { externalBrowser: true });
+  if (!url) return false;
+  const fileName = String(download?.fileName || "session export");
+  openNativeCommandDialog({ title: "/export", message: "Session export is ready." });
+  elements.nativeCommandBody.append(
+    make("p", "native-command-note", `File: ${fileName}`),
+    make("p", "native-command-note muted", "Open it in your browser, or cancel and use the transcript download URL later."),
+  );
+  elements.nativeCommandActions.replaceChildren();
+  addNativeCommandAction("Cancel", closeNativeCommandDialog);
+  addNativeCommandAction("Copy URL", async () => {
+    try {
+      await copyText(url);
+      addEvent("copied export browser URL", "info");
+    } catch (error) {
+      addEvent(`copy export URL failed: ${error.message || String(error)}`, "error");
+    }
+  });
+  addNativeCommandAction("Open in browser", () => {
+    if (openNativeDownloadInBrowser(download)) addEvent(`opened export: ${fileName}`, "info");
+    else addEvent("could not open export URL", "error");
+    closeNativeCommandDialog();
+  }, "primary");
+  return true;
+}
+
+function handleNativeDownloadResponse(download, command) {
+  if (String(command || "").toLowerCase() === "export") return openNativeExportDownloadPrompt(download);
+  return triggerNativeDownload(download);
+}
+
+async function copyServerStartCommand() {
+  const command = serverStartCommandText();
+  try {
+    await copyText(command);
+    addEvent("copied Pi Web UI start command", "info");
+  } catch (error) {
+    addEvent(`copy failed; manually run: ${command}`, "warn");
+  }
+}
+
+async function retryServerConnection() {
+  const button = elements.retryServerConnectionButton;
+  if (button) {
+    button.disabled = true;
+    button.textContent = "Retrying…";
+  }
+  try {
+    await api("/api/health", { scoped: false });
+  } catch (error) {
+    setBackendOffline(true, error);
+    addEvent("Pi Web UI server is still offline", "warn");
+    return;
+  } finally {
+    if (button) {
+      button.disabled = false;
+      button.textContent = "Retry connection";
+    }
+  }
+
+  try {
+    await initializeTabs();
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+  }
+}
+
+function scopedApiPath(path, tabId = activeTabId) {
+  if (!tabId || !path.startsWith("/api/") || path === "/api/tabs" || path.startsWith("/api/tabs?") || path.startsWith("/api/tabs/")) return path;
+  const url = new URL(path, window.location.origin);
+  url.searchParams.set("tab", tabId);
+  return `${url.pathname}${url.search}${url.hash}`;
+}
+
+async function api(path, { method = "GET", body, tabId = activeTabId, scoped = true, signal } = {}) {
+  let response;
+  try {
+    response = await fetch(scoped ? scopedApiPath(path, tabId) : path, {
+      method,
+      headers: body === undefined ? undefined : { "content-type": "application/json" },
+      body: body === undefined ? undefined : JSON.stringify(body),
+      signal,
+    });
+  } catch (error) {
+    const offlineError = error instanceof Error ? error : new Error(String(error));
+    offlineError.backendOffline = true;
+    setBackendOffline(true, offlineError);
+    throw offlineError;
+  }
+  setBackendOffline(false);
+  const data = await response.json().catch(() => ({}));
+  if (!response.ok) {
+    if (response.status === 401 && data.remoteAuthRequired) {
+      const returnPath = `${window.location.pathname}${window.location.search || ""}` || "/";
+      window.location.assign(`/remote-auth?return=${encodeURIComponent(returnPath)}`);
+    }
+    const error = new Error(data.error || data.message || JSON.stringify(data));
+    error.statusCode = response.status;
+    error.data = data;
+    throw error;
+  }
+  return data;
+}
+
+function formatWebuiVersion(version) {
+  const text = String(version || "").trim();
+  if (!text) return "";
+  return text.startsWith("v") ? text : `v${text}`;
+}
+
+function isWebuiDevMetadata(data) {
+  return data?.webuiDev === true || String(data?.webuiMode || "").toLowerCase() === "dev";
+}
+
+function renderWebuiVersion() {
+  const badge = elements.webuiVersionBadge;
+  if (!badge) return;
+  const label = formatWebuiVersion(webuiVersion);
+  badge.hidden = !label;
+  badge.textContent = label;
+  if (label) badge.title = `Pi Web UI ${label}`;
+}
+
+function renderWebuiDevBadge() {
+  const badge = elements.webuiDevBadge;
+  if (!badge) return;
+  badge.hidden = !webuiDevServer;
+  badge.title = "Pi Web UI dev server";
+}
+
+function setWebuiVersion(version) {
+  const text = String(version || "").trim();
+  if (text === webuiVersion) return;
+  webuiVersion = text;
+  renderWebuiVersion();
+}
+
+function setWebuiDevServer(dev) {
+  const next = !!dev;
+  if (next === webuiDevServer) return;
+  webuiDevServer = next;
+  renderWebuiDevBadge();
+}
+
+async function refreshWebuiVersion() {
+  const health = await api("/api/health", { scoped: false });
+  setWebuiVersion(health.webuiVersion);
+  setWebuiDevServer(isWebuiDevMetadata(health));
+}
+
+function packageUpdateText(label, status = {}) {
+  const current = formatWebuiVersion(status.currentVersion || "");
+  const latest = formatWebuiVersion(status.latestVersion || "");
+  if (current && latest) return `${label} ${current} → ${latest}`;
+  if (latest) return `${label} ${latest}`;
+  return label;
+}
+
+function updateNotificationItems(status = latestUpdateStatus) {
+  const items = [];
+  if (status?.pi?.updateAvailable) items.push(packageUpdateText("Pi", status.pi));
+  if (status?.webui?.updateAvailable) items.push(packageUpdateText("Web UI", status.webui));
+  return items;
+}
+
+function updateNotificationDismissKey(status = latestUpdateStatus) {
+  const parts = [status?.pi?.latestVersion, status?.webui?.latestVersion]
+    .map((value) => String(value || "").trim())
+    .filter(Boolean);
+  return parts.length ? parts.join("|") : "";
+}
+
+function storedDismissedUpdateKey() {
+  try {
+    return localStorage.getItem(UPDATE_NOTIFICATION_DISMISS_STORAGE_KEY) || "";
+  } catch {
+    return "";
+  }
+}
+
+function rememberDismissedUpdateKey(key) {
+  if (!key) return;
+  try {
+    localStorage.setItem(UPDATE_NOTIFICATION_DISMISS_STORAGE_KEY, key);
+  } catch {
+    // Ignore private-mode storage failures.
+  }
+}
+
+function hideUpdateNotification({ remember = false } = {}) {
+  const panel = elements.updateNotification;
+  if (!panel) return;
+  clearTimeout(updateNotificationHideTimer);
+  if (remember) rememberDismissedUpdateKey(updateNotificationDismissKey());
+  panel.classList.remove("show");
+  updateNotificationHideTimer = setTimeout(() => {
+    panel.hidden = true;
+  }, 360);
+}
+
+function renderUpdateNotification(status = latestUpdateStatus, { force = false } = {}) {
+  const panel = elements.updateNotification;
+  if (!panel) return;
+  latestUpdateStatus = status || latestUpdateStatus;
+  const items = updateNotificationItems(latestUpdateStatus);
+  const dismissKey = updateNotificationDismissKey(latestUpdateStatus);
+  const shouldShow = !!latestUpdateStatus?.updateAvailable && items.length > 0 && !updateRequestInProgress;
+  if (!shouldShow || (!force && dismissKey && storedDismissedUpdateKey() === dismissKey)) {
+    hideUpdateNotification();
+    return;
+  }
+
+  const canRunUpdate = latestUpdateStatus.canRunUpdate !== false;
+  const hasPiUpdate = !!latestUpdateStatus.pi?.updateAvailable;
+  const hasPackageUpdate = !!latestUpdateStatus.webui?.updateAvailable;
+  if (elements.updateNotificationTitle) elements.updateNotificationTitle.textContent = items.length === 1 ? `${items[0]} available` : "Pi updates available";
+  if (elements.updateNotificationMessage) {
+    let message = "Updates are available. Direct Web UI updates are only enabled from localhost on the host machine.";
+    if (canRunUpdate) {
+      if (hasPiUpdate && hasPackageUpdate) message = "Run pi update for Pi only, or pi update --all to include Web UI/package updates, then restart this Web UI server automatically.";
+      else if (hasPackageUpdate) message = "Run pi update --all to update Web UI/package entries, then restart this Web UI server automatically.";
+      else message = "Run pi update for Pi only, then restart this Web UI server automatically.";
+    }
+    elements.updateNotificationMessage.textContent = message;
+  }
+  const details = [
+    items.join(" · "),
+    latestUpdateStatus.webuiDev && latestUpdateStatus.webui?.updateAvailable ? "The current Web UI is a dev checkout; pi update --all refreshes configured package dependencies when possible." : "",
+    latestUpdateStatus.packages?.note || "",
+  ].filter(Boolean).join(" ");
+  if (elements.updateNotificationDetail) elements.updateNotificationDetail.textContent = details;
+  if (elements.updateNotificationUpdateButton) {
+    elements.updateNotificationUpdateButton.hidden = !canRunUpdate || !hasPiUpdate;
+    elements.updateNotificationUpdateButton.disabled = updateRequestInProgress || latestUpdateStatus.updateInProgress;
+    elements.updateNotificationUpdateButton.textContent = latestUpdateStatus.updateInProgress ? "Updating…" : "Update Pi & restart";
+  }
+  if (elements.updateNotificationUpdateAllButton) {
+    elements.updateNotificationUpdateAllButton.hidden = !canRunUpdate || !hasPackageUpdate;
+    elements.updateNotificationUpdateAllButton.disabled = updateRequestInProgress || latestUpdateStatus.updateInProgress;
+    elements.updateNotificationUpdateAllButton.classList.toggle("primary", !hasPiUpdate);
+    elements.updateNotificationUpdateAllButton.textContent = latestUpdateStatus.updateInProgress ? "Updating…" : "Update all & restart";
+  }
+  clearTimeout(updateNotificationHideTimer);
+  panel.hidden = false;
+  requestAnimationFrame(() => panel.classList.add("show"));
+}
+
+async function refreshUpdateStatus({ force = false, notify = true } = {}) {
+  const path = force ? "/api/update-status?refresh=1" : "/api/update-status";
+  const response = await api(path, { scoped: false });
+  latestUpdateStatus = response.data || null;
+  if (notify) renderUpdateNotification(latestUpdateStatus);
+  return latestUpdateStatus;
+}
+
+function scheduleUpdateStatusRefresh() {
+  clearTimeout(updateStatusRefreshTimer);
+  updateStatusRefreshTimer = setTimeout(() => {
+    updateStatusRefreshTimer = null;
+    refreshUpdateStatus({ force: true }).catch((error) => addEvent(`Pi/Web UI update check failed: ${error.message || String(error)}`, "warn"));
+    scheduleUpdateStatusRefresh();
+  }, UPDATE_STATUS_REFRESH_MS);
+}
+
+function initializeUpdateNotifications() {
+  setTimeout(() => {
+    refreshUpdateStatus().catch((error) => addEvent(`Pi/Web UI update check failed: ${error.message || String(error)}`, "warn"));
+    scheduleUpdateStatusRefresh();
+  }, UPDATE_STATUS_INITIAL_DELAY_MS);
+}
+
+function piUpdateConfirmationText({ all = false } = {}) {
+  const items = updateNotificationItems();
+  const workingWarning = hasWorkingTab() ? "\n\nOne or more Pi tabs look busy or blocked. Finish or abort in-flight work before updating if you need to preserve it." : "";
+  const versionText = items.length ? `\n\nDetected update: ${items.join(" · ")}.` : "";
+  const command = all ? "pi update --all" : "pi update";
+  const scope = all ? "Pi and configured package updates" : "Pi only";
+  return `Run ${scope} now?${versionText}\n\nThis will run \"${command}\" on the Web UI host. After it finishes, Pi Web UI will restart itself. Browser clients will briefly disconnect, and managed Pi tabs/RPC processes will be restarted from saved session state when possible.${workingWarning}`;
+}
+
+async function runPiUpdateAndRestart({ all = false } = {}) {
+  if (updateRequestInProgress) return;
+  if (latestUpdateStatus?.canRunUpdate === false) {
+    addEvent("Pi updates can only be started from localhost on the Web UI host", "warn");
+    renderUpdateNotification(latestUpdateStatus, { force: true });
+    return;
+  }
+  if (!confirm(piUpdateConfirmationText({ all }))) return;
+
+  const updateLabel = all ? "Pi and package updates" : "Pi update";
+  updateRequestInProgress = true;
+  hideUpdateNotification();
+  setServerActionBusy("Updating…");
+  setServerActionStatus(`Running ${updateLabel}. The server will restart after the update completes…`, "warn");
+  setServerRestartOverlay(true, `Running ${updateLabel}. The server will restart after the update completes…`);
+  try {
+    await api(all ? "/api/update?all=1" : "/api/update", { method: "POST", scoped: false });
+    addEvent(`${updateLabel} completed; Pi Web UI server restart requested`, "warn");
+  } catch (error) {
+    if (!error?.backendOffline) {
+      updateRequestInProgress = false;
+      setServerRestartOverlay(false);
+      resetServerActionControls();
+      const message = error.message || String(error);
+      setServerActionStatus(message, "error");
+      addEvent(message, "error");
+      renderUpdateNotification(latestUpdateStatus, { force: true });
+      return;
+    }
+    addEvent("Pi Web UI server connection dropped during update restart request", "warn");
+  }
+
+  setBackendOffline(true, new Error("update requested from side panel"));
+  const restarted = await waitForServerRestart();
+  updateRequestInProgress = false;
+  resetServerActionControls();
+  if (restarted) {
+    hideUpdateNotification({ remember: true });
+    setServerActionStatus("Updated, restarted, and reconnected.", "success");
+    refreshUpdateStatus({ force: true, notify: false }).catch(() => {});
+  } else {
+    setServerRestartOverlay(false);
+    setBackendOffline(true, new Error("update restart reconnect timed out"));
+    setServerActionStatus("Update completed, but the server did not reconnect automatically.", "error");
+    addEvent("Pi Web UI server did not come back online after update request", "error");
+  }
+}
+
+function formatBytes(bytes) {
+  const value = Number(bytes) || 0;
+  if (value < 1024) return `${value} B`;
+  const units = ["KB", "MB", "GB"];
+  let scaled = value / 1024;
+  for (const unit of units) {
+    if (scaled < 1024 || unit === units[units.length - 1]) return `${scaled.toFixed(scaled >= 10 ? 1 : 2)} ${unit}`;
+    scaled /= 1024;
+  }
+  return `${value} B`;
+}
+
+function inferMimeTypeFromName(name = "") {
+  const ext = String(name).split(".").pop()?.toLowerCase() || "";
+  const map = {
+    md: "text/markdown",
+    markdown: "text/markdown",
+    txt: "text/plain",
+    log: "text/plain",
+    csv: "text/csv",
+    json: "application/json",
+    xml: "application/xml",
+    yaml: "application/x-yaml",
+    yml: "application/x-yaml",
+    toml: "application/toml",
+    pdf: "application/pdf",
+    doc: "application/msword",
+    docx: "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    mp3: "audio/mpeg",
+    wav: "audio/wav",
+    m4a: "audio/mp4",
+    mp4: "video/mp4",
+    mov: "video/quicktime",
+    webm: "video/webm",
+  };
+  return map[ext] || "application/octet-stream";
+}
+
+function attachmentKind(mimeType = "", name = "") {
+  const type = String(mimeType || inferMimeTypeFromName(name));
+  if (type.startsWith("image/")) return "image";
+  if (type.startsWith("video/")) return "video";
+  if (type.startsWith("audio/")) return "audio";
+  if (type.startsWith("text/") || /(?:json|xml|pdf|word|excel|powerpoint|document|spreadsheet|presentation|markdown|csv)/i.test(type)) return "doc";
+  return "file";
+}
+
+function attachmentIcon(kind) {
+  return kind === "image" ? "🖼️" : kind === "video" ? "🎞️" : kind === "audio" ? "🎵" : kind === "doc" ? "📄" : "📎";
+}
+
+function normalizeTextAttachmentContent(text) {
+  return String(text || "").replace(/\r\n?/g, "\n");
+}
+
+function textLineCount(text) {
+  const normalized = normalizeTextAttachmentContent(text);
+  return normalized ? normalized.split("\n").length : 0;
+}
+
+function shouldAttachTextInsteadOfComposerInput(text) {
+  const normalized = normalizeTextAttachmentContent(text);
+  return normalized.trim().length > 0 && textLineCount(normalized) > LONG_INPUT_ATTACHMENT_LINE_THRESHOLD;
+}
+
+function longInputAttachmentFileName() {
+  const stamp = new Date().toISOString().replace(/\.\d{3}Z$/, "Z").replace(/:/g, "-");
+  return `webui-input-${stamp}.txt`;
+}
+
+function makeTextAttachmentFile(text, name = longInputAttachmentFileName(), mimeType = LONG_INPUT_ATTACHMENT_MIME_TYPE) {
+  const normalized = normalizeTextAttachmentContent(text);
+  const fileName = String(name || longInputAttachmentFileName());
+  const type = String(mimeType || LONG_INPUT_ATTACHMENT_MIME_TYPE);
+  if (typeof File === "function") return new File([normalized], fileName, { type });
+  const blob = new Blob([normalized], { type });
+  try {
+    blob.name = fileName;
+    blob.lastModified = Date.now();
+  } catch {
+    // Older browsers may expose non-extensible Blob instances; the attachment record still carries the name.
+  }
+  return blob;
+}
+
+function isEditableTextAttachment(attachment) {
+  const name = String(attachment?.name || "");
+  const mimeType = String(attachment?.mimeType || attachment?.file?.type || inferMimeTypeFromName(name)).split(";", 1)[0].trim().toLowerCase();
+  return mimeType.startsWith("text/") || /(?:json|xml|yaml|toml|markdown|csv)/i.test(mimeType) || /\.(?:txt|md|markdown|csv|json|xml|ya?ml|toml|ini|log)$/i.test(name);
+}
+
+function attachmentsForTab(tabId = activeTabId) {
+  return tabId ? tabAttachments.get(tabId) || [] : [];
+}
+
+function ensureAttachmentsForTab(tabId = activeTabId) {
+  if (!tabId) return [];
+  if (!tabAttachments.has(tabId)) tabAttachments.set(tabId, []);
+  return tabAttachments.get(tabId);
+}
+
+function hasComposerPayload() {
+  return !!elements.promptInput.value.trim() || attachmentsForTab().length > 0;
+}
+
+function renderAttachmentTray() {
+  const tray = elements.attachmentTray;
+  if (!tray) return;
+  const attachments = attachmentsForTab();
+  tray.innerHTML = "";
+  tray.hidden = attachments.length === 0;
+  if (attachments.length === 0) return;
+
+  for (const attachment of attachments) {
+    const pill = make("span", "attachment-pill");
+    pill.title = `${attachment.name}\n${attachment.mimeType}\n${formatBytes(attachment.size)}`;
+    const icon = make("span", "attachment-pill-icon", attachmentIcon(attachment.kind));
+    const name = make("span", "attachment-pill-name", attachment.name);
+    const meta = make("span", "attachment-pill-meta", `${attachment.kind} · ${formatBytes(attachment.size)}`);
+    const edit = isEditableTextAttachment(attachment) ? make("button", "attachment-edit-button", "Edit") : null;
+    if (edit) {
+      edit.type = "button";
+      edit.setAttribute("aria-label", `Open and edit ${attachment.name}`);
+      edit.addEventListener("click", () => openTextAttachmentEditor(attachment.id));
+    }
+    const remove = make("button", "attachment-remove-button", "×");
+    remove.type = "button";
+    remove.setAttribute("aria-label", `Remove ${attachment.name}`);
+    remove.addEventListener("click", () => removeAttachment(attachment.id));
+    pill.append(icon, name, meta);
+    if (edit) pill.append(edit);
+    pill.append(remove);
+    tray.append(pill);
+  }
+}
+
+function removeAttachment(id, tabId = activeTabId) {
+  const attachments = attachmentsForTab(tabId);
+  const index = attachments.findIndex((attachment) => attachment.id === id);
+  if (index === -1) return;
+  const [removed] = attachments.splice(index, 1);
+  if (removed?.previewUrl) URL.revokeObjectURL(removed.previewUrl);
+  if (activeTextAttachmentEditor?.tabId === tabId && activeTextAttachmentEditor?.attachmentId === id) closeTextAttachmentEditor();
+  if (attachments.length === 0) tabAttachments.delete(tabId);
+  if (tabId === activeTabId) renderAttachmentTray();
+}
+
+function clearAttachments(tabId = activeTabId) {
+  const attachments = attachmentsForTab(tabId);
+  for (const attachment of attachments) {
+    if (attachment.previewUrl) URL.revokeObjectURL(attachment.previewUrl);
+  }
+  if (activeTextAttachmentEditor?.tabId === tabId) closeTextAttachmentEditor();
+  if (tabId) tabAttachments.delete(tabId);
+  if (tabId === activeTabId) renderAttachmentTray();
+}
+
+function addAttachmentFiles(fileList, source = "picker") {
+  const files = Array.from(fileList || []).filter(Boolean);
+  if (!files.length) return { added: 0, skipped: [] };
+  const attachments = ensureAttachmentsForTab();
+  if (!attachments.length && !activeTabId) return { added: 0, skipped: ["no active tab"] };
+  let totalBytes = attachments.reduce((sum, attachment) => sum + attachment.size, 0);
+  let added = 0;
+  const skipped = [];
+
+  for (const file of files) {
+    const name = file.name || `${source}-attachment`;
+    if (attachments.length >= ATTACHMENT_MAX_FILES) {
+      skipped.push(`${name}: attachment limit is ${ATTACHMENT_MAX_FILES}`);
+      continue;
+    }
+    if (file.size > ATTACHMENT_MAX_FILE_BYTES) {
+      skipped.push(`${name}: larger than ${formatBytes(ATTACHMENT_MAX_FILE_BYTES)}`);
+      continue;
+    }
+    if (totalBytes + file.size > ATTACHMENT_MAX_TOTAL_BYTES) {
+      skipped.push(`${name}: total attachment limit is ${formatBytes(ATTACHMENT_MAX_TOTAL_BYTES)}`);
+      continue;
+    }
+    const mimeType = file.type || inferMimeTypeFromName(name);
+    const kind = attachmentKind(mimeType, name);
+    attachments.push({
+      id: `att-${Date.now()}-${Math.random().toString(36).slice(2)}`,
+      file,
+      name,
+      mimeType,
+      size: file.size || 0,
+      source,
+      kind,
+      previewUrl: kind === "image" ? URL.createObjectURL(file) : undefined,
+    });
+    totalBytes += file.size || 0;
+    added++;
+  }
+
+  renderAttachmentTray();
+  if (added) addEvent(`attached ${added} ${added === 1 ? "file" : "files"} from ${source}`, "info");
+  if (skipped.length) addEvent(`skipped attachments: ${skipped.join("; ")}`, "warn");
+  return { added, skipped };
+}
+
+function attachLongTextAsFile(text, source = "input text") {
+  if (!shouldAttachTextInsteadOfComposerInput(text)) return false;
+  const normalized = normalizeTextAttachmentContent(text);
+  const lineCount = textLineCount(normalized);
+  const result = addAttachmentFiles([makeTextAttachmentFile(normalized)], `${lineCount}-line ${source}`);
+  return result.added > 0;
+}
+
+function moveLongPromptInputToAttachment() {
+  const text = elements.promptInput.value || "";
+  if (!attachLongTextAsFile(text, "input text")) return false;
+  elements.promptInput.value = "";
+  resizePromptInput();
+  hideCommandSuggestions();
+  return true;
+}
+
+function attachmentById(tabId, id) {
+  return attachmentsForTab(tabId).find((attachment) => attachment.id === id) || null;
+}
+
+function closeTextAttachmentEditor() {
+  if (elements.attachmentTextDialog?.open) elements.attachmentTextDialog.close();
+  else activeTextAttachmentEditor = null;
+}
+
+function setAttachmentTextStatus(message = "", level = "muted") {
+  if (!elements.attachmentTextStatus) return;
+  elements.attachmentTextStatus.textContent = message;
+  elements.attachmentTextStatus.className = `attachment-text-status ${level || "muted"}`;
+}
+
+function renderTextAttachmentEditorMeta() {
+  if (!activeTextAttachmentEditor || !elements.attachmentTextMeta) return;
+  const attachment = attachmentById(activeTextAttachmentEditor.tabId, activeTextAttachmentEditor.attachmentId);
+  if (!attachment) {
+    elements.attachmentTextMeta.textContent = "Attachment no longer exists.";
+    return;
+  }
+  const text = elements.attachmentTextEditor?.value || "";
+  const lineCount = textLineCount(text);
+  elements.attachmentTextMeta.textContent = `${attachment.name} · ${attachment.mimeType} · ${formatBytes(attachment.size)} · ${lineCount} ${lineCount === 1 ? "line" : "lines"}`;
+}
+
+function readFileAsText(file) {
+  if (typeof file?.text === "function") return file.text();
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(reader.error || new Error("Failed to read text attachment"));
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.readAsText(file);
+  });
+}
+
+async function openTextAttachmentEditor(attachmentId, tabId = activeTabId) {
+  const attachment = attachmentById(tabId, attachmentId);
+  if (!attachment) return;
+  if (!isEditableTextAttachment(attachment)) {
+    addEvent(`${attachment.name || "attachment"} is not editable text`, "warn");
+    return;
+  }
+
+  activeTextAttachmentEditor = { tabId, attachmentId };
+  if (elements.attachmentTextTitle) elements.attachmentTextTitle.textContent = `Edit ${attachment.name || "text attachment"}`;
+  if (elements.attachmentTextEditor) elements.attachmentTextEditor.value = "";
+  if (elements.attachmentTextSaveButton) elements.attachmentTextSaveButton.disabled = true;
+  renderTextAttachmentEditorMeta();
+  setAttachmentTextStatus("Loading text attachment…", "muted");
+  if (elements.attachmentTextDialog && !elements.attachmentTextDialog.open) elements.attachmentTextDialog.showModal();
+
+  try {
+    const text = await readFileAsText(attachment.file);
+    if (activeTextAttachmentEditor?.tabId !== tabId || activeTextAttachmentEditor?.attachmentId !== attachmentId) return;
+    if (elements.attachmentTextEditor) elements.attachmentTextEditor.value = normalizeTextAttachmentContent(text);
+    if (elements.attachmentTextSaveButton) elements.attachmentTextSaveButton.disabled = false;
+    renderTextAttachmentEditorMeta();
+    setAttachmentTextStatus("Edit the text, then save it back to the attachment.", "muted");
+    queueMicrotask(() => elements.attachmentTextEditor?.focus());
+  } catch (error) {
+    if (elements.attachmentTextSaveButton) elements.attachmentTextSaveButton.disabled = true;
+    setAttachmentTextStatus(`Failed to open text attachment: ${error.message || String(error)}`, "error");
+  }
+}
+
+function totalAttachmentBytesWithReplacement(tabId, attachmentId, nextSize) {
+  return attachmentsForTab(tabId).reduce((sum, attachment) => sum + (attachment.id === attachmentId ? nextSize : attachment.size || 0), 0);
+}
+
+function saveTextAttachmentEdit() {
+  if (!activeTextAttachmentEditor) return;
+  const { tabId, attachmentId } = activeTextAttachmentEditor;
+  const attachment = attachmentById(tabId, attachmentId);
+  if (!attachment) {
+    setAttachmentTextStatus("Attachment no longer exists.", "error");
+    return;
+  }
+
+  const text = elements.attachmentTextEditor?.value || "";
+  const name = attachment.name || longInputAttachmentFileName();
+  const mimeType = attachment.mimeType || inferMimeTypeFromName(name) || LONG_INPUT_ATTACHMENT_MIME_TYPE;
+  const nextFile = makeTextAttachmentFile(text, name, mimeType);
+  if (nextFile.size > ATTACHMENT_MAX_FILE_BYTES) {
+    setAttachmentTextStatus(`Edited file is larger than ${formatBytes(ATTACHMENT_MAX_FILE_BYTES)}.`, "error");
+    return;
+  }
+  if (totalAttachmentBytesWithReplacement(tabId, attachmentId, nextFile.size) > ATTACHMENT_MAX_TOTAL_BYTES) {
+    setAttachmentTextStatus(`Edited attachments exceed ${formatBytes(ATTACHMENT_MAX_TOTAL_BYTES)} total.`, "error");
+    return;
+  }
+
+  if (attachment.previewUrl) URL.revokeObjectURL(attachment.previewUrl);
+  attachment.file = nextFile;
+  attachment.name = name;
+  attachment.mimeType = nextFile.type || mimeType;
+  attachment.size = nextFile.size || 0;
+  attachment.kind = attachmentKind(attachment.mimeType, attachment.name);
+  attachment.previewUrl = undefined;
+  if (tabId === activeTabId) renderAttachmentTray();
+  addEvent(`updated text attachment ${attachment.name} (${formatBytes(attachment.size)})`, "info");
+  closeTextAttachmentEditor();
+}
+
+function clipboardFiles(dataTransfer) {
+  const files = [];
+  const seen = new Set();
+  for (const file of Array.from(dataTransfer?.files || [])) {
+    const key = `${file.name}:${file.size}:${file.type}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      files.push(file);
+    }
+  }
+  for (const item of Array.from(dataTransfer?.items || [])) {
+    if (item.kind !== "file") continue;
+    const file = item.getAsFile?.();
+    if (!file) continue;
+    const key = `${file.name}:${file.size}:${file.type}`;
+    if (!seen.has(key)) {
+      seen.add(key);
+      files.push(file);
+    }
+  }
+  return files;
+}
+
+function handleAttachmentPaste(event) {
+  const files = clipboardFiles(event.clipboardData);
+  if (files.length) {
+    event.preventDefault();
+    addAttachmentFiles(files, "clipboard");
+    return;
+  }
+
+  const text = event.clipboardData?.getData("text/plain") || "";
+  if (!attachLongTextAsFile(text, "clipboard text")) return;
+  event.preventDefault();
+}
+
+function isFileDrag(event) {
+  return Array.from(event.dataTransfer?.types || []).includes("Files");
+}
+
+function handleComposerDragOver(event) {
+  if (!isFileDrag(event)) return;
+  event.preventDefault();
+  elements.composer.classList.add("drag-over");
+}
+
+function handleComposerDragLeave(event) {
+  if (!elements.composer.contains(event.relatedTarget)) elements.composer.classList.remove("drag-over");
+}
+
+function handleComposerDrop(event) {
+  if (!isFileDrag(event)) return;
+  event.preventDefault();
+  elements.composer.classList.remove("drag-over");
+  addAttachmentFiles(event.dataTransfer?.files, "drop");
+}
+
+function readFileAsBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(reader.error || new Error("Failed to read attachment"));
+    reader.onload = () => {
+      const result = String(reader.result || "");
+      const comma = result.indexOf(",");
+      resolve(comma === -1 ? result : result.slice(comma + 1));
+    };
+    reader.readAsDataURL(file);
+  });
+}
+
+function readFileAsDataUrl(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onerror = () => reject(reader.error || new Error("Failed to read background image"));
+    reader.onload = () => resolve(String(reader.result || ""));
+    reader.readAsDataURL(file);
+  });
+}
+
+function sanitizeBackgroundName(name) {
+  const safe = String(name || "custom background").replace(/[\r\n]+/g, " ").replace(/\s+/g, " ").trim().slice(0, 120);
+  return safe || "custom background";
+}
+
+function backgroundMimeType(file) {
+  const declared = String(file?.type || "").split(";", 1)[0].trim().toLowerCase();
+  if (BACKGROUND_IMAGE_MIME_TYPES.has(declared)) return declared;
+  const ext = String(file?.name || "").split(".").pop()?.toLowerCase() || "";
+  const byExt = { png: "image/png", jpg: "image/jpeg", jpeg: "image/jpeg", webp: "image/webp", gif: "image/gif" };
+  return byExt[ext] || declared || "application/octet-stream";
+}
+
+function normalizeCustomBackgroundRecord(value) {
+  if (!value || typeof value !== "object") return null;
+  const dataUrl = String(value.dataUrl || "");
+  const match = dataUrl.match(/^data:(image\/(?:png|jpeg|webp|gif));base64,[A-Za-z0-9+/]+={0,2}$/i);
+  if (!match) return null;
+  return {
+    name: sanitizeBackgroundName(value.name),
+    mimeType: match[1].toLowerCase(),
+    size: Math.max(0, Number(value.size) || 0),
+    dataUrl,
+    updatedAt: Number(value.updatedAt) || Date.now(),
+  };
+}
+
+function dataUrlToBlob(dataUrl) {
+  const match = String(dataUrl || "").match(/^data:(image\/(?:png|jpeg|webp|gif));base64,([A-Za-z0-9+/]+={0,2})$/i);
+  if (!match) throw new Error("Invalid background data URL");
+  const binary = atob(match[2]);
+  const bytes = new Uint8Array(binary.length);
+  for (let index = 0; index < binary.length; index++) bytes[index] = binary.charCodeAt(index);
+  return new Blob([bytes], { type: match[1].toLowerCase() });
+}
+
+function revokeCustomBackgroundObjectUrl() {
+  if (!customBackgroundObjectUrl) return;
+  URL.revokeObjectURL(customBackgroundObjectUrl);
+  customBackgroundObjectUrl = null;
+}
+
+function setCustomBackgroundRecord(background, { objectUrl = null } = {}) {
+  const record = normalizeCustomBackgroundRecord(background);
+  revokeCustomBackgroundObjectUrl();
+  customBackground = record;
+  if (!record) return null;
+  if (objectUrl) customBackgroundObjectUrl = objectUrl;
+  else {
+    try {
+      customBackgroundObjectUrl = URL.createObjectURL(dataUrlToBlob(record.dataUrl));
+    } catch {
+      customBackgroundObjectUrl = null;
+    }
+  }
+  return record;
+}
+
+function idbRequest(request) {
+  return new Promise((resolve, reject) => {
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error || new Error("IndexedDB request failed"));
+  });
+}
+
+function idbTransactionDone(transaction) {
+  return new Promise((resolve, reject) => {
+    transaction.oncomplete = () => resolve();
+    transaction.onerror = () => reject(transaction.error || new Error("IndexedDB transaction failed"));
+    transaction.onabort = () => reject(transaction.error || new Error("IndexedDB transaction aborted"));
+  });
+}
+
+function openCustomBackgroundDb() {
+  return new Promise((resolve, reject) => {
+    const indexedDb = window.indexedDB;
+    if (!indexedDb) {
+      reject(new Error("IndexedDB unavailable"));
+      return;
+    }
+    const request = indexedDb.open(CUSTOM_BACKGROUND_IDB_NAME, 1);
+    request.onupgradeneeded = () => {
+      const db = request.result;
+      if (!db.objectStoreNames.contains(CUSTOM_BACKGROUND_IDB_STORE)) db.createObjectStore(CUSTOM_BACKGROUND_IDB_STORE);
+    };
+    request.onsuccess = () => resolve(request.result);
+    request.onerror = () => reject(request.error || new Error("Failed to open background storage"));
+  });
+}
+
+function customBackgroundThemeKey(themeName = currentThemeName) {
+  return String(themeName || DEFAULT_THEME_NAME).trim() || DEFAULT_THEME_NAME;
+}
+
+async function readCustomBackgroundFromIndexedDb(themeName = currentThemeName) {
+  const db = await openCustomBackgroundDb();
+  try {
+    return await idbRequest(db.transaction(CUSTOM_BACKGROUND_IDB_STORE, "readonly").objectStore(CUSTOM_BACKGROUND_IDB_STORE).get(customBackgroundThemeKey(themeName)));
+  } finally {
+    db.close();
+  }
+}
+
+async function readLegacyCustomBackgroundFromIndexedDb() {
+  const db = await openCustomBackgroundDb();
+  try {
+    return await idbRequest(db.transaction(CUSTOM_BACKGROUND_IDB_STORE, "readonly").objectStore(CUSTOM_BACKGROUND_IDB_STORE).get(CUSTOM_BACKGROUND_LEGACY_ID));
+  } finally {
+    db.close();
+  }
+}
+
+async function writeCustomBackgroundToIndexedDb(background, themeName = currentThemeName) {
+  const db = await openCustomBackgroundDb();
+  try {
+    const transaction = db.transaction(CUSTOM_BACKGROUND_IDB_STORE, "readwrite");
+    transaction.objectStore(CUSTOM_BACKGROUND_IDB_STORE).put(background, customBackgroundThemeKey(themeName));
+    await idbTransactionDone(transaction);
+  } finally {
+    db.close();
+  }
+}
+
+async function deleteCustomBackgroundFromIndexedDb(themeName = currentThemeName) {
+  const db = await openCustomBackgroundDb();
+  try {
+    const transaction = db.transaction(CUSTOM_BACKGROUND_IDB_STORE, "readwrite");
+    transaction.objectStore(CUSTOM_BACKGROUND_IDB_STORE).delete(customBackgroundThemeKey(themeName));
+    await idbTransactionDone(transaction);
+  } finally {
+    db.close();
+  }
+}
+
+async function deleteLegacyCustomBackgroundFromIndexedDb() {
+  const db = await openCustomBackgroundDb();
+  try {
+    const transaction = db.transaction(CUSTOM_BACKGROUND_IDB_STORE, "readwrite");
+    transaction.objectStore(CUSTOM_BACKGROUND_IDB_STORE).delete(CUSTOM_BACKGROUND_LEGACY_ID);
+    await idbTransactionDone(transaction);
+  } finally {
+    db.close();
+  }
+}
+
+function readCustomBackgroundFromLocalStorage(themeName = currentThemeName, { includeLegacy = false } = {}) {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CUSTOM_BACKGROUNDS_STORAGE_KEY) || "{}");
+    const record = parsed && typeof parsed === "object" ? normalizeCustomBackgroundRecord(parsed[customBackgroundThemeKey(themeName)]) : null;
+    if (record) return record;
+  } catch {
+    // Fall through to legacy storage below.
+  }
+  if (!includeLegacy) return null;
+  try {
+    return normalizeCustomBackgroundRecord(JSON.parse(localStorage.getItem(CUSTOM_BACKGROUND_STORAGE_KEY) || "null"));
+  } catch {
+    return null;
+  }
+}
+
+function writeCustomBackgroundToLocalStorage(background, themeName = currentThemeName) {
+  const record = normalizeCustomBackgroundRecord(background);
+  if (!record) throw new Error("Invalid background image data");
+  const key = customBackgroundThemeKey(themeName);
+  const parsed = JSON.parse(localStorage.getItem(CUSTOM_BACKGROUNDS_STORAGE_KEY) || "{}");
+  const backgrounds = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+  backgrounds[key] = record;
+  localStorage.setItem(CUSTOM_BACKGROUNDS_STORAGE_KEY, JSON.stringify(backgrounds));
+}
+
+function removeCustomBackgroundFromLocalStorage(themeName = currentThemeName, { includeLegacy = false } = {}) {
+  const key = customBackgroundThemeKey(themeName);
+  try {
+    const parsed = JSON.parse(localStorage.getItem(CUSTOM_BACKGROUNDS_STORAGE_KEY) || "{}");
+    const backgrounds = parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    delete backgrounds[key];
+    localStorage.setItem(CUSTOM_BACKGROUNDS_STORAGE_KEY, JSON.stringify(backgrounds));
+  } catch {
+    // Ignore fallback cleanup failures.
+  }
+  if (includeLegacy) {
+    try {
+      localStorage.removeItem(CUSTOM_BACKGROUND_STORAGE_KEY);
+    } catch {
+      // Ignore legacy cleanup failures.
+    }
+  }
+}
+
+async function readStoredCustomBackground(themeName = currentThemeName, { includeLegacy = false } = {}) {
+  try {
+    const stored = normalizeCustomBackgroundRecord(await readCustomBackgroundFromIndexedDb(themeName));
+    if (stored) return stored;
+    if (includeLegacy) {
+      const legacy = normalizeCustomBackgroundRecord(await readLegacyCustomBackgroundFromIndexedDb());
+      if (legacy) return legacy;
+    }
+  } catch {
+    // Fall back to localStorage for older browsers or private browsing modes.
+  }
+  return readCustomBackgroundFromLocalStorage(themeName, { includeLegacy });
+}
+
+async function persistCustomBackground(background, themeName = currentThemeName) {
+  const record = normalizeCustomBackgroundRecord(background);
+  if (!record) throw new Error("Invalid background image data");
+  try {
+    await writeCustomBackgroundToIndexedDb(record, themeName);
+    removeCustomBackgroundFromLocalStorage(themeName);
+    return;
+  } catch {
+    // Fall back to localStorage when IndexedDB is unavailable.
+  }
+  writeCustomBackgroundToLocalStorage(record, themeName);
+}
+
+async function clearStoredCustomBackground(themeName = currentThemeName, { includeLegacy = false } = {}) {
+  await Promise.allSettled([
+    deleteCustomBackgroundFromIndexedDb(themeName),
+    includeLegacy ? deleteLegacyCustomBackgroundFromIndexedDb() : Promise.resolve(),
+    Promise.resolve().then(() => removeCustomBackgroundFromLocalStorage(themeName, { includeLegacy })),
+  ]);
+}
+
+function customBackgroundCssImage(background = customBackground) {
+  if (!background?.dataUrl) return null;
+  return `url("${customBackgroundObjectUrl || background.dataUrl}")`;
+}
+
+function renderBackgroundControl() {
+  if (!elements.backgroundStatus) return;
+  const active = !!customBackground?.dataUrl;
+  const themeLabel = displayThemeName(currentThemeName) || currentThemeName || "theme";
+  elements.backgroundStatus.textContent = customBackgroundLoading
+    ? `Loading ${themeLabel} background…`
+    : active
+      ? `${themeLabel}: ${customBackground.name || "background"}`
+      : `${themeLabel}: theme default`;
+  if (elements.backgroundChooseButton) {
+    elements.backgroundChooseButton.disabled = customBackgroundLoading;
+    elements.backgroundChooseButton.textContent = active ? "Change background" : "Add background";
+  }
+  if (elements.backgroundInput) elements.backgroundInput.disabled = customBackgroundLoading;
+  if (elements.backgroundClearButton) {
+    elements.backgroundClearButton.hidden = !active;
+    elements.backgroundClearButton.disabled = customBackgroundLoading;
+  }
+}
+
+function applyCustomBackgroundOverride({ render = true } = {}) {
+  const activeImage = customBackgroundCssImage();
+  document.body.classList.toggle("custom-background-active", !!activeImage);
+  if (activeImage) document.documentElement.style.setProperty("--theme-background-image", activeImage);
+  if (render) renderBackgroundControl();
+}
+
+function reapplyCurrentThemeBackground() {
+  const theme = availableThemes.find((item) => item.name === currentThemeName);
+  if (theme && isOptionalFeatureEnabled("themeBundle")) applyTheme(theme, { persist: false });
+  else {
+    document.documentElement.style.setProperty("--theme-background-image", "none");
+    applyCustomBackgroundOverride();
+  }
+}
+
+async function loadCustomBackgroundForTheme(themeName = currentThemeName, { includeLegacy = false } = {}) {
+  const themeKey = customBackgroundThemeKey(themeName);
+  customBackgroundLoading = true;
+  renderBackgroundControl();
+  try {
+    const background = await readStoredCustomBackground(themeKey, { includeLegacy });
+    if (customBackgroundThemeKey(currentThemeName) !== themeKey) return;
+    setCustomBackgroundRecord(background);
+    if (background && includeLegacy) {
+      persistCustomBackground(background, themeKey).catch(() => {});
+    }
+  } catch (error) {
+    if (customBackgroundThemeKey(currentThemeName) === themeKey) {
+      addEvent(`failed to load ${displayThemeName(themeKey) || themeKey} background: ${error.message || String(error)}`, "warn");
+      setCustomBackgroundRecord(null);
+    }
+  } finally {
+    if (customBackgroundThemeKey(currentThemeName) === themeKey) {
+      customBackgroundLoading = false;
+      applyCustomBackgroundOverride();
+    }
+  }
+}
+
+async function setCustomBackgroundFromFile(file) {
+  if (!file) return;
+  const mimeType = backgroundMimeType(file);
+  if (!BACKGROUND_IMAGE_MIME_TYPES.has(mimeType)) {
+    addEvent("background must be a PNG, JPEG, WebP, or GIF image", "error");
+    return;
+  }
+  if ((file.size || 0) > CUSTOM_BACKGROUND_MAX_FILE_BYTES) {
+    addEvent(`background image is larger than ${formatBytes(CUSTOM_BACKGROUND_MAX_FILE_BYTES)}`, "error");
+    return;
+  }
+
+  const themeName = customBackgroundThemeKey(currentThemeName);
+  customBackgroundLoading = true;
+  renderBackgroundControl();
+  try {
+    const rawDataUrl = await readFileAsDataUrl(file);
+    const dataUrl = rawDataUrl.replace(/^data:;base64,/i, `data:${mimeType};base64,`);
+    const background = normalizeCustomBackgroundRecord({
+      name: file.name,
+      mimeType,
+      size: file.size || 0,
+      dataUrl,
+      updatedAt: Date.now(),
+    });
+    if (!background) throw new Error("Unsupported or invalid background image data");
+    let objectUrl = null;
+    try {
+      objectUrl = URL.createObjectURL(file);
+    } catch {
+      objectUrl = null;
+    }
+    const targetStillActive = customBackgroundThemeKey(currentThemeName) === themeName;
+    if (targetStillActive) {
+      setCustomBackgroundRecord(background, { objectUrl });
+      applyCustomBackgroundOverride({ render: false });
+    } else if (objectUrl) {
+      URL.revokeObjectURL(objectUrl);
+    }
+    try {
+      await persistCustomBackground(background, themeName);
+      addEvent(`custom background saved for ${displayThemeName(themeName) || themeName}: ${background.name}`);
+    } catch (error) {
+      addEvent(`background changed for this page, but persistent save failed: ${error.message || String(error)}`, "warn");
+    }
+  } catch (error) {
+    addEvent(`failed to set background: ${error.message || String(error)}`, "error");
+  } finally {
+    if (customBackgroundThemeKey(currentThemeName) === themeName) {
+      customBackgroundLoading = false;
+      renderBackgroundControl();
+    }
+  }
+}
+
+async function clearCustomBackground() {
+  const themeName = customBackgroundThemeKey(currentThemeName);
+  const hadBackground = !!customBackground?.dataUrl;
+  setCustomBackgroundRecord(null);
+  customBackgroundLoading = true;
+  renderBackgroundControl();
+  await clearStoredCustomBackground(themeName, { includeLegacy: true });
+  customBackgroundLoading = false;
+  reapplyCurrentThemeBackground();
+  renderBackgroundControl();
+  if (hadBackground) addEvent(`custom background removed for ${displayThemeName(themeName) || themeName}`);
+}
+
+async function initializeCustomBackground() {
+  await loadCustomBackgroundForTheme(currentThemeName, { includeLegacy: true });
+}
+
+async function prepareAttachmentsForPrompt(attachments, tabId) {
+  if (!attachments.length) return { images: [], uploadedFiles: [], inlineImageIds: new Set() };
+  const files = [];
+  const images = [];
+  const inlineImageIds = new Set();
+  let inlineImageBytes = 0;
+
+  for (const attachment of attachments) {
+    const data = await readFileAsBase64(attachment.file);
+    files.push({
+      id: attachment.id,
+      name: attachment.name,
+      mimeType: attachment.mimeType,
+      size: attachment.size,
+      data,
+    });
+    if (
+      INLINE_IMAGE_MIME_TYPES.has(attachment.mimeType) &&
+      attachment.size <= ATTACHMENT_INLINE_IMAGE_MAX_BYTES &&
+      inlineImageBytes + attachment.size <= ATTACHMENT_INLINE_IMAGE_TOTAL_MAX_BYTES
+    ) {
+      images.push({ type: "image", data, mimeType: attachment.mimeType });
+      inlineImageIds.add(attachment.id);
+      inlineImageBytes += attachment.size;
+    }
+  }
+
+  const response = await api("/api/attachments", { method: "POST", body: { files }, tabId });
+  return { images, uploadedFiles: response.data?.files || [], inlineImageIds };
+}
+
+function composeMessageWithAttachments(message, uploadedFiles, inlineImageIds) {
+  if (!uploadedFiles.length) return message;
+  const baseMessage = message || "Please inspect the attached file(s).";
+  const lines = uploadedFiles.map((file, index) => {
+    const inlineNote = inlineImageIds.has(file.id) ? "sent inline and saved at" : "saved at";
+    return `- ${index + 1}. ${file.name || "attachment"} (${file.mimeType || "application/octet-stream"}, ${formatBytes(file.size)}): ${inlineNote} ${file.path}`;
+  });
+  return `${baseMessage}\n\nAttached files:\n${lines.join("\n")}`;
+}
+
+function storedThemeName() {
+  try {
+    return localStorage.getItem(THEME_STORAGE_KEY) || DEFAULT_THEME_NAME;
+  } catch {
+    return DEFAULT_THEME_NAME;
+  }
+}
+
+function storeThemeName(name) {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, name);
+  } catch {
+    // Ignore storage failures; theme switching should still work for this page load.
+  }
+}
+
+function loadDisabledOptionalFeatures() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(OPTIONAL_FEATURES_STORAGE_KEY) || "[]");
+    return Array.isArray(parsed) ? parsed.filter((id) => OPTIONAL_FEATURE_BY_ID.has(id)) : [];
+  } catch {
+    return [];
+  }
+}
+
+let disabledOptionalFeatures = new Set(loadDisabledOptionalFeatures());
+
+function storeDisabledOptionalFeatures() {
+  try {
+    localStorage.setItem(OPTIONAL_FEATURES_STORAGE_KEY, JSON.stringify([...disabledOptionalFeatures].sort()));
+  } catch {
+    // Optional feature toggles should still work for this page load.
+  }
+}
+
+function reconcileDisabledOptionalFeaturesFromStorage() {
+  const nextDisabled = new Set(loadDisabledOptionalFeatures());
+  let changed = nextDisabled.size !== disabledOptionalFeatures.size;
+  if (!changed) {
+    for (const featureId of nextDisabled) {
+      if (!disabledOptionalFeatures.has(featureId)) {
+        changed = true;
+        break;
+      }
+    }
+  }
+  if (!changed) return false;
+  disabledOptionalFeatures = nextDisabled;
+  renderOptionalFeatureDependentDisplays();
+  return true;
+}
+
+function isOptionalFeatureDetected(featureId) {
+  return optionalFeatureAvailability[featureId] === true;
+}
+
+function isOptionalFeatureDisabled(featureId) {
+  return disabledOptionalFeatures.has(featureId);
+}
+
+function isOptionalFeatureEnabled(featureId) {
+  return isOptionalFeatureDetected(featureId) && !isOptionalFeatureDisabled(featureId);
+}
+
+function renderOptionalFeatureDependentDisplays() {
+  renderOptionalFeatureControls();
+  renderThemeSelect();
+  renderWidgets();
+  renderStatus();
+  renderCommands();
+  cancelStreamingAssistantTextRender();
+  cancelStreamBubbleHide();
+  streamBubble?.remove();
+  streamBubble = null;
+  streamText = null;
+  streamBubbleVisibleSince = 0;
+  renderAllMessages({ preserveScroll: true, forceRebuild: true });
+  if (streamRawText) renderStreamingAssistantText();
+}
+
+function setOptionalFeatureDisabled(featureId, disabled) {
+  if (!OPTIONAL_FEATURE_BY_ID.has(featureId)) return;
+  if (disabled) disabledOptionalFeatures.add(featureId);
+  else disabledOptionalFeatures.delete(featureId);
+  if (featureId === "remoteWebui") syncRemoteWebuiControlVisibility(false);
+  if (featureId === "gitFooterStatus") {
+    statusEntries.delete(GIT_FOOTER_WEBUI_STATUS_KEY);
+    clearGitFooterWebuiPayloadCache();
+  }
+  if (featureId === "btwCommand") {
+    statusEntries.delete(BTW_WEBUI_STATUS_KEY);
+    widgets.delete(BTW_OUTPUT_WIDGET_KEY);
+    widgets.delete(BTW_FOOTER_WIDGET_KEY);
+    latestBtwWidgetPayload = null;
+    btwWidgetDismissedId = "";
+    btwWidgetComposerOpen = false;
+    btwWidgetInputDraft = "";
+  }
+  if (featureId === "remoteWebui") {
+    statusEntries.delete(REMOTE_WEBUI_CONTROLS_STATUS_KEY);
+    statusEntries.delete("pi-remote-webui");
+    widgets.delete("pi-remote-webui");
+  }
+  storeDisabledOptionalFeatures();
+  renderOptionalFeatureDependentDisplays();
+  const tabContext = activeTabContext();
+  refreshCommands(tabContext).catch((error) => {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+  });
+}
+
+function displayThemeName(name) {
+  return String(name || "")
+    .split(/[-_]+/)
+    .filter(Boolean)
+    .map((part) => part.length <= 3 ? part.toUpperCase() : `${part.slice(0, 1).toUpperCase()}${part.slice(1)}`)
+    .join(" ");
+}
+
+function resolveThemeValue(theme, value, fallback, seen = new Set()) {
+  const raw = String(value || "").trim();
+  if (!raw) return fallback;
+  if (/^(#|rgb\(|rgba\(|hsl\(|hsla\()/i.test(raw)) return raw;
+  if (seen.has(raw)) return fallback;
+  seen.add(raw);
+  return resolveThemeValue(theme, theme?.vars?.[raw] ?? theme?.colors?.[raw], fallback, seen);
+}
+
+function themeColor(theme, key, fallback) {
+  return resolveThemeValue(theme, theme?.colors?.[key] ?? theme?.vars?.[key], fallback);
+}
+
+function themeExportColor(theme, key, fallback) {
+  return resolveThemeValue(theme, theme?.export?.[key], fallback);
+}
+
+const LOCAL_BACKGROUND_IMAGE_PATTERN = /^(?:none|url\(["']?\/(?!\/)[A-Za-z0-9._~!$&'()*+,=:@%\/-]+["']?\))$/i;
+const BACKGROUND_OVERLAY_PATTERN = /^(?:none|linear-gradient\([^;\r\n{}<>]+\))$/i;
+const SAFE_BACKGROUND_TOKEN_PATTERN = /^[A-Za-z0-9%._ -]+$/;
+
+function themeExportCssValue(theme, key, fallback, pattern = /^[^;\r\n{}<>]+$/) {
+  const raw = String(theme?.export?.[key] ?? "").trim();
+  if (!raw) return fallback;
+  return pattern.test(raw) ? raw : fallback;
+}
+
+function hexToRgb(color) {
+  const raw = String(color || "").trim();
+  const match = raw.match(/^#([0-9a-f]{3}|[0-9a-f]{6})$/i);
+  if (!match) return null;
+  const hex = match[1].length === 3 ? match[1].split("").map((ch) => ch + ch).join("") : match[1];
+  return {
+    r: Number.parseInt(hex.slice(0, 2), 16),
+    g: Number.parseInt(hex.slice(2, 4), 16),
+    b: Number.parseInt(hex.slice(4, 6), 16),
+  };
+}
+
+function colorWithAlpha(color, alpha, fallback) {
+  const rgb = hexToRgb(color);
+  if (!rgb) return fallback;
+  return `rgba(${rgb.r}, ${rgb.g}, ${rgb.b}, ${alpha})`;
+}
+
+function rgbTriplet(color, fallback) {
+  const rgb = hexToRgb(color);
+  if (!rgb) return fallback;
+  return `${rgb.r}, ${rgb.g}, ${rgb.b}`;
+}
+
+function cssColorToRgb(color) {
+  const hex = hexToRgb(color);
+  if (hex) return hex;
+  const match = String(color || "").trim().match(/^rgba?\(\s*([\d.]+)\s*,\s*([\d.]+)\s*,\s*([\d.]+)/i);
+  if (!match) return null;
+  const [r, g, b] = match.slice(1, 4).map((value) => Math.min(255, Math.max(0, Number(value))));
+  if (![r, g, b].every(Number.isFinite)) return null;
+  return { r, g, b };
+}
+
+function mixRgb(left, right, amount) {
+  const t = Math.min(1, Math.max(0, amount));
+  return {
+    r: left.r + (right.r - left.r) * t,
+    g: left.g + (right.g - left.g) * t,
+    b: left.b + (right.b - left.b) * t,
+  };
+}
+
+function rgbColor(rgb) {
+  return `rgb(${Math.round(rgb.r)}, ${Math.round(rgb.g)}, ${Math.round(rgb.b)})`;
+}
+
+function rgbaColor(rgb, alpha) {
+  return `rgba(${Math.round(rgb.r)}, ${Math.round(rgb.g)}, ${Math.round(rgb.b)}, ${alpha})`;
+}
+
+function relativeLuminance(color) {
+  const rgb = hexToRgb(color);
+  if (!rgb) return 0;
+  const channel = (value) => {
+    const normalized = value / 255;
+    return normalized <= 0.03928 ? normalized / 12.92 : ((normalized + 0.055) / 1.055) ** 2.4;
+  };
+  return 0.2126 * channel(rgb.r) + 0.7152 * channel(rgb.g) + 0.0722 * channel(rgb.b);
+}
+
+function applyTheme(theme, { persist = false, announce = false } = {}) {
+  if (!theme) return;
+  const root = document.documentElement;
+  const current = getComputedStyle(root);
+  const fallback = (name, value) => current.getPropertyValue(name).trim() || value;
+
+  const accent = themeColor(theme, "accent", fallback("--ctp-blue", "#89b4fa"));
+  const accent2 = themeColor(theme, "borderAccent", themeColor(theme, "accent2", fallback("--ctp-teal", "#94e2d5")));
+  const green = themeColor(theme, "success", fallback("--ctp-green", "#a6e3a1"));
+  const red = themeColor(theme, "error", fallback("--ctp-red", "#f38ba8"));
+  const yellow = themeColor(theme, "warning", fallback("--ctp-yellow", "#f9e2af"));
+  const text = themeColor(theme, "userMessageText", themeColor(theme, "text", fallback("--ctp-text", "#cdd6f4")));
+  const muted = themeColor(theme, "muted", fallback("--ctp-subtext", "#bac2de"));
+  const dim = themeColor(theme, "dim", fallback("--ctp-overlay", "#6c7086"));
+  const borderMuted = themeColor(theme, "borderMuted", dim);
+  const selectedBg = themeColor(theme, "selectedBg", fallback("--ctp-surface", "#313244"));
+  const cardBg = themeExportColor(theme, "cardBg", themeColor(theme, "userMessageBg", fallback("--ctp-base", "#1e1e2e")));
+  const pageBg = themeExportColor(theme, "pageBg", fallback("--ctp-crust", "#11111b"));
+  const infoBg = themeExportColor(theme, "infoBg", themeColor(theme, "customMessageBg", fallback("--ctp-mantle", "#181825")));
+  const pendingBg = themeColor(theme, "toolPendingBg", infoBg);
+  const pink = themeColor(theme, "mdHeading", themeColor(theme, "customMessageLabel", fallback("--ctp-pink", "#f5c2e7")));
+  const mauve = themeColor(theme, "customMessageLabel", themeColor(theme, "thinkingHigh", fallback("--ctp-mauve", "#cba6f7")));
+  const peach = themeColor(theme, "syntaxNumber", yellow);
+  const sky = themeColor(theme, "mdListBullet", accent2);
+  const sapphire = themeColor(theme, "thinkingLow", accent);
+  const lavender = themeColor(theme, "thinkingHigh", mauve);
+  const isLight = relativeLuminance(pageBg) > 0.62;
+  const panelAlpha = isLight ? 0.86 : 0.72;
+  const panel2Alpha = isLight ? 0.90 : 0.78;
+  const panel3Alpha = isLight ? 0.94 : 0.92;
+  const borderAlpha = isLight ? 0.34 : 0.22;
+
+  const vars = {
+    "--theme-color-scheme": isLight ? "light" : "dark",
+    "--ctp-rosewater": themeColor(theme, "customMessageText", text),
+    "--ctp-flamingo": pink,
+    "--ctp-pink": pink,
+    "--ctp-mauve": mauve,
+    "--ctp-red": red,
+    "--ctp-maroon": themeColor(theme, "toolDiffRemoved", red),
+    "--ctp-peach": peach,
+    "--ctp-yellow": yellow,
+    "--ctp-green": green,
+    "--ctp-teal": accent2,
+    "--ctp-sky": sky,
+    "--ctp-sapphire": sapphire,
+    "--ctp-blue": accent,
+    "--ctp-lavender": lavender,
+    "--ctp-text": text,
+    "--ctp-subtext": muted,
+    "--ctp-overlay": borderMuted,
+    "--ctp-surface": selectedBg,
+    "--ctp-base": cardBg,
+    "--ctp-mantle": pendingBg,
+    "--ctp-crust": pageBg,
+    "--ctp-text-rgb": rgbTriplet(text, "205, 214, 244"),
+    "--ctp-subtext-rgb": rgbTriplet(muted, "186, 194, 222"),
+    "--ctp-overlay-rgb": rgbTriplet(borderMuted, "108, 112, 134"),
+    "--ctp-surface-rgb": rgbTriplet(selectedBg, "49, 50, 68"),
+    "--ctp-base-rgb": rgbTriplet(cardBg, "30, 30, 46"),
+    "--ctp-mantle-rgb": rgbTriplet(pendingBg, "24, 24, 37"),
+    "--ctp-crust-rgb": rgbTriplet(pageBg, "17, 17, 27"),
+    "--bg": pageBg,
+    "--panel": colorWithAlpha(cardBg, panelAlpha, cardBg),
+    "--panel-2": colorWithAlpha(selectedBg, panel2Alpha, selectedBg),
+    "--panel-3": colorWithAlpha(pendingBg, panel3Alpha, pendingBg),
+    "--text": text,
+    "--muted": muted,
+    "--border": colorWithAlpha(lavender, borderAlpha, lavender),
+    "--accent": mauve,
+    "--accent-2": accent2,
+    "--accent-3": pink,
+    "--danger": red,
+    "--warning": yellow,
+    "--ok": green,
+    "--shadow": colorWithAlpha(isLight ? borderMuted : pageBg, isLight ? 0.24 : 0.78, isLight ? "rgba(108, 111, 133, 0.24)" : "rgba(17, 17, 27, 0.78)"),
+    "--glow-mauve": colorWithAlpha(mauve, isLight ? 0.24 : 0.42, mauve),
+    "--glow-blue": colorWithAlpha(accent, isLight ? 0.22 : 0.36, accent),
+    "--glow-pink": colorWithAlpha(pink, isLight ? 0.22 : 0.34, pink),
+    "--glow-teal": colorWithAlpha(accent2, isLight ? 0.20 : 0.26, accent2),
+    "--panel-gradient": `linear-gradient(145deg, ${colorWithAlpha(selectedBg, panel2Alpha, selectedBg)}, ${colorWithAlpha(pendingBg, panel3Alpha, pendingBg)} 52%, ${colorWithAlpha(pageBg, isLight ? 0.92 : 0.9, pageBg)})`,
+    "--neon-gradient": `linear-gradient(120deg, ${pink}, ${mauve} 32%, ${accent} 66%, ${accent2})`,
+    "--context-card-gradient": `linear-gradient(100deg, ${colorWithAlpha(green, isLight ? 0.48 : 0.62, green)} 0%, ${colorWithAlpha(yellow, isLight ? 0.50 : 0.66, yellow)} 36%, ${colorWithAlpha(accent, isLight ? 0.50 : 0.64, accent)} 62%, ${colorWithAlpha(red, isLight ? 0.62 : 0.78, red)} 100%)`,
+    "--background-glow-pink": colorWithAlpha(pink, isLight ? 0.16 : 0.34, pink),
+    "--background-glow-blue": colorWithAlpha(accent, isLight ? 0.15 : 0.32, accent),
+    "--background-glow-teal": colorWithAlpha(accent2, isLight ? 0.12 : 0.20, accent2),
+    "--theme-background-image": themeExportCssValue(theme, "backgroundImage", "none", LOCAL_BACKGROUND_IMAGE_PATTERN),
+    "--theme-background-overlay": themeExportCssValue(theme, "backgroundOverlay", "linear-gradient(180deg, rgba(17, 17, 27, 0), rgba(17, 17, 27, 0))", BACKGROUND_OVERLAY_PATTERN),
+    "--theme-background-size": themeExportCssValue(theme, "backgroundSize", "cover", SAFE_BACKGROUND_TOKEN_PATTERN),
+    "--theme-background-position": themeExportCssValue(theme, "backgroundPosition", "center", SAFE_BACKGROUND_TOKEN_PATTERN),
+    "--theme-background-repeat": themeExportCssValue(theme, "backgroundRepeat", "no-repeat", SAFE_BACKGROUND_TOKEN_PATTERN),
+  };
+
+  for (const [name, value] of Object.entries(vars)) root.style.setProperty(name, value);
+  applyCustomBackgroundOverride({ render: false });
+  root.style.colorScheme = isLight ? "light" : "dark";
+  document.body.classList.toggle("theme-light", isLight);
+  document.body.classList.toggle("theme-dark", !isLight);
+  document.querySelector('meta[name="theme-color"]')?.setAttribute("content", pageBg);
+  currentThemeName = theme.name;
+  if (elements.themeSelect && elements.themeSelect.value !== theme.name) elements.themeSelect.value = theme.name;
+  if (persist) storeThemeName(theme.name);
+  if (announce) addEvent(`theme changed to ${theme.label || displayThemeName(theme.name) || theme.name}`);
+}
+
+function themeDisplayLabel(theme) {
+  return theme?.label || displayThemeName(theme?.name) || theme?.name || "";
+}
+
+function themeSearchText(theme) {
+  return [themeDisplayLabel(theme), theme?.name, theme?.author].filter(Boolean).join(" ");
+}
+
+function renderThemeSearchResults(themes = []) {
+  if (!elements.themeSearchResults) return;
+  elements.themeSearchResults.replaceChildren();
+  if (elements.themeSearchInput?.hidden) return;
+  if (!themes.length) {
+    elements.themeSearchResults.append(make("div", "model-search-empty", "No themes match the search"));
+    elements.themeSearchResults.hidden = false;
+    return;
+  }
+  for (const theme of themes) {
+    const selected = theme.name === currentThemeName;
+    const button = make("button", `model-search-result theme-search-result${selected ? " active" : ""}`);
+    button.type = "button";
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", String(selected));
+    button.title = themeSearchText(theme);
+    button.append(make("span", "model-search-result-main", themeDisplayLabel(theme)));
+    button.addEventListener("click", () => {
+      if (elements.themeSelect) elements.themeSelect.value = theme.name;
+      setThemeByName(theme.name, { persist: true, announce: true }).catch((error) => addEvent(error.message || String(error), "error"));
+    });
+    elements.themeSearchResults.append(button);
+  }
+  elements.themeSearchResults.hidden = false;
+}
+
+function populateThemeSelect(themes = availableThemes, query = "") {
+  if (!elements.themeSelect) return [];
+  const normalizedQuery = String(query || "").trim().toLowerCase();
+  const matchingThemes = themes.filter((theme) => !normalizedQuery || themeSearchText(theme).toLowerCase().includes(normalizedQuery));
+  renderThemeSearchResults(matchingThemes);
+  return matchingThemes;
+}
+
+function showThemeSearchInput({ focus = true } = {}) {
+  if (!elements.themeSearchInput) return;
+  elements.themeSearchInput.hidden = false;
+  elements.themeSearchResults.hidden = false;
+  elements.themeSelect.classList.add("model-select-expanded");
+  populateThemeSelect(availableThemes, elements.themeSearchInput.value);
+  if (focus) {
+    requestAnimationFrame(() => {
+      elements.themeSearchInput.focus();
+      elements.themeSearchInput.select();
+    });
+  }
+}
+
+function hideThemeSearchInput() {
+  if (!elements.themeSearchInput) return;
+  elements.themeSearchInput.hidden = true;
+  elements.themeSearchInput.value = "";
+  if (elements.themeSearchResults) {
+    elements.themeSearchResults.hidden = true;
+    elements.themeSearchResults.replaceChildren();
+  }
+  elements.themeSelect?.classList.remove("model-select-expanded");
+  scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function toggleThemeSearchInput() {
+  if (elements.themeSearchInput?.hidden) showThemeSearchInput();
+  else hideThemeSearchInput();
+}
+
+function renderThemeSelect({ unavailableLabel = "Theme bundle unavailable" } = {}) {
+  if (!elements.themeSelect) return;
+  elements.themeSelect.replaceChildren();
+  if (isOptionalFeatureDisabled("themeBundle")) {
+    const option = make("option", undefined, "Theme feature disabled");
+    option.value = "";
+    elements.themeSelect.append(option);
+    elements.themeSelect.disabled = true;
+    return;
+  }
+  if (!availableThemes.length) {
+    const option = make("option", undefined, unavailableLabel);
+    option.value = "";
+    elements.themeSelect.append(option);
+    elements.themeSelect.disabled = true;
+    return;
+  }
+  elements.themeSelect.disabled = false;
+  for (const theme of availableThemes) {
+    const option = make("option", undefined, theme.label || displayThemeName(theme.name) || theme.name);
+    option.value = theme.name;
+    elements.themeSelect.append(option);
+  }
+  elements.themeSelect.value = currentThemeName;
+  populateThemeSelect(availableThemes, elements.themeSearchInput?.value || "");
+}
+
+async function setThemeByName(name, options = {}) {
+  if (!isOptionalFeatureEnabled("themeBundle")) return;
+  const theme = availableThemes.find((item) => item.name === name);
+  if (!theme) return;
+  currentThemeName = theme.name;
+  if (elements.themeSelect && elements.themeSelect.value !== theme.name) elements.themeSelect.value = theme.name;
+  populateThemeSelect(availableThemes, elements.themeSearchInput?.value || "");
+  setCustomBackgroundRecord(null);
+  customBackgroundLoading = true;
+  applyTheme(theme, options);
+  renderBackgroundControl();
+  await loadCustomBackgroundForTheme(theme.name, { includeLegacy: !!options.includeLegacy });
+}
+
+async function initializeThemes() {
+  let response;
+  try {
+    response = await api("/api/themes", { scoped: false });
+  } catch (error) {
+    availableThemes = [];
+    optionalFeatureAvailability.themeBundle = false;
+    renderOptionalFeatureControls();
+    const label = error.statusCode === 404 ? "Restart Web UI to load themes" : "Theme bundle unavailable";
+    renderThemeSelect({ unavailableLabel: label });
+    throw error;
+  }
+  availableThemes = Array.isArray(response.data?.themes) ? response.data.themes : [];
+  optionalFeatureAvailability.themeBundle = availableThemes.length > 0;
+  renderOptionalFeatureControls();
+  const stored = storedThemeName();
+  currentThemeName = availableThemes.some((theme) => theme.name === stored) ? stored : DEFAULT_THEME_NAME;
+  renderThemeSelect();
+  await setThemeByName(currentThemeName, { persist: false, includeLegacy: true });
+  if (isOptionalFeatureEnabled("themeBundle") && !availableThemes.some((theme) => theme.name === currentThemeName) && availableThemes[0]) await setThemeByName(availableThemes[0].name, { persist: false });
+  if (!availableThemes.length) addEvent("theme bundle unavailable; using built-in default theme", "warn");
+}
+
+function activeTab() {
+  return tabs.find((tab) => tab.id === activeTabId) || null;
+}
+
+function activeTabContext(tabId = activeTabId) {
+  return { tabId: tabId || null, generation: activeTabGeneration };
+}
+
+function setActiveTabId(tabId, { remember = false } = {}) {
+  const nextTabId = tabId || null;
+  if (nextTabId !== activeTabId) activeTabGeneration += 1;
+  activeTabId = nextTabId;
+  bindGitWorkflowToActiveTab();
+  if (remember) rememberActiveTab();
+  return activeTabContext(nextTabId);
+}
+
+function isCurrentTabContext(context) {
+  return !!context && context.tabId === activeTabId && context.generation === activeTabGeneration;
+}
+
+function eventTargetsActiveTab(event) {
+  return !event?.tabId || event.tabId === activeTabId;
+}
+
+function normalizeTabActivity(activity = {}) {
+  const status = activity.status === "working" || activity.isWorking ? "working" : activity.status === "done" ? "done" : "idle";
+  const completionSerial = Number(activity.completionSerial);
+  return {
+    ...activity,
+    status,
+    isWorking: status === "working",
+    completionSerial: Number.isFinite(completionSerial) ? completionSerial : 0,
+  };
+}
+
+function normalizePendingExtensionUiRequestCount(value) {
+  const count = Number(value);
+  return Number.isFinite(count) && count > 0 ? Math.floor(count) : 0;
+}
+
+function tabPendingBlockerCount(tab) {
+  return normalizePendingExtensionUiRequestCount(tab?.pendingExtensionUiRequestCount);
+}
+
+function setTabPendingBlockerCount(tabId, count) {
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return false;
+  const previous = tabPendingBlockerCount(tab);
+  const next = normalizePendingExtensionUiRequestCount(count);
+  if (previous === next) return false;
+  tab.pendingExtensionUiRequestCount = next;
+  if (next === 0) clearBlockedTabNotificationKeys(tabId);
+  return true;
+}
+
+function decrementTabPendingBlockerCount(tabId) {
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return false;
+  return setTabPendingBlockerCount(tabId, Math.max(0, tabPendingBlockerCount(tab) - 1));
+}
+
+function tabActivityStateChanged(previous, next) {
+  return !previous || previous.status !== next.status || previous.isWorking !== next.isWorking || previous.completionSerial !== next.completionSerial;
+}
+
+function setTabActivity(tabId, activity = {}) {
+  if (!tabId) return null;
+  const previous = tabActivities.get(tabId);
+  const normalized = normalizeTabActivity(activity);
+  tabActivities.set(tabId, normalized);
+  if (!tabSeenCompletionSerials.has(tabId) || (previous && normalized.completionSerial < previous.completionSerial)) {
+    tabSeenCompletionSerials.set(tabId, normalized.completionSerial);
+  }
+  return normalized;
+}
+
+function syncTabMetadata(nextTabs = []) {
+  const liveIds = new Set();
+  for (const tab of nextTabs) {
+    if (!tab?.id) continue;
+    liveIds.add(tab.id);
+    setTabActivity(tab.id, tab.activity);
+    if (Object.prototype.hasOwnProperty.call(tab, "appRunner")) setAppRunnerData(tab.id, { activeRun: tab.appRunner });
+  }
+  for (const tabId of tabActivities.keys()) {
+    if (!liveIds.has(tabId)) {
+      tabActivities.delete(tabId);
+      tabSeenCompletionSerials.delete(tabId);
+      autoRetryingTabs.delete(tabId);
+      suppressPendingAgentDoneNotificationsForTab(tabId, { markSeen: false });
+      actionFeedbackByTab.delete(tabId);
+      skillUsageByTab.delete(tabId);
+      tabMessagesCache.delete(tabId);
+      widgetsByTab.delete(tabId);
+      appRunnerDataByTab.delete(tabId);
+      clearGitWorkflowForTab(tabId);
+    }
+  }
+  for (const tabId of tabMessagesCache.keys()) {
+    if (!liveIds.has(tabId)) tabMessagesCache.delete(tabId);
+  }
+  pruneSkillUsageForKnownTabs(liveIds);
+}
+
+function applyTabMetadata(tab) {
+  if (!tab?.id) return false;
+  const index = tabs.findIndex((item) => item.id === tab.id);
+  if (index === -1) tabs.push(tab);
+  else tabs[index] = { ...tabs[index], ...tab };
+  if (tab.activity) setTabActivity(tab.id, tab.activity);
+  renderTabs();
+  return true;
+}
+
+function applyResponseTab(response) {
+  return applyTabMetadata(response?.tab || response?.data?.tab);
+}
+
+function activityForTab(tab) {
+  if (!tab?.id) return normalizeTabActivity();
+  return tabActivities.get(tab.id) || setTabActivity(tab.id, tab.activity) || normalizeTabActivity();
+}
+
+function tabIndicator(tab) {
+  const activity = activityForTab(tab);
+  const pendingBlockerCount = tabPendingBlockerCount(tab);
+  if (tab?.running && pendingBlockerCount > 0) {
+    return {
+      state: "blocked",
+      label: pendingBlockerCount === 1 ? "Blocked waiting for response" : `Blocked waiting on ${pendingBlockerCount} responses`,
+      meta: pendingBlockerCount === 1 ? "blocked" : `blocked · ${pendingBlockerCount}`,
+      glyph: "!",
+    };
+  }
+  if (tab?.running && activity.isWorking) {
+    return { state: "working", label: "Working", meta: "working", glyph: "●" };
+  }
+  const seenSerial = tabSeenCompletionSerials.get(tab?.id) ?? activity.completionSerial;
+  if (tab?.running && activity.completionSerial > seenSerial) {
+    return { state: "done", label: "Work done", meta: "done", glyph: "◆" };
+  }
+  return { state: "idle", label: tab?.running ? "Idle" : "Stopped", meta: tab?.running ? "idle" : "stopped", glyph: "○" };
+}
+
+function hasWorkingTab() {
+  return tabs.some((tab) => ["working", "blocked"].includes(tabIndicator(tab).state) || tabAppRunnerRunningRun(tab));
+}
+
+function scheduleRefreshTabs(delay = 1500) {
+  clearTimeout(refreshTabsTimer);
+  refreshTabsTimer = setTimeout(() => {
+    refreshTabsTimer = null;
+    if (openTerminalTabGroupKey) {
+      scheduleRefreshTabs(600);
+      return;
+    }
+    refreshTabs().catch((error) => addEvent(error.message, "error"));
+  }, delay);
+}
+
+function syncTabPolling() {
+  if (hasWorkingTab()) {
+    if (!refreshTabsTimer) scheduleRefreshTabs();
+  } else {
+    clearTimeout(refreshTabsTimer);
+    refreshTabsTimer = null;
+  }
+}
+
+function markTabWorkingLocally(tabId = activeTabId) {
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return false;
+  const previous = activityForTab(tab);
+  const next = normalizeTabActivity({ ...previous, status: "working", isWorking: true });
+  tabActivities.set(tabId, next);
+  if (tabActivityStateChanged(previous, next)) scheduleTabsRender();
+  return true;
+}
+
+function markTabIdleLocally(tabId = activeTabId) {
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return false;
+  const previous = activityForTab(tab);
+  const next = normalizeTabActivity({ ...previous, status: "idle", isWorking: false });
+  tabActivities.set(tabId, next);
+  if (tabActivityStateChanged(previous, next)) scheduleTabsRender();
+  return true;
+}
+
+function markTabDoneLocally(tabId = activeTabId) {
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return false;
+  const previous = activityForTab(tab);
+  const next = normalizeTabActivity({
+    ...previous,
+    status: "done",
+    isWorking: false,
+    completionSerial: (Number(previous.completionSerial) || 0) + 1,
+    lastCompletedAt: new Date().toISOString(),
+  });
+  tabActivities.set(tabId, next);
+  if (tabActivityStateChanged(previous, next)) scheduleTabsRender();
+  return true;
+}
+
+function tabActivityRecentlyStarted(activity, nowMs = Date.now()) {
+  const startedMs = Date.parse(activity?.lastStartedAt || activity?.lastChangedAt || "");
+  return Number.isFinite(startedMs) && nowMs - startedMs < TAB_ACTIVITY_IDLE_RECONCILE_GRACE_MS;
+}
+
+function stateHasVisibleWork(state) {
+  return !!state?.isStreaming || !!state?.isCompacting || Number(state?.pendingMessageCount || 0) > 0;
+}
+
+function syncActiveTabActivityFromState(state = currentState) {
+  const tab = activeTab();
+  if (!tab || !state || typeof state !== "object") return false;
+  const activity = activityForTab(tab);
+  if (tabPendingBlockerCount(tab) > 0) {
+    if (!activity.isWorking) return markTabWorkingLocally(tab.id);
+    return false;
+  }
+  if (stateHasVisibleWork(state)) {
+    if (!activity.isWorking) return markTabWorkingLocally(tab.id);
+    return false;
+  }
+  if (activity.isWorking && !tabActivityRecentlyStarted(activity)) return markTabDoneLocally(tab.id);
+  return false;
+}
+
+function markTabOutputSeen(tabId = activeTabId, { force = false } = {}) {
+  if (!tabId) return false;
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return false;
+  const activity = activityForTab(tab);
+  if (activity.isWorking) return false;
+  if (!force && tabId === activeTabId && !(autoFollowChat || isChatNearBottom())) return false;
+  const completionSerial = activity.completionSerial || 0;
+  const previousSerial = tabSeenCompletionSerials.get(tabId) ?? 0;
+  if (previousSerial >= completionSerial) return false;
+  tabSeenCompletionSerials.set(tabId, completionSerial);
+  scheduleTabsRender();
+  return true;
+}
+
+function ingestEventTabActivity(event) {
+  if (!event?.tabId) return;
+  const tab = tabs.find((item) => item.id === event.tabId);
+  let changed = false;
+  if (tab && event.tabTitle && tab.title !== event.tabTitle) {
+    tab.title = event.tabTitle;
+    changed = true;
+  }
+  if (Object.prototype.hasOwnProperty.call(event, "pendingExtensionUiRequestCount")) {
+    changed = setTabPendingBlockerCount(event.tabId, event.pendingExtensionUiRequestCount) || changed;
+  }
+  if (event.tabActivity) {
+    const previous = tabActivities.get(event.tabId);
+    const next = setTabActivity(event.tabId, event.tabActivity);
+    changed = tabActivityStateChanged(previous, next) || changed;
+  }
+  if (changed) scheduleTabsRender();
+}
+
+function eventHasTabActivityPayload(event) {
+  return !!(
+    event?.tabId &&
+    (event.tabTitle || event.tabActivity || Object.prototype.hasOwnProperty.call(event, "pendingExtensionUiRequestCount"))
+  );
+}
+
+function trackAutoRetryStateFromEvent(event) {
+  const tabId = event?.tabId || activeTabId;
+  if (!tabId) return;
+  if (event.type === "auto_retry_start") {
+    autoRetryingTabs.add(tabId);
+    suppressPendingAgentDoneNotificationsForTab(tabId);
+    markTabWorkingLocally(tabId);
+  } else if (event.type === "auto_retry_end") {
+    autoRetryingTabs.delete(tabId);
+  }
+}
+
+function rememberActiveTab() {
+  try {
+    if (activeTabId) localStorage.setItem(TAB_STORAGE_KEY, activeTabId);
+  } catch {
+    // Ignore storage failures; tabs still work for this page load.
+  }
+}
+
+function restoreStoredTabId() {
+  try {
+    return localStorage.getItem(TAB_STORAGE_KEY) || null;
+  } catch {
+    return null;
+  }
+}
+
+function requestedTabIdFromUrl() {
+  try {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("tab") || params.get("tabId") || null;
+  } catch {
+    return null;
+  }
+}
+
+function updateDocumentTitle() {
+  const tab = activeTab();
+  document.title = tab ? `Pi Web UI · ${tab.title}` : "Pi Web UI";
+}
+
+function saveActiveDraft() {
+  if (activeTabId) tabDrafts.set(activeTabId, elements.promptInput.value || "");
+}
+
+function restoreActiveDraft() {
+  resetPromptHistoryNavigation();
+  elements.promptInput.value = activeTabId ? tabDrafts.get(activeTabId) || "" : "";
+  resizePromptInput();
+  renderCommandSuggestions();
+  renderAttachmentTray();
+}
+
+function focusPromptInput({ defer = false } = {}) {
+  const focus = () => {
+    if (!elements.promptInput || elements.dialog.open || elements.pathPickerDialog.open || elements.gitChangesDialog?.open || elements.commandPaletteDialog?.open || elements.editRetryDialog?.open || elements.nativeCommandDialog.open || elements.remoteQrDialog?.open || elements.appRunnerInfoDialog?.open || elements.promptListDialog?.open || elements.attachmentTextDialog?.open || elements.skillEditorDialog?.open || document.visibilityState === "hidden") return;
+    try {
+      elements.promptInput.focus({ preventScroll: true });
+    } catch {
+      elements.promptInput.focus();
+    }
+    syncMobileChatToBottomForInput();
+    setTimeout(updateVisualViewportVars, 0);
+  };
+  if (defer) requestAnimationFrame(focus);
+  else focus();
+}
+
+function clearRefreshTimers() {
+  clearTimeout(refreshMessagesTimer);
+  clearTimeout(refreshStateTimer);
+  clearTimeout(refreshFooterTimer);
+  refreshMessagesTimer = null;
+  refreshStateTimer = null;
+  refreshFooterTimer = null;
+}
+
+function cancelPendingDialogs() {
+  const pending = activeDialog ? [activeDialog] : [];
+  pending.push(...dialogQueue.splice(0));
+  for (const request of pending) {
+    if (!request?.id || !EXTENSION_UI_BLOCKING_METHODS.has(request.method)) continue;
+    api("/api/extension-ui-response", {
+      method: "POST",
+      body: { type: "extension_ui_response", id: request.id, cancelled: true },
+      tabId: request.tabId || activeTabId,
+    }).catch((error) => console.warn("failed to cancel stale extension dialog", error));
+  }
+  activeDialog = null;
+  if (elements.dialog.open) elements.dialog.close();
+}
+
+function widgetCacheForTab(tabId = activeTabId, { create = true } = {}) {
+  if (!tabId) return null;
+  let cache = widgetsByTab.get(tabId);
+  if (!cache && create) {
+    cache = new Map();
+    widgetsByTab.set(tabId, cache);
+  }
+  return cache || null;
+}
+
+function cacheWidgetsForTab(tabId = activeTabId) {
+  if (!tabId) return;
+  if (widgets.size === 0) {
+    widgetsByTab.delete(tabId);
+    return;
+  }
+  widgetsByTab.set(tabId, new Map(widgets));
+}
+
+function restoreWidgetsForActiveTab() {
+  widgets.clear();
+  const cache = widgetCacheForTab(activeTabId, { create: false });
+  if (!cache) return;
+  for (const [key, value] of cache) widgets.set(key, value);
+}
+
+function todoProgressSignatureFromLines(lines = []) {
+  const parsed = parseTodoProgressWidget(lines);
+  if (!parsed) return JSON.stringify(lines.map(stripAnsi));
+  return JSON.stringify({ goal: parsed.goal, done: parsed.done, total: parsed.total, partial: parsed.partial, items: parsed.items, footer: parsed.footer });
+}
+
+function rememberTodoProgressGoalForTab(tabId, widgetKey, request) {
+  if (widgetKey !== "todo-progress" || !tabId) return;
+  if (!Array.isArray(request?.widgetLines)) {
+    todoProgressGoalByTab.delete(tabId);
+    todoProgressSignatureByTab.delete(tabId);
+    return;
+  }
+  const parsed = parseTodoProgressWidget(request.widgetLines);
+  if (parsed?.goal) todoProgressGoalByTab.set(tabId, parsed.goal);
+  todoProgressSignatureByTab.set(tabId, todoProgressSignatureFromLines(request.widgetLines));
+}
+
+function widgetRequestEquivalent(a, b) {
+  const aHasLines = Array.isArray(a?.widgetLines);
+  const bHasLines = Array.isArray(b?.widgetLines);
+  if (aHasLines !== bHasLines) return false;
+  if (!aHasLines) return true;
+  if (a.widgetLines.length !== b.widgetLines.length) return false;
+  return a.widgetLines.every((line, index) => String(line) === String(b.widgetLines[index]));
+}
+
+function setWidgetForTab(tabId, widgetKey, request) {
+  if (!widgetKey) return false;
+  const targetTabId = tabId || activeTabId;
+  const cache = widgetCacheForTab(targetTabId);
+  const hasLines = Array.isArray(request?.widgetLines);
+  const current = cache?.get(widgetKey) || (targetTabId === activeTabId ? widgets.get(widgetKey) : undefined);
+  if (widgetRequestEquivalent(current, request)) return false;
+
+  rememberTodoProgressGoalForTab(targetTabId, widgetKey, request);
+
+  if (cache) {
+    if (hasLines) cache.set(widgetKey, request);
+    else cache.delete(widgetKey);
+    if (cache.size === 0) widgetsByTab.delete(targetTabId);
+  }
+
+  if (targetTabId === activeTabId) {
+    if (hasLines) widgets.set(widgetKey, request);
+    else widgets.delete(widgetKey);
+  }
+
+  return true;
+}
+
+function clearWidgetsForTab(tabId = activeTabId) {
+  if (tabId) {
+    widgetsByTab.delete(tabId);
+    todoProgressGoalByTab.delete(tabId);
+    todoProgressSignatureByTab.delete(tabId);
+  }
+  if (!tabId || tabId === activeTabId) widgets.clear();
+  if (!tabId) {
+    todoProgressGoalByTab.clear();
+    todoProgressSignatureByTab.clear();
+  }
+}
+
+function resetActiveTabUi() {
+  clearRefreshTimers();
+  clearLiveToolRenderQueue();
+  eventSource?.close();
+  eventSource = null;
+  currentState = null;
+  latestStats = null;
+  latestStatsOverlayPayload = null;
+  latestBtwWidgetPayload = null;
+  btwWidgetDismissedId = "";
+  btwWidgetComposerOpen = false;
+  btwWidgetInputDraft = "";
+  latestWorkspace = null;
+  latestMessages = [];
+  latestMessagesSessionKey = "";
+  clearRunIndicatorActivity({ render: false });
+  statusEntries.clear();
+  restoreWidgetsForActiveTab();
+  transientMessages = [];
+  liveToolRuns.clear();
+  liveToolCards.clear();
+  availableCommands = [];
+  rawAvailableCommands = [];
+  resetOptionalFeatureAvailability();
+  commandSuggestions = [];
+  pathSuggestions = [];
+  suggestionMode = "none";
+  commandSuggestIndex = 0;
+  resetStreamBubble();
+  removeRunIndicatorBubble();
+  hideCommandSuggestions();
+  cancelPendingDialogs();
+  if (elements.nativeCommandDialog.open) closeNativeCommandDialog();
+  if (pathPickerState) closePathPicker(null);
+  bindGitWorkflowToActiveTab();
+  resetChatOutput();
+  elements.stateDetails.replaceChildren();
+  elements.eventLog.replaceChildren();
+  const queuedSnapshot = activeTabId ? latestQueuedMessagesByTab.get(activeTabId) : null;
+  if (queuedSnapshot) renderQueue({ tabId: activeTabId, ...queuedSnapshot });
+  else renderQueue({ tabId: activeTabId, steering: [], followUp: [] });
+  elements.commandsBox.textContent = "Loading…";
+  elements.commandsBox.classList.add("muted");
+  renderAppRunnerControls();
+  renderWidgets();
+  renderGitWorkflow();
+  if (!restoreCachedMessagesForActiveTab()) {
+    renderFooter();
+    renderFeedbackTray();
+  }
+}
+
+function tabGroupStatusRank(state) {
+  const index = TAB_GROUP_STATUS_PRIORITY.indexOf(state);
+  return index === -1 ? TAB_GROUP_STATUS_PRIORITY.indexOf("idle") : index;
+}
+
+function tabGroupIndicator(groupTabs) {
+  let selected = null;
+  let selectedRank = Number.POSITIVE_INFINITY;
+  for (const tab of groupTabs) {
+    const indicator = tabIndicator(tab);
+    const rank = tabGroupStatusRank(indicator.state);
+    if (rank < selectedRank) {
+      selected = indicator;
+      selectedRank = rank;
+    }
+  }
+  return selected || { state: "idle", label: "Idle", meta: "idle", glyph: "○" };
+}
+
+function tabCwdGroupKey(tab) {
+  const cwd = String(tab?.cwd || "");
+  return cwd ? `cwd:${cwd}` : `tab:${tab?.id || "unknown"}`;
+}
+
+function tabCwdGroups() {
+  syncTerminalCustomGroupsWithTabs(tabs);
+  const groups = [];
+  const byKey = new Map();
+  const customByTab = terminalCustomGroupByTabId();
+  const customGroups = new Map([...terminalCustomGroups.values()].map((group) => [group.id, {
+    key: `custom:${group.id}`,
+    custom: true,
+    customGroupId: group.id,
+    title: normalizeTerminalCustomGroupTitle(group.title),
+    tabs: [],
+    cwd: "",
+  }]));
+
+  for (const tab of tabs) {
+    const customGroupId = customByTab.get(tab.id);
+    if (customGroupId) customGroups.get(customGroupId)?.tabs.push(tab);
+  }
+
+  const emittedCustomGroups = new Set();
+  for (const tab of tabs) {
+    const customGroupId = customByTab.get(tab.id);
+    if (customGroupId) {
+      const customGroup = customGroups.get(customGroupId);
+      if (customGroup && !emittedCustomGroups.has(customGroupId)) {
+        groups.push(customGroup);
+        emittedCustomGroups.add(customGroupId);
+      }
+      continue;
+    }
+    const key = tabCwdGroupKey(tab);
+    let group = byKey.get(key);
+    if (!group) {
+      group = { key, custom: false, cwd: tab.cwd || "", tabs: [] };
+      byKey.set(key, group);
+      groups.push(group);
+    }
+    group.tabs.push(tab);
+  }
+  return groups;
+}
+
+function tabGroupTitle(cwd, fallback = "cwd") {
+  const normalized = normalizeDisplayPath(cwd).replace(/\/+$/, "");
+  const leaf = normalized.split("/").filter(Boolean).pop() || normalized || fallback;
+  return leaf.length > 26 ? `…${leaf.slice(-25)}` : leaf;
+}
+
+function terminalDisplayGroupTitle(group, fallback = "group") {
+  return group?.custom ? normalizeTerminalCustomGroupTitle(group.title, "Custom group") : tabGroupTitle(group?.cwd, fallback);
+}
+
+function terminalDisplayGroupDetail(group, fallback = "group") {
+  if (!group?.custom) return normalizeDisplayPath(group?.cwd || fallback);
+  const cwdLabels = [...new Set((group.tabs || []).map((tab) => normalizeDisplayPath(tab.cwd || "")).filter(Boolean))];
+  if (!cwdLabels.length) return "custom group";
+  if (cwdLabels.length === 1) return cwdLabels[0];
+  return `${cwdLabels[0]} + ${cwdLabels.length - 1} cwd${cwdLabels.length === 2 ? "" : "s"}`;
+}
+
+function tabAppRunnerRun(tab) {
+  if (!tab?.id) return null;
+  const cached = appRunnerDataByTab.get(tab.id);
+  if (cached && Object.prototype.hasOwnProperty.call(cached, "activeRun")) return cached.activeRun || null;
+  if (Object.prototype.hasOwnProperty.call(tab, "appRunner")) return tab.appRunner || null;
+  return null;
+}
+
+function tabAppRunnerRunningRun(tab) {
+  const run = tabAppRunnerRun(tab);
+  return appRunnerIsRunning(run) ? run : null;
+}
+
+function tabGroupAppRunnerRunningRun(groupTabs = []) {
+  return groupTabs.map(tabAppRunnerRunningRun).find(Boolean) || null;
+}
+
+function terminalAppRunnerLabel(run) {
+  const command = cleanStatusText(run?.displayCommand || run?.label || run?.command || "app runner");
+  return command && command !== "app runner" ? `app runner: ${command}` : "app runner running";
+}
+
+function terminalAppRunnerTooltip(run) {
+  return appRunnerIsRunning(run) ? ` · ${terminalAppRunnerLabel(run)}` : "";
+}
+
+function terminalTabMeta(tab, indicator) {
+  const meta = tab.running ? `${indicator.meta} · pid ${tab.pid || "…"}` : "stopped";
+  return tabAppRunnerRunningRun(tab) ? `${meta} · app runner` : meta;
+}
+
+function appendTerminalTabContent(button, { title, indicator, meta, count = null, appRunnerRun = null }) {
+  const titleRow = make("span", "terminal-tab-title-row");
+  const indicatorDot = make("span", "terminal-tab-activity-indicator");
+  indicatorDot.setAttribute("aria-hidden", "true");
+  titleRow.append(indicatorDot, make("span", "terminal-tab-title", title));
+  if (appRunnerIsRunning(appRunnerRun)) titleRow.append(make("span", "terminal-tab-app-runner-indicator", "app"));
+  if (count !== null) titleRow.append(make("span", "terminal-tab-group-count", String(count)));
+  button.append(titleRow, make("span", "terminal-tab-meta", meta));
+}
+
+function renderTerminalTab(tab) {
+  const isActive = tab.id === activeTabId;
+  const indicator = tabIndicator(tab);
+  const appRunnerRun = tabAppRunnerRunningRun(tab);
+  const appRunnerLabel = appRunnerRun ? terminalAppRunnerLabel(appRunnerRun) : "";
+  const wrapper = make("div", `terminal-tab activity-${indicator.state}${isActive ? " active" : ""}${tab.running ? "" : " stopped"}${appRunnerRun ? " app-runner-running" : ""}`);
+  wrapper.dataset.tabId = tab.id;
+  bindTerminalTabDragAndDrop(wrapper, { sourceTabId: tab.id, target: { type: "tab", tabId: tab.id } });
+  const button = make("button", "terminal-tab-button");
+  button.type = "button";
+  button.draggable = false;
+  button.setAttribute("role", "tab");
+  button.setAttribute("aria-selected", isActive ? "true" : "false");
+  button.setAttribute("aria-label", `${tab.title}: ${indicator.label}${appRunnerLabel ? `, ${appRunnerLabel}` : ""}`);
+  const tooltip = `${tab.title} · ${indicator.label}${tab.running ? ` · pid ${tab.pid || "starting"}` : " · stopped"}${terminalAppRunnerTooltip(appRunnerRun)} · drag onto another tab or group to group`;
+  applyStyledTooltip(button, tooltip, { ariaLabel: false });
+  appendTerminalTabContent(button, { title: tab.title, indicator, meta: terminalTabMeta(tab, indicator), appRunnerRun });
+  button.addEventListener("click", () => switchTab(tab.id));
+  wrapper.append(button);
+
+  if (tabs.length > 1) {
+    const close = make("button", "terminal-tab-close", "×");
+    close.type = "button";
+    close.draggable = false;
+    const closeTooltip = `Close ${tab.title}`;
+    applyStyledTooltip(close, closeTooltip, { ariaLabel: closeTooltip });
+    close.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeTerminalTab(tab.id);
+    });
+    wrapper.append(close);
+  }
+
+  return wrapper;
+}
+
+function renderTerminalTabGroupItem(tab, group) {
+  const isActive = tab.id === activeTabId;
+  const indicator = tabIndicator(tab);
+  const appRunnerRun = tabAppRunnerRunningRun(tab);
+  const appRunnerLabel = appRunnerRun ? terminalAppRunnerLabel(appRunnerRun) : "";
+  const item = make("div", `terminal-tab-group-item activity-${indicator.state}${isActive ? " active" : ""}${tab.running ? "" : " stopped"}${appRunnerRun ? " app-runner-running" : ""}`);
+  item.dataset.tabId = tab.id;
+  bindTerminalTabDragAndDrop(item, { sourceTabId: tab.id, target: group?.custom ? { type: "group", group } : { type: "tab", tabId: tab.id } });
+  const button = make("button", "terminal-tab-button terminal-tab-group-item-button");
+  button.type = "button";
+  button.draggable = false;
+  button.setAttribute("role", "tab");
+  button.setAttribute("aria-selected", isActive ? "true" : "false");
+  button.setAttribute("aria-label", `${tab.title}: ${indicator.label}${appRunnerLabel ? `, ${appRunnerLabel}` : ""}`);
+  const tooltip = `${tab.title} · ${indicator.label}${tab.running ? ` · pid ${tab.pid || "starting"}` : " · stopped"}${terminalAppRunnerTooltip(appRunnerRun)} · drag onto another tab or group to group`;
+  applyStyledTooltip(button, tooltip, { ariaLabel: false });
+  appendTerminalTabContent(button, { title: tab.title, indicator, meta: terminalTabMeta(tab, indicator), appRunnerRun });
+  button.addEventListener("click", (event) => {
+    event.stopPropagation();
+    switchTab(tab.id);
+  });
+  item.append(button);
+
+  if (tabs.length > 1) {
+    const close = make("button", "terminal-tab-close terminal-tab-group-item-close", "×");
+    close.type = "button";
+    close.draggable = false;
+    const closeTooltip = `Close ${tab.title}`;
+    applyStyledTooltip(close, closeTooltip, { ariaLabel: closeTooltip });
+    close.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeTerminalTab(tab.id);
+    });
+    item.append(close);
+  }
+
+  return item;
+}
+
+function shouldRenderTerminalTabGroup(group, groupCount) {
+  if (group.custom) return group.tabs.length > 1;
+  return groupCount > 1 && group.tabs.length > 1 && Boolean(group.cwd);
+}
+
+function renderTerminalTabGroup(group, groupCount = 1) {
+  const groupTabs = group.tabs;
+  const activeGroupTab = groupTabs.find((tab) => tab.id === activeTabId) || groupTabs[0];
+  const isActive = groupTabs.some((tab) => tab.id === activeTabId);
+  const isStopped = groupTabs.every((tab) => !tab.running);
+  const indicator = tabGroupIndicator(groupTabs);
+  const appRunnerRun = tabGroupAppRunnerRunningRun(groupTabs);
+  const appRunnerCount = groupTabs.filter(tabAppRunnerRunningRun).length;
+  const appRunnerSummary = appRunnerCount > 1 ? `${appRunnerCount} app runners running` : appRunnerRun ? terminalAppRunnerLabel(appRunnerRun) : "";
+  const groupAppRunnerMeta = appRunnerCount > 1 ? `${appRunnerCount} app runners` : appRunnerRun ? "app runner" : "";
+  const groupTitle = terminalDisplayGroupTitle(group, activeGroupTab?.title || "group");
+  const activeTitle = activeGroupTab?.title || groupTitle;
+  const groupDetail = terminalDisplayGroupDetail(group, groupTitle);
+  const wrapper = make("div", `terminal-tab terminal-tab-group${group.custom ? " terminal-tab-custom-group" : ""} activity-${indicator.state}${isActive ? " active" : ""}${isStopped ? " stopped" : ""}${appRunnerRun ? " app-runner-running" : ""}`);
+  wrapper.dataset.groupKey = group.key;
+  if (group.customGroupId) wrapper.dataset.customGroupId = group.customGroupId;
+  bindTerminalTabDragAndDrop(wrapper, { sourceTabId: activeGroupTab?.id || "", target: { type: "group", group } });
+  wrapper.addEventListener("pointerenter", () => setOpenTerminalTabGroup(group.key));
+  wrapper.addEventListener("pointerleave", () => clearOpenTerminalTabGroup(group.key));
+  wrapper.addEventListener("focusin", () => setOpenTerminalTabGroup(group.key));
+  wrapper.addEventListener("focusout", () => {
+    setTimeout(() => {
+      if (!wrapper.contains(document.activeElement)) clearOpenTerminalTabGroup(group.key);
+    }, 0);
+  });
+  const button = make("button", "terminal-tab-button terminal-tab-group-button");
+  button.type = "button";
+  button.draggable = false;
+  button.setAttribute("role", "tab");
+  button.setAttribute("aria-selected", isActive ? "true" : "false");
+  button.setAttribute("aria-haspopup", "true");
+  button.setAttribute("aria-expanded", group.key === openTerminalTabGroupKey ? "true" : "false");
+  button.setAttribute("aria-label", `${groupTitle} ${group.custom ? "custom" : "cwd"} group: ${groupTabs.length} tabs, ${indicator.label}${appRunnerSummary ? `, ${appRunnerSummary}` : ""}. Active ${activeTitle}`);
+  const tooltip = `${activeTitle} · ${groupTitle} · ${groupDetail} · ${groupTabs.length} tabs · ${indicator.label}${appRunnerSummary ? ` · ${appRunnerSummary}` : ""} · drop tabs here to add to group`;
+  applyStyledTooltip(button, tooltip, { ariaLabel: false });
+  appendTerminalTabContent(button, { title: activeTitle, indicator, meta: `${groupTitle} · ${indicator.meta}${groupAppRunnerMeta ? ` · ${groupAppRunnerMeta}` : ""}`, appRunnerRun, count: groupTabs.length });
+  button.addEventListener("click", () => switchTab(activeGroupTab.id));
+  wrapper.append(button);
+
+  if (groupCount > 1 || group.custom) {
+    const close = make("button", "terminal-tab-close terminal-tab-group-close", "×");
+    close.type = "button";
+    close.draggable = false;
+    const closeTooltip = `Close ${groupTitle} group`;
+    applyStyledTooltip(close, closeTooltip, { ariaLabel: closeTooltip });
+    close.addEventListener("click", (event) => {
+      event.stopPropagation();
+      closeTerminalTabGroup(group);
+    });
+    wrapper.append(close);
+  }
+
+  const menu = make("div", "terminal-tab-group-menu");
+  menu.setAttribute("role", "group");
+  menu.setAttribute("aria-label", `${groupTitle} tabs`);
+  for (const tab of groupTabs) menu.append(renderTerminalTabGroupItem(tab, group));
+
+  const add = make("button", "terminal-tab-group-add", "+ Tab");
+  add.type = "button";
+  add.draggable = false;
+  const addTooltip = `Add tab in ${groupTitle}`;
+  applyStyledTooltip(add, addTooltip, { ariaLabel: addTooltip });
+  add.addEventListener("click", (event) => {
+    event.stopPropagation();
+    createTerminalTab(activeGroupTab?.cwd || group.cwd || currentDirectoryForNewTab(), { triggerButton: add, customGroupId: group.customGroupId || null });
+  });
+  menu.append(add);
+  wrapper.append(menu);
+  return wrapper;
+}
+
+function updateTerminalTabGroupOpenState() {
+  for (const group of elements.tabBar.querySelectorAll(".terminal-tab-group")) {
+    const open = Boolean(openTerminalTabGroupKey && group.dataset.groupKey === openTerminalTabGroupKey);
+    group.classList.toggle("menu-open", open);
+    group.querySelector(".terminal-tab-group-button")?.setAttribute("aria-expanded", open ? "true" : "false");
+  }
+}
+
+function setOpenTerminalTabGroup(groupKey) {
+  if (!groupKey || openTerminalTabGroupKey === groupKey) return;
+  openTerminalTabGroupKey = groupKey;
+  updateTerminalTabGroupOpenState();
+}
+
+function clearOpenTerminalTabGroup(groupKey, { force = false } = {}) {
+  if (!openTerminalTabGroupKey || (!force && openTerminalTabGroupKey !== groupKey)) return;
+  openTerminalTabGroupKey = null;
+  updateTerminalTabGroupOpenState();
+  syncTabPolling();
+}
+
+function setNewTabMenuOpen(open) {
+  newTabMenuOpen = !!open;
+  elements.newTabButton?.setAttribute("aria-expanded", newTabMenuOpen ? "true" : "false");
+  elements.newTabButton?.classList.toggle("menu-open", newTabMenuOpen);
+  elements.newTabMenu?.classList.toggle("open", newTabMenuOpen);
+  if (!newTabMenuOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function initializeTerminalHeaderTooltips() {
+  applyStyledTooltip(elements.newTabButton, "Start a separate isolated Pi terminal", { ariaLabel: "Start a separate isolated Pi terminal" });
+  applyStyledTooltip(elements.closeAllTabsButton, "Close all terminal tabs", { ariaLabel: "Close all terminal tabs" });
+}
+
+function openNewTabMenu() {
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setNewTabMenuOpen(true);
+}
+
+function newTabMenuItems() {
+  return [elements.newTabCurrentDirectoryButton, elements.newTabChooseDirectoryButton, elements.newTabWorktreeButton].filter(Boolean);
+}
+
+function focusNewTabMenuItem(direction = "first") {
+  const items = newTabMenuItems();
+  const item = direction === "last" ? items.at(-1) : items[0];
+  item?.focus({ preventScroll: true });
+}
+
+function moveNewTabMenuFocus(delta) {
+  const items = newTabMenuItems();
+  if (!items.length) return;
+  const currentIndex = Math.max(0, items.indexOf(document.activeElement));
+  const nextIndex = (currentIndex + delta + items.length) % items.length;
+  items[nextIndex].focus({ preventScroll: true });
+}
+
+function scheduleTabsRender() {
+  if (tabsRenderFrame !== null) return;
+  const flush = () => {
+    tabsRenderFrame = null;
+    renderTabs();
+  };
+  if (typeof requestAnimationFrame === "function") tabsRenderFrame = requestAnimationFrame(flush);
+  else tabsRenderFrame = setTimeout(flush, 0);
+}
+
+function renderTabs() {
+  if (deferUiRenderDuringPointerActivation("tabs", renderTabs)) return;
+  const active = activeTab();
+  const activeIndicator = active ? tabIndicator(active) : null;
+  elements.terminalTabsToggleButton.textContent = active ? `${activeIndicator.glyph} ${active.title}${tabs.length > 1 ? ` · ${tabs.length}` : ""}` : "Tabs";
+  const toggleTooltip = active ? `Show terminal tabs · active: ${active.title} · ${activeIndicator.label}` : "Show terminal tabs";
+  applyStyledTooltip(elements.terminalTabsToggleButton, toggleTooltip, { ariaLabel: toggleTooltip });
+  if (footerTooltipTarget && elements.tabBar.contains(footerTooltipTarget)) hideFooterTooltip();
+  elements.tabBar.replaceChildren();
+  elements.tabBar.dataset.tabCount = String(tabs.length);
+  elements.tabBar.classList.toggle("terminal-tabs-dense", tabs.length >= 10);
+  const groups = tabCwdGroups();
+  const renderedGroupKeys = new Set(groups.filter((group) => shouldRenderTerminalTabGroup(group, groups.length)).map((group) => group.key));
+  if (openTerminalTabGroupKey && !renderedGroupKeys.has(openTerminalTabGroupKey)) openTerminalTabGroupKey = null;
+  for (const group of groups) {
+    if (shouldRenderTerminalTabGroup(group, groups.length)) {
+      elements.tabBar.append(renderTerminalTabGroup(group, groups.length));
+    } else {
+      for (const tab of group.tabs) elements.tabBar.append(renderTerminalTab(tab));
+    }
+  }
+  elements.tabBar.append(elements.newTabMenu);
+  elements.closeAllTabsButton.disabled = tabs.length === 0;
+  updateTerminalTabGroupOpenState();
+  setMobileTabsExpanded(mobileTabsExpanded);
+  updateDocumentTitle();
+  renderWorkspaceDashboard();
+  renderContextMeter();
+  if (elements.commandPaletteDialog?.open) renderCommandPalette({ preserveScroll: true });
+  syncTabPolling();
+}
+
+async function refreshTabs({ selectStored = false } = {}) {
+  const previousTabs = tabs;
+  const response = await api("/api/tabs", { scoped: false });
+  tabs = response.data?.tabs || [];
+  syncTabMetadata(tabs);
+  syncBlockedTabNotificationsFromTabs(tabs, previousTabs);
+  syncAgentDoneNotificationsFromTabs(tabs, previousTabs);
+  const requested = selectStored ? requestedTabIdFromUrl() : null;
+  const stored = selectStored ? restoreStoredTabId() : null;
+  if (!activeTabId || !tabs.some((tab) => tab.id === activeTabId)) {
+    setActiveTabId((requested && tabs.some((tab) => tab.id === requested) ? requested : stored && tabs.some((tab) => tab.id === stored) ? stored : tabs[0]?.id) || null, { remember: true });
+  }
+  rememberServerStartCwd(tabs.find((tab) => tab.id === activeTabId)?.cwd || tabs[0]?.cwd);
+  renderSessionSkillTags(activeTabId);
+  renderTabs();
+  return tabs;
+}
+
+async function switchTab(tabId) {
+  if (!tabId || tabId === activeTabId || !tabs.some((tab) => tab.id === tabId)) return;
+  clearOpenTerminalTabGroup(null, { force: true });
+  setMobileTabsExpanded(false);
+  footerModelPickerOpen = false;
+  footerThinkingPickerOpen = false;
+  footerBranchPickerOpen = false;
+  footerBranchPickerRequestSerial += 1;
+  saveActiveDraft();
+  cacheMessagesForTab(activeTabId);
+  cacheWidgetsForTab(activeTabId);
+  const tabContext = setActiveTabId(tabId, { remember: true });
+  resetActiveTabUi();
+  renderTabs();
+  restoreActiveDraft();
+  focusPromptInput({ defer: true });
+  connectEvents(tabContext);
+  await refreshAll(tabContext);
+  if (isCurrentTabContext(tabContext)) markTabOutputSeen();
+}
+
+function currentDirectoryForNewTab() {
+  return latestWorkspace?.cwd || activeTab()?.cwd || "";
+}
+
+async function createTerminalTab(cwd = currentDirectoryForNewTab(), { triggerButton = elements.newTabButton, customGroupId = null } = {}) {
+  setMobileTabsExpanded(false);
+  setNewTabMenuOpen(false);
+  const resolvedCwd = cwd || currentDirectoryForNewTab();
+  if (!resolvedCwd && tabs.length === 0) {
+    await createTerminalTabFromChosenDirectory({ triggerButton });
+    return;
+  }
+  const disabledButtons = new Set([elements.newTabButton, triggerButton].filter(Boolean));
+  for (const button of disabledButtons) button.disabled = true;
+  try {
+    const response = await api("/api/tabs", { method: "POST", body: { cwd: resolvedCwd }, scoped: false });
+    tabs = response.data?.tabs || tabs;
+    syncTabMetadata(tabs);
+    const tab = response.data?.tab;
+    if (tab?.id && customGroupId && terminalCustomGroups.has(customGroupId)) addTabsToTerminalCustomGroup(customGroupId, [tab.id]);
+    renderTabs();
+    if (tab?.id) {
+      await switchTab(tab.id);
+      addEvent(`created isolated terminal ${tab.title}`, "info");
+    }
+  } catch (error) {
+    addEvent(error.message, "error");
+  } finally {
+    for (const button of disabledButtons) button.disabled = false;
+  }
+}
+
+async function createTerminalTabFromChosenDirectory({ triggerButton = elements.newTabChooseDirectoryButton } = {}) {
+  const sourceTab = activeTab();
+  const initialCwd = currentDirectoryForNewTab();
+  setMobileTabsExpanded(false);
+  setNewTabMenuOpen(false);
+  const cwd = await pickCwd(sourceTab || { id: "new-tab", title: "new tab" }, initialCwd, { title: "Choose CWD for new tab" });
+  if (!cwd) return;
+  await createTerminalTab(cwd, { triggerButton });
+}
+
+async function createFirstTerminalTabFromChosenDirectory() {
+  if (firstTerminalCwdPromptShown || tabs.length > 0) return;
+  firstTerminalCwdPromptShown = true;
+  const cwd = await pickCwd({ id: "first-terminal", title: "first terminal" }, "", { title: "Choose CWD for first terminal" });
+  if (!cwd) {
+    addEvent("choose a CWD to start the first terminal", "warn");
+    return;
+  }
+  await createTerminalTab(cwd, { triggerButton: null });
+}
+
+function tabHasActiveAgent(tab) {
+  const activity = activityForTab(tab);
+  const indicator = tabIndicator(tab);
+  return !!activity.isWorking || indicator.state === "working" || indicator.state === "blocked";
+}
+
+function activeTabHasConversationMessages(tab = activeTab()) {
+  const tabId = tab?.id || activeTabId;
+  if (!tabId) return false;
+  if (tabId !== activeTabId && !latestMessagesSessionKey.startsWith(`${tabId}|`)) return false;
+  return latestMessages.some((message) => ["user", "assistant"].includes(message?.role));
+}
+
+function shouldOpenCwdChangeInNewTab(tab) {
+  return !!tab?.conversationStarted
+    || activeTabHasConversationMessages(tab)
+    || stateHasVisibleWork(currentState)
+    || tabHasActiveAgent(tab);
+}
+
+function confirmCloseTerminalTabs(targetTabs, label) {
+  const count = targetTabs.length;
+  const noun = count === 1 ? "tab" : "tabs";
+  const activeAgentTabs = targetTabs.filter(tabHasActiveAgent);
+  const tabList = targetTabs.map((tab) => `- ${tab.title}`).join("\n");
+  const activeList = activeAgentTabs.map((tab) => `- ${tab.title} (${tabIndicator(tab).label})`).join("\n");
+  const base = [
+    `Close ${label || `${count} terminal ${noun}`}?`,
+    "",
+    `This terminates ${count === 1 ? "its isolated Pi process" : "their isolated Pi processes"}.`,
+    count > 1 ? `\nTabs to close:\n${tabList}` : "",
+  ].filter(Boolean).join("\n");
+  const warning = activeAgentTabs.length
+    ? [
+        `WARNING: ${activeAgentTabs.length} ${activeAgentTabs.length === 1 ? "tab has an agent" : "tabs have agents"} still running or waiting for input:`,
+        activeList,
+        "",
+        base,
+        "",
+        "Close anyway?",
+      ].join("\n")
+    : base;
+  return confirm(warning);
+}
+
+async function closeTerminalTabs(tabIds, { label = "selected terminal tabs" } = {}) {
+  const targetIds = [...new Set(tabIds.filter(Boolean))];
+  const targetTabs = targetIds.map((id) => tabs.find((item) => item.id === id)).filter(Boolean);
+  if (!targetTabs.length) return;
+  if (!confirmCloseTerminalTabs(targetTabs, label)) return;
+
+  const closedActiveTab = targetTabs.some((tab) => tab.id === activeTabId);
+  const fallbackTabId = tabs.find((item) => !targetIds.includes(item.id))?.id || null;
+  try {
+    if (closedActiveTab) eventSource?.close();
+    const response = await api("/api/tabs/close", { method: "POST", body: { ids: targetIds }, scoped: false });
+    const closedIds = response.data?.closedIds || targetIds;
+    tabs = response.data?.tabs || tabs.filter((item) => !closedIds.includes(item.id));
+    syncTabMetadata(tabs);
+    for (const id of closedIds) {
+      tabDrafts.delete(id);
+      clearAttachments(id);
+      clearGitWorkflowForTab(id);
+      appRunnerDataByTab.delete(id);
+      tabMessagesCache.delete(id);
+    }
+    syncTerminalCustomGroupsWithTabs(tabs);
+    clearOpenTerminalTabGroup(null, { force: true });
+
+    const activeTabNeedsFallback = closedIds.includes(activeTabId) || !tabs.some((item) => item.id === activeTabId);
+    if (activeTabNeedsFallback) {
+      const tabContext = setActiveTabId((response.data?.activeTabId && tabs.some((item) => item.id === response.data.activeTabId)
+        ? response.data.activeTabId
+        : (fallbackTabId && tabs.some((item) => item.id === fallbackTabId) ? fallbackTabId : tabs[0]?.id)) || null, { remember: true });
+      resetActiveTabUi();
+      renderTabs();
+      restoreActiveDraft();
+      focusPromptInput({ defer: true });
+      connectEvents(tabContext);
+      if (activeTabId) {
+        await refreshAll(tabContext);
+        if (isCurrentTabContext(tabContext)) markTabOutputSeen();
+      }
+    } else {
+      renderTabs();
+    }
+    addEvent(`closed ${closedIds.length || targetTabs.length} terminal ${closedIds.length === 1 ? "tab" : "tabs"}`, "warn");
+  } catch (error) {
+    addEvent(error.message, "error");
+  }
+}
+
+async function closeTerminalTab(tabId) {
+  const tab = tabs.find((item) => item.id === tabId);
+  if (!tab) return;
+  await closeTerminalTabs([tabId], { label: tab.title });
+}
+
+async function closeTerminalTabGroup(group) {
+  const title = terminalDisplayGroupTitle(group, group.tabs[0]?.title || "group");
+  await closeTerminalTabs(group.tabs.map((tab) => tab.id), { label: `${title} group` });
+}
+
+async function closeAllTerminalTabs() {
+  await closeTerminalTabs(tabs.map((tab) => tab.id), { label: "all terminal tabs" });
+}
+
+async function initializeTabs() {
+  const loadedTabs = await refreshTabs({ selectStored: true });
+  resetActiveTabUi();
+  renderTabs();
+  restoreActiveDraft();
+  if (!loadedTabs.length) {
+    await createFirstTerminalTabFromChosenDirectory();
+    return;
+  }
+  focusPromptInput({ defer: true });
+  const tabContext = activeTabContext();
+  connectEvents(tabContext);
+  if (activeTabId) {
+    await refreshAll(tabContext);
+    if (isCurrentTabContext(tabContext)) markTabOutputSeen();
+  }
+}
+
+function addEvent(message, level = "info") {
+  const line = make("div", `event ${level}`.trim());
+  const time = new Date().toLocaleTimeString();
+  line.textContent = `[${time}] ${message}`;
+  elements.eventLog.prepend(line);
+  while (elements.eventLog.children.length > 120) elements.eventLog.lastElementChild?.remove();
+}
+
+function browserNotificationSupported() {
+  return "Notification" in window && window.isSecureContext;
+}
+
+function browserNotificationPermission() {
+  if (!("Notification" in window)) return "unsupported";
+  return Notification.permission || "default";
+}
+
+function blockedTabNotificationSupported() {
+  return browserNotificationSupported();
+}
+
+function blockedTabNotificationPermission() {
+  return browserNotificationPermission();
+}
+
+async function ensureBlockedTabNotificationPermission() {
+  if (!blockedTabNotificationSupported()) return false;
+  if (Notification.permission === "granted") return true;
+  if (Notification.permission === "denied" || blockedTabNotificationPermissionRequested || typeof Notification.requestPermission !== "function") return false;
+
+  blockedTabNotificationPermissionRequested = true;
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      addEvent("browser notifications enabled for blocked tabs", "info");
+      return true;
+    }
+  } catch (error) {
+    addEvent(`blocked-tab notification permission request failed: ${error.message}`, "warn");
+  }
+  return false;
+}
+
+async function ensureAgentDoneNotificationPermission() {
+  if (!browserNotificationSupported()) return false;
+  if (Notification.permission === "granted") return true;
+  if (Notification.permission === "denied" || agentDoneNotificationPermissionRequested || typeof Notification.requestPermission !== "function") return false;
+
+  agentDoneNotificationPermissionRequested = true;
+  try {
+    const permission = await Notification.requestPermission();
+    if (permission === "granted") {
+      addEvent("browser notifications enabled for completed agent work", "info");
+      return true;
+    }
+  } catch (error) {
+    addEvent(`agent-done notification permission request failed: ${error.message}`, "warn");
+  }
+  return false;
+}
+
+function noteBlockedTabNotificationFallback(reason) {
+  if (blockedTabNotificationFallbackNoted) return;
+  blockedTabNotificationFallbackNoted = true;
+  addEvent(`browser notifications unavailable for blocked tabs: ${reason}`, "warn");
+}
+
+function blockedTabNotificationDetail({ method, count } = {}) {
+  if (method) return `waiting for your ${method} response`;
+  if (count > 1) return `waiting for ${count} responses`;
+  return "waiting for your response";
+}
+
+function blockedTabNotificationKey(tabId, request) {
+  return request?.id ? `${tabId}:${request.id}` : `${tabId}:blocked`;
+}
+
+function clearBlockedTabNotificationKeys(tabId) {
+  if (!tabId) return;
+  const prefix = `${tabId}:`;
+  blockedTabNotificationKeys = new Set([...blockedTabNotificationKeys].filter((key) => !key.startsWith(prefix)));
+}
+
+async function showBlockedTabBrowserNotification({ tabId, title, body, method, count }) {
+  if (!blockedTabNotificationSupported()) {
+    noteBlockedTabNotificationFallback("requires HTTPS or localhost");
+    return false;
+  }
+  if (!(await ensureBlockedTabNotificationPermission())) {
+    const permission = blockedTabNotificationPermission();
+    noteBlockedTabNotificationFallback(permission === "denied" ? "permission denied" : "permission not granted");
+    return false;
+  }
+
+  const options = {
+    body,
+    tag: `${BLOCKED_TAB_NOTIFICATION_TAG_PREFIX}:${tabId}`,
+    renotify: true,
+    requireInteraction: true,
+    icon: BLOCKED_TAB_NOTIFICATION_ICON,
+    badge: BLOCKED_TAB_NOTIFICATION_ICON,
+    data: { tabId, method, count, url: location.href },
+  };
+
+  try {
+    let registration = null;
+    if ("serviceWorker" in navigator) {
+      registration = await Promise.race([navigator.serviceWorker.ready, delay(1200).then(() => null)]).catch(() => null);
+    }
+    if (registration?.showNotification) {
+      await registration.showNotification(title, options);
+      return true;
+    }
+
+    const notification = new Notification(title, options);
+    notification.onclick = () => {
+      window.focus();
+      if (tabId && tabId !== activeTabId) switchTab(tabId).catch((error) => addEvent(error.message, "error"));
+      notification.close();
+    };
+    return true;
+  } catch (error) {
+    noteBlockedTabNotificationFallback(error.message || "notification failed");
+    return false;
+  }
+}
+
+function notifyBlockedTab(tabOrId, { request = null, count } = {}) {
+  const tabId = typeof tabOrId === "string" ? tabOrId : tabOrId?.id || request?.tabId || activeTabId;
+  if (!tabId || request?.replayed) return;
+  const tab = typeof tabOrId === "object" && tabOrId !== null ? tabOrId : tabs.find((item) => item.id === tabId);
+  const key = blockedTabNotificationKey(tabId, request);
+  if (blockedTabNotificationKeys.has(key)) return;
+  blockedTabNotificationKeys.add(key);
+
+  const pendingCount = normalizePendingExtensionUiRequestCount(count ?? request?.pendingExtensionUiRequestCount ?? tabPendingBlockerCount(tab));
+  const method = request?.method && EXTENSION_UI_BLOCKING_METHODS.has(request.method) ? request.method : "";
+  const tabTitle = tab?.title || request?.tabTitle || "terminal";
+  const detail = blockedTabNotificationDetail({ method, count: pendingCount });
+  const title = "Pi needs your response";
+  const body = `${tabTitle} is blocked, ${detail}.`;
+  addEvent(`${tabTitle} blocked: ${detail}`, "warn");
+  showBlockedTabBrowserNotification({ tabId, title, body, method, count: pendingCount });
+}
+
+function noteAgentDoneNotificationFallback(reason) {
+  if (agentDoneNotificationFallbackNoted) return;
+  agentDoneNotificationFallbackNoted = true;
+  addEvent(`browser notifications unavailable for completed agent work: ${reason}`, "warn");
+}
+
+async function showAgentDoneBrowserNotification({ tabId, title, body }) {
+  if (!agentDoneNotificationsEnabled) return false;
+  if (!browserNotificationSupported()) {
+    noteAgentDoneNotificationFallback("requires HTTPS or localhost");
+    renderAgentDoneNotificationsToggle();
+    return false;
+  }
+  if (!(await ensureAgentDoneNotificationPermission())) {
+    const permission = browserNotificationPermission();
+    noteAgentDoneNotificationFallback(permission === "denied" ? "permission denied" : "permission not granted");
+    if (permission !== "granted") {
+      agentDoneNotificationsEnabled = false;
+      persistAgentDoneNotificationsEnabled(false);
+    }
+    renderAgentDoneNotificationsToggle();
+    return false;
+  }
+
+  const options = {
+    body,
+    tag: `${AGENT_DONE_NOTIFICATION_TAG_PREFIX}:${tabId}`,
+    renotify: true,
+    requireInteraction: false,
+    icon: BLOCKED_TAB_NOTIFICATION_ICON,
+    badge: BLOCKED_TAB_NOTIFICATION_ICON,
+    data: { tabId, url: location.href },
+  };
+
+  try {
+    let registration = null;
+    if ("serviceWorker" in navigator) {
+      registration = await Promise.race([navigator.serviceWorker.ready, delay(1200).then(() => null)]).catch(() => null);
+    }
+    if (registration?.showNotification) {
+      await registration.showNotification(title, options);
+      return true;
+    }
+
+    const notification = new Notification(title, options);
+    notification.onclick = () => {
+      window.focus();
+      if (tabId && tabId !== activeTabId) switchTab(tabId).catch((error) => addEvent(error.message, "error"));
+      notification.close();
+    };
+    return true;
+  } catch (error) {
+    noteAgentDoneNotificationFallback(error.message || "notification failed");
+    return false;
+  }
+}
+
+function agentDoneNotificationKey(tabId, activity = {}) {
+  const serial = Number(activity?.completionSerial);
+  return `${tabId}:${Number.isFinite(serial) && serial > 0 ? serial : "done"}`;
+}
+
+function isAutoRetryingTab(tabId) {
+  return !!tabId && autoRetryingTabs.has(tabId);
+}
+
+function clearPendingAgentDoneNotification(key, { markSeen = false } = {}) {
+  const pending = pendingAgentDoneNotificationTimers.get(key);
+  if (!pending) return false;
+  clearTimeout(pending.timer);
+  pendingAgentDoneNotificationTimers.delete(key);
+  if (markSeen) agentDoneNotificationKeys.add(key);
+  return true;
+}
+
+function suppressPendingAgentDoneNotificationsForTab(tabId, { markSeen = true } = {}) {
+  if (!tabId) return;
+  for (const [key, pending] of pendingAgentDoneNotificationTimers) {
+    if (pending.tabId === tabId) clearPendingAgentDoneNotification(key, { markSeen });
+  }
+}
+
+function queueAgentDoneBrowserNotification({ key, tabId, title, body }) {
+  clearPendingAgentDoneNotification(key);
+  const timer = setTimeout(() => {
+    pendingAgentDoneNotificationTimers.delete(key);
+    if (isAutoRetryingTab(tabId)) return;
+    showAgentDoneBrowserNotification({ tabId, title, body });
+  }, AGENT_DONE_NOTIFICATION_RETRY_GRACE_MS);
+  pendingAgentDoneNotificationTimers.set(key, { tabId, timer });
+}
+
+function notifyAgentDone(tabOrId, { activity = null, tabTitle = "" } = {}) {
+  if (!agentDoneNotificationsEnabled) return;
+  const tabId = typeof tabOrId === "string" ? tabOrId : tabOrId?.id || activeTabId;
+  if (!tabId) return;
+  const tab = typeof tabOrId === "object" && tabOrId !== null ? tabOrId : tabs.find((item) => item.id === tabId);
+  const normalizedActivity = normalizeTabActivity(activity || tab?.activity || activityForTab(tab));
+  if (!normalizedActivity.completionSerial) return;
+  const key = agentDoneNotificationKey(tabId, normalizedActivity);
+  if (agentDoneNotificationKeys.has(key)) return;
+  agentDoneNotificationKeys.add(key);
+  if (isAutoRetryingTab(tabId)) return;
+
+  const displayTitle = tabTitle || tab?.title || "terminal";
+  queueAgentDoneBrowserNotification({
+    key,
+    tabId,
+    title: "Pi finished work",
+    body: `${displayTitle} finished its agent run.`,
+  });
+}
+
+function syncAgentDoneNotificationsFromTabs(nextTabs = [], previousTabs = []) {
+  if (!agentDoneNotificationsEnabled || previousTabs.length === 0) return;
+  const previousSerials = new Map(previousTabs.filter((tab) => tab?.id).map((tab) => [tab.id, normalizeTabActivity(tab.activity).completionSerial]));
+  for (const tab of nextTabs) {
+    if (!tab?.id || !previousSerials.has(tab.id)) continue;
+    const activity = normalizeTabActivity(tab.activity);
+    if (!activity.isWorking && activity.completionSerial > previousSerials.get(tab.id)) notifyAgentDone(tab, { activity });
+  }
+}
+
+function syncBlockedTabNotificationsFromTabs(nextTabs = [], previousTabs = []) {
+  if (previousTabs.length === 0) return;
+  const previousCounts = new Map(previousTabs.filter((tab) => tab?.id).map((tab) => [tab.id, tabPendingBlockerCount(tab)]));
+  const liveIds = new Set();
+  for (const tab of nextTabs) {
+    if (!tab?.id) continue;
+    liveIds.add(tab.id);
+    const previousCount = previousCounts.get(tab.id) || 0;
+    const nextCount = tabPendingBlockerCount(tab);
+    if (previousCount === 0 && nextCount > 0) notifyBlockedTab(tab, { count: nextCount });
+    if (nextCount === 0) clearBlockedTabNotificationKeys(tab.id);
+  }
+  for (const tab of previousTabs) {
+    if (tab?.id && !liveIds.has(tab.id)) clearBlockedTabNotificationKeys(tab.id);
+  }
+}
+
+function formatDate(value) {
+  if (!value) return "";
+  const date = typeof value === "number" ? new Date(value) : new Date(String(value));
+  return Number.isNaN(date.getTime()) ? "" : date.toLocaleString();
+}
+
+function stripAnsi(text) {
+  return String(text ?? "").replace(/(?:\x1B|\u241B)(?:[@-Z\\-_]|\[[0-?]*[ -/]*[@-~])/g, "");
+}
+
+const ANSI_16_COLORS = [
+  "#000000",
+  "#800000",
+  "#008000",
+  "#808000",
+  "#000080",
+  "#800080",
+  "#008080",
+  "#c0c0c0",
+  "#808080",
+  "#ff0000",
+  "#00ff00",
+  "#ffff00",
+  "#0000ff",
+  "#ff00ff",
+  "#00ffff",
+  "#ffffff",
+];
+
+function ansi256ToHex(index) {
+  const n = Number(index);
+  if (!Number.isInteger(n) || n < 0 || n > 255) return "";
+  if (n < 16) return ANSI_16_COLORS[n];
+  if (n < 232) {
+    const cubeIndex = n - 16;
+    const r = Math.floor(cubeIndex / 36);
+    const g = Math.floor((cubeIndex % 36) / 6);
+    const b = cubeIndex % 6;
+    const toHex = (value) => (value === 0 ? 0 : 55 + value * 40).toString(16).padStart(2, "0");
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+  const gray = 8 + (n - 232) * 10;
+  const grayHex = gray.toString(16).padStart(2, "0");
+  return `#${grayHex}${grayHex}${grayHex}`;
+}
+
+function applyAnsiSgr(codes, state) {
+  const values = codes.length ? codes : [0];
+  for (let i = 0; i < values.length; i += 1) {
+    const code = Number(values[i] || 0);
+    if (code === 0) {
+      state.color = "";
+      state.backgroundColor = "";
+      state.fontWeight = "";
+      state.fontStyle = "";
+      state.textDecoration = "";
+    } else if (code === 1) {
+      state.fontWeight = "700";
+    } else if (code === 3) {
+      state.fontStyle = "italic";
+    } else if (code === 4) {
+      state.textDecoration = "underline";
+    } else if (code === 22) {
+      state.fontWeight = "";
+    } else if (code === 23) {
+      state.fontStyle = "";
+    } else if (code === 24) {
+      state.textDecoration = "";
+    } else if (code === 39) {
+      state.color = "";
+    } else if (code === 49) {
+      state.backgroundColor = "";
+    } else if (code >= 30 && code <= 37) {
+      state.color = ANSI_16_COLORS[code - 30];
+    } else if (code >= 90 && code <= 97) {
+      state.color = ANSI_16_COLORS[code - 90 + 8];
+    } else if (code >= 40 && code <= 47) {
+      state.backgroundColor = ANSI_16_COLORS[code - 40];
+    } else if (code >= 100 && code <= 107) {
+      state.backgroundColor = ANSI_16_COLORS[code - 100 + 8];
+    } else if ((code === 38 || code === 48) && Number(values[i + 1]) === 2) {
+      const r = Number(values[i + 2]);
+      const g = Number(values[i + 3]);
+      const b = Number(values[i + 4]);
+      if ([r, g, b].every((value) => Number.isInteger(value) && value >= 0 && value <= 255)) {
+        state[code === 38 ? "color" : "backgroundColor"] = `rgb(${r}, ${g}, ${b})`;
+      }
+      i += 4;
+    } else if ((code === 38 || code === 48) && Number(values[i + 1]) === 5) {
+      const color = ansi256ToHex(values[i + 2]);
+      if (color) state[code === 38 ? "color" : "backgroundColor"] = color;
+      i += 2;
+    }
+  }
+}
+
+function appendAnsiSegment(parent, text, state) {
+  const value = stripAnsi(text);
+  if (!value) return;
+  if (!state.color && !state.backgroundColor && !state.fontWeight && !state.fontStyle && !state.textDecoration) {
+    parent.append(document.createTextNode(value));
+    return;
+  }
+  const span = make("span", "ansi-segment");
+  span.textContent = value;
+  if (state.color) span.style.color = state.color;
+  if (state.backgroundColor) span.style.backgroundColor = state.backgroundColor;
+  if (state.fontWeight) span.style.fontWeight = state.fontWeight;
+  if (state.fontStyle) span.style.fontStyle = state.fontStyle;
+  if (state.textDecoration) span.style.textDecoration = state.textDecoration;
+  parent.append(span);
+}
+
+function renderAnsiText(parent, text) {
+  parent.replaceChildren();
+  const raw = String(text ?? "");
+  const pattern = /(?:\x1B|\u241B)\[([0-9;]*)m/g;
+  const state = { color: "", backgroundColor: "", fontWeight: "", fontStyle: "", textDecoration: "" };
+  let lastIndex = 0;
+  let match;
+  while ((match = pattern.exec(raw))) {
+    appendAnsiSegment(parent, raw.slice(lastIndex, match.index), state);
+    const codes = match[1].split(";").filter((part) => part !== "").map((part) => Number(part));
+    applyAnsiSgr(codes, state);
+    lastIndex = pattern.lastIndex;
+  }
+  appendAnsiSegment(parent, raw.slice(lastIndex), state);
+}
+
+function cleanStatusText(value) {
+  return stripAnsi(value).replace(/\s+/g, " ").trim();
+}
+
+function modelLabel(model) {
+  if (!model) return "none";
+  return `${model.provider}/${model.id}`;
+}
+
+function shortSessionLabel(state) {
+  const label = cleanStatusText(state?.sessionName || state?.sessionId || "session");
+  return /^[0-9a-f]{8}-[0-9a-f-]{18,}$/i.test(label) ? label.slice(0, 8) : label;
+}
+
+function formatStatusEntry(key, value) {
+  const cleanKey = cleanStatusText(key);
+  const cleanValue = cleanStatusText(value);
+  if (!cleanValue) return "";
+  if ((cleanKey === "git-footer" || cleanKey === GIT_FOOTER_WEBUI_STATUS_KEY) && !isOptionalFeatureEnabled("gitFooterStatus")) return "";
+  if (cleanKey === GIT_FOOTER_WEBUI_STATUS_KEY) return "";
+  if (cleanKey === "plan-mode") return `Plan: ${cleanValue}`;
+  if (cleanKey === "extension") return cleanValue;
+  return `${cleanKey}: ${cleanValue}`;
+}
+
+function shortModelLabel(model) {
+  if (!model) return "unknown";
+  return `(${model.provider}) ${model.id}`;
+}
+
+function footerThinkingLevelLabel(level) {
+  return String(level || "unknown").trim() || "unknown";
+}
+
+function footerThinkingDisplay(state = currentState) {
+  const current = footerThinkingLevelLabel(state?.thinkingLevel);
+  const pending = state?.pendingThinkingLevel ? footerThinkingLevelLabel(state.pendingThinkingLevel) : "";
+  return pending && pending !== current ? `${current} → ${pending} next` : current;
+}
+
+function footerModelLine(model = currentState?.model, thinkingLevel = currentState?.thinkingLevel) {
+  const label = shortModelLabel(model);
+  if (!model?.reasoning) return label;
+  const thinking = thinkingLevel === "off" ? "thinking off" : thinkingLevel || "?";
+  return `${label} • ${thinking}`;
+}
+
+function normalizeSelectedModel(model) {
+  const provider = String(model?.provider || "").trim();
+  const id = String(model?.id || model?.modelId || "").trim();
+  if (!provider || !id) return null;
+  const known = [...availableModels, ...footerScopedModels].find((item) => item?.provider === provider && item?.id === id);
+  return { ...(known || {}), ...model, provider, id };
+}
+
+function applyOptimisticModelSelection(model, tabContext = activeTabContext()) {
+  const nextModel = normalizeSelectedModel(model);
+  if (!nextModel || !currentState || !isCurrentTabContext(tabContext)) return nextModel;
+  const changed = modelStateKey(currentState.model) !== modelStateKey(nextModel);
+  currentState = { ...currentState, model: nextModel };
+  renderStatus();
+  if (changed) requestGitFooterWebuiPayload(tabContext, { force: true });
+  return nextModel;
+}
+
+function applyOptimisticThinkingSelection(data, tabContext = activeTabContext()) {
+  const level = String(data?.level || data?.requestedLevel || "").trim();
+  if (!level || !currentState || !isCurrentTabContext(tabContext)) return level;
+  if (data?.pending) currentState = { ...currentState, pendingThinkingLevel: level };
+  else currentState = { ...currentState, thinkingLevel: level, pendingThinkingLevel: undefined };
+  renderStatus();
+  if (!data?.pending) requestGitFooterWebuiPayload(tabContext, { force: true });
+  return level;
+}
+
+function footerThinkingLevels() {
+  const levels = Array.from(elements.thinkingSelect?.options || []).map((option) => option.value).filter(Boolean);
+  return levels.length ? levels : ["off", "minimal", "low", "medium", "high", "xhigh"];
+}
+
+function formatFooterTokenCount(value) {
+  const n = Math.max(0, Number(value) || 0);
+  if (n < 1000) return `${Math.round(n)}`;
+  if (n < 10000) return `${(n / 1000).toFixed(1)}k`;
+  if (n < 1000000) return `${Math.round(n / 1000)}k`;
+  if (n < 10000000) return `${(n / 1000000).toFixed(1)}M`;
+  return `${Math.round(n / 1000000)}M`;
+}
+
+function footerCostAuthLabel() {
+  const provider = currentState?.model?.provider || "";
+  return /codex|copilot|chatgpt/i.test(provider) ? "sub" : "api";
+}
+
+function contextWindowFromSources(...sources) {
+  for (const source of sources) {
+    const value = typeof source === "object" && source !== null ? source.contextWindow : source;
+    const contextWindow = Number(value);
+    if (Number.isFinite(contextWindow) && contextWindow > 0) return contextWindow;
+  }
+  return 0;
+}
+
+function contextUsageUnknownAfterCompaction(tabId = activeTabId) {
+  return !!tabId && contextUsageUnknownAfterCompactionByTab.has(tabId);
+}
+
+function unknownFooterContextText(contextUsage = null) {
+  const contextWindow = contextWindowFromSources(
+    contextUsage,
+    latestStats?.contextUsage,
+    currentState?.contextUsage,
+    currentState?.model?.contextWindow,
+  );
+  return contextWindow ? `?/${formatFooterTokenCount(contextWindow)}` : "?";
+}
+
+function contextUsageWithUnknownPercent(contextUsage = null) {
+  return {
+    ...(contextUsage || {}),
+    percent: null,
+    contextWindow: contextWindowFromSources(contextUsage, latestStats?.contextUsage, currentState?.contextUsage, currentState?.model?.contextWindow),
+  };
+}
+
+function markContextUsageUnknownAfterCompaction(tabId = activeTabId) {
+  if (!tabId) return;
+  contextUsageUnknownAfterCompactionByTab.set(tabId, Date.now());
+  if (tabId !== activeTabId) return;
+  if (currentState) currentState = { ...currentState, contextUsage: contextUsageWithUnknownPercent(currentState.contextUsage) };
+  if (latestStats) latestStats = { ...latestStats, contextUsage: contextUsageWithUnknownPercent(latestStats.contextUsage) };
+}
+
+function clearContextUsageUnknownAfterCompaction(tabId = activeTabId) {
+  if (!tabId) return;
+  contextUsageUnknownAfterCompactionByTab.delete(tabId);
+}
+
+function footerStatsTokensDisplay(stats = latestStats) {
+  const tokens = stats?.tokens;
+  if (!tokens) return "";
+  return `↑${formatFooterTokenCount(tokens.input)} ↓${formatFooterTokenCount(tokens.output)}`;
+}
+
+function footerStatsCostDisplay(stats = latestStats) {
+  if (!stats) return "";
+  return `$${Number(stats.cost || 0).toFixed(3)} (${footerCostAuthLabel()})`;
+}
+
+function footerAutoCompactionEnabled(state = currentState) {
+  return state?.autoCompactionEnabled !== false;
+}
+
+function footerContextDisplayWithAuto(value, state = currentState) {
+  const text = cleanStatusText(value);
+  if (!text) return "";
+  const withoutAuto = text.replace(/\s*\(auto\)\s*$/i, "");
+  return footerAutoCompactionEnabled(state) ? `${withoutAuto} (auto)` : withoutAuto;
+}
+
+function footerStatsContextDisplay(stats = latestStats) {
+  const usage = stats?.contextUsage || currentState?.contextUsage;
+  const contextWindow = contextWindowFromSources(usage, currentState?.model?.contextWindow);
+  if (contextUsageUnknownAfterCompaction()) return footerContextDisplayWithAuto(unknownFooterContextText(usage));
+  if (!contextWindow) return "";
+  const rawPercent = Number(usage?.percent);
+  const percent = Number.isFinite(rawPercent) ? `${rawPercent.toFixed(1)}%` : "?";
+  return footerContextDisplayWithAuto(`${percent}/${formatFooterTokenCount(contextWindow)}`);
+}
+
+function footerAutoCompactionToggleAction(state = currentState) {
+  return `Click to ${footerAutoCompactionEnabled(state) ? "disable" : "enable"} auto-compaction.`;
+}
+
+async function toggleFooterAutoCompaction(tabContext = activeTabContext()) {
+  if (footerAutoCompactionToggleInFlight || !tabContext.tabId) return;
+  const previousState = currentState;
+  const enabled = !footerAutoCompactionEnabled(previousState);
+  footerAutoCompactionToggleInFlight = true;
+  if (isCurrentTabContext(tabContext) && currentState) {
+    currentState = { ...currentState, autoCompactionEnabled: enabled };
+    renderStatus();
+  }
+  try {
+    await api("/api/auto-compaction", { method: "POST", body: { enabled }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    addEvent(`Auto-compaction ${enabled ? "enabled" : "disabled"}`, "info");
+    try {
+      await refreshState(tabContext);
+    } catch (error) {
+      if (isCurrentTabContext(tabContext)) addEvent(`Auto-compaction updated, but state refresh failed: ${error.message || String(error)}`, "warn");
+    }
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      if (previousState) currentState = previousState;
+      addEvent(error.message || String(error), "error");
+      renderStatus();
+    }
+  } finally {
+    footerAutoCompactionToggleInFlight = false;
+    if (isCurrentTabContext(tabContext)) renderStatus();
+  }
+}
+
+function scheduleGitFooterPiCalibrationRefresh(tabContext, delays = [600, 1600]) {
+  for (const delayMs of delays) {
+    setTimeout(() => {
+      if (isCurrentTabContext(tabContext)) requestGitFooterWebuiPayload(tabContext, { force: true });
+    }, delayMs);
+  }
+}
+
+async function runGitFooterPiCalibration(mode = "current", tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  if (gitFooterPiCalibrationInFlightByTab.has(tabContext.tabId)) return;
+  if (currentState?.isStreaming || currentState?.isCompacting) {
+    addEvent("PI calibration can run after the active agent work finishes.", "warn");
+    return;
+  }
+
+  const commandName = resolveAvailableCommandName("calibrate", { rpcOnly: true });
+  if (!commandName) {
+    addEvent("PI calibration unavailable: /calibrate is not loaded in this Pi tab.", "warn");
+    return;
+  }
+  if (mode === "probe" && !confirm("Start an isolated PI calibration probe? This sends one tiny model request and may incur provider token usage.")) return;
+
+  const command = mode === "probe" ? `/${commandName}` : `/${commandName} current`;
+  gitFooterPiCalibrationInFlightByTab.add(tabContext.tabId);
+  renderFooter();
+  try {
+    await sendPrompt("prompt", command, { targetTabId: tabContext.tabId, throwOnError: true });
+    if (!isCurrentTabContext(tabContext)) return;
+    addEvent(mode === "probe" ? "PI calibration probe started; refreshing git footer value after it records…" : "PI calibration requested; refreshing git footer value…", "info");
+    scheduleGitFooterPiCalibrationRefresh(tabContext, mode === "probe" ? [5000, 14000] : [600, 1600]);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+  } finally {
+    gitFooterPiCalibrationInFlightByTab.delete(tabContext.tabId);
+    if (isCurrentTabContext(tabContext)) renderFooter();
+  }
+}
+
+function applyGitFooterPiCalibrationOptions(chip, options) {
+  if (chip?.key !== "pi" || !FOOTER_PAYLOAD_ACTIONS.has(chip?.action)) return "";
+  const tabContext = activeTabContext();
+  const busy = !!tabContext.tabId && gitFooterPiCalibrationInFlightByTab.has(tabContext.tabId);
+  const mode = chip.action === "calibrate-probe" ? "probe" : "current";
+  options.onClick = () => runGitFooterPiCalibration(mode);
+  if (busy) options.ariaBusy = true;
+  if (busy) return "Calibrating PI estimate and refreshing this value…";
+  return mode === "probe"
+    ? "Click to start an isolated PI calibration probe, then refresh this value."
+    : "Click to calibrate this uncalibrated PI estimate from the current session, then refresh this value.";
+}
+
+function applyGitFooterContextToggleOptions(chip, options) {
+  if (chip?.key !== "context") return "";
+  options.onClick = () => toggleFooterAutoCompaction();
+  options.ariaPressed = footerAutoCompactionEnabled();
+  if (footerAutoCompactionToggleInFlight) options.ariaBusy = true;
+  return footerAutoCompactionToggleInFlight ? "Updating auto-compaction…" : footerAutoCompactionToggleAction();
+}
+
+function fallbackFooterStats() {
+  return [footerStatsTokensDisplay(), footerStatsCostDisplay(), footerStatsContextDisplay()].filter(Boolean);
+}
+
+function formatDuration(ms) {
+  const totalSeconds = Math.max(0, Math.floor(Number(ms) / 1000));
+  const hours = Math.floor(totalSeconds / 3600);
+  const minutes = Math.floor((totalSeconds % 3600) / 60);
+  if (hours > 0) return `${hours}h${minutes > 0 ? `${minutes}m` : ""}`;
+  if (minutes > 0) return `${minutes}m`;
+  return `${totalSeconds}s`;
+}
+
+function normalizeDisplayPath(value) {
+  return String(value || "").replace(/\\/g, "/");
+}
+
+function normalizeGitWorkspaceInfo(workspace) {
+  if (!workspace || typeof workspace !== "object") return null;
+  return {
+    repoRoot: normalizeDisplayPath(workspace.repoRoot || ""),
+    commonGitDir: normalizeDisplayPath(workspace.commonGitDir || ""),
+    worktreePath: normalizeDisplayPath(workspace.worktreePath || workspace.path || ""),
+    branch: cleanStatusText(workspace.branch || ""),
+    worktreeCount: Number.isFinite(Number(workspace.worktreeCount)) ? Number(workspace.worktreeCount) : null,
+    isMainWorktree: workspace.isMainWorktree === true,
+  };
+}
+
+function gitWorkspaceBadgeLabel(workspace = normalizeGitWorkspaceInfo(activeTab()?.gitWorkspace)) {
+  if (!workspace?.worktreePath) return "";
+  const branch = workspace.branch || "detached";
+  return workspace.isMainWorktree ? `main worktree · ${branch}` : `worktree · ${branch}`;
+}
+
+function textFromContent(content) {
+  if (typeof content === "string") return content;
+  if (!Array.isArray(content)) return JSON.stringify(content ?? "");
+  return content
+    .map((part) => {
+      if (!part || typeof part !== "object") return String(part ?? "");
+      if (typeof part.text === "string") return part.text;
+      if (typeof part.thinking === "string") return part.thinking;
+      if (part.type === "toolCall") return JSON.stringify(part.arguments || {});
+      if (typeof part.content === "string") return part.content;
+      return "";
+    })
+    .join("\n");
+}
+
+function cleanTooltipText(value) {
+  return stripAnsi(value).replace(/\r\n?/g, "\n").replace(/[^\S\n]+/g, " ").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+const TOOLTIP_HOVER_DELAY_MS = 500;
+
+let footerTooltipNode = null;
+let footerTooltipTarget = null;
+let footerTooltipEventsBound = false;
+let footerTooltipHoverTimer = null;
+let footerTooltipPendingTarget = null;
+
+function ensureFooterTooltipNode() {
+  if (!footerTooltipNode) {
+    footerTooltipNode = make("div", "footer-floating-tooltip");
+    footerTooltipNode.hidden = true;
+    document.body.append(footerTooltipNode);
+  }
+  if (!footerTooltipEventsBound) {
+    footerTooltipEventsBound = true;
+    const update = () => positionFooterTooltip(footerTooltipTarget);
+    window.addEventListener("resize", update, { passive: true });
+    window.addEventListener("scroll", update, { passive: true, capture: true });
+  }
+  return footerTooltipNode;
+}
+
+function positionFooterTooltip(target) {
+  if (!target || !footerTooltipNode || footerTooltipNode.hidden) return;
+  const gap = 8;
+  const margin = 8;
+  const rect = target.getBoundingClientRect();
+  const maxWidth = Math.max(96, Math.min(384, window.innerWidth - margin * 2));
+  footerTooltipNode.style.maxWidth = `${maxWidth}px`;
+
+  const width = footerTooltipNode.offsetWidth;
+  const height = footerTooltipNode.offsetHeight;
+  const align = target.getAttribute("data-tooltip-align") || "center";
+  let left = rect.left + rect.width / 2 - width / 2;
+  if (align === "start") left = rect.left;
+  if (align === "end") left = rect.right - width;
+  left = Math.min(Math.max(margin, left), Math.max(margin, window.innerWidth - margin - width));
+
+  let top = rect.top - gap - height;
+  if (top < margin) top = rect.bottom + gap;
+  top = Math.min(Math.max(margin, top), window.innerHeight - margin - height);
+
+  footerTooltipNode.style.left = `${Math.round(left)}px`;
+  footerTooltipNode.style.top = `${Math.round(top)}px`;
+}
+
+function clearFooterTooltipHoverTimer(target) {
+  if (target && footerTooltipPendingTarget && target !== footerTooltipPendingTarget) return;
+  if (footerTooltipHoverTimer) clearTimeout(footerTooltipHoverTimer);
+  footerTooltipHoverTimer = null;
+  footerTooltipPendingTarget = null;
+}
+
+function showFooterTooltip(target) {
+  clearFooterTooltipHoverTimer();
+  const text = target?.getAttribute("data-tooltip");
+  if (!text) return;
+  footerTooltipTarget = target;
+  const tooltip = ensureFooterTooltipNode();
+  tooltip.textContent = text;
+  tooltip.hidden = false;
+  tooltip.classList.add("visible");
+  positionFooterTooltip(target);
+}
+
+function scheduleFooterTooltip(target) {
+  const text = target?.getAttribute("data-tooltip");
+  if (!text) return;
+  clearFooterTooltipHoverTimer();
+  footerTooltipPendingTarget = target;
+  footerTooltipHoverTimer = setTimeout(() => {
+    const pendingTarget = footerTooltipPendingTarget;
+    clearFooterTooltipHoverTimer();
+    if (!pendingTarget?.isConnected || !pendingTarget.matches?.(":hover")) return;
+    showFooterTooltip(pendingTarget);
+  }, TOOLTIP_HOVER_DELAY_MS);
+}
+
+function hideFooterTooltip(target) {
+  clearFooterTooltipHoverTimer(target);
+  if (target && target !== footerTooltipTarget) return;
+  footerTooltipTarget = null;
+  if (!footerTooltipNode) return;
+  footerTooltipNode.hidden = true;
+  footerTooltipNode.classList.remove("visible");
+}
+
+function bindStyledTooltipEvents(node) {
+  if (!node || node._styledTooltipBound) return;
+  node._styledTooltipBound = true;
+  node.addEventListener("mouseenter", () => scheduleFooterTooltip(node));
+  node.addEventListener("mouseleave", () => hideFooterTooltip(node));
+  node.addEventListener("focus", () => showFooterTooltip(node));
+  node.addEventListener("blur", () => hideFooterTooltip(node));
+}
+
+function applyStyledTooltip(node, tooltip, options = {}) {
+  if (!node) return node;
+  const text = cleanTooltipText(tooltip);
+  if (!text) return node;
+  node.setAttribute("data-tooltip", text);
+  node.removeAttribute("title");
+  if (options.ariaLabel !== false) {
+    const ariaLabel = typeof options.ariaLabel === "string" ? options.ariaLabel : text.replace(/\s+/g, " ");
+    node.setAttribute("aria-label", ariaLabel);
+  }
+  if (options.align) node.setAttribute("data-tooltip-align", options.align);
+  bindStyledTooltipEvents(node);
+  return node;
+}
+
+function applyFooterTooltip(node, tooltip, options = {}) {
+  return applyStyledTooltip(node, tooltip, options);
+}
+
+function footerMetric(icon, label, value, tone = "", options = {}) {
+  const isAction = typeof options.onClick === "function";
+  const node = make(isAction ? "button" : "span", ["footer-metric", tone, isAction ? "footer-metric-action" : ""].filter(Boolean).join(" "));
+  if (isAction) {
+    node.type = "button";
+    node.addEventListener("click", options.onClick);
+    if (options.ariaPressed !== undefined) node.setAttribute("aria-pressed", options.ariaPressed ? "true" : "false");
+    if (options.ariaBusy) node.setAttribute("aria-busy", "true");
+  }
+  node.append(make("span", "footer-metric-icon", icon), make("span", "footer-metric-label", label), make("span", "footer-metric-value", value));
+  return applyFooterTooltip(node, options.title || `${label}: ${value}`, { align: options.tooltipAlign });
+}
+
+function contextUsageActiveColor(percent) {
+  const styles = getComputedStyle(document.documentElement);
+  const cssVar = (name, fallback) => styles.getPropertyValue(name).trim() || fallback;
+  const stops = [
+    { at: 0, color: cssVar("--ctp-green", "#a6e3a1") },
+    { at: 36, color: cssVar("--ctp-yellow", "#f9e2af") },
+    { at: 62, color: cssVar("--ctp-blue", "#89b4fa") },
+    { at: 100, color: cssVar("--ctp-red", "#f38ba8") },
+  ];
+  const value = Math.min(100, Math.max(0, Number(percent)));
+  const right = stops.find((stop) => value <= stop.at) || stops.at(-1);
+  const left = stops[Math.max(0, stops.indexOf(right) - 1)];
+  const leftRgb = cssColorToRgb(left.color);
+  const rightRgb = cssColorToRgb(right.color);
+  if (!leftRgb || !rightRgb || left.at === right.at) {
+    return { color: right.color, glow: right.color };
+  }
+  const mixed = mixRgb(leftRgb, rightRgb, (value - left.at) / (right.at - left.at));
+  return { color: rgbColor(mixed), glow: rgbaColor(mixed, 0.42) };
+}
+
+function applyFooterContextUsage(node, contextUsage) {
+  node.classList.add("footer-context-card");
+  const percent = typeof contextUsage?.percent === "number" ? contextUsage.percent : Number.NaN;
+  if (Number.isFinite(percent)) {
+    const clampedPercent = Math.min(100, Math.max(0, percent));
+    const activeColor = contextUsageActiveColor(clampedPercent);
+    node.classList.add("has-context-usage");
+    node.style.setProperty("--context-usage", `${clampedPercent.toFixed(1)}%`);
+    node.style.setProperty("--context-active-color", activeColor.color);
+    node.style.setProperty("--context-active-glow", activeColor.glow);
+  }
+  return node;
+}
+
+function footerMeta(label, value, className = "", options = {}) {
+  const isAction = typeof options.onClick === "function";
+  const node = make(isAction ? "button" : "span", ["footer-meta", className, isAction ? "footer-meta-action" : ""].filter(Boolean).join(" "));
+  if (isAction) {
+    node.type = "button";
+    node.addEventListener("click", options.onClick);
+    if (options.ariaPressed !== undefined) node.setAttribute("aria-pressed", options.ariaPressed ? "true" : "false");
+    if (options.ariaBusy) node.setAttribute("aria-busy", "true");
+  }
+  node.append(make("span", "footer-meta-label", label), make("span", "footer-meta-value", value));
+  return applyFooterTooltip(node, options.title || `${label}: ${value}`, { align: options.tooltipAlign });
+}
+
+const FOOTER_PAYLOAD_TONES = new Set(["pink", "blue", "mauve", "yellow", "green", "teal"]);
+const FOOTER_PAYLOAD_ACTIONS = new Set(["calibrate-current", "calibrate-probe"]);
+const FOOTER_CHANGED_FILE_KINDS = new Set(["modified", "staged", "untracked", "conflicted"]);
+const FOOTER_CHANGED_FILE_KIND_ORDER = ["modified", "staged", "untracked", "conflicted"];
+const FOOTER_CHANGED_FILE_KIND_LABELS = {
+  modified: "Modified",
+  staged: "Staged",
+  untracked: "Untracked",
+  conflicted: "Conflicted",
+};
+const FOOTER_META_CLASS_BY_KEY = new Map([
+  ["cwd", "footer-workspace"],
+  ["git", "footer-branch"],
+  ["git-state", "footer-git-state"],
+  ["sync", "footer-sync"],
+  ["changes", "footer-changes"],
+  ["git-extra", "footer-git-extra"],
+  ["worktree", "footer-worktree"],
+  ["context", "footer-context"],
+  ["model", "footer-model"],
+  ["thinking", "footer-thinking"],
+]);
+
+const GIT_FOOTER_TOOLTIP_COPY = {
+  tokens: "Session token totals. ↑ is input/prompt tokens; ↓ is assistant output tokens.",
+  cache: "Provider prompt-cache usage. R is cache-read tokens; W is cache-write tokens.",
+  pi: "Estimated initial Pi prompt size before your message. … means the estimate is still pending.",
+  speed: "Assistant streaming speed. Shows live output tokens for the current reply and current or last tokens per second.",
+  cost: "Estimated session cost. sub means subscription-backed provider; api means metered API usage.",
+  context: "Context window pressure. Shows percent used over the model limit; auto means auto-compaction is enabled.",
+  cwd: "Active working directory for this Web UI tab.",
+  git: "Current Git branch. detached means HEAD is not on a branch; no repo means the cwd is outside a Git work tree.",
+  "git-state": "Active Git operation or detached state. Finish or abort rebase/merge/cherry-pick/revert/bisect before normal commits.",
+  sync: "Remote tracking divergence. ↑ means local commits ahead; ↓ means remote commits to pull.",
+  changes: "Working tree and fetched remote summary. 🟢 staged, ✏️ modified unstaged, ➕ untracked, ⚠️ conflicted; ⬇️ means fetched remote commits to pull; 🔄/✓/⚠️ fetch shows the tab git fetch state; ✅ means no changes.",
+  "git-extra": "Extra Git signals. 📦 stash, 🧩 dirty submodules, 🌳 worktrees, 🏷️ tag at HEAD, 🕒 last commit age, 🔓 signing mismatch.",
+  worktree: "Git worktree checkout for this tab. Use branch worktrees to work on branches in parallel without switching this checkout.",
+  model: "Scoped model for this tab.",
+  thinking: "Reasoning/thinking effort for this tab.",
+};
+
+function cleanFooterPayloadText(value, fallback = "", maxLength = 240) {
+  const text = cleanStatusText(value).slice(0, maxLength);
+  return text || fallback;
+}
+
+function normalizeFooterPayloadChangedFile(value) {
+  if (!value || typeof value !== "object") return null;
+  const path = cleanFooterPayloadText(value.path, "", 1000);
+  if (!path) return null;
+  const kind = FOOTER_CHANGED_FILE_KINDS.has(value.kind) ? value.kind : "modified";
+  const file = {
+    kind,
+    path,
+    status: cleanFooterPayloadText(value.status, "", 12),
+  };
+  const oldPath = cleanFooterPayloadText(value.oldPath, "", 1000);
+  if (oldPath) file.oldPath = oldPath;
+  return file;
+}
+
+function normalizeFooterPayloadChip(value, index) {
+  if (!value || typeof value !== "object") return null;
+  const key = cleanFooterPayloadText(value.key, `item-${index}`).replace(/[^a-z0-9_.:-]/gi, "-").slice(0, 64) || `item-${index}`;
+  const label = cleanFooterPayloadText(value.label, key).slice(0, 32);
+  const chip = {
+    key,
+    label,
+    value: cleanFooterPayloadText(value.value, "—"),
+    icon: cleanFooterPayloadText(value.icon, "•").slice(0, 8),
+    tone: FOOTER_PAYLOAD_TONES.has(value.tone) ? value.tone : "",
+    title: cleanFooterPayloadText(value.title, "", 4000),
+  };
+  if (FOOTER_PAYLOAD_ACTIONS.has(value.action)) chip.action = value.action;
+  if (Array.isArray(value.files)) {
+    const files = value.files.map(normalizeFooterPayloadChangedFile).filter(Boolean).slice(0, 80);
+    if (files.length) chip.files = files;
+  }
+  if (value.contextUsage && typeof value.contextUsage === "object") {
+    const percent = typeof value.contextUsage.percent === "number" ? value.contextUsage.percent : Number.NaN;
+    const contextWindow = Number(value.contextUsage.contextWindow);
+    chip.contextUsage = {
+      percent: Number.isFinite(percent) ? percent : null,
+      contextWindow: Number.isFinite(contextWindow) ? contextWindow : 0,
+    };
+  }
+  return chip;
+}
+
+function currentGitFooterCacheCwd(tabId = activeTabId) {
+  const tab = tabs.find((item) => item.id === tabId) || activeTab();
+  return latestWorkspace?.cwd || tab?.cwd || "";
+}
+
+function parseGitFooterWebuiPayloadRaw(raw) {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || parsed.type !== GIT_FOOTER_WEBUI_PAYLOAD_TYPE || parsed.version !== GIT_FOOTER_WEBUI_PAYLOAD_VERSION) return null;
+    const main = Array.isArray(parsed.main) ? parsed.main.map(normalizeFooterPayloadChip).filter(Boolean).slice(0, 8) : [];
+    const meta = Array.isArray(parsed.meta) ? parsed.meta.map(normalizeFooterPayloadChip).filter(Boolean).slice(0, 10) : [];
+    if (!main.length && !meta.length) return null;
+    return { main, meta };
+  } catch {
+    return null;
+  }
+}
+
+function parseRemoteWebuiControlsPayloadRaw(raw) {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || parsed.type !== REMOTE_WEBUI_CONTROLS_PAYLOAD_TYPE || parsed.version !== REMOTE_WEBUI_CONTROLS_PAYLOAD_VERSION) return null;
+    if (parsed.featureId !== "remoteWebui") return null;
+    const commands = parsed.commands && typeof parsed.commands === "object" ? parsed.commands : {};
+    return {
+      title: cleanFooterPayloadText(parsed.title, "Remote WebUI", 80),
+      description: cleanFooterPayloadText(parsed.description, "Trusted-LAN browser access controlled by the Remote WebUI package.", 240),
+      commands: {
+        open: typeof commands.open === "string" ? commands.open : "/remote",
+        close: typeof commands.close === "string" ? commands.close : "/remote close",
+        refresh: typeof commands.refresh === "string" ? commands.refresh : "/remote refresh",
+        status: typeof commands.status === "string" ? commands.status : "/remote status",
+        authOn: typeof commands.authOn === "string" ? commands.authOn : "/remote auth on",
+        authOff: typeof commands.authOff === "string" ? commands.authOff : "/remote auth off",
+      },
+    };
+  } catch {
+    return null;
+  }
+}
+
+function remoteWebuiControlsPayload() {
+  if (isOptionalFeatureDisabled("remoteWebui")) return null;
+  return parseRemoteWebuiControlsPayloadRaw(statusEntries.get(REMOTE_WEBUI_CONTROLS_STATUS_KEY));
+}
+
+function remoteWebuiDefaultPortArg() {
+  const port = Number.parseInt(String(latestNetwork?.port || DEFAULT_WEBUI_PORT), 10);
+  return Number.isFinite(port) && port > 0 && port <= 65535 && String(port) !== DEFAULT_WEBUI_PORT ? ` --port ${port}` : "";
+}
+
+function remoteWebuiFallbackCommand(name, fallback) {
+  const portArg = remoteWebuiDefaultPortArg();
+  const commands = {
+    open: `/remote${portArg}`,
+    close: `/remote close${portArg}`,
+    refresh: `/remote refresh${portArg}`,
+    status: `/remote status${portArg}`,
+    authOn: `/remote auth on${portArg}`,
+    authOff: `/remote auth off${portArg}`,
+  };
+  return commands[name] || fallback;
+}
+
+function remoteWebuiCommand(name, fallback) {
+  return remoteWebuiControlsPayload()?.commands?.[name] || remoteWebuiFallbackCommand(name, fallback);
+}
+
+function readCachedGitFooterWebuiPayloadRaw() {
+  try {
+    const cached = JSON.parse(localStorage.getItem(GIT_FOOTER_WEBUI_PAYLOAD_CACHE_KEY) || "null");
+    if (!cached || typeof cached.raw !== "string") return null;
+    const cachedCwd = typeof cached.cwd === "string" ? cached.cwd : "";
+    const currentCwd = currentGitFooterCacheCwd();
+    if (cachedCwd && currentCwd && cachedCwd !== currentCwd) return null;
+    return cached.raw;
+  } catch {
+    return null;
+  }
+}
+
+function cacheGitFooterWebuiPayload(raw, tabId = activeTabId) {
+  if (!parseGitFooterWebuiPayloadRaw(raw)) return;
+  try {
+    localStorage.setItem(GIT_FOOTER_WEBUI_PAYLOAD_CACHE_KEY, JSON.stringify({
+      raw,
+      cwd: currentGitFooterCacheCwd(tabId),
+      savedAt: Date.now(),
+    }));
+  } catch {
+    // Cached footer payloads are best-effort; live extension payloads still work.
+  }
+}
+
+function clearGitFooterWebuiPayloadCache() {
+  try {
+    localStorage.removeItem(GIT_FOOTER_WEBUI_PAYLOAD_CACHE_KEY);
+  } catch {
+    // Ignore storage failures; toggles should still work for this page load.
+  }
+}
+
+function parseGitFooterWebuiPayload() {
+  if (isOptionalFeatureDisabled("gitFooterStatus")) return null;
+
+  const livePayload = parseGitFooterWebuiPayloadRaw(statusEntries.get(GIT_FOOTER_WEBUI_STATUS_KEY));
+  if (livePayload) return livePayload;
+
+  const commandsStillLoading = availableCommands.length === 0 && rawAvailableCommands.length === 0;
+  const extensionDetected = hasAvailableCommand("git-footer-refresh") || optionalFeatureAvailability.gitFooterStatus;
+  if (!commandsStillLoading && !extensionDetected) return null;
+  return parseGitFooterWebuiPayloadRaw(readCachedGitFooterWebuiPayloadRaw());
+}
+
+function footerPayloadWithLiveModel(payload) {
+  if (!payload) return payload;
+  const model = currentState?.model ? shortModelLabel(currentState.model) : "";
+  const effort = footerThinkingDisplay();
+  const workspace = normalizeGitWorkspaceInfo(activeTab()?.gitWorkspace);
+  const worktreeLabel = gitWorkspaceBadgeLabel(workspace);
+  const hasThinkingChip = [...payload.main, ...payload.meta].some((chip) => chip?.key === "thinking");
+  const hasWorktreeChip = [...payload.main, ...payload.meta].some((chip) => chip?.key === "worktree");
+  const contextChip = (chip) => {
+    const usageUnknown = contextUsageUnknownAfterCompaction();
+    const value = usageUnknown ? footerContextDisplayWithAuto(unknownFooterContextText(chip?.contextUsage)) : footerContextDisplayWithAuto(chip?.value);
+    const contextUsage = usageUnknown ? contextUsageWithUnknownPercent(chip?.contextUsage) : chip?.contextUsage;
+    return { ...chip, value, title: `context: ${value}`, ...(contextUsage ? { contextUsage } : {}) };
+  };
+  const effortChip = (chip) => ({ ...chip, key: "thinking", label: "effort", value: effort, title: `effort: ${effort}`, tone: "mauve" });
+  const worktreeChip = () => ({ key: "worktree", label: "worktree", value: worktreeLabel, icon: "🌳", tone: workspace?.isMainWorktree ? "teal" : "green", title: workspace?.worktreePath || "Git worktree" });
+  const splitChip = (chip) => {
+    if (chip?.key === "context") return [contextChip(chip)];
+    if (chip?.key === "thinking") return [effortChip(chip)];
+    if (chip?.key !== "model" || !model) return [chip];
+    const modelChip = { ...chip, value: model, title: `model: ${model}` };
+    return hasThinkingChip ? [modelChip] : [modelChip, effortChip(chip)];
+  };
+  const meta = payload.meta.flatMap(splitChip);
+  if (worktreeLabel && !hasWorktreeChip) meta.splice(Math.min(meta.length, 2), 0, worktreeChip());
+  return {
+    main: payload.main.flatMap(splitChip),
+    meta,
+  };
+}
+
+function footerMetaClassForPayload(chip) {
+  const base = FOOTER_META_CLASS_BY_KEY.get(chip.key) || "footer-extension-meta";
+  const toneClass = chip.tone ? ` tone-${chip.tone}` : "";
+  return `${base}${toneClass}`.trim();
+}
+
+function isRedundantFooterTooltipTitle(sourceTitle, chip, value) {
+  const normalized = cleanStatusText(sourceTitle).toLowerCase();
+  if (!normalized) return true;
+  const labels = [chip?.label, chip?.key].map((item) => cleanFooterPayloadText(item, "").toLowerCase()).filter(Boolean);
+  return [`current: ${value}`, ...labels.map((label) => `${label}: ${value}`)].some((item) => normalized === cleanStatusText(item).toLowerCase());
+}
+
+function gitFooterPayloadTooltip(chip, options = {}) {
+  const key = cleanFooterPayloadText(chip?.key, "");
+  const value = cleanFooterPayloadText(chip?.value, "—");
+  const sourceTitle = cleanFooterPayloadText(chip?.title, "", 4000);
+  const action = cleanFooterPayloadText(options.action, "", 1000);
+  const parts = [GIT_FOOTER_TOOLTIP_COPY[key] || "Extension-provided git-footer-status item.", `Current: ${value}`];
+  if (sourceTitle && !isRedundantFooterTooltipTitle(sourceTitle, chip, value)) parts.push(sourceTitle);
+  if (action) parts.push(action);
+  return parts.join("\n");
+}
+
+function gitFooterTooltipAlign(chip) {
+  if (["tokens", "cwd"].includes(chip?.key)) return "start";
+  if (["model", "thinking"].includes(chip?.key)) return "end";
+  return "center";
+}
+
+function footerTuiItem(value, className = "", options = {}) {
+  const text = cleanStatusText(value);
+  const isAction = typeof options.onClick === "function";
+  const node = make(isAction ? "button" : "span", `footer-tui-item ${className}${isAction ? " footer-tui-action" : ""}`.trim(), text);
+  if (isAction) {
+    node.type = "button";
+    node.addEventListener("click", options.onClick);
+  }
+  if (options.title) node.title = options.title;
+  return node;
+}
+
+function renderTuiFooterLine({ cwd, cwdTitle, message = "", stats = [], model = "" } = {}) {
+  const tab = activeTab();
+  const workspace = normalizeGitWorkspaceInfo(tab?.gitWorkspace);
+  const worktreeLabel = gitWorkspaceBadgeLabel(workspace);
+  const line = make("div", "footer-line footer-line-tui");
+  line.append(footerTuiItem(cwd || "loading…", "footer-tui-cwd", tab ? {
+    onClick: changeActiveTabCwd,
+    title: cwdTitle || `Change cwd for ${tab.title}: ${cwd}`,
+  } : { title: cwdTitle }));
+  if (worktreeLabel) line.append(footerTuiItem(worktreeLabel, "footer-tui-worktree", { title: workspace?.worktreePath || worktreeLabel }));
+  if (message) line.append(footerTuiItem(message, "footer-tui-status"));
+  for (const stat of stats.filter(Boolean)) line.append(footerTuiItem(stat, "footer-tui-stat"));
+  if (model) {
+    line.append(make("span", "footer-tui-spacer"));
+    line.append(footerTuiItem(model, "footer-tui-model", {
+      onClick: () => setFooterModelPickerOpen(!footerModelPickerOpen),
+      title: `Change scoped model: ${model}`,
+    }));
+  }
+  return line;
+}
+
+function insertChangedFilePathReference(path) {
+  const input = elements.promptInput;
+  if (!input) return;
+  const reference = formatPathReference(path);
+  const start = input.selectionStart ?? input.value.length;
+  const end = input.selectionEnd ?? start;
+  const before = input.value.slice(0, start);
+  const after = input.value.slice(end);
+  const prefix = before && !/\s$/.test(before) ? " " : "";
+  const suffix = after && !/^\s/.test(after) ? " " : "";
+  input.value = `${before}${prefix}${reference}${suffix}${after}`;
+  const cursor = before.length + prefix.length + reference.length + suffix.length;
+  input.setSelectionRange(cursor, cursor);
+  input.focus();
+  resizePromptInput();
+  addEvent(`Added ${reference} to the prompt`, "info");
+}
+
+function changedFileDisplayPath(file) {
+  if (!file?.oldPath) return file?.path || "";
+  return `${file.oldPath} → ${file.path}`;
+}
+
+function renderChangedFileButton(file) {
+  const button = make("button", `footer-changed-file ${file.kind}`.trim());
+  button.type = "button";
+  button.title = `Add ${file.path} as an @ reference`;
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    insertChangedFilePathReference(file.path);
+  });
+  button.append(
+    make("span", "footer-changed-file-status", file.status || ""),
+    make("span", "footer-changed-file-path", changedFileDisplayPath(file)),
+  );
+  return button;
+}
+
+function renderChangedFilesGroup(kind, files) {
+  if (!files.length) return null;
+  const group = make("span", "footer-changed-files-group");
+  group.append(make("span", "footer-changed-files-heading", `${FOOTER_CHANGED_FILE_KIND_LABELS[kind] || kind} (${files.length})`));
+  const list = make("span", "footer-changed-files-list");
+  list.append(...files.map(renderChangedFileButton));
+  group.append(list);
+  return group;
+}
+
+function applyFooterChangedFilesDropdown(node, chip) {
+  if (chip?.key !== "changes" || !Array.isArray(chip.files) || chip.files.length === 0) return node;
+  node.classList.add("footer-changes-with-files");
+  node.tabIndex = 0;
+  node.removeAttribute("data-tooltip");
+  node.setAttribute("aria-label", `changes: ${chip.value}. Hover or focus to choose changed files. Click a file to add it as an @ reference.`);
+
+  const popover = make("span", "footer-changed-files-popover");
+  popover.append(make("span", "footer-changed-files-title", "Changed files"));
+  for (const kind of FOOTER_CHANGED_FILE_KIND_ORDER) {
+    const group = renderChangedFilesGroup(kind, chip.files.filter((file) => file.kind === kind));
+    if (group) popover.append(group);
+  }
+  node.append(popover);
+  return node;
+}
+
+function renderGitFooterPayloadMetric(chip) {
+  const options = { tooltipAlign: gitFooterTooltipAlign(chip) };
+  const action = applyGitFooterPiCalibrationOptions(chip, options) || applyGitFooterContextToggleOptions(chip, options);
+  options.title = gitFooterPayloadTooltip(chip, { action });
+  const node = footerMetric(chip.icon || "•", chip.label, chip.value, chip.tone ? `tone-${chip.tone}` : "", options);
+  return chip.contextUsage ? applyFooterContextUsage(node, chip.contextUsage) : node;
+}
+
+function renderGitFooterPayloadMeta(chip, tab) {
+  const options = {};
+  let action = "";
+  if (chip.key === "cwd" && tab) {
+    options.onClick = changeActiveTabCwd;
+    action = `Click to change the working directory for ${tab.title}.`;
+  } else if (chip.key === "git" && cleanFooterPayloadText(chip.value, "").toLowerCase() === "no repo") {
+    options.onClick = () => startGitInitWorkflow();
+    action = "No Git repository detected. Click to initialize a repo, create README.md, add origin, and push main.";
+  } else if (chip.key === "git") {
+    options.onClick = () => setFooterBranchPickerOpen(!footerBranchPickerOpen);
+    action = "Click to open, create, or switch branches. Worktree actions are the safe default for parallel work.";
+  } else if (chip.key === "worktree") {
+    options.onClick = () => setFooterBranchPickerOpen(!footerBranchPickerOpen);
+    action = "Click to manage branch worktrees for this repository.";
+  } else if (chip.key === "changes") {
+    options.onClick = openGitChangesDialog;
+    action = "Click to view the current git diff.";
+  } else if (chip.key === "model") {
+    options.onClick = () => setFooterModelPickerOpen(!footerModelPickerOpen);
+    action = "Click to choose another model.";
+  } else if (chip.key === "thinking") {
+    options.onClick = () => setFooterThinkingPickerOpen(!footerThinkingPickerOpen);
+    action = "Click to change thinking effort.";
+  }
+  action = applyGitFooterContextToggleOptions(chip, options) || action;
+  options.title = gitFooterPayloadTooltip(chip, { action });
+  options.tooltipAlign = gitFooterTooltipAlign(chip);
+  const node = footerMeta(chip.label, chip.value, footerMetaClassForPayload(chip), options);
+  applyFooterChangedFilesDropdown(node, chip);
+  if (["git", "worktree"].includes(chip.key) && options.onClick && cleanFooterPayloadText(chip.value, "").toLowerCase() !== "no repo") {
+    node.setAttribute("aria-haspopup", "listbox");
+    node.setAttribute("aria-expanded", footerBranchPickerOpen ? "true" : "false");
+  }
+  return chip.contextUsage ? applyFooterContextUsage(node, chip.contextUsage) : node;
+}
+
+// Shape key for a footer chip with the frequently-changing fields removed, so
+// live streaming metrics (token counts, tok/s, cost, context %) can be updated
+// in place without tearing down the footer DOM (and any open dropdown inside it).
+function gitFooterChipShapeKey(chip) {
+  const shape = {};
+  for (const [key, value] of Object.entries(chip || {})) {
+    if (key === "value") continue;
+    if (key === "contextUsage") {
+      shape.contextUsage = value ? true : false;
+      continue;
+    }
+    shape[key] = value;
+  }
+  return JSON.stringify(shape);
+}
+
+function gitFooterPickerStateKey() {
+  const tabContext = activeTabContext();
+  const refreshInFlight = tabContext.tabId ? gitFooterPayloadRefreshInFlightByTab.has(tabContext.tabId) : false;
+  const refreshAvailable = hasLoadedRpcCommand("git-footer-refresh");
+  return `${footerModelPickerOpen ? 1 : 0}|${footerThinkingPickerOpen ? 1 : 0}|${footerBranchPickerOpen ? 1 : 0}|${mobileFooterExpanded ? 1 : 0}|${refreshInFlight ? 1 : 0}|${refreshAvailable ? 1 : 0}`;
+}
+
+function updateGitFooterChipNodeValue(node, chip, valueSelector) {
+  if (!node) return;
+  const valueNode = node.querySelector(valueSelector);
+  if (valueNode && valueNode.textContent !== String(chip.value ?? "")) valueNode.textContent = String(chip.value ?? "");
+  if (chip.contextUsage) applyFooterContextUsage(node, chip.contextUsage);
+}
+
+let gitFooterRenderCache = null;
+
+function invalidateGitFooterRenderCache() {
+  gitFooterRenderCache = null;
+}
+
+function triggerGitFooterRefreshFromButton() {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId || gitFooterPayloadRefreshInFlightByTab.has(tabContext.tabId)) return;
+  if (!resolveAvailableCommandName("git-footer-refresh", { rpcOnly: true })) {
+    addEvent(optionalFeatureUnavailableMessage("gitFooterStatus"), "warn");
+    return;
+  }
+  requestGitFooterWebuiPayload(tabContext, { force: true, silent: false, allowDuringRun: true });
+}
+
+function renderGitFooterRefreshButton() {
+  const tabContext = activeTabContext();
+  const inFlight = tabContext.tabId ? gitFooterPayloadRefreshInFlightByTab.has(tabContext.tabId) : false;
+  const commandAvailable = !!resolveAvailableCommandName("git-footer-refresh", { rpcOnly: true });
+  const button = make("button", "git-footer-refresh-button");
+  button.type = "button";
+  button.title = inFlight
+    ? "Refreshing git footer status…"
+    : commandAvailable
+      ? "Refresh git footer status (/git-footer-refresh)"
+      : optionalFeatureUnavailableMessage("gitFooterStatus");
+  button.setAttribute("aria-label", inFlight ? "Refreshing git footer status" : "Refresh git footer status");
+  if (!commandAvailable) button.setAttribute("aria-disabled", "true");
+  if (inFlight) button.setAttribute("aria-busy", "true");
+  button.disabled = inFlight || !tabContext.tabId;
+  button.append(make("span", "git-footer-refresh-icon", "↻"));
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    triggerGitFooterRefreshFromButton();
+  });
+  return button;
+}
+
+function renderGitFooterPayload(payload) {
+  const tab = activeTab();
+  const pickerKey = gitFooterPickerStateKey();
+  const mainKeys = payload.main.map(gitFooterChipShapeKey);
+  const metaKeys = payload.meta.map(gitFooterChipShapeKey);
+
+  // Fast path: only live metric values changed. Update text in place instead of
+  // rebuilding the footer so buttons do not flicker and an open dropdown is not
+  // destroyed/recreated/repositioned during streaming.
+  const cache = gitFooterRenderCache;
+  if (
+    cache &&
+    elements.statusBar.classList.contains("statusbar-git-footer") &&
+    cache.pickerKey === pickerKey &&
+    cache.mainKeys.length === mainKeys.length &&
+    cache.metaKeys.length === metaKeys.length &&
+    cache.mainKeys.every((key, index) => key === mainKeys[index]) &&
+    cache.metaKeys.every((key, index) => key === metaKeys[index]) &&
+    cache.mainNodes.every((node) => node.isConnected) &&
+    cache.metaNodes.every((node) => node.isConnected)
+  ) {
+    payload.main.forEach((chip, index) => updateGitFooterChipNodeValue(cache.mainNodes[index], chip, ".footer-metric-value"));
+    payload.meta.forEach((chip, index) => updateGitFooterChipNodeValue(cache.metaNodes[index], chip, ".footer-meta-value"));
+    if (isFooterPickerOpen()) updateFooterModelPickerPosition();
+    return;
+  }
+
+  hideFooterTooltip();
+  elements.statusBar.replaceChildren();
+  elements.statusBar.classList.remove("statusbar-tui-footer");
+  elements.statusBar.classList.add("statusbar-git-footer");
+  document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+
+  const mainNodes = payload.main.map(renderGitFooterPayloadMetric);
+  const row1 = make("div", "footer-line footer-line-main");
+  row1.append(...mainNodes);
+
+  const footerToggle = make("button", "footer-details-toggle", mobileFooterExpanded ? "Less" : "Details");
+  footerToggle.type = "button";
+  footerToggle.setAttribute("aria-expanded", mobileFooterExpanded ? "true" : "false");
+  footerToggle.addEventListener("click", () => setMobileFooterExpanded(!mobileFooterExpanded));
+
+  const metaNodes = payload.meta.map((chip) => renderGitFooterPayloadMeta(chip, tab));
+  const row2 = make("div", "footer-line footer-line-meta");
+  row2.append(...metaNodes, footerToggle);
+
+  elements.statusBar.append(row1, row2, renderGitFooterRefreshButton());
+  if (footerModelPickerOpen) elements.statusBar.append(renderFooterModelPicker());
+  if (footerThinkingPickerOpen) elements.statusBar.append(renderFooterThinkingPicker());
+  if (footerBranchPickerOpen) elements.statusBar.append(renderFooterBranchPicker());
+  gitFooterRenderCache = { pickerKey, mainKeys, metaKeys, mainNodes, metaNodes };
+  setMobileFooterExpanded(mobileFooterExpanded);
+  updateFooterModelPickerPosition();
+}
+
+function cleanGitDiffPath(value = "") {
+  let text = String(value || "").trim();
+  if (!text || text === "/dev/null") return "";
+  if ((text.startsWith("a/") || text.startsWith("b/")) && text.length > 2) text = text.slice(2);
+  return text;
+}
+
+function gitDiffPathFromHeader(line) {
+  const match = String(line || "").match(/^diff --git\s+(.+?)\s+(.+)$/);
+  return cleanGitDiffPath(match?.[2] || match?.[1] || "");
+}
+
+function parseGitUnifiedDiff(diffText = "") {
+  const normalized = String(diffText || "").replace(/\r\n?/g, "\n");
+  const lines = normalized.split("\n");
+  const files = [];
+  let file = null;
+  let hunk = null;
+  let oldLineNumber = 0;
+  let newLineNumber = 0;
+  let deleteBuffer = [];
+  let addBuffer = [];
+
+  const flushChangeRows = () => {
+    if (!hunk || (!deleteBuffer.length && !addBuffer.length)) return;
+    if (file) {
+      file.deletions += deleteBuffer.length;
+      file.additions += addBuffer.length;
+    }
+    const rowCount = Math.max(deleteBuffer.length, addBuffer.length);
+    for (let i = 0; i < rowCount; i++) {
+      const left = deleteBuffer[i] || null;
+      const right = addBuffer[i] || null;
+      hunk.rows.push({
+        type: left && right ? "changed" : left ? "removed" : "added",
+        oldNumber: left?.number ?? "",
+        newNumber: right?.number ?? "",
+        left: left?.text ?? "",
+        right: right?.text ?? "",
+      });
+    }
+    deleteBuffer = [];
+    addBuffer = [];
+  };
+
+  const finishFile = () => {
+    flushChangeRows();
+    if (!file) return;
+    file.path = file.newPath || file.oldPath || file.headerPath || "diff";
+    files.push(file);
+    file = null;
+    hunk = null;
+  };
+
+  for (let index = 0; index < lines.length; index++) {
+    const line = lines[index] || "";
+    if (index === lines.length - 1 && !line && normalized.endsWith("\n")) continue;
+
+    if (line.startsWith("diff --git ")) {
+      finishFile();
+      file = { path: "", oldPath: "", newPath: "", headerPath: gitDiffPathFromHeader(line), headers: [line], hunks: [], additions: 0, deletions: 0 };
+      continue;
+    }
+
+    if (!file) {
+      if (!line.trim()) continue;
+      file = { path: "diff", oldPath: "", newPath: "", headerPath: "diff", headers: [], hunks: [], additions: 0, deletions: 0 };
+    }
+
+    if (line.startsWith("@@ ")) {
+      flushChangeRows();
+      const match = line.match(/^@@ -(\d+)(?:,\d+)? \+(\d+)(?:,\d+)? @@/);
+      oldLineNumber = Number.parseInt(match?.[1] || "0", 10) || 0;
+      newLineNumber = Number.parseInt(match?.[2] || "0", 10) || 0;
+      hunk = { header: line, rows: [] };
+      file.hunks.push(hunk);
+      continue;
+    }
+
+    if (!hunk) {
+      file.headers.push(line);
+      if (line.startsWith("--- ")) file.oldPath = cleanGitDiffPath(line.slice(4));
+      if (line.startsWith("+++ ")) file.newPath = cleanGitDiffPath(line.slice(4));
+      continue;
+    }
+
+    if (line.startsWith("-")) {
+      deleteBuffer.push({ number: oldLineNumber, text: line.slice(1) });
+      oldLineNumber += 1;
+      continue;
+    }
+    if (line.startsWith("+")) {
+      addBuffer.push({ number: newLineNumber, text: line.slice(1) });
+      newLineNumber += 1;
+      continue;
+    }
+
+    flushChangeRows();
+    if (line.startsWith(" ")) {
+      const text = line.slice(1);
+      hunk.rows.push({ type: "context", oldNumber: oldLineNumber, newNumber: newLineNumber, left: text, right: text });
+      oldLineNumber += 1;
+      newLineNumber += 1;
+    } else if (line.startsWith("\\")) {
+      hunk.rows.push({ type: "meta", oldNumber: "", newNumber: "", left: line, right: line });
+    } else {
+      hunk.rows.push({ type: "meta", oldNumber: "", newNumber: "", left: line, right: line });
+    }
+  }
+
+  finishFile();
+  return files;
+}
+
+function gitChangesChip(label, value, className = "") {
+  const chip = make("div", `git-changes-chip ${className}`.trim());
+  chip.append(make("span", "git-changes-chip-label", label), make("span", "git-changes-chip-value", String(value ?? "—")));
+  return chip;
+}
+
+function renderGitChangesOverview(data) {
+  const summary = data?.summary || {};
+  const untrackedCount = Array.isArray(data?.untracked) ? data.untracked.length : Number(summary.untracked || 0);
+  const ahead = Number(summary.ahead || 0) || 0;
+  const behind = Number(summary.behind || 0) || 0;
+  const overview = make("div", "git-changes-overview");
+  overview.append(
+    gitChangesChip("repo", data?.root || "—", "wide"),
+    gitChangesChip("branch", data?.branch || "detached"),
+    gitChangesChip("ahead", ahead > 0 ? `↑${ahead}` : 0, ahead > 0 ? "warning" : "muted"),
+    gitChangesChip("remote", behind > 0 ? `↓${behind}` : 0, behind > 0 ? "danger" : "muted"),
+    gitChangesChip("staged", summary.staged || 0, "success"),
+    gitChangesChip("modified", summary.unstaged || 0, "warning"),
+    gitChangesChip("untracked", untrackedCount, "muted"),
+    gitChangesChip("conflicts", summary.conflicted || 0, (summary.conflicted || 0) > 0 ? "danger" : "muted"),
+  );
+  return overview;
+}
+
+function gitDiffDisplayLine(row, side) {
+  const type = row.type || "context";
+  if (side === "old") {
+    const text = row.left ?? "";
+    return row.oldNumber !== "" && (type === "removed" || type === "changed") ? `-${text}` : text;
+  }
+  const text = row.right ?? "";
+  return row.newNumber !== "" && (type === "added" || type === "changed") ? `+${text}` : text;
+}
+
+function renderGitDiffRow(row) {
+  const node = make("div", `git-diff-row ${row.type || "context"}`.trim());
+  node.append(
+    make("span", "git-diff-line-number old", row.oldNumber === "" ? "" : String(row.oldNumber)),
+    make("code", "git-diff-line old", gitDiffDisplayLine(row, "old")),
+    make("span", "git-diff-line-number new", row.newNumber === "" ? "" : String(row.newNumber)),
+    make("code", "git-diff-line new", gitDiffDisplayLine(row, "new")),
+  );
+  return node;
+}
+
+function renderGitDiffGrid(file) {
+  const grid = make("div", "git-diff-grid");
+  const rowLimit = file.renderRowLimit ?? GIT_CHANGES_RENDER_ROW_LIMIT;
+  let renderedRows = 0;
+  let truncated = false;
+  for (const hunk of file.hunks || []) {
+    if (renderedRows >= rowLimit) {
+      truncated = true;
+      break;
+    }
+    grid.append(renderGitDiffRow({ type: "hunk", oldNumber: "", newNumber: "", left: hunk.header, right: hunk.header }));
+    renderedRows += 1;
+    for (const row of hunk.rows || []) {
+      if (renderedRows >= rowLimit) {
+        truncated = true;
+        break;
+      }
+      grid.append(renderGitDiffRow(row));
+      renderedRows += 1;
+    }
+    if (truncated) break;
+  }
+  if (truncated) {
+    grid.append(renderGitDiffRow({ type: "meta", oldNumber: "", newNumber: "", left: `Diff preview truncated after ${rowLimit} rows.`, right: "Use git diff in the terminal for the full output." }));
+  }
+  return grid;
+}
+
+function renderGitDiffFile(file) {
+  const details = make("details", `git-diff-file ${file.className || ""}`.trim());
+  details.open = true;
+  details.dataset.gitDiffFile = file.path || "diff";
+  const summary = make("summary", "git-diff-file-summary");
+  summary.append(
+    make("span", "git-diff-file-name", file.path || "diff"),
+    make("span", "git-diff-file-stats", file.statsText || `+${file.additions || 0} −${file.deletions || 0}`),
+  );
+  details.append(summary);
+  if (file.hunks?.length) {
+    details.append(renderGitDiffGrid(file));
+  } else {
+    details.append(make("pre", "git-diff-raw", (file.headers || []).join("\n") || "No textual diff for this file."));
+  }
+  return details;
+}
+
+function renderGitDiffSection(section, files) {
+  const key = String(section?.key || "diff").replace(/[^a-z0-9_-]/gi, "-");
+  const wrapper = make("section", `git-diff-section git-diff-section-${key}`);
+  const header = make("div", "git-diff-section-heading");
+  header.append(
+    make("div", "git-diff-section-title", section?.label || "Git diff"),
+    make("div", "git-diff-section-meta", `${files.length} file${files.length === 1 ? "" : "s"} · ${section?.command || "git diff"}`),
+  );
+  wrapper.append(header, ...files.map(renderGitDiffFile));
+  return wrapper;
+}
+
+function normalizeGitUntrackedEntry(value) {
+  if (typeof value === "string") return { path: value, size: 0, binary: false, content: "", contentMissing: true };
+  if (!value || typeof value !== "object") return null;
+  const path = String(value.path || "").trim();
+  if (!path) return null;
+  const hasContent = Object.prototype.hasOwnProperty.call(value, "content");
+  const binary = value.binary === true;
+  const error = value.error ? String(value.error) : "";
+  return {
+    path,
+    size: Number(value.size || 0) || 0,
+    binary,
+    content: hasContent && typeof value.content === "string" ? value.content : "",
+    contentMissing: !hasContent && !binary && !error,
+    error,
+  };
+}
+
+function gitUntrackedEntries(untracked) {
+  return Array.isArray(untracked) ? untracked.map(normalizeGitUntrackedEntry).filter(Boolean) : [];
+}
+
+function gitUntrackedContentLines(content = "") {
+  const normalized = String(content || "").replace(/\r\n?/g, "\n");
+  if (!normalized) return [];
+  const withoutFinalNewline = normalized.endsWith("\n") ? normalized.slice(0, -1) : normalized;
+  return withoutFinalNewline ? withoutFinalNewline.split("\n") : [""];
+}
+
+function gitUntrackedEntryToDiffFile(entry) {
+  const lines = gitUntrackedContentLines(entry.content);
+  return {
+    path: entry.path,
+    className: "git-untracked-full-file",
+    additions: lines.length,
+    deletions: 0,
+    statsText: `${entry.binary ? "binary" : `+${lines.length}`} · ${formatBytes(entry.size)}`,
+    renderRowLimit: Number.POSITIVE_INFINITY,
+    headers: lines.length ? [] : ["Empty untracked file."],
+    hunks: lines.length ? [{
+      header: `@@ -0,0 +1,${lines.length} @@`,
+      rows: lines.map((line, index) => ({ type: "added", oldNumber: "", newNumber: index + 1, left: "", right: line })),
+    }] : [],
+  };
+}
+
+function renderGitUntrackedRawFile(entry) {
+  const details = make("details", "git-diff-file git-untracked-full-file");
+  details.open = true;
+  details.dataset.gitDiffFile = entry.path;
+  const summary = make("summary", "git-diff-file-summary");
+  summary.append(
+    make("span", "git-diff-file-name", entry.path),
+    make("span", "git-diff-file-stats", entry.error ? "unreadable" : `binary · ${formatBytes(entry.size)}`),
+  );
+  details.append(summary, make("pre", "git-diff-raw", entry.error || "Binary untracked file; text preview unavailable."));
+  return details;
+}
+
+function renderGitUntrackedLoadingFile(entry) {
+  const details = make("details", "git-diff-file git-untracked-full-file git-untracked-loading-file");
+  details.open = true;
+  details.dataset.gitDiffFile = entry.path;
+  const summary = make("summary", "git-diff-file-summary");
+  summary.append(make("span", "git-diff-file-name", entry.path), make("span", "git-diff-file-stats", "loading content"));
+  details.append(summary, make("pre", "git-diff-raw", "Loading complete untracked file content…"));
+  return details;
+}
+
+function renderGitUntrackedFile(entry) {
+  if (entry.contentMissing) return renderGitUntrackedLoadingFile(entry);
+  if (entry.error || entry.binary) return renderGitUntrackedRawFile(entry);
+  return renderGitDiffFile(gitUntrackedEntryToDiffFile(entry));
+}
+
+function replaceGitUntrackedEntry(entry, tabId = gitChangesState.tabId) {
+  const data = gitChangesState.data;
+  if (!data || tabId !== gitChangesState.tabId) return;
+  const entries = gitUntrackedEntries(data.untracked);
+  const nextEntries = entries.map((item) => item.path === entry.path ? normalizeGitUntrackedEntry(entry) : item);
+  gitChangesState = { ...gitChangesState, data: { ...data, untracked: nextEntries } };
+  renderGitChangesDialog();
+}
+
+async function loadMissingGitUntrackedContent(entry, tabId = gitChangesState.tabId) {
+  const key = `${tabId || ""}\u0000${entry.path}`;
+  if (!entry.contentMissing || gitChangesUntrackedContentRequests.has(key)) return;
+  gitChangesUntrackedContentRequests.add(key);
+  try {
+    const response = await api(`/api/git-changes/untracked-file?path=${encodeURIComponent(entry.path)}`, { tabId });
+    if (!response.ok) throw new Error(response.error || "Failed to load untracked file content");
+    replaceGitUntrackedEntry(response.data, tabId);
+  } catch (error) {
+    replaceGitUntrackedEntry({ ...entry, contentMissing: false, error: error.message || String(error) }, tabId);
+  } finally {
+    gitChangesUntrackedContentRequests.delete(key);
+  }
+}
+
+function renderGitUntrackedSection(untracked) {
+  const entries = gitUntrackedEntries(untracked);
+  const wrapper = make("section", "git-diff-section git-diff-section-untracked");
+  const header = make("div", "git-diff-section-heading");
+  header.append(
+    make("div", "git-diff-section-title", "Untracked"),
+    make("div", "git-diff-section-meta", `${entries.length} file${entries.length === 1 ? "" : "s"} · complete file contents`),
+  );
+  wrapper.append(header, ...entries.map(renderGitUntrackedFile));
+  for (const entry of entries) {
+    if (entry.contentMissing) queueMicrotask(() => loadMissingGitUntrackedContent(entry));
+  }
+  return wrapper;
+}
+
+function renderGitChangesFileList(parsedSections, untracked) {
+  const items = [];
+  for (const entry of parsedSections || []) {
+    for (const file of entry.files || []) {
+      items.push({ path: file.path || "diff", stats: file.statsText || `+${file.additions || 0} −${file.deletions || 0}`, section: entry.section?.label || "Diff" });
+    }
+  }
+  for (const entry of untracked || []) {
+    items.push({ path: entry.path, stats: entry.binary ? "binary" : "new", section: "Untracked" });
+  }
+  if (!items.length) return null;
+  const list = make("nav", "git-changes-file-list");
+  list.setAttribute("aria-label", "Changed files");
+  list.append(make("span", "git-changes-file-list-label", `${items.length} file${items.length === 1 ? "" : "s"}`));
+  for (const item of items) {
+    const button = make("button", "git-changes-file-jump");
+    button.type = "button";
+    button.dataset.gitChangesJumpFile = item.path;
+    button.title = `${item.section}: ${item.path}`;
+    button.append(make("span", "git-changes-file-jump-name", item.path), make("span", "git-changes-file-jump-meta", `${item.section} · ${item.stats}`));
+    list.append(button);
+  }
+  return list;
+}
+
+function renderGitCurrentFileHeader() {
+  const header = make("button", "git-current-file-header");
+  header.type = "button";
+  header.title = "Collapse or expand the current file diff";
+  header.append(make("span", "git-current-file-label", "Current file"), make("span", "git-current-file-name", "—"), make("span", "git-current-file-toggle", "Toggle"));
+  return header;
+}
+
+function updateGitChangesCurrentFileHeader() {
+  const body = elements.gitChangesBody;
+  const header = body?.querySelector(".git-current-file-header");
+  const name = header?.querySelector(".git-current-file-name");
+  if (!body || !header || !name) return;
+  const files = Array.from(body.querySelectorAll(".git-diff-file[data-git-diff-file]"));
+  if (!files.length) {
+    name.textContent = "—";
+    return;
+  }
+  const bodyRect = body.getBoundingClientRect();
+  const headerRect = header.getBoundingClientRect();
+  const markerY = Math.min(bodyRect.bottom - 1, Math.max(bodyRect.top, headerRect.bottom + 8));
+  let current = files[0];
+  for (const file of files) {
+    const rect = file.getBoundingClientRect();
+    if (rect.top <= markerY && rect.bottom > markerY) {
+      current = file;
+      break;
+    }
+    if (rect.top <= markerY) current = file;
+    else break;
+  }
+  const currentPath = current?.dataset.gitDiffFile || "—";
+  name.textContent = currentPath;
+  header.dataset.gitCurrentFile = currentPath;
+  header.setAttribute("aria-expanded", String(current?.open !== false));
+}
+
+function gitChangesGeneratedLabel(data) {
+  const timestamp = Date.parse(data?.generatedAt || "");
+  if (!Number.isFinite(timestamp)) return "";
+  return `Updated ${new Date(timestamp).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}`;
+}
+
+function renderGitChangesDialog() {
+  if (!elements.gitChangesDialog || !elements.gitChangesBody) return;
+  const { loading, pulling, error, message, data } = gitChangesState;
+  const behind = Number(data?.remote?.behind ?? data?.summary?.behind ?? 0) || 0;
+  const canPull = behind > 0 && data?.remote?.canPull !== false;
+  const remoteNotice = !error && data?.remote?.error ? `Incoming diff unavailable: ${data.remote.error}` : "";
+  if (elements.gitChangesTitle) elements.gitChangesTitle.textContent = "Git Changes";
+  if (elements.gitChangesSubtitle) {
+    const base = data?.root ? `${data.branch || "detached"} · ${data.root}` : "Current tab git diff";
+    elements.gitChangesSubtitle.textContent = data?.remote?.upstream ? `${base} · upstream ${data.remote.upstream}` : base;
+  }
+  if (elements.gitChangesRefreshButton) {
+    elements.gitChangesRefreshButton.disabled = loading || pulling;
+    elements.gitChangesRefreshButton.textContent = loading ? "Refreshing…" : "Refresh";
+  }
+  if (elements.gitChangesPullButton) {
+    elements.gitChangesPullButton.disabled = loading || pulling || !canPull;
+    elements.gitChangesPullButton.textContent = pulling ? "Pulling…" : behind > 0 ? `Pull ↓${behind}` : "Pull";
+    elements.gitChangesPullButton.title = canPull ? "Run git pull --ff-only for the current repository" : "No remote commits to pull";
+  }
+  if (elements.gitChangesStatus) {
+    const statusText = error || (pulling ? "Pulling changes…" : loading ? "Loading git diff…" : message || remoteNotice || (data ? gitChangesGeneratedLabel(data) : ""));
+    elements.gitChangesStatus.className = `git-changes-status ${error || remoteNotice ? "error" : message ? "success" : "muted"}`;
+    elements.gitChangesStatus.textContent = statusText;
+    elements.gitChangesStatus.hidden = !elements.gitChangesStatus.textContent;
+  }
+
+  const body = elements.gitChangesBody;
+  body.replaceChildren();
+  if (loading && !data) {
+    body.append(make("div", "git-changes-empty", "Loading git diff…"));
+    return;
+  }
+  if (error && !data) {
+    body.append(make("div", "git-changes-empty error", error));
+    return;
+  }
+  if (!data) {
+    body.append(make("div", "git-changes-empty", "Open from the footer CHANGES chip to load the current git diff."));
+    return;
+  }
+
+  body.append(renderGitChangesOverview(data));
+  const parsedSections = (Array.isArray(data.sections) ? data.sections : [])
+    .map((section) => ({ section, files: parseGitUnifiedDiff(section.diff || "") }))
+    .filter((entry) => entry.files.length > 0);
+  const untracked = gitUntrackedEntries(data.untracked);
+  const hasVisibleFiles = parsedSections.length > 0 || untracked.length > 0;
+  if (hasVisibleFiles) {
+    const fileList = renderGitChangesFileList(parsedSections, untracked);
+    if (fileList) body.append(fileList);
+    body.append(renderGitCurrentFileHeader());
+  }
+  for (const entry of parsedSections) body.append(renderGitDiffSection(entry.section, entry.files));
+  if (untracked.length) body.append(renderGitUntrackedSection(untracked));
+  if (!hasVisibleFiles) {
+    const emptyMessage = behind > 0 ? "No textual incoming diff was available for the remote commits." : "Working tree is clean. No staged, unstaged, untracked, or incoming diff.";
+    body.append(make("div", "git-changes-empty success", emptyMessage));
+  }
+  if (hasVisibleFiles) requestAnimationFrame(updateGitChangesCurrentFileHeader);
+}
+
+async function loadGitChangesDialog(tabContext = activeTabContext()) {
+  const requestSerial = ++gitChangesRequestSerial;
+  gitChangesUntrackedContentRequests.clear();
+  gitChangesState = { ...gitChangesState, loading: true, error: "", message: "", tabId: tabContext.tabId || activeTabId };
+  renderGitChangesDialog();
+  try {
+    const response = await api("/api/git-changes", { tabId: tabContext.tabId });
+    if (requestSerial !== gitChangesRequestSerial) return;
+    if (!response.ok) throw new Error(response.error || "Failed to load git changes");
+    gitChangesState = { loading: false, pulling: false, error: "", message: "", data: response.data || null, tabId: tabContext.tabId || activeTabId };
+  } catch (error) {
+    if (requestSerial !== gitChangesRequestSerial) return;
+    gitChangesState = { ...gitChangesState, loading: false, error: error.message || String(error) };
+  }
+  renderGitChangesDialog();
+}
+
+function openGitChangesDialog() {
+  if (!elements.gitChangesDialog) return;
+  hideFooterTooltip();
+  const tabContext = activeTabContext();
+  const tabId = tabContext.tabId || activeTabId;
+  gitChangesState = { loading: true, pulling: false, error: "", message: "", data: gitChangesState.tabId === tabId ? gitChangesState.data : null, tabId };
+  renderGitChangesDialog();
+  if (!elements.gitChangesDialog.open) elements.gitChangesDialog.showModal();
+  loadGitChangesDialog(tabContext).catch((error) => addEvent(error.message || String(error), "error"));
+}
+
+function refreshGitChangesDialog() {
+  const tabContext = { tabId: gitChangesState.tabId || activeTabId };
+  loadGitChangesDialog(tabContext).catch((error) => addEvent(error.message || String(error), "error"));
+}
+
+async function pullGitChangesDialog() {
+  const tabContext = { tabId: gitChangesState.tabId || activeTabId };
+  const behind = Number(gitChangesState.data?.remote?.behind ?? gitChangesState.data?.summary?.behind ?? 0) || 0;
+  if (behind <= 0 || gitChangesState.pulling || gitChangesState.loading) return;
+  const root = gitChangesState.data?.root || "the current repository";
+  if (!window.confirm(`Run git pull --ff-only in ${root}?`)) return;
+
+  const requestSerial = ++gitChangesRequestSerial;
+  gitChangesState = { ...gitChangesState, pulling: true, loading: false, error: "", message: "", tabId: tabContext.tabId };
+  renderGitChangesDialog();
+  try {
+    const response = await api("/api/git-changes/pull", { method: "POST", body: {}, tabId: tabContext.tabId });
+    if (requestSerial !== gitChangesRequestSerial) return;
+    if (!response.ok) {
+      const detail = [response.error, response.data?.stderr || response.data?.stdout].filter(Boolean).join("\n").trim();
+      throw new Error(detail || "Failed to pull git changes");
+    }
+    const output = String(response.data?.stdout || response.data?.stderr || "").trim();
+    gitChangesState = {
+      loading: false,
+      pulling: false,
+      error: "",
+      message: output || "Pulled remote changes successfully.",
+      data: response.data?.changes || gitChangesState.data,
+      tabId: tabContext.tabId,
+    };
+    addEvent("Pulled remote git changes.", "success");
+    requestGitFooterWebuiPayload(tabContext, { force: true });
+  } catch (error) {
+    if (requestSerial !== gitChangesRequestSerial) return;
+    gitChangesState = { ...gitChangesState, pulling: false, error: error.message || String(error) };
+    addEvent(error.message || String(error), "error");
+  }
+  renderGitChangesDialog();
+}
+
+function closeGitChangesDialog() {
+  gitChangesRequestSerial += 1;
+  gitChangesUntrackedContentRequests.clear();
+  gitChangesState = { ...gitChangesState, loading: false, pulling: false };
+  if (elements.gitChangesDialog?.open) elements.gitChangesDialog.close();
+}
+
+function gitFooterFallbackMessage() {
+  if (isOptionalFeatureDisabled("gitFooterStatus")) return "";
+  const tabContext = activeTabContext();
+  const commandsStillLoading = availableCommands.length === 0 && rawAvailableCommands.length === 0;
+  const footerRefreshPending = tabContext.tabId ? gitFooterPayloadRefreshInFlightByTab.has(tabContext.tabId) : false;
+  const extensionDetected = hasAvailableCommand("git-footer-refresh") || optionalFeatureAvailability.gitFooterStatus;
+  return commandsStillLoading || footerRefreshPending || extensionDetected
+    ? "Loading git footer status…"
+    : "Git footer status extension unavailable";
+}
+
+function renderMinimalFooter() {
+  invalidateGitFooterRenderCache();
+  hideFooterTooltip();
+  const tab = activeTab();
+  const workspaceLabel = latestWorkspace?.displayCwd || (tab?.cwd ? normalizeDisplayPath(tab.cwd) : "loading…");
+  const modelLine = footerModelLine();
+  const footerMessage = gitFooterFallbackMessage();
+
+  elements.statusBar.replaceChildren();
+  elements.statusBar.classList.remove("statusbar-git-footer");
+  elements.statusBar.classList.add("statusbar-tui-footer");
+  document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+  elements.statusBar.append(renderTuiFooterLine({
+    cwd: workspaceLabel,
+    cwdTitle: tab ? `Change cwd for ${tab.title}: ${workspaceLabel}` : undefined,
+    message: footerMessage,
+    stats: fallbackFooterStats(),
+    model: modelLine,
+  }));
+  if (footerModelPickerOpen) elements.statusBar.append(renderFooterModelPicker());
+  if (footerThinkingPickerOpen) elements.statusBar.append(renderFooterThinkingPicker());
+  if (footerBranchPickerOpen) elements.statusBar.append(renderFooterBranchPicker());
+  setMobileFooterExpanded(false);
+  updateFooterModelPickerPosition();
+}
+
+function contextUsageSnapshot() {
+  const usage = latestStats?.contextUsage || currentState?.contextUsage || null;
+  const contextWindow = contextWindowFromSources(usage, currentState?.model?.contextWindow);
+  if (!contextWindow) return null;
+  const rawPercent = Number(usage?.percent);
+  const unknown = contextUsageUnknownAfterCompaction() || !Number.isFinite(rawPercent);
+  const rawTokens = Number(usage?.tokens);
+  return {
+    tokens: Number.isFinite(rawTokens) && rawTokens >= 0 ? rawTokens : null,
+    contextWindow,
+    percent: unknown ? null : Math.max(0, Math.min(100, rawPercent)),
+    unknown,
+    autoCompactionEnabled: footerAutoCompactionEnabled(),
+  };
+}
+
+function contextUsageDisplay(snapshot = contextUsageSnapshot()) {
+  if (!snapshot) return "Context unknown";
+  const windowText = formatFooterTokenCount(snapshot.contextWindow);
+  if (typeof snapshot.percent === "number") return `${snapshot.percent.toFixed(1)}% of ${windowText}`;
+  return `?/${windowText}`;
+}
+
+function contextUsageDetail(snapshot = contextUsageSnapshot()) {
+  if (!snapshot) return "Waiting for model context-window data.";
+  const tokenText = snapshot.tokens === null ? "tokens unknown" : `${formatFooterTokenCount(snapshot.tokens)} tokens`;
+  const autoText = snapshot.autoCompactionEnabled ? "auto-compaction on" : "auto-compaction off";
+  return `${tokenText} · ${formatFooterTokenCount(snapshot.contextWindow)} window · ${autoText}`;
+}
+
+function appendContextMeterFill(meter, snapshot) {
+  const fill = make("span", "context-meter-fill");
+  const percent = typeof snapshot?.percent === "number" ? snapshot.percent : 0;
+  fill.style.width = `${Math.max(0, Math.min(100, percent)).toFixed(1)}%`;
+  if (typeof snapshot?.percent === "number") {
+    const activeColor = contextUsageActiveColor(snapshot.percent);
+    fill.style.setProperty("--context-active-color", activeColor.color);
+    fill.style.setProperty("--context-active-glow", activeColor.glow);
+  }
+  meter.append(fill);
+}
+
+async function requestManualCompaction({ triggerButton = null } = {}) {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  const buttons = [...new Set([elements.compactButton, triggerButton].filter(Boolean))];
+  try {
+    for (const button of buttons) {
+      button.disabled = true;
+      button.textContent = "Compacting…";
+    }
+    setRunIndicatorActivity("Requesting context compaction…");
+    scrollChatToBottom({ force: true });
+    markContextUsageUnknownAfterCompaction(tabContext.tabId);
+    renderFooter();
+    renderContextMeter();
+    renderWorkspaceDashboard();
+    addEvent("manual compaction requested");
+    await api("/api/compact", { method: "POST", body: {}, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    scheduleRefreshState(120, tabContext);
+    scheduleRefreshMessages(600, tabContext);
+    scheduleRefreshFooter(600, tabContext);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      clearContextUsageUnknownAfterCompaction(tabContext.tabId);
+      clearRunIndicatorActivity();
+      renderFooter();
+      renderContextMeter();
+      renderWorkspaceDashboard();
+      addEvent(error.message, "error");
+    }
+  } finally {
+    if (isCurrentTabContext(tabContext)) {
+      for (const button of buttons) {
+        button.disabled = !!currentState?.isCompacting;
+        button.textContent = button === elements.compactButton && currentState?.isCompacting ? "Compacting…" : button === elements.compactButton ? "Compact" : "Compact now";
+      }
+      renderContextMeter();
+      renderWorkspaceDashboard();
+    }
+  }
+}
+
+function renderContextMeter() {
+  if (deferUiRenderDuringPointerActivation("context-meter", renderContextMeter)) return;
+  const root = elements.contextMeterBar;
+  if (!root) return;
+  const tab = activeTab();
+  if (!tab) {
+    root.hidden = true;
+    root.replaceChildren();
+    return;
+  }
+  root.hidden = false;
+  const snapshot = contextUsageSnapshot();
+  if (!snapshot || typeof snapshot.percent !== "number" || snapshot.percent <= 50) {
+    root.hidden = true;
+    root.replaceChildren();
+    return;
+  }
+  const meter = make("div", `context-meter${snapshot?.unknown ? " unknown" : ""}`);
+  appendContextMeterFill(meter, snapshot);
+
+  const summary = make("div", "context-meter-summary");
+  summary.append(
+    make("strong", undefined, contextUsageDisplay(snapshot)),
+    make("span", "muted", contextUsageDetail(snapshot)),
+  );
+
+  const actions = make("div", "context-meter-actions");
+  const compact = make("button", "context-meter-compact", currentState?.isCompacting ? "Compacting…" : "Compact now");
+  compact.type = "button";
+  compact.disabled = !!currentState?.isCompacting;
+  compact.title = "Manually compact this tab's conversation context";
+  compact.addEventListener("click", () => requestManualCompaction({ triggerButton: compact }));
+  const auto = make("button", "context-meter-auto", footerAutoCompactionEnabled() ? "Auto on" : "Auto off");
+  auto.type = "button";
+  auto.setAttribute("aria-pressed", footerAutoCompactionEnabled() ? "true" : "false");
+  auto.disabled = footerAutoCompactionToggleInFlight;
+  auto.title = footerAutoCompactionToggleInFlight ? "Updating auto-compaction…" : footerAutoCompactionToggleAction();
+  auto.addEventListener("click", () => toggleFooterAutoCompaction());
+  actions.append(compact, auto);
+
+  root.replaceChildren(summary, meter, actions);
+}
+
+function compactDashboardText(value, maxLength = 34) {
+  const text = String(value || "").trim();
+  if (!text || text.length <= maxLength) return text;
+  const available = Math.max(8, maxLength - 1);
+  const headLength = Math.max(4, Math.ceil(available * 0.58));
+  const tailLength = Math.max(4, available - headLength);
+  return `${text.slice(0, headLength)}…${text.slice(-tailLength)}`;
+}
+
+function compactDashboardPath(value, maxLength = 52) {
+  const text = normalizeDisplayPath(value || "").trim();
+  if (!text || text.length <= maxLength) return text;
+  const segments = text.split("/").filter(Boolean);
+  if (segments.length >= 3) {
+    const tail = `…/${segments.slice(-3).join("/")}`;
+    if (tail.length <= maxLength) return tail;
+  }
+  return compactDashboardText(text, maxLength);
+}
+
+function contextDashboardTone(snapshot) {
+  if (!snapshot) return "muted";
+  if (typeof snapshot.percent !== "number") return "neutral";
+  if (snapshot.percent >= 85) return "danger";
+  if (snapshot.percent >= 70) return "warning";
+  return "ok";
+}
+
+function dashboardSessionSummary() {
+  const rawSession = currentState?.sessionName || currentState?.sessionId || "";
+  const rawFile = currentState?.sessionFile || "in-memory";
+  const sessionLabel = rawSession ? compactDashboardText(rawSession, 28) : "loading…";
+  const fileLabel = rawFile === "in-memory" ? rawFile : compactDashboardPath(rawFile, 58);
+  return {
+    value: sessionLabel,
+    detail: fileLabel,
+    title: [rawSession || "Session loading…", rawFile].filter(Boolean).join("\n"),
+  };
+}
+
+function dashboardMetric(label, value, detail = "", options = {}) {
+  const tone = options.tone || "neutral";
+  const item = make("div", `workspace-dashboard-metric tone-${tone}${options.meterSnapshot ? " with-meter" : ""}`);
+  const valueText = value || "—";
+  const title = options.title || [label, valueText, detail].filter(Boolean).join(" · ");
+  item.title = title;
+  item.setAttribute("aria-label", title);
+
+  const icon = make("span", "workspace-dashboard-metric-icon", options.icon || "•");
+  icon.setAttribute("aria-hidden", "true");
+  const copy = make("span", "workspace-dashboard-metric-copy");
+  copy.append(make("span", "workspace-dashboard-metric-label", label), make("strong", undefined, valueText));
+  if (detail) copy.append(make("span", "workspace-dashboard-metric-detail", detail));
+  item.append(icon, copy);
+
+  if (options.meterSnapshot) {
+    const meter = make("span", "workspace-dashboard-mini-meter");
+    appendContextMeterFill(meter, options.meterSnapshot);
+    item.append(meter);
+  }
+  return item;
+}
+
+function dashboardAction(label, handler, className = "") {
+  const button = make("button", `workspace-dashboard-action ${className}`.trim(), label);
+  button.type = "button";
+  button.addEventListener("click", handler);
+  return button;
+}
+
+let workspaceDashboardSignature = null;
+
+function renderWorkspaceDashboard() {
+  if (deferUiRenderDuringPointerActivation("workspace-dashboard", renderWorkspaceDashboard)) return;
+  const root = elements.workspaceDashboard;
+  if (!root) return;
+  const tab = activeTab();
+  const snapshot = contextUsageSnapshot();
+  const workspaceLabel = latestWorkspace?.displayCwd || (tab?.cwd ? normalizeDisplayPath(tab.cwd) : "Choose or create a tab to start");
+  const workspaceInfo = normalizeGitWorkspaceInfo(tab?.gitWorkspace);
+  const worktreeLabel = gitWorkspaceBadgeLabel(workspaceInfo);
+  const queueCount = Number(currentState?.pendingMessageCount || 0) || 0;
+  const tabIndicatorState = tab ? tabIndicator(tab) : null;
+  const sessionSummary = dashboardSessionSummary();
+  const modelLabel = currentState?.model ? shortModelLabel(currentState.model) : "loading…";
+  const queueDetail = queueCount === 0 ? "idle" : queueCount === 1 ? "pending message" : "pending messages";
+
+  // Skip rebuilding the dashboard (and its buttons) when nothing it shows has
+  // changed. Extension status pushes during streaming would otherwise rebuild
+  // every workspace button on each token, causing flicker.
+  const signature = JSON.stringify({
+    title: tab?.title || "Pi Web UI",
+    workspaceLabel,
+    gitWorkspace: workspaceInfo ? {
+      branch: workspaceInfo.branch,
+      worktreePath: workspaceInfo.worktreePath,
+      isMainWorktree: workspaceInfo.isMainWorktree,
+      worktreeCount: workspaceInfo.worktreeCount,
+    } : null,
+    tabIndicatorState,
+    tabsLength: tabs.length,
+    queueCount,
+    modelLabel,
+    modelTitle: currentState?.model ? shortModelLabel(currentState.model) : "Model loading…",
+    thinking: currentState?.thinkingLevel || "",
+    context: { display: contextUsageDisplay(snapshot), detail: contextUsageDetail(snapshot), tone: contextDashboardTone(snapshot) },
+    session: sessionSummary,
+    activeTabId,
+    tabs: tabs.slice(0, 8).map((item) => ({ id: item.id, title: item.title, state: tabIndicator(item).state, active: item.id === activeTabId, cwd: item.cwd ? normalizeDisplayPath(item.cwd) : "" })),
+    overflow: tabs.length > 8 ? tabs.length - 8 : 0,
+  });
+  if (signature === workspaceDashboardSignature && root.childElementCount > 0) return;
+  workspaceDashboardSignature = signature;
+  root.replaceChildren();
+
+  const header = make("div", "workspace-dashboard-header");
+  const title = make("div", "workspace-dashboard-title");
+  const heading = make("h2", undefined, tab?.title || "Pi Web UI");
+  heading.title = tab?.title || "Pi Web UI";
+  const cwd = make("p", "workspace-dashboard-cwd muted", workspaceLabel);
+  cwd.title = workspaceLabel;
+  const meta = make("div", "workspace-dashboard-title-meta");
+  if (tabIndicatorState) {
+    const statusChip = make("span", `workspace-dashboard-chip activity-${tabIndicatorState.state}`);
+    statusChip.title = tabIndicatorState.label;
+    statusChip.append(make("span", "workspace-dashboard-chip-dot", tabIndicatorState.glyph), make("span", undefined, tabIndicatorState.label));
+    meta.append(statusChip);
+  }
+  if (worktreeLabel) {
+    const worktreeChip = make("button", "workspace-dashboard-chip worktree", worktreeLabel);
+    worktreeChip.type = "button";
+    worktreeChip.title = workspaceInfo?.worktreePath || worktreeLabel;
+    worktreeChip.addEventListener("click", () => openBranchWorktreePicker());
+    meta.append(worktreeChip);
+  }
+  meta.append(
+    make("span", "workspace-dashboard-chip", `${tabs.length} tab${tabs.length === 1 ? "" : "s"}`),
+    make("span", `workspace-dashboard-chip ${queueCount ? "attention" : ""}`.trim(), queueCount ? `${queueCount} queued` : "queue clear"),
+  );
+  title.append(make("span", "workspace-dashboard-kicker", "Workspace"), heading, cwd, meta);
+  const actions = make("div", "workspace-dashboard-actions");
+  actions.append(
+    dashboardAction("Command palette", () => openCommandPalette(), "primary"),
+    dashboardAction("New tab", () => createTerminalTab()),
+    dashboardAction("Branch worktree", () => openBranchWorktreePicker(), "worktree"),
+    dashboardAction("Resume", () => runNativeCommandMenu("/resume")),
+    dashboardAction("Model", () => runNativeCommandMenu("/model")),
+    dashboardAction("Settings", () => runNativeCommandMenu("/settings")),
+  );
+  header.append(title, actions);
+
+  const metrics = make("div", "workspace-dashboard-metrics");
+  metrics.append(
+    dashboardMetric("Model", modelLabel, currentState?.thinkingLevel ? `thinking ${currentState.thinkingLevel}` : "ready", {
+      icon: "◌",
+      tone: currentState?.model ? "neutral" : "muted",
+      title: currentState?.model ? shortModelLabel(currentState.model) : "Model loading…",
+    }),
+    dashboardMetric("Context", contextUsageDisplay(snapshot), contextUsageDetail(snapshot), {
+      icon: "◐",
+      tone: contextDashboardTone(snapshot),
+      meterSnapshot: snapshot,
+    }),
+    dashboardMetric("Session", sessionSummary.value, sessionSummary.detail, {
+      icon: "#",
+      tone: currentState?.sessionId || currentState?.sessionName ? "neutral" : "muted",
+      title: sessionSummary.title,
+    }),
+    dashboardMetric("Queue", `${queueCount}`, queueDetail, {
+      icon: queueCount ? "↳" : "✓",
+      tone: queueCount ? "warning" : "ok",
+    }),
+  );
+
+  const tabsPanel = make("div", "workspace-dashboard-tabs");
+  const tabsHeader = make("div", "workspace-dashboard-tabs-header");
+  tabsHeader.append(
+    make("span", "workspace-dashboard-tabs-title", `Open tabs (${tabs.length})`),
+    make("span", "workspace-dashboard-tabs-hint", tabs.length ? "Click a tab to switch" : "No tabs yet"),
+  );
+  tabsPanel.append(tabsHeader);
+  const tabList = make("div", "workspace-dashboard-tab-list");
+  for (const item of tabs.slice(0, 8)) {
+    const indicator = tabIndicator(item);
+    const button = make("button", `workspace-dashboard-tab activity-${indicator.state}${item.id === activeTabId ? " active" : ""}`);
+    button.type = "button";
+    button.title = `${item.title} · ${indicator.label}${item.cwd ? ` · ${normalizeDisplayPath(item.cwd)}` : ""}`;
+    button.append(make("span", "workspace-dashboard-tab-dot", indicator.glyph), make("span", "workspace-dashboard-tab-label", item.title));
+    button.addEventListener("click", () => switchTab(item.id));
+    tabList.append(button);
+  }
+  if (!tabs.length) tabList.append(make("span", "workspace-dashboard-tab-empty", "Create a tab to start a workspace."));
+  if (tabs.length > 8) tabList.append(make("span", "workspace-dashboard-tab-more", `+${tabs.length - 8} more`));
+  tabsPanel.append(tabList);
+
+  root.append(header, metrics, tabsPanel);
+}
+
+function setFooterModelPickerOpen(open) {
+  const wasOpen = footerModelPickerOpen;
+  footerModelPickerOpen = !!open;
+  if (footerModelPickerOpen) {
+    footerThinkingPickerOpen = false;
+    footerBranchPickerOpen = false;
+    footerBranchPickerRequestSerial += 1;
+  }
+  if (footerModelPickerOpen && isMobileView()) {
+    mobileFooterExpanded = false;
+    document.body.classList.remove("footer-details-expanded");
+    setComposerActionsOpen(false);
+    setMobileTabsExpanded(false);
+  }
+  document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+  renderFooter();
+  updateFooterModelPickerPosition();
+  if (wasOpen && !footerModelPickerOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function setFooterThinkingPickerOpen(open) {
+  const wasOpen = footerThinkingPickerOpen;
+  footerThinkingPickerOpen = !!open;
+  if (footerThinkingPickerOpen) {
+    footerModelPickerOpen = false;
+    footerBranchPickerOpen = false;
+    footerBranchPickerRequestSerial += 1;
+  }
+  if (footerThinkingPickerOpen && isMobileView()) {
+    mobileFooterExpanded = false;
+    document.body.classList.remove("footer-details-expanded");
+    setComposerActionsOpen(false);
+    setMobileTabsExpanded(false);
+  }
+  document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+  renderFooter();
+  updateFooterModelPickerPosition();
+  if (wasOpen && !footerThinkingPickerOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function normalizeFooterGitBranches(data = {}) {
+  const current = cleanStatusText(data.current || data.currentBranch || "");
+  const seen = new Set();
+  const branches = [];
+  for (const item of Array.isArray(data.branches) ? data.branches : []) {
+    const name = cleanStatusText(typeof item === "string" ? item : item?.name);
+    if (!name || seen.has(name)) continue;
+    seen.add(name);
+    branches.push({
+      name,
+      current: Boolean(item?.current) || (!!current && name === current),
+      occupied: Boolean(item?.occupied),
+      worktreePath: cleanFooterPayloadText(item?.worktreePath, "", 4000),
+      worktreeCurrent: Boolean(item?.worktreeCurrent),
+      mainWorktree: Boolean(item?.mainWorktree),
+    });
+  }
+  const worktrees = (Array.isArray(data.worktrees) ? data.worktrees : [])
+    .map((item) => ({
+      path: cleanFooterPayloadText(item?.path, "", 4000),
+      branch: cleanStatusText(item?.branch || ""),
+      current: Boolean(item?.current),
+      isMainWorktree: Boolean(item?.isMainWorktree),
+      prunable: Boolean(item?.prunable),
+      locked: Boolean(item?.locked),
+    }))
+    .filter((item) => item.path);
+  const occupiedBranches = (Array.isArray(data.occupiedBranches) ? data.occupiedBranches : [])
+    .map((item) => ({
+      branch: cleanStatusText(item?.branch || ""),
+      path: cleanFooterPayloadText(item?.path, "", 4000),
+      current: Boolean(item?.current),
+      isMainWorktree: Boolean(item?.isMainWorktree),
+    }))
+    .filter((item) => item.branch && item.path);
+  return {
+    root: cleanFooterPayloadText(data.root || data.currentWorktreePath, "", 4000),
+    repoRoot: cleanFooterPayloadText(data.repoRoot || data.root, "", 4000),
+    commonGitDir: cleanFooterPayloadText(data.commonGitDir, "", 4000),
+    currentWorktreePath: cleanFooterPayloadText(data.currentWorktreePath || data.root, "", 4000),
+    defaultWorktreesRoot: cleanFooterPayloadText(data.defaultWorktreesRoot, "", 4000),
+    current,
+    branches,
+    worktrees,
+    occupiedBranches,
+  };
+}
+
+function applyOptimisticGitFooterBranch(branch, tabContext = activeTabContext()) {
+  const nextBranch = cleanStatusText(branch);
+  if (!nextBranch) return;
+  const raw = statusEntries.get(GIT_FOOTER_WEBUI_STATUS_KEY) || readCachedGitFooterWebuiPayloadRaw();
+  const payload = parseGitFooterWebuiPayloadRaw(raw);
+  if (!payload) return;
+  const nextPayload = {
+    type: GIT_FOOTER_WEBUI_PAYLOAD_TYPE,
+    version: GIT_FOOTER_WEBUI_PAYLOAD_VERSION,
+    generatedAt: Date.now(),
+    main: payload.main,
+    meta: payload.meta.map((chip) => chip.key === "git" ? { ...chip, value: nextBranch, title: `git branch: ${nextBranch}` } : chip),
+  };
+  const nextRaw = JSON.stringify(nextPayload);
+  statusEntries.set(GIT_FOOTER_WEBUI_STATUS_KEY, nextRaw);
+  cacheGitFooterWebuiPayload(nextRaw, tabContext.tabId);
+}
+
+async function loadFooterBranchPicker(tabContext = activeTabContext()) {
+  const requestSerial = ++footerBranchPickerRequestSerial;
+  const tabId = tabContext.tabId || activeTabId;
+  const preserveState = footerBranchPickerState.tabId === tabId ? footerBranchPickerState : {};
+  footerBranchPickerState = {
+    loading: true,
+    error: "",
+    branches: preserveState.branches || [],
+    current: preserveState.current || "",
+    root: preserveState.root || "",
+    repoRoot: preserveState.repoRoot || "",
+    commonGitDir: preserveState.commonGitDir || "",
+    currentWorktreePath: preserveState.currentWorktreePath || "",
+    defaultWorktreesRoot: preserveState.defaultWorktreesRoot || "",
+    worktrees: preserveState.worktrees || [],
+    occupiedBranches: preserveState.occupiedBranches || [],
+    switching: "",
+    tabId,
+  };
+  if (isCurrentTabContext(tabContext)) {
+    renderFooter();
+    updateFooterModelPickerPosition();
+  }
+  try {
+    const response = await api("/api/git-branches", { tabId });
+    if (requestSerial !== footerBranchPickerRequestSerial || !footerBranchPickerOpen || !isCurrentTabContext(tabContext)) return;
+    if (!response.ok) throw new Error(response.error || "Failed to load git branches");
+    footerBranchPickerState = { loading: false, error: "", switching: "", tabId, ...normalizeFooterGitBranches(response.data || {}) };
+  } catch (error) {
+    if (requestSerial !== footerBranchPickerRequestSerial || !footerBranchPickerOpen || !isCurrentTabContext(tabContext)) return;
+    footerBranchPickerState = { ...footerBranchPickerState, loading: false, switching: "", error: error.message || String(error) };
+  }
+  if (isCurrentTabContext(tabContext)) {
+    renderFooter();
+    updateFooterModelPickerPosition();
+  }
+}
+
+function setFooterBranchPickerOpen(open) {
+  const wasOpen = footerBranchPickerOpen;
+  footerBranchPickerOpen = !!open;
+  if (footerBranchPickerOpen) {
+    footerModelPickerOpen = false;
+    footerThinkingPickerOpen = false;
+    if (isMobileView()) {
+      mobileFooterExpanded = false;
+      document.body.classList.remove("footer-details-expanded");
+      setComposerActionsOpen(false);
+      setMobileTabsExpanded(false);
+    }
+    loadFooterBranchPicker(activeTabContext()).catch((error) => addEvent(error.message || String(error), "error"));
+  } else {
+    footerBranchPickerRequestSerial += 1;
+  }
+  document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+  renderFooter();
+  updateFooterModelPickerPosition();
+  if (wasOpen && !footerBranchPickerOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function pathLooksInside(parentPath, childPath) {
+  const normalizePath = (value) => String(value || "").replace(/\\+/g, "/").replace(/\/+$/, "");
+  const parent = normalizePath(parentPath);
+  const child = normalizePath(childPath);
+  return !!parent && !!child && (child === parent || child.startsWith(`${parent}/`));
+}
+
+function footerBranchActiveAgentTabs(tabContext = activeTabContext()) {
+  const active = activeTab();
+  const activeCwd = latestWorkspace?.cwd || active?.cwd || "";
+  const root = footerBranchPickerState.root || "";
+  return tabs.filter((tab) => {
+    const sameWorktree = root ? pathLooksInside(root, tab.cwd) : !!activeCwd && tab.cwd === activeCwd;
+    if (!sameWorktree) return false;
+    if (tab.id === tabContext.tabId) return currentState?.isStreaming || currentState?.isCompacting || tabHasActiveAgent(tab);
+    return tabHasActiveAgent(tab);
+  });
+}
+
+function footerBranchAgentWarningLines(tabContext = activeTabContext()) {
+  const busyTabs = footerBranchActiveAgentTabs(tabContext);
+  if (!busyTabs.length) return [];
+  const list = busyTabs.slice(0, 4).map((tab) => `- ${tab.title || tab.id}`).join("\n");
+  const extra = busyTabs.length > 4 ? `\n- … +${busyTabs.length - 4} more` : "";
+  return [
+    "",
+    `WARNING: ${busyTabs.length === 1 ? "An agent is" : "Agents are"} still running or waiting for input in this Git working tree:`,
+    `${list}${extra}`,
+    "Switching branches can change files underneath the running agent.",
+  ];
+}
+
+function confirmFooterGitBranchAction(branch, { create = false, requireConfirm = false, tabContext = activeTabContext() } = {}) {
+  const branchName = cleanStatusText(branch);
+  const warningLines = footerBranchAgentWarningLines(tabContext);
+  if (!requireConfirm && warningLines.length === 0) return true;
+  const action = create ? "Create and switch to new git branch" : "Switch git branch";
+  const message = [
+    `${action}: ${branchName}?`,
+    "",
+    `Repository: ${footerBranchPickerState.root || currentGitFooterCacheCwd(tabContext.tabId) || "current tab"}`,
+    ...warningLines,
+    "",
+    "Continue?",
+  ].join("\n");
+  return window.confirm(message);
+}
+
+function confirmFooterGitWorktreeAction(branch, { path = "", create = false, requireConfirm = false } = {}) {
+  const branchName = cleanStatusText(branch);
+  if (!requireConfirm) return true;
+  const targetPath = cleanFooterPayloadText(path, "", 4000);
+  const message = [
+    `${create ? "Create" : "Open"} branch worktree: ${branchName || targetPath}?`,
+    "",
+    `Repository: ${footerBranchPickerState.repoRoot || footerBranchPickerState.root || currentGitFooterCacheCwd() || "current tab"}`,
+    targetPath ? `Worktree: ${targetPath}` : `Default location: ${footerBranchPickerState.defaultWorktreesRoot || "repo sibling .worktrees directory"}`,
+    "",
+    "This opens a separate checkout in a separate Pi tab and does not switch this tab's branch.",
+    "Ignored dependencies such as node_modules or .venv are not copied; bootstrap them manually if needed.",
+    "",
+    "Continue?",
+  ].join("\n");
+  return window.confirm(message);
+}
+
+function footerBranchCreateType(value = footerBranchCreateDraft.type) {
+  return slugifyGitBranchPart(value);
+}
+
+function slugifyGitBranchName(value) {
+  return cleanStatusText(value)
+    .split("/")
+    .map((part) => slugifyGitBranchPart(part))
+    .filter(Boolean)
+    .join("/");
+}
+
+function footerBranchCreateName() {
+  const type = footerBranchCreateType();
+  const rawName = cleanStatusText(footerBranchCreateDraft.name);
+  if (!type || !rawName) return "";
+  return slugifyGitBranchName(`${type}/${rawName}`);
+}
+
+function footerBranchCreatePreviewName() {
+  const type = footerBranchCreateType() || "<type>";
+  const rawName = cleanStatusText(footerBranchCreateDraft.name);
+  const name = rawName ? slugifyGitBranchName(rawName) : "<branch-name>";
+  return `${type}/${name}`;
+}
+
+function updateFooterBranchCreateDraft(patch = {}) {
+  const has = (key) => Object.prototype.hasOwnProperty.call(patch, key);
+  footerBranchCreateDraft = {
+    type: has("type") ? footerBranchCreateType(patch.type) : footerBranchCreateType(),
+    name: has("name") ? String(patch.name || "") : footerBranchCreateDraft.name,
+  };
+}
+
+function quoteGitBranchForDisplay(branch) {
+  return `'${String(branch || "").replace(/'/g, `'\\''`)}'`;
+}
+
+function gitSwitchCreateCommandDisplay(branch) {
+  return `git switch -c ${quoteGitBranchForDisplay(branch)}`;
+}
+
+function slugifyWorktreePathPart(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9._-]+/g, "-")
+    .replace(/[-.]{2,}/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 96) || "branch";
+}
+
+function footerBranchCreateWorktreePathPreview(branch = footerBranchCreateName(), state = footerBranchPickerState) {
+  const root = state.defaultWorktreesRoot || "<repo>.worktrees";
+  return `${root.replace(/\/+$/, "")}/${slugifyWorktreePathPart(branch || footerBranchCreatePreviewName())}`;
+}
+
+function gitWorktreeCreateCommandDisplay(branch, state = footerBranchPickerState) {
+  return `git worktree add -b ${quoteGitBranchForDisplay(branch)} ${quoteGitBranchForDisplay(footerBranchCreateWorktreePathPreview(branch, state))}`;
+}
+
+function gitWorktreeOpenCommandDisplay(path) {
+  return `pi-webui --cwd ${quoteGitBranchForDisplay(path || "<worktree-path>")}`;
+}
+
+function footerBranchCreateTooltip(branchName = footerBranchCreateName(), state = footerBranchPickerState) {
+  const command = gitWorktreeCreateCommandDisplay(branchName || footerBranchCreatePreviewName(), state);
+  return [
+    "Create branch worktree",
+    "A branch worktree is a separate checkout for parallel changes.",
+    "",
+    `This will run roughly: ${command}`,
+    "",
+    "What happens:",
+    "• creates the branch from the current HEAD when it does not exist",
+    "• opens a separate Pi tab rooted at that worktree",
+    "• does not switch this tab's branch, commit, push, or delete anything",
+    "",
+    "Tip: ignored dependencies such as node_modules or .venv are not copied.",
+  ].join("\n");
+}
+
+async function createFooterGitBranch(branch = footerBranchCreateName()) {
+  const branchName = cleanStatusText(branch);
+  if (!branchName) {
+    addEvent("Enter a branch name before creating a new git branch.", "warn");
+    return;
+  }
+  const tabContext = activeTabContext();
+  if (!confirmFooterGitBranchAction(branchName, { create: true, requireConfirm: true, tabContext })) return;
+  await applyFooterGitBranch(branchName, { create: true, tabContext, skipConfirm: true });
+}
+
+async function openWorktreeResponseTab(response, { branchName = "", action = "open" } = {}) {
+  if (!response.ok) throw new Error(response.error || `Failed to ${action} branch worktree`);
+  const payload = response.data || {};
+  if (Array.isArray(payload.tabs)) {
+    tabs = payload.tabs;
+    syncTabMetadata(tabs);
+  }
+  if (payload.tab) applyTabMetadata(payload.tab);
+  footerBranchPickerOpen = false;
+  footerBranchPickerRequestSerial += 1;
+  footerBranchPickerState = { ...footerBranchPickerState, loading: false, switching: "" };
+  renderTabs();
+  const targetTab = payload.tab;
+  if (targetTab?.id) await switchTab(targetTab.id);
+  const branch = cleanStatusText(payload.worktree?.branch || payload.branch || branchName || targetTab?.gitWorkspace?.branch || "");
+  const where = payload.worktree?.path || payload.path || targetTab?.cwd || "worktree";
+  const prefix = payload.created ? "Created" : payload.openedExisting || payload.openedExistingTab ? "Opened existing" : "Opened";
+  addEvent(`${prefix} branch worktree${branch ? ` ${branch}` : ""} at ${normalizeDisplayPath(where)}.`, "success");
+  if (payload.session?.warning) addEvent(payload.session.warning, "warn");
+  if (payload.dependencyHint) addEvent(payload.dependencyHint, "info");
+  requestGitFooterWebuiPayload(activeTabContext(), { force: true });
+}
+
+async function createFooterGitBranchWorktree(branch = footerBranchCreateName(), { tabContext = activeTabContext(), skipConfirm = false } = {}) {
+  const branchName = cleanStatusText(branch);
+  if (!branchName) {
+    addEvent("Enter a branch name before creating a branch worktree.", "warn");
+    return;
+  }
+  if (!skipConfirm && !confirmFooterGitWorktreeAction(branchName, { create: true, requireConfirm: true })) return;
+  const tabId = tabContext.tabId || activeTabId;
+  try {
+    footerBranchPickerState = { ...footerBranchPickerState, loading: true, error: "", switching: branchName, tabId };
+    renderFooter();
+    const response = await api("/api/git-worktrees", { method: "POST", body: { branchName, sessionMode: "fork-current", openTab: true }, tabId });
+    await openWorktreeResponseTab(response, { branchName, action: "create" });
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      footerBranchPickerState = { ...footerBranchPickerState, loading: false, switching: "", error: error.message || String(error) };
+      renderFooter();
+      updateFooterModelPickerPosition();
+    }
+    addEvent(error.message || String(error), "error");
+  }
+}
+
+async function openFooterGitWorktree(path, { branchName = "", tabContext = activeTabContext(), skipConfirm = false } = {}) {
+  const worktreePath = cleanFooterPayloadText(path, "", 4000);
+  if (!worktreePath) return;
+  if (!skipConfirm && !confirmFooterGitWorktreeAction(branchName, { path: worktreePath, requireConfirm: false })) return;
+  const tabId = tabContext.tabId || activeTabId;
+  try {
+    footerBranchPickerState = { ...footerBranchPickerState, loading: true, error: "", switching: branchName || worktreePath, tabId };
+    renderFooter();
+    const response = await api("/api/git-worktrees/open", { method: "POST", body: { path: worktreePath, sessionMode: "fork-current", openTab: true }, tabId });
+    await openWorktreeResponseTab(response, { branchName, action: "open" });
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      footerBranchPickerState = { ...footerBranchPickerState, loading: false, switching: "", error: error.message || String(error) };
+      renderFooter();
+      updateFooterModelPickerPosition();
+    }
+    addEvent(error.message || String(error), "error");
+  }
+}
+
+async function applyFooterGitBranch(branch, { create = false, tabContext = activeTabContext(), skipConfirm = false } = {}) {
+  const branchName = cleanStatusText(branch);
+  if (!branchName) return;
+  const tabId = tabContext.tabId || activeTabId;
+  if (!skipConfirm && !confirmFooterGitBranchAction(branchName, { create, tabContext })) return;
+  try {
+    footerBranchPickerState = { ...footerBranchPickerState, loading: true, error: "", switching: branchName, tabId };
+    renderFooter();
+    const response = await api("/api/git-branch", { method: "POST", body: { branch: branchName, create }, tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    if (!response.ok) throw new Error(response.error || `Failed to ${create ? "create and switch to" : "switch to"} ${branchName}`);
+    const switchedBranch = cleanStatusText(response.data?.branch || branchName);
+    footerBranchPickerOpen = false;
+    footerBranchPickerRequestSerial += 1;
+    footerBranchPickerState = { ...footerBranchPickerState, loading: false, switching: "", current: switchedBranch };
+    if (create) updateFooterBranchCreateDraft({ name: "" });
+    applyOptimisticGitFooterBranch(switchedBranch, tabContext);
+    addEvent(response.data?.created ? `Created and switched to git branch ${switchedBranch}.` : response.data?.switched === false ? `Already on git branch ${switchedBranch}.` : `Switched git branch to ${switchedBranch}.`, "info");
+    requestGitFooterWebuiPayload(tabContext, { force: true });
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      footerBranchPickerState = { ...footerBranchPickerState, loading: false, switching: "", error: error.message || String(error) };
+      addEvent(error.message || String(error), "error");
+    }
+  } finally {
+    if (isCurrentTabContext(tabContext)) {
+      document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+      renderFooter();
+      updateFooterModelPickerPosition();
+    }
+  }
+}
+
+function renderFooterBranchCreateForm(state = footerBranchPickerState) {
+  const form = make("form", "footer-branch-create-form");
+  form.setAttribute("aria-label", "Create branch worktree");
+
+  const header = make("div", "footer-branch-create-header");
+  header.append(make("strong", "footer-branch-create-title", "Create branch worktree"));
+
+  const fields = make("div", "footer-branch-create-fields");
+  const typeField = make("div", "footer-branch-create-type-field");
+  const typeInput = make("input", "footer-branch-create-dropdown-inputfield");
+  typeInput.type = "text";
+  typeInput.value = footerBranchCreateType();
+  typeInput.placeholder = "type";
+  typeInput.setAttribute("aria-label", "Branch type suggestion or custom prefix");
+  typeInput.setAttribute("aria-haspopup", "listbox");
+  typeInput.autocomplete = "off";
+  typeInput.autocapitalize = "none";
+  typeInput.spellcheck = false;
+
+  const typeSuggestions = make("div", "footer-branch-type-suggestions");
+  typeSuggestions.setAttribute("role", "listbox");
+  typeSuggestions.hidden = true;
+  const renderTypeSuggestions = () => {
+    const filter = slugifyGitBranchPart(typeInput.value);
+    const matches = GIT_BRANCH_TYPE_SUGGESTIONS.filter((type) => !filter || type.includes(filter));
+    const shown = matches.length ? matches : GIT_BRANCH_TYPE_SUGGESTIONS;
+    typeSuggestions.replaceChildren(...shown.map((type) => {
+      const button = make("button", `footer-branch-type-suggestion${footerBranchCreateType(typeInput.value) === type ? " active" : ""}`, type);
+      button.type = "button";
+      button.setAttribute("role", "option");
+      button.setAttribute("aria-selected", footerBranchCreateType(typeInput.value) === type ? "true" : "false");
+      button.addEventListener("pointerdown", (event) => event.preventDefault());
+      button.addEventListener("click", () => {
+        typeInput.value = type;
+        updateFooterBranchCreateDraft({ type });
+        updatePreview();
+        typeSuggestions.hidden = true;
+        nameInput.focus();
+      });
+      return button;
+    }));
+  };
+
+  const slash = make("span", "footer-branch-create-slash", "/");
+
+  const nameInput = make("input", "footer-branch-create-input-field");
+  nameInput.type = "text";
+  nameInput.value = footerBranchCreateDraft.name;
+  nameInput.placeholder = "short-feature-name";
+  nameInput.autocomplete = "off";
+  nameInput.autocapitalize = "none";
+  nameInput.spellcheck = false;
+  nameInput.setAttribute("aria-label", "New branch name");
+
+  const submitButton = make("button", "footer-branch-create-submit", state.switching ? "Opening…" : "Open worktree tab");
+  submitButton.type = "submit";
+
+  const preview = make("div", "footer-branch-create-preview");
+  const updatePreview = () => {
+    const branchName = footerBranchCreateName();
+    preview.textContent = gitWorktreeCreateCommandDisplay(branchName || footerBranchCreatePreviewName(), state);
+    const submitDisabled = Boolean(state.switching) || !branchName;
+    submitButton.disabled = false;
+    submitButton.classList.toggle("footer-branch-create-submit-disabled", submitDisabled);
+    submitButton.setAttribute("aria-disabled", submitDisabled ? "true" : "false");
+    submitButton.dataset.tooltip = footerBranchCreateTooltip(branchName);
+    submitButton.setAttribute("aria-label", branchName ? `Create and open branch worktree ${branchName}` : "Create branch worktree: enter both a branch type and name first");
+    submitButton.removeAttribute("title");
+  };
+
+  typeInput.addEventListener("focus", () => {
+    renderTypeSuggestions();
+    typeSuggestions.hidden = false;
+  });
+  typeInput.addEventListener("blur", () => {
+    setTimeout(() => { typeSuggestions.hidden = true; }, 120);
+  });
+  typeInput.addEventListener("input", () => {
+    updateFooterBranchCreateDraft({ type: typeInput.value });
+    updatePreview();
+    renderTypeSuggestions();
+    typeSuggestions.hidden = false;
+  });
+  typeInput.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") {
+      typeSuggestions.hidden = true;
+      return;
+    }
+    if (event.key !== "/" && event.key !== "Enter") return;
+    event.preventDefault();
+    typeSuggestions.hidden = true;
+    nameInput.focus();
+    nameInput.select();
+  });
+  nameInput.addEventListener("input", () => {
+    updateFooterBranchCreateDraft({ name: nameInput.value });
+    updatePreview();
+  });
+  nameInput.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    form.requestSubmit();
+  });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    if (state.switching) return;
+    const branchName = footerBranchCreateName();
+    createFooterGitBranchWorktree(branchName).catch((error) => addEvent(error.message || String(error), "error"));
+  });
+
+  updatePreview();
+  renderTypeSuggestions();
+  typeField.append(typeInput, typeSuggestions);
+  fields.append(typeField, slash, nameInput, submitButton);
+  form.append(header, fields, preview);
+  return form;
+}
+
+function footerBranchWorktreePath(branch, state = footerBranchPickerState) {
+  const direct = cleanFooterPayloadText(branch?.worktreePath, "", 4000);
+  if (direct) return direct;
+  return cleanFooterPayloadText(state.occupiedBranches?.find((item) => item.branch === branch?.name)?.path, "", 4000);
+}
+
+function footerBranchOptionDetail(branch, state, { selected, worktreePath } = {}) {
+  if (state.switching === branch.name) return "opening…";
+  if (selected) return branch.worktreeCurrent ? "current branch in this worktree" : "current branch";
+  if (worktreePath) return branch.mainWorktree ? "checked out in main worktree · open tab" : "checked out in another worktree · open tab";
+  return "open branch in a new worktree tab";
+}
+
+function openFooterBranchOption(branch, state = footerBranchPickerState) {
+  const worktreePath = footerBranchWorktreePath(branch, state);
+  if (worktreePath && !branch.worktreeCurrent) return openFooterGitWorktree(worktreePath, { branchName: branch.name, skipConfirm: true });
+  return createFooterGitBranchWorktree(branch.name, { skipConfirm: true });
+}
+
+function renderFooterBranchOption(branch, state = footerBranchPickerState) {
+  const selected = branch.current || (!!state.current && branch.name === state.current);
+  const worktreePath = footerBranchWorktreePath(branch, state);
+  const busy = state.loading || !!state.switching;
+  const primaryDisabled = busy || selected;
+  const row = make("div", `footer-branch-option-row${selected ? " active" : ""}${worktreePath && !branch.worktreeCurrent ? " worktree-occupied" : ""}`);
+  row.setAttribute("role", "option");
+  row.setAttribute("aria-selected", selected ? "true" : "false");
+
+  const primary = make("button", "footer-model-option footer-branch-option footer-branch-primary-action");
+  primary.type = "button";
+  primary.disabled = primaryDisabled;
+  primary.title = selected ? `Current branch: ${branch.name}` : worktreePath ? `Open existing worktree: ${worktreePath}` : `Open ${branch.name} in a new Git worktree tab`;
+  primary.append(
+    make("span", "footer-model-option-main", branch.name),
+    make("span", "footer-model-option-name", footerBranchOptionDetail(branch, state, { selected, worktreePath })),
+  );
+  if (!primaryDisabled) primary.addEventListener("click", () => openFooterBranchOption(branch, state));
+  row.append(primary);
+
+  if (!selected) {
+    const advanced = make("button", "footer-branch-advanced-action", "Switch here");
+    advanced.type = "button";
+    advanced.disabled = busy || !!worktreePath;
+    advanced.title = worktreePath
+      ? "This branch is already checked out elsewhere; use the primary worktree action instead of switching this checkout."
+      : `Advanced: git switch ${branch.name} in this checkout`;
+    advanced.addEventListener("click", () => applyFooterGitBranch(branch.name));
+    row.append(advanced);
+  }
+  return row;
+}
+
+function renderFooterWorktreeList(state = footerBranchPickerState) {
+  const worktrees = (state.worktrees || []).filter((item) => item.path && !item.prunable);
+  if (worktrees.length <= 1) return null;
+  const section = make("div", "footer-branch-worktree-section");
+  section.append(make("div", "footer-branch-section-title", `Open worktrees (${worktrees.length})`));
+  for (const worktree of worktrees.slice(0, 8)) {
+    const selected = worktree.current || worktree.path === state.currentWorktreePath;
+    const button = make("button", `footer-model-option footer-worktree-option${selected ? " active" : ""}`);
+    button.type = "button";
+    button.disabled = selected || state.loading || !!state.switching;
+    button.title = selected ? `Current worktree: ${worktree.path}` : `Open worktree: ${worktree.path}`;
+    button.append(
+      make("span", "footer-model-option-main", worktree.branch || "detached"),
+      make("span", "footer-model-option-name", `${selected ? "current" : "open"} · ${normalizeDisplayPath(worktree.path)}`),
+    );
+    if (!button.disabled) button.addEventListener("click", () => openFooterGitWorktree(worktree.path, { branchName: worktree.branch || "", skipConfirm: true }));
+    section.append(button);
+  }
+  return section;
+}
+
+function openBranchWorktreePicker() {
+  setNewTabMenuOpen(false);
+  setMobileTabsExpanded(false);
+  setComposerActionsOpen(false);
+  setFooterBranchPickerOpen(true);
+}
+
+function renderFooterBranchPicker() {
+  const picker = make("div", "footer-model-picker footer-branch-picker");
+  picker.setAttribute("role", "listbox");
+  picker.setAttribute("aria-label", "Git branches and worktrees");
+  const state = footerBranchPickerState;
+  const current = state.current || "detached";
+  picker.append(make("div", "footer-model-picker-title", "Git branches & worktrees"));
+  picker.append(make("div", "footer-model-picker-source", `${state.loading ? "Refreshing" : "Current"}: ${state.switching || current}${state.currentWorktreePath ? ` · ${normalizeDisplayPath(state.currentWorktreePath)}` : state.root ? ` · ${state.root}` : ""}`));
+
+  if (state.error) {
+    const error = make("div", "footer-model-picker-empty error");
+    error.append(make("strong", undefined, "Cannot load branches."), make("span", undefined, ` ${state.error}`));
+    picker.append(error);
+    return picker;
+  }
+  if (state.loading && state.branches.length === 0) {
+    picker.append(make("div", "footer-model-picker-empty muted", "Loading existing local branches and worktrees… Worktree creation is available once branch data loads."), renderFooterBranchCreateForm(state));
+    return picker;
+  }
+
+  const hasOtherBranches = state.branches.some((branch) => !branch.current && branch.name !== state.current);
+  if (!state.loading && !hasOtherBranches) {
+    const empty = make("div", "footer-model-picker-empty muted");
+    empty.append(make("strong", undefined, "No other local branches available."), make("span", undefined, " Create a branch worktree from the current HEAD to continue."));
+    picker.append(empty);
+  }
+
+  picker.append(renderFooterBranchCreateForm(state));
+  const worktreeSection = renderFooterWorktreeList(state);
+  if (worktreeSection) picker.append(worktreeSection);
+  picker.append(make("div", "footer-branch-section-title", "Branches"));
+
+  for (const branch of state.branches) picker.append(renderFooterBranchOption(branch, state));
+  return picker;
+}
+
+function footerScopedModelKey(model) {
+  return model?.provider && model?.id ? `${model.provider}/${model.id}` : "";
+}
+
+function readFooterScopedModelOrder() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(FOOTER_SCOPED_MODEL_ORDER_STORAGE_KEY) || "[]");
+    return Array.isArray(parsed) ? parsed.filter((key) => typeof key === "string" && key.trim()) : [];
+  } catch {
+    return [];
+  }
+}
+
+function writeFooterScopedModelOrder(order) {
+  try {
+    localStorage.setItem(FOOTER_SCOPED_MODEL_ORDER_STORAGE_KEY, JSON.stringify([...new Set(order.filter(Boolean))]));
+  } catch {}
+}
+
+function orderedFooterScopedModels() {
+  const order = readFooterScopedModelOrder();
+  if (!order.length) return footerScopedModels;
+  const rank = new Map(order.map((key, index) => [key, index]));
+  return [...footerScopedModels].sort((a, b) => {
+    const aRank = rank.has(footerScopedModelKey(a)) ? rank.get(footerScopedModelKey(a)) : Number.MAX_SAFE_INTEGER;
+    const bRank = rank.has(footerScopedModelKey(b)) ? rank.get(footerScopedModelKey(b)) : Number.MAX_SAFE_INTEGER;
+    return aRank - bRank;
+  });
+}
+
+function commitFooterScopedModelOrder(order, { render = true, focusKey = "" } = {}) {
+  writeFooterScopedModelOrder(order);
+  footerScopedModels = orderedFooterScopedModels();
+  if (render) renderFooter();
+  if (focusKey) {
+    const movedButton = document.querySelector(`[data-footer-model-key="${CSS.escape(focusKey)}"]`);
+    if (movedButton) movedButton.focus();
+  }
+}
+
+function reorderFooterScopedModel(fromKey, toKey, { focus = true } = {}) {
+  if (!fromKey || !toKey || fromKey === toKey) return false;
+  const models = orderedFooterScopedModels();
+  const fromIndex = models.findIndex((model) => footerScopedModelKey(model) === fromKey);
+  const toIndex = models.findIndex((model) => footerScopedModelKey(model) === toKey);
+  if (fromIndex < 0 || toIndex < 0) return false;
+  const [moved] = models.splice(fromIndex, 1);
+  models.splice(toIndex, 0, moved);
+  commitFooterScopedModelOrder(models.map(footerScopedModelKey), { focusKey: focus ? fromKey : "" });
+  return true;
+}
+
+function moveFooterScopedModelByOffset(modelKey, offset) {
+  const models = orderedFooterScopedModels();
+  const fromIndex = models.findIndex((model) => footerScopedModelKey(model) === modelKey);
+  const toIndex = fromIndex + offset;
+  if (fromIndex < 0 || toIndex < 0 || toIndex >= models.length) return false;
+  const [moved] = models.splice(fromIndex, 1);
+  models.splice(toIndex, 0, moved);
+  commitFooterScopedModelOrder(models.map(footerScopedModelKey), { focusKey: modelKey });
+  return true;
+}
+
+function footerScopedModelButtons() {
+  return [...document.querySelectorAll(".footer-model-picker .footer-model-option[data-footer-model-key]")];
+}
+
+function footerScopedModelButtonFromPoint(clientX, clientY) {
+  return document.elementFromPoint(clientX, clientY)?.closest?.(".footer-model-option[data-footer-model-key]") || null;
+}
+
+function clearFooterScopedModelDragMarkers() {
+  for (const button of footerScopedModelButtons()) {
+    button.classList.remove("drag-over", "drag-over-before", "drag-over-after");
+  }
+}
+
+function commitVisibleFooterScopedModelOrder({ render = false, focusKey = "" } = {}) {
+  const order = footerScopedModelButtons().map((button) => button.dataset.footerModelKey).filter(Boolean);
+  if (!order.length) return;
+  commitFooterScopedModelOrder(order, { render, focusKey });
+}
+
+function moveVisibleFooterScopedModel(fromKey, targetButton, clientY) {
+  if (!fromKey || !targetButton) return false;
+  const sourceButton = document.querySelector(`[data-footer-model-key="${CSS.escape(fromKey)}"]`);
+  if (!sourceButton || sourceButton === targetButton) return false;
+  const parent = sourceButton.parentElement;
+  if (!parent || targetButton.parentElement !== parent) return false;
+  const targetKey = targetButton.dataset.footerModelKey || "";
+  const rect = targetButton.getBoundingClientRect();
+  const insertBefore = clientY < rect.top + rect.height / 2;
+
+  clearFooterScopedModelDragMarkers();
+  targetButton.classList.add("drag-over", insertBefore ? "drag-over-before" : "drag-over-after");
+  footerScopedModelLastDragOverKey = `${targetKey}:${insertBefore ? "before" : "after"}`;
+
+  if (insertBefore) parent.insertBefore(sourceButton, targetButton);
+  else parent.insertBefore(sourceButton, targetButton.nextSibling);
+  commitVisibleFooterScopedModelOrder({ render: false });
+  return true;
+}
+
+function beginFooterScopedModelPointerDrag(event, modelKey) {
+  if (event.button !== 0 || !modelKey) return;
+  footerScopedModelPointerDrag = { modelKey, pointerId: event.pointerId, startX: event.clientX, startY: event.clientY, active: false };
+  window.addEventListener("pointermove", updateFooterScopedModelPointerDrag, { capture: true });
+  window.addEventListener("pointerup", endFooterScopedModelPointerDrag, { capture: true });
+  window.addEventListener("pointercancel", endFooterScopedModelPointerDrag, { capture: true });
+}
+
+function updateFooterScopedModelPointerDrag(event) {
+  const drag = footerScopedModelPointerDrag;
+  if (!drag || drag.pointerId !== event.pointerId) return;
+  const distance = Math.hypot(event.clientX - drag.startX, event.clientY - drag.startY);
+  if (!drag.active && distance < FOOTER_SCOPED_MODEL_POINTER_DRAG_THRESHOLD_PX) return;
+  event.preventDefault();
+  if (!drag.active) {
+    drag.active = true;
+    footerScopedModelDragKey = drag.modelKey;
+    footerScopedModelLastDragOverKey = "";
+    clearTimeout(pointerActivationTimeout);
+    pointerActivationTimeout = null;
+    activePointerActivation = null;
+    deferredUiRenderCallbacks.delete("footer");
+    const sourceButton = document.querySelector(`[data-footer-model-key="${CSS.escape(drag.modelKey)}"]`);
+    if (sourceButton) sourceButton.classList.add("dragging");
+  }
+  const targetButton = footerScopedModelButtonFromPoint(event.clientX, event.clientY);
+  if (!targetButton || targetButton.dataset.footerModelKey === drag.modelKey) return;
+  const rect = targetButton.getBoundingClientRect();
+  const markerKey = `${targetButton.dataset.footerModelKey}:${event.clientY < rect.top + rect.height / 2 ? "before" : "after"}`;
+  if (markerKey === footerScopedModelLastDragOverKey) return;
+  moveVisibleFooterScopedModel(drag.modelKey, targetButton, event.clientY);
+}
+
+function endFooterScopedModelPointerDrag(event) {
+  const drag = footerScopedModelPointerDrag;
+  if (!drag || drag.pointerId !== event.pointerId) return;
+  window.removeEventListener("pointermove", updateFooterScopedModelPointerDrag, { capture: true });
+  window.removeEventListener("pointerup", endFooterScopedModelPointerDrag, { capture: true });
+  window.removeEventListener("pointercancel", endFooterScopedModelPointerDrag, { capture: true });
+  const wasActive = drag.active;
+  const sourceButton = document.querySelector(`[data-footer-model-key="${CSS.escape(drag.modelKey)}"]`);
+  footerScopedModelPointerDrag = null;
+  footerScopedModelDragKey = "";
+  footerScopedModelLastDragOverKey = "";
+  clearFooterScopedModelDragMarkers();
+  if (sourceButton) sourceButton.classList.remove("dragging");
+  if (wasActive) {
+    footerScopedModelSuppressClickUntil = Date.now() + 250;
+    event.preventDefault();
+    commitVisibleFooterScopedModelOrder({ render: false, focusKey: drag.modelKey });
+  }
+}
+
+async function applyFooterModel(model) {
+  if (!model?.provider || !model?.id) return;
+  const tabContext = activeTabContext();
+  try {
+    footerModelPickerOpen = false;
+    const response = await api("/api/model", { method: "POST", body: { provider: model.provider, modelId: model.id }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    applyOptimisticModelSelection(response.data || model, tabContext);
+    await refreshState(tabContext);
+    await refreshModels(tabContext);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  } finally {
+    if (isCurrentTabContext(tabContext)) {
+      document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+      renderFooter();
+    }
+  }
+}
+
+function renderFooterModelPicker() {
+  const picker = make("div", "footer-model-picker");
+  picker.setAttribute("role", "listbox");
+  picker.setAttribute("aria-label", "Scoped models");
+  picker.append(make("div", "footer-model-picker-title", "Scoped models"));
+  picker.append(make("div", "footer-model-picker-source", "Drag models to reorder · Alt+↑/↓ moves focused model"));
+  if (footerScopedModels.length === 0) {
+    const empty = make("div", "footer-model-picker-empty muted");
+    empty.append(
+      make("strong", undefined, "No scoped models available."),
+      make("span", undefined, " If you changed /scoped-models in the terminal UI, choose its Save action so Web UI can read it from settings, or start Web UI with forwarded Pi args like -- --models model-a,model-b."),
+    );
+    picker.append(empty);
+    return picker;
+  }
+  const current = currentState?.model;
+  footerScopedModels = orderedFooterScopedModels();
+  for (const model of footerScopedModels) {
+    const selected = current?.provider === model.provider && current?.id === model.id;
+    const modelKey = footerScopedModelKey(model);
+    const dragging = footerScopedModelDragKey === modelKey;
+    const dragOver = footerScopedModelDragKey && footerScopedModelLastDragOverKey === modelKey;
+    const button = make("button", `footer-model-option${selected ? " active" : ""}${dragging ? " dragging" : ""}${dragOver ? " drag-over" : ""}`);
+    button.type = "button";
+    button.draggable = false;
+    button.dataset.footerModelKey = modelKey;
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", selected ? "true" : "false");
+    button.title = `${model.provider}/${model.id}${model.name ? ` · ${model.name}` : ""}`;
+    button.append(
+      make("span", "footer-model-option-main", `${model.provider}/${model.id}`),
+      make("span", "footer-model-option-name", model.name || ""),
+    );
+    button.addEventListener("click", (event) => {
+      if (Date.now() < footerScopedModelSuppressClickUntil) {
+        event.preventDefault();
+        return;
+      }
+      applyFooterModel(model);
+    });
+    button.addEventListener("keydown", (event) => {
+      if (!event.altKey || (event.key !== "ArrowUp" && event.key !== "ArrowDown")) return;
+      event.preventDefault();
+      moveFooterScopedModelByOffset(modelKey, event.key === "ArrowUp" ? -1 : 1);
+    });
+    button.addEventListener("pointerdown", (event) => beginFooterScopedModelPointerDrag(event, modelKey));
+    picker.append(button);
+  }
+  return picker;
+}
+
+async function applyFooterThinking(level) {
+  const nextLevel = String(level || "").trim();
+  if (!nextLevel) return;
+  const tabContext = activeTabContext();
+  try {
+    footerThinkingPickerOpen = false;
+    const response = await api("/api/thinking", { method: "POST", body: { level: nextLevel }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    applyOptimisticThinkingSelection(response.data || { level: nextLevel }, tabContext);
+    if (response.data?.pending) {
+      addEvent(response.data.message || `Thinking effort ${response.data.level || nextLevel} will apply to the next prompt.`, "info");
+    } else if (response.data?.level) {
+      const requested = response.data.requestedLevel;
+      const effective = response.data.level;
+      addEvent(requested && requested !== effective ? `Thinking effort set to ${effective} (requested ${requested}).` : `Thinking effort set to ${effective}.`, "info");
+    }
+    await refreshState(tabContext);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  } finally {
+    if (isCurrentTabContext(tabContext)) {
+      document.body.classList.toggle("footer-model-picker-open", isFooterPickerOpen());
+      renderFooter();
+    }
+  }
+}
+
+function renderFooterThinkingPicker() {
+  const picker = make("div", "footer-model-picker footer-thinking-picker");
+  picker.setAttribute("role", "listbox");
+  picker.setAttribute("aria-label", "Thinking effort");
+  picker.append(make("div", "footer-model-picker-title", "Thinking effort"));
+  picker.append(make("div", "footer-model-picker-source", "Applies to this Pi tab."));
+  const current = currentState?.pendingThinkingLevel || currentState?.thinkingLevel || "off";
+  for (const level of footerThinkingLevels()) {
+    const selected = current === level;
+    const button = make("button", `footer-model-option${selected ? " active" : ""}`);
+    button.type = "button";
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", selected ? "true" : "false");
+    button.title = `Set thinking effort to ${level}`;
+    button.append(make("span", "footer-model-option-main", footerThinkingLevelLabel(level)));
+    button.addEventListener("click", () => applyFooterThinking(level));
+    picker.append(button);
+  }
+  return picker;
+}
+
+function pathPickerButton(label, title, onClick, className = "") {
+  const button = make("button", className, label);
+  button.type = "button";
+  button.title = title || label;
+  button.addEventListener("click", onClick);
+  return button;
+}
+
+function setPathPickerError(message) {
+  elements.pathPickerError.textContent = message || "";
+  elements.pathPickerError.hidden = !message;
+}
+
+function pathPickerCreateName() {
+  return elements.pathPickerCreateNameInput.value.trim();
+}
+
+function pathPickerCreateValidationError(name = pathPickerCreateName()) {
+  if (!name) return "Enter a directory name.";
+  if (name === "." || name === "..") return "Use a real directory name, not . or ..";
+  if (name.includes("\u0000")) return "Directory names cannot contain null bytes.";
+  if (/[\\/]/.test(name)) return "Create one directory at a time; do not include path separators.";
+  return "";
+}
+
+function updateCreateDirectoryControls() {
+  const busy = !!pathPickerState?.creatingDirectory;
+  const loading = !!pathPickerState?.loading;
+  const canCreate = !!pathPickerState?.cwd && !loading && !busy && !!pathPickerCreateName();
+  elements.pathPickerCreateNameInput.disabled = !pathPickerState || loading || busy;
+  elements.pathPickerCreateButton.disabled = !canCreate;
+  elements.pathPickerCreateButton.textContent = busy ? "Creating…" : "Create directory";
+}
+
+function pathPickerSearchQuery() {
+  return elements.pathPickerSearchInput.value.trim().toLowerCase();
+}
+
+function updatePathPickerSearchControls() {
+  const loading = !!pathPickerState?.loading;
+  const hasDirectory = !!pathPickerState?.cwd;
+  const hasQuery = !!pathPickerSearchQuery();
+  elements.pathPickerSearchInput.disabled = !pathPickerState || loading || !hasDirectory;
+  elements.pathPickerClearSearchButton.hidden = !hasQuery;
+  elements.pathPickerClearSearchButton.disabled = loading || !hasQuery;
+}
+
+function pathPickerDirectoryMatchesSearch(directory, query) {
+  if (!query) return true;
+  const haystack = String(directory?.name || "").toLowerCase();
+  return query.split(/\s+/).every((term) => haystack.includes(term));
+}
+
+function renderPathPickerDirectoryList() {
+  if (!pathPickerState) return;
+  const directories = Array.isArray(pathPickerState.directories) ? pathPickerState.directories : [];
+  const query = pathPickerSearchQuery();
+  const matches = directories.filter((directory) => pathPickerDirectoryMatchesSearch(directory, query));
+  pathPickerState.filteredDirectories = matches;
+  updatePathPickerSearchControls();
+  elements.pathPickerList.replaceChildren();
+
+  if (query) {
+    elements.pathPickerSearchStatus.textContent = matches.length === directories.length
+      ? `Showing all ${matches.length} director${matches.length === 1 ? "y" : "ies"}.`
+      : `Showing ${matches.length} of ${directories.length} directories.`;
+  } else {
+    elements.pathPickerSearchStatus.textContent = "";
+  }
+
+  if (!matches.length) {
+    elements.pathPickerList.append(make("div", "path-picker-empty muted", query ? `No directories match “${elements.pathPickerSearchInput.value.trim()}”.` : "No subdirectories."));
+    return;
+  }
+
+  for (const directory of matches) {
+    const button = pathPickerButton(`${directory.name}/`, directory.cwd, () => loadPathPickerDirectory(directory.cwd), `path-picker-directory${directory.hidden ? " hidden-directory" : ""}`);
+    button.setAttribute("role", "option");
+    elements.pathPickerList.append(button);
+  }
+}
+
+function clearPathPickerSearch({ focus = false } = {}) {
+  elements.pathPickerSearchInput.value = "";
+  renderPathPickerDirectoryList();
+  if (focus) elements.pathPickerSearchInput.focus();
+}
+
+function normalizeFastPicks(value) {
+  const items = Array.isArray(value) ? value : [];
+  const seen = new Set();
+  const picks = [];
+  for (const item of items) {
+    const cwd = typeof item === "string" ? item : String(item?.cwd || "");
+    if (!cwd || seen.has(cwd)) continue;
+    seen.add(cwd);
+    picks.push({ cwd, displayCwd: String(item?.displayCwd || cwd) });
+  }
+  return picks.slice(0, 30);
+}
+
+function loadLegacyFastPicks() {
+  try {
+    return normalizeFastPicks(JSON.parse(localStorage.getItem(PATH_FAST_PICKS_STORAGE_KEY) || "[]"));
+  } catch {
+    return [];
+  }
+}
+
+function clearLegacyFastPicks() {
+  try {
+    localStorage.removeItem(PATH_FAST_PICKS_STORAGE_KEY);
+  } catch {
+    // Ignore storage cleanup failures; server persistence is authoritative.
+  }
+}
+
+function loadFastPicks() {
+  return pathFastPicks;
+}
+
+async function fetchFastPicks() {
+  const response = await api("/api/path-fast-picks", { scoped: false });
+  return normalizeFastPicks(response.data?.picks || []);
+}
+
+async function saveFastPicks(picks) {
+  pathFastPicks = normalizeFastPicks(picks);
+  pathFastPicksReady = true;
+  renderFastPicks();
+  try {
+    const response = await api("/api/path-fast-picks", { method: "POST", body: { picks: pathFastPicks }, scoped: false });
+    pathFastPicks = normalizeFastPicks(response.data?.picks || pathFastPicks);
+    clearLegacyFastPicks();
+  } catch (error) {
+    try {
+      localStorage.setItem(PATH_FAST_PICKS_STORAGE_KEY, JSON.stringify(pathFastPicks));
+    } catch {
+      // Ignore fallback storage failure; the event log still reports the server-side error.
+    }
+    addEvent(`failed to persist path fast picks on server; saved in this browser only: ${error.message}`, "error");
+  }
+  renderFastPicks();
+}
+
+async function initializeFastPicks() {
+  if (pathFastPicksLoadPromise) return pathFastPicksLoadPromise;
+  pathFastPicksLoadPromise = (async () => {
+    const legacy = loadLegacyFastPicks();
+    try {
+      const serverPicks = await fetchFastPicks();
+      const merged = normalizeFastPicks([...serverPicks, ...legacy]);
+      pathFastPicks = merged;
+      pathFastPicksReady = true;
+      if (legacy.length > 0 && JSON.stringify(merged) !== JSON.stringify(serverPicks)) await saveFastPicks(merged);
+      else clearLegacyFastPicks();
+    } catch (error) {
+      pathFastPicks = legacy;
+      pathFastPicksReady = true;
+      if (legacy.length > 0) addEvent(`using browser-only path fast picks; server load failed: ${error.message}`, "warn");
+      else addEvent(`failed to load path fast picks: ${error.message}`, "error");
+    }
+    renderFastPicks();
+  })();
+  return pathFastPicksLoadPromise;
+}
+
+function fastPickLabel(pick) {
+  const cwd = String(pick.cwd || pick.displayCwd || "");
+  const trimmed = cwd.replace(/\\/g, "/").replace(/\/+$/, "");
+  if (!trimmed) return cwd || "directory";
+  return trimmed.split("/").filter(Boolean).pop() || trimmed;
+}
+
+function currentFastPick() {
+  if (!pathPickerState?.cwd) return null;
+  return { cwd: pathPickerState.cwd, displayCwd: elements.pathPickerCurrent.textContent || pathPickerState.cwd };
+}
+
+function updateAddFastPickButton() {
+  if (!pathFastPicksReady) {
+    elements.pathPickerAddFastPickButton.disabled = true;
+    elements.pathPickerAddFastPickButton.textContent = "Loading fast picks…";
+    return;
+  }
+  const pick = currentFastPick();
+  const exists = !!pick && loadFastPicks().some((item) => item.cwd === pick.cwd);
+  elements.pathPickerAddFastPickButton.disabled = !pick || exists;
+  elements.pathPickerAddFastPickButton.textContent = exists ? "Fast pick added" : "Add fast pick";
+}
+
+function renderFastPicks() {
+  const picks = loadFastPicks();
+  elements.pathPickerFastPicks.replaceChildren();
+  if (!pathFastPicksReady) {
+    elements.pathPickerFastPicks.append(make("div", "path-picker-fast-picks-empty muted", "Loading fast picks…"));
+    updateAddFastPickButton();
+    return;
+  }
+  if (picks.length === 0) {
+    elements.pathPickerFastPicks.append(make("div", "path-picker-fast-picks-empty muted", "No fast picks yet."));
+    updateAddFastPickButton();
+    return;
+  }
+
+  for (const pick of picks) {
+    const item = make("span", "path-picker-fast-pick");
+    const jump = pathPickerButton(fastPickLabel(pick), pick.cwd, () => loadPathPickerDirectory(pick.cwd), "path-picker-fast-pick-button");
+    const remove = pathPickerButton("×", `Remove fast pick ${pick.cwd}`, async () => {
+      await saveFastPicks(loadFastPicks().filter((item) => item.cwd !== pick.cwd));
+    }, "path-picker-fast-pick-remove");
+    item.append(jump, remove);
+    elements.pathPickerFastPicks.append(item);
+  }
+  updateAddFastPickButton();
+}
+
+async function addCurrentFastPick() {
+  const pick = currentFastPick();
+  if (!pick) return;
+  const picks = loadFastPicks().filter((item) => item.cwd !== pick.cwd);
+  picks.unshift(pick);
+  await saveFastPicks(picks);
+}
+
+function renderPathPicker(data) {
+  if (!pathPickerState) return;
+  pathPickerState.cwd = data.cwd;
+  pathPickerState.loading = false;
+  pathPickerState.directories = Array.isArray(data.directories) ? data.directories : [];
+  pathPickerState.filteredDirectories = pathPickerState.directories;
+  elements.pathPickerCurrent.textContent = data.displayCwd || data.cwd;
+  elements.pathPickerCurrent.title = data.cwd;
+  elements.pathPickerChooseButton.disabled = false;
+  elements.pathPickerChooseButton.textContent = "Use this directory";
+  elements.pathPickerCreateNameInput.value = "";
+  elements.pathPickerSearchInput.value = "";
+  setPathPickerError(data.truncated ? "Showing the first 500 directories." : "");
+  updateCreateDirectoryControls();
+  renderFastPicks();
+
+  elements.pathPickerRoots.replaceChildren();
+  if (data.parent) {
+    elements.pathPickerRoots.append(pathPickerButton("↑ Parent", data.parent, () => loadPathPickerDirectory(data.parent), "path-picker-root-button"));
+  }
+  for (const root of data.roots || []) {
+    elements.pathPickerRoots.append(pathPickerButton(root.label, root.cwd, () => loadPathPickerDirectory(root.cwd), "path-picker-root-button"));
+  }
+
+  renderPathPickerDirectoryList();
+}
+
+async function loadPathPickerDirectory(cwd) {
+  if (!pathPickerState) return;
+  const requestId = ++pathPickerState.requestId;
+  pathPickerState.loading = true;
+  elements.pathPickerAddFastPickButton.disabled = true;
+  elements.pathPickerChooseButton.disabled = true;
+  elements.pathPickerCurrent.textContent = "Loading…";
+  elements.pathPickerSearchStatus.textContent = "";
+  updateCreateDirectoryControls();
+  updatePathPickerSearchControls();
+  setPathPickerError("");
+
+  try {
+    const query = cwd ? `?path=${encodeURIComponent(cwd)}` : "";
+    const response = await api(`/api/directories${query}`);
+    if (!pathPickerState || pathPickerState.requestId !== requestId) return;
+    renderPathPicker(response.data || {});
+  } catch (error) {
+    if (!pathPickerState || pathPickerState.requestId !== requestId) return;
+    pathPickerState.loading = false;
+    elements.pathPickerChooseButton.disabled = false;
+    elements.pathPickerCurrent.textContent = pathPickerState.cwd || "Unable to load directory";
+    setPathPickerError(error.message);
+    updateCreateDirectoryControls();
+    updatePathPickerSearchControls();
+    updateAddFastPickButton();
+  }
+}
+
+async function createPathPickerDirectory() {
+  const state = pathPickerState;
+  if (!state?.cwd || state.loading || state.creatingDirectory) return;
+  const name = pathPickerCreateName();
+  const validationError = pathPickerCreateValidationError(name);
+  if (validationError) {
+    setPathPickerError(validationError);
+    elements.pathPickerCreateNameInput.focus();
+    return;
+  }
+
+  const requestId = ++state.requestId;
+  state.creatingDirectory = true;
+  updateCreateDirectoryControls();
+  setPathPickerError("");
+  try {
+    const response = await api("/api/directories", { method: "POST", body: { parent: state.cwd, name } });
+    if (!pathPickerState || pathPickerState !== state || state.requestId !== requestId) return;
+    renderPathPicker(response.data || {});
+    elements.pathPickerChooseButton.focus({ preventScroll: true });
+  } catch (error) {
+    if (!pathPickerState || pathPickerState !== state || state.requestId !== requestId) return;
+    setPathPickerError(error.message);
+    elements.pathPickerCreateNameInput.focus();
+  } finally {
+    if (pathPickerState === state) {
+      state.creatingDirectory = false;
+      updateCreateDirectoryControls();
+    }
+  }
+}
+
+function closePathPicker(cwd) {
+  const state = pathPickerState;
+  if (!state) return;
+  pathPickerState = null;
+  if (elements.pathPickerDialog.open) elements.pathPickerDialog.close();
+  state.resolve(cwd || null);
+}
+
+function pickCwd(tab, initialCwd, { title } = {}) {
+  if (pathPickerState) return Promise.resolve(null);
+
+  return new Promise((resolve) => {
+    const pickerTab = tab || { id: "path-picker", title: "tab" };
+    pathPickerState = { tabId: pickerTab.id, cwd: initialCwd, requestId: 0, loading: false, creatingDirectory: false, directories: [], filteredDirectories: [], resolve };
+    elements.pathPickerTitle.textContent = title || `Choose CWD for ${pickerTab.title}`;
+    elements.pathPickerCurrent.textContent = "Loading…";
+    elements.pathPickerCreateNameInput.value = "";
+    elements.pathPickerSearchInput.value = "";
+    elements.pathPickerSearchStatus.textContent = "";
+    elements.pathPickerFastPicks.replaceChildren();
+    elements.pathPickerRoots.replaceChildren();
+    elements.pathPickerList.replaceChildren();
+    setPathPickerError("");
+    elements.pathPickerAddFastPickButton.disabled = true;
+    elements.pathPickerChooseButton.disabled = true;
+    updateCreateDirectoryControls();
+    updatePathPickerSearchControls();
+    initializeFastPicks().catch((error) => addEvent(`failed to initialize path fast picks: ${error.message}`, "error"));
+    elements.pathPickerDialog.showModal();
+    loadPathPickerDirectory(initialCwd);
+  });
+}
+
+async function changeActiveTabCwd() {
+  const tab = activeTab();
+  if (!tab) return;
+  const tabContext = activeTabContext(tab.id);
+
+  const currentCwd = latestWorkspace?.cwd || tab.cwd || "";
+  const cwd = await pickCwd(tab, currentCwd);
+  if (!isCurrentTabContext(tabContext) || !cwd || cwd === currentCwd) return;
+
+  if (shouldOpenCwdChangeInNewTab(tab)) {
+    await createTerminalTab(cwd, { triggerButton: null });
+    return;
+  }
+
+  if (!window.confirm(`Restart ${tab.title} in:\n${cwd}\n\nCurrent in-flight work in this tab will be stopped. The conversation continues in the new directory.`)) return;
+
+  saveActiveDraft();
+  try {
+    const response = await api(`/api/tabs/${encodeURIComponent(tab.id)}`, { method: "PATCH", body: { cwd }, scoped: false });
+    tabs = response.data?.tabs || tabs;
+    syncTabMetadata(tabs);
+    if (!isCurrentTabContext(tabContext)) {
+      renderTabs();
+      return;
+    }
+    const nextContext = setActiveTabId(response.data?.tab?.id || activeTabId);
+    resetGitWorkflowForTab(nextContext.tabId);
+    resetActiveTabUi();
+    renderTabs();
+    restoreActiveDraft();
+    connectEvents(nextContext);
+    await refreshAll(nextContext);
+    if (!isCurrentTabContext(nextContext)) return;
+    const changedCwd = response.data?.tab?.cwd || cwd;
+    addEvent(response.data?.changed === false ? `cwd unchanged: ${changedCwd}` : `changed ${tab.title} cwd to ${changedCwd}`, "info");
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  }
+}
+
+function renderFooter() {
+  if (deferUiRenderDuringPointerActivation("footer", renderFooter)) return;
+  const gitFooterPayload = parseGitFooterWebuiPayload();
+  if (gitFooterPayload) {
+    renderGitFooterPayload(footerPayloadWithLiveModel(gitFooterPayload));
+    return;
+  }
+  renderMinimalFooter();
+}
+
+function scheduleRefreshMessages(delay = 120, tabContext = activeTabContext()) {
+  clearTimeout(refreshMessagesTimer);
+  refreshMessagesTimer = setTimeout(() => {
+    if (!isCurrentTabContext(tabContext)) return;
+    refreshMessages(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+    });
+  }, delay);
+}
+
+function scheduleRefreshState(delay = 120, tabContext = activeTabContext()) {
+  clearTimeout(refreshStateTimer);
+  refreshStateTimer = setTimeout(() => {
+    if (!isCurrentTabContext(tabContext)) return;
+    refreshState(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+    });
+  }, delay);
+}
+
+function scheduleRefreshFooter(delay = 300, tabContext = activeTabContext()) {
+  clearTimeout(refreshFooterTimer);
+  refreshFooterTimer = setTimeout(() => {
+    if (!isCurrentTabContext(tabContext)) return;
+    refreshFooterData(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+    });
+  }, delay);
+}
+
+function formatCodexPlanType(value) {
+  const text = String(value || "").trim();
+  if (!text) return "unknown plan";
+  const normalized = text.replace(/[\s_-]+/g, "").toLowerCase();
+  if (normalized === "prolite") return "Usage";
+  return text.replace(/[_-]+/g, " ").replace(/\b\w/g, (letter) => letter.toUpperCase());
+}
+
+function formatCodexPercent(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? `${Math.max(0, Math.min(100, Math.round(number)))}%` : "—";
+}
+
+function codexWindowDurationMinutes(window) {
+  const minutes = Number(window?.windowDurationMins);
+  if (Number.isFinite(minutes) && minutes > 0) return minutes;
+  const seconds = Number(window?.windowDurationSeconds);
+  return Number.isFinite(seconds) && seconds > 0 ? seconds / 60 : null;
+}
+
+function formatCodexWindowDuration(window) {
+  const minutes = codexWindowDurationMinutes(window);
+  if (!minutes) return "window";
+  if (minutes >= 280 && minutes <= 320) return "5h window";
+  if (minutes >= 9500 && minutes <= 10550) return "weekly window";
+  if (minutes >= 60 * 24) {
+    const days = minutes / (60 * 24);
+    return `${days >= 10 ? Math.round(days) : Number(days.toFixed(1))}d window`;
+  }
+  if (minutes >= 60) {
+    const hours = minutes / 60;
+    return `${Number.isInteger(hours) ? hours : Number(hours.toFixed(1))}h window`;
+  }
+  return `${Math.round(minutes)}m window`;
+}
+
+function formatDurationParts(milliseconds) {
+  if (!Number.isFinite(Number(milliseconds))) return "now";
+  const totalMinutes = Math.max(0, Math.ceil(Number(milliseconds) / 60000));
+  if (totalMinutes <= 1) return "<1m";
+  if (totalMinutes < 60) return `${totalMinutes}m`;
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  if (hours < 48) return minutes ? `${hours}h ${minutes}m` : `${hours}h`;
+  const days = Math.floor(hours / 24);
+  const remHours = hours % 24;
+  return remHours ? `${days}d ${remHours}h` : `${days}d`;
+}
+
+function codexWindowResetDate(window) {
+  const resetAt = window?.resetsAt ? new Date(window.resetsAt) : null;
+  if (resetAt && Number.isFinite(resetAt.getTime())) return resetAt;
+  const resetAfterSeconds = Number(window?.resetAfterSeconds);
+  if (Number.isFinite(resetAfterSeconds) && resetAfterSeconds >= 0) return new Date(Date.now() + resetAfterSeconds * 1000);
+  return null;
+}
+
+function formatCodexReset(window) {
+  const resetDate = codexWindowResetDate(window);
+  if (!resetDate) return "reset unknown";
+  const diff = resetDate.getTime() - Date.now();
+  if (diff <= 0) return "resetting now";
+  return `resets in ${formatDurationParts(diff)}`;
+}
+
+function codexSnapshotName(snapshot) {
+  return snapshot?.limitName || snapshot?.limitId || "codex";
+}
+
+function codexUsageBuckets(data) {
+  const buckets = [];
+  const selected = data?.selected || data?.rateLimits || null;
+  const snapshots = Array.isArray(data?.snapshots) ? data.snapshots : selected ? [selected] : [];
+  const selectedKey = selected?.limitId || selected?.limitName || "codex";
+  const pushWindow = (snapshot, kind, window, { prefix } = {}) => {
+    if (!window) return;
+    const durationLabel = formatCodexWindowDuration(window);
+    const baseLabel = kind === "secondary" && durationLabel === "window" ? "secondary window" : durationLabel;
+    buckets.push({
+      key: `${snapshot?.limitId || snapshot?.limitName || buckets.length}-${kind}`,
+      label: prefix ? `${prefix} · ${baseLabel}` : baseLabel,
+      window,
+    });
+  };
+
+  if (selected) {
+    pushWindow(selected, "primary", selected.primary);
+    pushWindow(selected, "secondary", selected.secondary);
+  }
+  for (const snapshot of snapshots) {
+    const key = snapshot?.limitId || snapshot?.limitName;
+    if (!snapshot || snapshot === selected || key === selectedKey) continue;
+    const name = codexSnapshotName(snapshot);
+    pushWindow(snapshot, "primary", snapshot.primary, { prefix: name });
+    pushWindow(snapshot, "secondary", snapshot.secondary, { prefix: name });
+  }
+  return buckets.slice(0, 6);
+}
+
+function renderCodexUsage() {
+  const box = elements.codexUsageBox;
+  if (!box) return;
+  if (elements.refreshCodexUsageButton) {
+    elements.refreshCodexUsageButton.disabled = codexUsageLoading;
+    elements.refreshCodexUsageButton.textContent = codexUsageLoading ? "Refreshing…" : "Refresh usage";
+  }
+
+  box.replaceChildren();
+  box.classList.toggle("muted", !latestCodexUsage);
+
+  if (!latestCodexUsage && codexUsageLoading) {
+    box.textContent = "Checking Codex usage…";
+    return;
+  }
+  if (!latestCodexUsage && codexUsageError) {
+    const title = make("div", "codex-usage-unavailable", "Usage unavailable");
+    const detail = make("div", "codex-usage-detail", codexUsageError.message || String(codexUsageError));
+    box.append(title, detail);
+    return;
+  }
+  if (!latestCodexUsage) {
+    box.textContent = "Codex usage has not loaded yet.";
+    return;
+  }
+
+  const header = make("div", "codex-usage-summary");
+  header.append(
+    make("span", "codex-usage-plan", formatCodexPlanType(latestCodexUsage.planType)),
+    make("span", "codex-usage-fetched", latestCodexUsage.fetchedAt ? `updated ${formatDurationParts(Date.now() - new Date(latestCodexUsage.fetchedAt).getTime())} ago` : "updated now"),
+  );
+  box.append(header);
+
+  const buckets = codexUsageBuckets(latestCodexUsage);
+  if (buckets.length === 0) {
+    box.append(make("div", "codex-usage-detail", "No Codex rate-limit windows were returned."));
+  } else {
+    for (const bucket of buckets) {
+      const usedPercent = Number(bucket.window?.usedPercent);
+      const fillPercent = Number.isFinite(usedPercent) ? Math.max(0, Math.min(100, usedPercent)) : 0;
+      const item = make("div", "codex-usage-bucket");
+      const row = make("div", "codex-usage-row");
+      row.append(
+        make("span", "codex-usage-label", bucket.label),
+        make("strong", "codex-usage-percent", formatCodexPercent(bucket.window?.usedPercent)),
+      );
+      const meter = make("div", "codex-usage-meter");
+      const fill = make("span", "codex-usage-meter-fill");
+      fill.style.width = `${fillPercent}%`;
+      meter.append(fill);
+      item.append(row, meter, make("div", "codex-usage-reset", formatCodexReset(bucket.window)));
+      box.append(item);
+    }
+  }
+
+  if (latestCodexUsage.rateLimitReachedType) {
+    box.append(make("div", "codex-usage-warning", `Limit status: ${latestCodexUsage.rateLimitReachedType}`));
+  }
+  if (codexUsageError) {
+    box.append(make("div", "codex-usage-detail", `Latest refresh failed: ${codexUsageError.message || codexUsageError}`));
+  }
+}
+
+async function refreshCodexUsage({ forceAuthRefresh = false } = {}) {
+  if (codexUsageLoading) return;
+  codexUsageLoading = true;
+  renderCodexUsage();
+  try {
+    const suffix = forceAuthRefresh ? "?refresh=1" : "";
+    const response = await api(`/api/codex-usage${suffix}`, { scoped: false });
+    latestCodexUsage = response.data || null;
+    codexUsageError = null;
+  } catch (error) {
+    codexUsageError = error;
+  } finally {
+    codexUsageLoading = false;
+    renderCodexUsage();
+  }
+}
+
+function scheduleRefreshCodexUsage(delay = CODEX_USAGE_REFRESH_MS) {
+  clearTimeout(refreshCodexUsageTimer);
+  refreshCodexUsageTimer = setTimeout(() => {
+    refreshCodexUsage().finally(() => scheduleRefreshCodexUsage());
+  }, delay);
+}
+
+function initializeCodexUsage() {
+  renderCodexUsage();
+  refreshCodexUsage().finally(() => scheduleRefreshCodexUsage());
+  clearInterval(codexUsageRenderTimer);
+  codexUsageRenderTimer = setInterval(renderCodexUsage, CODEX_USAGE_RENDER_TICK_MS);
+}
+
+function renderStatus() {
+  if (deferUiRenderDuringPointerActivation("status", renderStatus)) return;
+  const state = currentState;
+  updateComposerModeButtons();
+  const running = state?.isStreaming ? "running" : "idle";
+  const compacting = state?.isCompacting ? " · compacting" : "";
+
+  elements.stateDetails.replaceChildren();
+  const pendingThinkingLevel = state?.pendingThinkingLevel || null;
+  const shownThinkingLevel = pendingThinkingLevel || state?.thinkingLevel;
+  const thinkingDetail = pendingThinkingLevel && pendingThinkingLevel !== state?.thinkingLevel
+    ? `${state?.thinkingLevel || "unknown"} → ${pendingThinkingLevel} next prompt`
+    : state?.thinkingLevel || "unknown";
+  const details = {
+    Status: `${running}${compacting}`,
+    Model: modelLabel(state?.model),
+    Thinking: thinkingDetail,
+    Session: state?.sessionName || state?.sessionId || "unknown",
+    File: state?.sessionFile || "in-memory",
+    Messages: String(state?.messageCount ?? "?"),
+    Queue: String(state?.pendingMessageCount ?? 0),
+    "Auto compact": footerAutoCompactionEnabled(state) ? "on" : "off",
+  };
+  for (const [key, value] of Object.entries(details)) {
+    elements.stateDetails.append(make("dt", undefined, key), make("dd", undefined, value));
+  }
+
+  if (shownThinkingLevel) elements.thinkingSelect.value = shownThinkingLevel;
+  elements.compactButton.disabled = !!state?.isCompacting;
+  elements.compactButton.textContent = state?.isCompacting ? "Compacting…" : "Compact";
+  syncModelSelectToState();
+  renderFooter();
+  renderContextMeter();
+  renderWorkspaceDashboard();
+  renderFeedbackTray();
+}
+
+function normalizeDialogText(text, { preserveAnsi = false } = {}) {
+  const normalized = String(text ?? "").replace(/\r\n?/g, "\n");
+  return preserveAnsi ? normalized : stripAnsi(normalized);
+}
+
+function normalizeDialogPrompt(request) {
+  const rawTitle = normalizeDialogText(request.title || "Pi request", { preserveAnsi: true });
+  const rawMessage = normalizeDialogText(request.message || request.placeholder || "", { preserveAnsi: true });
+
+  if (rawTitle.includes("\n")) {
+    const lines = rawTitle.split("\n");
+    const titleIndex = lines.findIndex((line) => stripAnsi(line).trim());
+    if (titleIndex !== -1) {
+      const titleBody = lines.slice(titleIndex + 1).join("\n").replace(/^\n+/, "").trimEnd();
+      const message = [titleBody, rawMessage.trimEnd()].filter((part) => stripAnsi(part).trim()).join("\n\n");
+      return {
+        title: stripAnsi(lines[titleIndex]).trim(),
+        message,
+        plainMessage: stripAnsi(message),
+      };
+    }
+  }
+
+  const message = rawMessage.trimEnd();
+  return {
+    title: stripAnsi(rawTitle).trim() || "Pi request",
+    message,
+    plainMessage: stripAnsi(message),
+  };
+}
+
+function isGuardrailDialogPrompt(prompt) {
+  const plainTitle = stripAnsi(prompt.title || "");
+  const plainMessage = prompt.plainMessage ?? stripAnsi(prompt.message || "");
+  return /(?:dangerous|high-risk|protected).*(?:command|file)|safety rule|execute anyway\?/i.test(`${plainTitle}\n${plainMessage}`);
+}
+
+function releaseDialogPromptParts(prompt) {
+  const combined = [prompt.title, prompt.message].filter((part) => stripAnsi(part).trim()).join("\n").trimEnd();
+  const lines = combined.split("\n");
+  const questionIndex = lines.findIndex((line) => /^(Publish eligible packages now\?|Publish to AUR\?|Publish newly created\/converged AUR package\?)$/i.test(stripAnsi(line).trim()));
+  const question = questionIndex === -1 ? "Publish eligible packages now?" : stripAnsi(lines[questionIndex]).trim();
+  const isNpmReleasePrompt = /Release preflight summary:/i.test(combined) && /Publish eligible packages now\?/i.test(combined);
+  const isAurReleasePrompt = /AUR release summary:/i.test(combined) && questionIndex !== -1;
+  if (!isNpmReleasePrompt && !isAurReleasePrompt) return null;
+
+  const summaryLines = questionIndex === -1 ? lines : [...lines.slice(0, questionIndex), ...lines.slice(questionIndex + 1)];
+  const message = summaryLines.join("\n").replace(/\n+$/, "");
+  return {
+    title: question,
+    message,
+    plainMessage: stripAnsi(message),
+    featureId: isAurReleasePrompt ? "releaseAur" : "releaseNpm",
+  };
+}
+
+function releaseDialogLineClass(plainLine, section) {
+  const text = plainLine.trim();
+  if (!text) return "release-dialog-spacer";
+  if (/^(Release preflight summary|AUR release summary|Version changes|Bump summary|Will publish|Will skip|Blocked|Other|Publish targets after confirmation|Missing local package dirs):$/i.test(text)) {
+    return "release-dialog-heading";
+  }
+  if (/^none$/i.test(text)) return "release-dialog-muted";
+  if (/->\s*error\b|\bfailed\b|\bmissing\b|\berrors?:\s*[1-9]/i.test(text) || /^blocked$/i.test(section)) return "release-dialog-danger";
+  if (/publish-(?:first|update)|would bump up|first release/i.test(text) || /^(will publish|publish targets after confirmation)$/i.test(section)) return "release-dialog-success";
+  if (/\bskip(?:ped)?\b|\bunchanged\b|would reduce down|already published/i.test(text) || /^will skip$/i.test(section)) return "release-dialog-warning";
+  return "";
+}
+
+function renderReleaseDialogMessage(parent, text) {
+  parent.replaceChildren();
+  let section = "";
+  for (const line of String(text || "").split("\n")) {
+    const plainLine = stripAnsi(line);
+    const heading = plainLine.trim().match(/^(Release preflight summary|Version changes|Bump summary|Will publish|Will skip|Blocked|Other|Publish targets after confirmation|Missing local package dirs):$/i);
+    const rowClass = ["release-dialog-line", releaseDialogLineClass(plainLine, section)].filter(Boolean).join(" ");
+    const row = make("span", rowClass);
+    renderAnsiText(row, line || " ");
+    parent.append(row);
+    if (heading) section = heading[1].toLowerCase();
+  }
+}
+
+function textLines(raw) {
+  const value = String(raw || "");
+  const lines = [];
+  let start = 0;
+  for (let index = 0; index < value.length; index += 1) {
+    if (value[index] !== "\n") continue;
+    const end = index > start && value[index - 1] === "\r" ? index - 1 : index;
+    lines.push(value.slice(start, end));
+    start = index + 1;
+  }
+  if (start <= value.length) lines.push(value.slice(start));
+  return lines;
+}
+
+function stripTodoProgressLines(text, { streaming = false } = {}) {
+  if (!isOptionalFeatureEnabled("todoProgressWidget")) return String(text || "");
+  let inFence = false;
+  const kept = [];
+  const raw = String(text || "");
+  const hasTrailingNewline = /\r?\n$/.test(raw);
+  const lines = textLines(raw);
+
+  lines.forEach((line, index) => {
+    const isUnfinishedTail = streaming && !hasTrailingNewline && index === lines.length - 1;
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      kept.push(line);
+      return;
+    }
+    if (!inFence && TODO_PROGRESS_LINE_REGEX.test(line)) return;
+    if (!inFence && isUnfinishedTail && TODO_PROGRESS_PARTIAL_LINE_REGEX.test(line)) return;
+    kept.push(line);
+  });
+
+  return kept.join("\n").replace(/\n{3,}/g, "\n\n").trim();
+}
+
+function parseTodoProgressItemLine(line) {
+  const match = String(line || "").match(/^\s*(?:(?:[-*]|\d+[.)])\s*)?\[( |x|X|-)\]\s+(.+)$/);
+  if (!match) return null;
+  const mark = match[1].toLowerCase();
+  return { status: mark === "x" ? "done" : mark === "-" ? "partial" : "todo", text: match[2].trim() };
+}
+
+function todoProgressStatusLabel(status) {
+  if (status === "done") return "[x]";
+  if (status === "partial") return "[-]";
+  return "[ ]";
+}
+
+function liveTodoProgressWidgetLinesFromText(text, tabId = activeTabId) {
+  if (!isOptionalFeatureEnabled("todoProgressWidget")) return null;
+  const raw = String(text || "");
+  if (!raw.trim()) return null;
+
+  let inFence = false;
+  let goal = "";
+  let current = [];
+  const blocks = [];
+  const flush = () => {
+    if (current.length) blocks.push(current);
+    current = [];
+  };
+
+  for (const line of textLines(raw)) {
+    if (/^\s*```/.test(line)) {
+      inFence = !inFence;
+      flush();
+      continue;
+    }
+    if (inFence) continue;
+
+    const clean = stripAnsi(line).trim();
+    const goalMatch = clean.match(/^Goal\s*[:：]\s*(.+)$/i);
+    if (goalMatch?.[1]?.trim()) goal = goalMatch[1].trim();
+
+    const item = parseTodoProgressItemLine(clean);
+    if (item) {
+      current.push(item);
+      continue;
+    }
+    flush();
+  }
+  flush();
+
+  const items = blocks.at(-1) || [];
+  if (!items.length) return null;
+
+  if (goal && tabId) todoProgressGoalByTab.set(tabId, goal);
+  const displayGoal = goal || (tabId ? todoProgressGoalByTab.get(tabId) : "") || "";
+  const done = items.filter((item) => item.status === "done").length;
+  const partial = items.filter((item) => item.status === "partial").length;
+  const lines = [];
+  if (displayGoal) lines.push(`Goal: ${displayGoal}`);
+  lines.push(`Todo ${done}/${items.length} done${partial ? `, ${partial} partial` : ""}`);
+  for (const item of items) lines.push(`${todoProgressStatusLabel(item.status)} ${item.text}`);
+  return lines;
+}
+
+// Coalesce live widget rebuilds to one per animation frame. The streaming
+// output handler calls into here on every text token, but the widget area
+// must not be torn down/rebuilt per token (that is UI reacting to the agent
+// output stream). One render per frame keeps streaming transcript-local.
+function scheduleLiveWidgetRender() {
+  if (liveWidgetRenderFrame !== null) return;
+  const flush = () => {
+    liveWidgetRenderFrame = null;
+    renderWidgets();
+  };
+  if (typeof requestAnimationFrame === "function") liveWidgetRenderFrame = requestAnimationFrame(flush);
+  else liveWidgetRenderFrame = setTimeout(flush, 0);
+}
+
+function scheduleLiveTodoProgressWidgetSync(text, tabId = activeTabId) {
+  liveTodoProgressPendingText = String(text || "");
+  liveTodoProgressPendingTabId = tabId || activeTabId;
+  if (liveTodoProgressSyncFrame !== null) return;
+  const flush = () => {
+    const pendingText = liveTodoProgressPendingText;
+    const pendingTabId = liveTodoProgressPendingTabId || activeTabId;
+    liveTodoProgressSyncFrame = null;
+    liveTodoProgressPendingText = "";
+    liveTodoProgressPendingTabId = null;
+    syncLiveTodoProgressWidgetFromText(pendingText, pendingTabId);
+  };
+  if (typeof requestAnimationFrame === "function") liveTodoProgressSyncFrame = requestAnimationFrame(flush);
+  else liveTodoProgressSyncFrame = setTimeout(flush, 0);
+}
+
+function syncLiveTodoProgressWidgetFromText(text, tabId = activeTabId) {
+  const lines = liveTodoProgressWidgetLinesFromText(text, tabId);
+  if (!lines) return false;
+  const signature = todoProgressSignatureFromLines(lines);
+  if (tabId && todoProgressSignatureByTab.get(tabId) === signature) return false;
+  // liveTodoProgressWidgetLinesFromText already short-circuits unless the
+  // feature is enabled, so detection is settled here. Do NOT run
+  // updateOptionalFeatureAvailability() per token: it triggers git-footer
+  // payload reconciliation and a full optional-feature control rebuild.
+  // Availability is reconciled on command/state refreshes and RPC widget
+  // updates instead, keeping streaming output decoupled from chrome UI.
+  const changed = setWidgetForTab(tabId, "todo-progress", { method: "setWidget", widgetKey: "todo-progress", widgetLines: lines, tabId, live: true });
+  if (changed && tabId === activeTabId) scheduleLiveWidgetRender();
+  return changed;
+}
+
+function parseTodoProgressWidget(lines) {
+  const cleanLines = lines.map(stripAnsi).map((line) => line.trim()).filter(Boolean);
+  const goalLine = cleanLines.find((line) => /^Goal\s*[:：]/i.test(line));
+  const goal = goalLine ? goalLine.replace(/^Goal\s*[:：]\s*/i, "").trim() : "";
+  const headerIndex = cleanLines.findIndex((line) => /^Todo\s+\d+\/\d+\s+done/i.test(line));
+  if (headerIndex === -1) return null;
+
+  const header = cleanLines[headerIndex];
+  const match = header.match(/^Todo\s+(\d+)\/(\d+)\s+done(?:,\s+(\d+)\s+partial)?/i);
+  if (!match) return null;
+
+  const items = [];
+  let footer = "";
+  for (const line of cleanLines.slice(headerIndex + 1)) {
+    const item = parseTodoProgressItemLine(line);
+    if (item) {
+      items.push(item);
+    } else if (/^Scroll\s+/i.test(line)) {
+      footer = line;
+    }
+  }
+
+  return {
+    goal,
+    done: Number.parseInt(match[1], 10) || 0,
+    total: Number.parseInt(match[2], 10) || items.length,
+    partial: Number.parseInt(match[3] || "0", 10) || 0,
+    items,
+    footer,
+  };
+}
+
+function renderTodoProgressWidget(_key, lines) {
+  const todo = parseTodoProgressWidget(lines);
+  if (!todo) return null;
+
+  const tabId = activeTabId || "default";
+  const node = make("details", "widget todo-widget");
+  node.open = todoProgressWidgetExpandedByTab.get(tabId) === true;
+  node.setAttribute("aria-label", "Todo progress");
+  node.addEventListener("toggle", () => {
+    todoProgressWidgetExpandedByTab.set(tabId, node.open);
+  });
+
+  const percent = todo.total > 0 ? Math.max(0, Math.min(100, (todo.done / todo.total) * 100)) : 0;
+  const summary = make("summary", "todo-widget-summary");
+  const header = make("div", "todo-widget-header");
+  header.append(
+    make("span", "todo-widget-toggle", "›"),
+    make("span", "todo-widget-title", "Todo progress"),
+    make("span", "todo-widget-count", `${todo.done}/${todo.total}`),
+    make("span", "todo-widget-meta", todo.partial ? `${todo.partial} partial` : "active"),
+  );
+
+  const progress = make("div", "todo-widget-progress");
+  const fill = make("span", "todo-widget-progress-fill");
+  fill.style.width = `${percent}%`;
+  progress.append(fill);
+  if (todo.goal) summary.append(make("div", "todo-widget-goal", `Goal: ${todo.goal}`));
+  summary.append(header, progress);
+
+  const body = make("div", "todo-widget-body");
+  const list = make("ol", "todo-widget-list");
+  for (const item of todo.items) {
+    const row = make("li", `todo-widget-item ${item.status}`);
+    row.append(
+      make("span", "todo-widget-marker", item.status === "done" ? "✓" : item.status === "partial" ? "–" : ""),
+      make("span", "todo-widget-text", item.text),
+    );
+    list.append(row);
+  }
+  if (todo.items.length) body.append(list);
+  if (todo.footer) body.append(make("div", "todo-widget-footer", todo.footer));
+
+  node.append(summary);
+  if (body.children.length) node.append(body);
+  return node;
+}
+
+function getWidgetLines(key) {
+  const value = widgets.get(key);
+  return Array.isArray(value?.widgetLines) ? value.widgetLines : [];
+}
+
+function releaseNpmFooterDetails(lines) {
+  const primary = cleanStatusText(lines[0] || "").replace(/^release-(?:npm|aur):\s*/i, "");
+  const parts = primary.split(/\s+·\s+/).map((part) => part.trim()).filter(Boolean);
+  return {
+    phase: parts[0] || "release workflow",
+    mode: parts[1] || "",
+    elapsed: parts[2] || "",
+    controls: lines.slice(1).map(cleanStatusText).filter(Boolean).join(" · "),
+  };
+}
+
+function releaseNpmLineTone(line) {
+  const clean = stripAnsi(line).trim();
+  if (/^\$\s+/.test(clean)) return "command";
+  if (/^==>/.test(clean)) return "target";
+  if (/^(PASS|✓|Published)\b/i.test(clean)) return "pass";
+  if (/^(FAIL|ERROR|ERR|✗)\b/i.test(clean)) return "fail";
+  if (/^(WARN|warning)\b/i.test(clean)) return "warn";
+  if (/^(INFO|npm notice|notice)\b/i.test(clean)) return "info";
+  if (/^RELEASE_NPM_EVENT\b/.test(clean)) return "event";
+  if (/^\[[0-9:]+\]\s+\[[^\]]+\]\s+\$/.test(clean)) return "command";
+  if (/\b(STDERR|failed|error|exited with code)\b/i.test(clean)) return "fail";
+  if (/\b(completed|succeeded|agent completed|tool completed)\b/i.test(clean)) return "pass";
+  if (/\b(started|running|auto retry|compaction)\b/i.test(clean)) return "info";
+  return "";
+}
+
+function appendReleaseNpmTerminalLine(parent, line) {
+  const tone = releaseNpmLineTone(line);
+  const row = make("div", `release-npm-line${tone ? ` ${tone}` : ""}`);
+  if (String(line ?? "") === "") row.textContent = "\u00a0";
+  else renderAnsiText(row, line);
+  parent.append(row);
+}
+
+async function sendReleaseNpmCommand(command) {
+  const tabContext = activeTabContext();
+  const resolvedCommand = resolveRpcSlashCommandMessage(command);
+  try {
+    await api("/api/prompt", { method: "POST", body: { message: resolvedCommand }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    addEvent(`${command} sent`, "info");
+    scheduleRefreshState(120, tabContext);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(error.message, "error");
+      addTransientMessage({ role: "error", title: command, content: error.message, level: "error" });
+    }
+  }
+}
+
+function releaseNpmActionButton(label, command, className = "") {
+  const button = make("button", `release-npm-action ${className}`.trim(), label);
+  button.type = "button";
+  button.addEventListener("click", () => sendReleaseNpmCommand(command));
+  return button;
+}
+
+function releaseNpmStreamHeader(label, lineCount, { live = false } = {}) {
+  const header = make("div", "release-npm-stream-header");
+  const safeLineCount = Math.max(0, Number(lineCount) || 0);
+  header.append(
+    make("span", `release-npm-stream-dot${live ? " live" : ""}`),
+    make("span", "release-npm-stream-title", label),
+    make("span", "release-npm-stream-count", `${safeLineCount} line${safeLineCount === 1 ? "" : "s"}`),
+  );
+  return header;
+}
+
+function renderReleaseNpmOutputDetails(key, streamHeader, terminal, controls = null) {
+  const tabId = activeTabId || "default";
+  const stateKey = `${tabId}:${key}`;
+  const node = make("details", "release-npm-output-details");
+  node.open = releaseNpmOutputExpandedByTab.get(stateKey) !== false;
+  node.addEventListener("toggle", () => {
+    releaseNpmOutputExpandedByTab.set(stateKey, node.open);
+    if (node.open) requestAnimationFrame(() => { terminal.scrollTop = terminal.scrollHeight; });
+  });
+
+  const summary = make("summary", "release-npm-output-summary");
+  summary.title = "Expand or collapse command output in the Web UI";
+  const toggle = make("span", "release-npm-output-toggle", "›");
+  toggle.setAttribute("aria-hidden", "true");
+  summary.append(toggle, streamHeader);
+  node.append(summary, terminal);
+  if (controls) node.append(controls);
+  return node;
+}
+
+function renderReleaseNpmOutputWidget() {
+  if (!isOptionalFeatureEnabled("releaseNpm")) return null;
+  const outputLines = getWidgetLines("release-npm:output");
+  const footerLines = getWidgetLines("release-npm:footer");
+  if (outputLines.length === 0 && footerLines.length === 0) return null;
+
+  const details = releaseNpmFooterDetails(footerLines);
+  const node = make("section", "widget release-npm-widget release-npm-live-widget");
+  node.setAttribute("aria-label", "npm release output");
+
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(make("span", "release-npm-kicker", "npm release"), make("strong", "release-npm-title", details.phase));
+
+  const meta = make("div", "release-npm-meta");
+  if (details.mode) meta.append(make("span", "release-npm-pill", details.mode));
+  if (details.elapsed) meta.append(make("span", "release-npm-pill elapsed", details.elapsed));
+
+  const actions = make("div", "release-npm-actions");
+  actions.append(
+    releaseNpmActionButton("Toggle output", "/release-toggle"),
+    releaseNpmActionButton("Abort", "/release-abort", "danger"),
+  );
+  header.append(titleWrap, meta, actions);
+
+  const streamLines = outputLines.length ? outputLines : ["Waiting for release output..."];
+  const streamHeader = releaseNpmStreamHeader("Live output stream", outputLines.length, { live: true });
+  const terminal = make("div", "release-npm-terminal");
+  terminal.setAttribute("role", "log");
+  terminal.setAttribute("aria-live", "polite");
+  for (const line of streamLines) {
+    appendReleaseNpmTerminalLine(terminal, line);
+  }
+
+  const controls = make("div", "release-npm-controls", details.controls || "Controls: /release-toggle expands/collapses · /release-abort stops subprocess");
+  const outputDetails = renderReleaseNpmOutputDetails("release-npm:output", streamHeader, terminal, controls);
+  node.append(header, outputDetails);
+  requestAnimationFrame(() => { if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight; });
+  return node;
+}
+
+function renderReleaseNpmLogWidget() {
+  if (!isOptionalFeatureEnabled("releaseNpm")) return null;
+  const lines = getWidgetLines("release-npm:logs");
+  if (lines.length === 0) return null;
+
+  const node = make("section", "widget release-npm-widget release-npm-log-widget");
+  node.setAttribute("aria-label", "npm release log");
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(
+    make("span", "release-npm-kicker", "saved log"),
+    make("strong", "release-npm-title", stripAnsi(lines[0] || "release-npm log")),
+  );
+  const meta = make("div", "release-npm-meta");
+  if (lines[1]) meta.append(make("span", "release-npm-pill", stripAnsi(lines[1])));
+  const actions = make("div", "release-npm-actions");
+  actions.append(releaseNpmActionButton("Close log", "/release-npm-logs close"));
+  header.append(titleWrap, meta, actions);
+
+  const logLines = lines.slice(2).filter((line, index) => index > 0 || stripAnsi(line).trim());
+  const streamHeader = releaseNpmStreamHeader("Saved output stream", logLines.length);
+  const terminal = make("div", "release-npm-terminal");
+  for (const line of logLines) {
+    appendReleaseNpmTerminalLine(terminal, line);
+  }
+  const outputDetails = renderReleaseNpmOutputDetails("release-npm:logs", streamHeader, terminal);
+  node.append(header, outputDetails);
+  requestAnimationFrame(() => { if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight; });
+  return node;
+}
+
+function renderReleaseAurOutputWidget() {
+  if (!isOptionalFeatureEnabled("releaseAur")) return null;
+  const outputLines = getWidgetLines("release-aur:output");
+  const footerLines = getWidgetLines("release-aur:footer");
+  if (outputLines.length === 0 && footerLines.length === 0) return null;
+
+  const details = releaseNpmFooterDetails(footerLines);
+  const node = make("section", "widget release-npm-widget release-aur-widget release-aur-live-widget");
+  node.setAttribute("aria-label", "AUR release output");
+
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(make("span", "release-npm-kicker", "AUR release"), make("strong", "release-npm-title", details.phase));
+
+  const meta = make("div", "release-npm-meta");
+  if (details.mode) meta.append(make("span", "release-npm-pill", details.mode));
+  if (details.elapsed) meta.append(make("span", "release-npm-pill elapsed", details.elapsed));
+
+  const actions = make("div", "release-npm-actions");
+  actions.append(
+    releaseNpmActionButton("Toggle output", "/release-aur toggle"),
+    releaseNpmActionButton("Abort", "/release-aur abort", "danger"),
+  );
+  header.append(titleWrap, meta, actions);
+
+  const streamLines = outputLines.length ? outputLines : ["Waiting for release-aur output..."];
+  const streamHeader = releaseNpmStreamHeader("Live AUR output stream", outputLines.length, { live: true });
+  const terminal = make("div", "release-npm-terminal");
+  terminal.setAttribute("role", "log");
+  terminal.setAttribute("aria-live", "polite");
+  for (const line of streamLines) {
+    appendReleaseNpmTerminalLine(terminal, line);
+  }
+
+  const controls = make("div", "release-npm-controls", details.controls || "Controls: /release-aur toggle expands/collapses · /release-aur abort stops subprocess");
+  const outputDetails = renderReleaseNpmOutputDetails("release-aur:output", streamHeader, terminal, controls);
+  node.append(header, outputDetails);
+  requestAnimationFrame(() => { if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight; });
+  return node;
+}
+
+function renderReleaseAurLogWidget() {
+  if (!isOptionalFeatureEnabled("releaseAur")) return null;
+  const lines = getWidgetLines("release-aur:logs");
+  if (lines.length === 0) return null;
+
+  const node = make("section", "widget release-npm-widget release-aur-widget release-aur-log-widget");
+  node.setAttribute("aria-label", "AUR release log");
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(
+    make("span", "release-npm-kicker", "saved AUR log"),
+    make("strong", "release-npm-title", stripAnsi(lines[0] || "release-aur log")),
+  );
+  const meta = make("div", "release-npm-meta");
+  if (lines[1]) meta.append(make("span", "release-npm-pill", stripAnsi(lines[1])));
+  const actions = make("div", "release-npm-actions");
+  actions.append(releaseNpmActionButton("Close log", "/release-aur logs close"));
+  header.append(titleWrap, meta, actions);
+
+  const logLines = lines.slice(2).filter((line, index) => index > 0 || stripAnsi(line).trim());
+  const streamHeader = releaseNpmStreamHeader("Saved AUR output stream", logLines.length);
+  const terminal = make("div", "release-npm-terminal");
+  for (const line of logLines) {
+    appendReleaseNpmTerminalLine(terminal, line);
+  }
+  const outputDetails = renderReleaseNpmOutputDetails("release-aur:logs", streamHeader, terminal);
+  node.append(header, outputDetails);
+  requestAnimationFrame(() => { if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight; });
+  return node;
+}
+
+function parseWorkflowSubprocessPayload(lines) {
+  const raw = String(lines?.[0] || "").trim();
+  if (!raw) return null;
+  const json = raw.startsWith(WORKFLOW_WIDGET_PAYLOAD_PREFIX) ? raw.slice(WORKFLOW_WIDGET_PAYLOAD_PREFIX.length) : raw;
+  try {
+    const payload = JSON.parse(json);
+    if (payload?.type !== WORKFLOW_SUBPROCESS_PAYLOAD_TYPE || payload.version !== WORKFLOW_SUBPROCESS_PAYLOAD_VERSION) return null;
+    return payload;
+  } catch {
+    return null;
+  }
+}
+
+function workflowSubprocessIsLive(payload) {
+  return payload?.status === "queued" || payload?.status === "running" || Number(payload?.taskCounts?.running || 0) > 0;
+}
+
+function workflowTaskCountLabel(payload) {
+  const counts = payload?.taskCounts || {};
+  const done = Number(counts.completed || 0);
+  const total = Number(counts.total || 0);
+  const failed = Number(counts.failed || 0);
+  const cancelled = Number(counts.cancelled || 0);
+  return `${done}/${total} done${failed ? ` · ${failed} failed` : ""}${cancelled ? ` · ${cancelled} cancelled` : ""}`;
+}
+
+function renderWorkflowSubprocessWidget() {
+  if (!isOptionalFeatureEnabled("workflows")) return null;
+  const payload = parseWorkflowSubprocessPayload(getWidgetLines("workflow:subprocess"));
+  if (!payload) return null;
+
+  const live = workflowSubprocessIsLive(payload);
+  const node = make("section", `widget release-npm-widget workflow-widget ${live ? "workflow-live-widget" : "workflow-log-widget"}`);
+  node.setAttribute("aria-label", "workflow subprocess output");
+
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(
+    make("span", "release-npm-kicker", "workflow subprocesses"),
+    make("strong", "release-npm-title", payload.workflowName || payload.workflowKey || "workflow"),
+  );
+
+  const meta = make("div", "release-npm-meta");
+  meta.append(make("span", `release-npm-pill workflow-status ${payload.status || "unknown"}`, payload.status || "unknown"));
+  if (payload.activePhase) meta.append(make("span", "release-npm-pill", payload.activePhase));
+  meta.append(make("span", "release-npm-pill elapsed", workflowTaskCountLabel(payload)));
+  if (payload.truncated) meta.append(make("span", "release-npm-pill workflow-truncated", "truncated"));
+
+  const actions = make("div", "release-npm-actions");
+  actions.append(releaseNpmActionButton("Status", "/workflow status"));
+  if (live) actions.append(releaseNpmActionButton("Abort", "/workflow abort", "danger"));
+  actions.append(releaseNpmActionButton("Clear", "/workflow-clear"));
+  header.append(titleWrap, meta, actions);
+
+  const lines = Array.isArray(payload.lines) && payload.lines.length ? payload.lines : ["Waiting for workflow subprocess output..."];
+  const streamHeader = releaseNpmStreamHeader(live ? "Live subprocess output" : "Subprocess output", lines.length, { live });
+  const terminal = make("div", "release-npm-terminal");
+  terminal.setAttribute("role", "log");
+  terminal.setAttribute("aria-live", live ? "polite" : "off");
+  for (const line of lines) appendReleaseNpmTerminalLine(terminal, line);
+
+  const controls = make("div", "release-npm-controls", "Workflow subprocess output is shown as a non-blocking Web UI widget. Use /workflow abort to stop an active run.");
+  const outputDetails = renderReleaseNpmOutputDetails("workflow:subprocess", streamHeader, terminal, controls);
+  node.append(header, outputDetails);
+  requestAnimationFrame(() => { if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight; });
+  return node;
+}
+
+function activeAppRunnerData() {
+  return activeTabId ? appRunnerDataByTab.get(activeTabId) || { runners: [], activeRun: null } : { runners: [], activeRun: null };
+}
+
+function setAppRunnerData(tabId, data = {}) {
+  if (!tabId) return;
+  const previous = appRunnerDataByTab.get(tabId) || { runners: [], activeRun: null, customRunnerConfig: null };
+  const hasActiveRun = Object.prototype.hasOwnProperty.call(data, "activeRun");
+  const next = {
+    cwd: data.cwd || previous.cwd || "",
+    runners: Array.isArray(data.runners) ? data.runners : previous.runners || [],
+    customRunnerConfig: data.customRunnerConfig || previous.customRunnerConfig || null,
+    activeRun: hasActiveRun ? data.activeRun : previous.activeRun || null,
+  };
+  appRunnerDataByTab.set(tabId, next);
+  if (hasActiveRun) {
+    const tab = tabs.find((item) => item.id === tabId);
+    if (tab) tab.appRunner = next.activeRun || null;
+  }
+}
+
+function appRunnerIsRunning(run) {
+  return run?.status === "running" || run?.stopping === true;
+}
+
+function appRunnerStatusLabel(run) {
+  if (run?.stopping && run.status === "running") return "stopping";
+  if (run?.status === "done") return "exit 0";
+  if (run?.status === "failed") return run.signal ? `signal ${run.signal}` : `exit ${run.exitCode ?? "?"}`;
+  if (run?.status === "error") return "error";
+  return run?.status || "running";
+}
+
+function appRunnerElapsedLabel(run) {
+  const startedAt = Date.parse(run?.startedAt || "");
+  if (!Number.isFinite(startedAt)) return "";
+  const endedAt = Date.parse(run?.endedAt || "");
+  const end = Number.isFinite(endedAt) ? endedAt : Date.now();
+  return formatDuration(end - startedAt);
+}
+
+function appRunnerActionButton(label, handler, className = "") {
+  const button = make("button", `release-npm-action ${className}`.trim(), label);
+  button.type = "button";
+  button.addEventListener("click", handler);
+  return button;
+}
+
+async function refreshAppRunners(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const response = await api("/api/app-runners", { tabId: tabContext.tabId });
+  if (!isCurrentTabContext(tabContext)) return;
+  setAppRunnerData(tabContext.tabId, response.data || {});
+  renderAppRunnerControls();
+  renderWidgets();
+}
+
+function appRunnerFailureState(runnerId, error, data = activeAppRunnerData()) {
+  const runners = Array.isArray(data.runners) ? data.runners : [];
+  const runner = runners.find((item) => item.id === runnerId) || {};
+  const message = cleanStatusText(error?.message || String(error) || "Unknown app runner error");
+  const command = runner.displayCommand || runner.shortDisplayCommand || runner.label || runnerId || "app runner";
+  const timestamp = new Date().toISOString();
+  return {
+    id: `start-error:${Date.now()}`,
+    runnerId,
+    kind: runner.kind || "custom",
+    label: runner.label || "App runner failed",
+    command: runner.command || "",
+    args: Array.isArray(runner.args) ? runner.args : [],
+    displayCommand: command,
+    cwd: data.cwd || "",
+    status: "error",
+    startedAt: timestamp,
+    endedAt: timestamp,
+    lineCount: 3,
+    lines: [`$ ${command}`, "# failed to start app runner", `# ${message}`],
+  };
+}
+
+async function runAppRunner(runnerId) {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId || !runnerId) return;
+  setComposerActionsOpen(false);
+  setAppRunnerMenuOpen(false);
+  try {
+    const response = await api("/api/app-runner", { method: "POST", body: { runnerId }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    setAppRunnerData(tabContext.tabId, response.data || {});
+    renderAppRunnerControls();
+    renderWidgets();
+    renderTabs();
+    const command = response.data?.activeRun?.displayCommand || "app runner";
+    addEvent(`started ${command}`, "info");
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    const message = cleanStatusText(error.message || String(error));
+    setAppRunnerData(tabContext.tabId, { activeRun: appRunnerFailureState(runnerId, error, activeAppRunnerData()) });
+    renderAppRunnerControls();
+    renderWidgets();
+    renderTabs();
+    addEvent(`app runner failed: ${message}`, "error");
+  }
+}
+
+async function stopAppRunner() {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  try {
+    const response = await api("/api/app-runner/stop", { method: "POST", body: {}, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    setAppRunnerData(tabContext.tabId, response.data || {});
+    renderAppRunnerControls();
+    renderWidgets();
+    renderTabs();
+    addEvent("app runner stop requested", "warn");
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+  }
+}
+
+async function clearAppRunner() {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  try {
+    const response = await api("/api/app-runner/clear", { method: "POST", body: {}, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    setAppRunnerData(tabContext.tabId, response.data || {});
+    renderAppRunnerControls();
+    renderWidgets();
+    renderTabs();
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+  }
+}
+
+async function sendAppRunnerInput(run, form, { closeStdin = false } = {}) {
+  const tabContext = activeTabContext();
+  const input = form?.querySelector?.(".app-runner-stdin-input");
+  if (!tabContext.tabId || !input || !appRunnerIsRunning(run)) return;
+  const draftKey = appRunnerInputDraftKey(run);
+  const text = input.value || "";
+  const buttons = [...form.querySelectorAll("button")];
+  buttons.forEach((button) => { button.disabled = true; });
+  try {
+    const response = await api("/api/app-runner/input", { method: "POST", body: { text, newline: !closeStdin || Boolean(text), closeStdin }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    appRunnerInputDraftByRun.set(draftKey, "");
+    input.value = "";
+    setAppRunnerData(tabContext.tabId, response.data || {});
+    renderAppRunnerControls();
+    renderWidgets();
+    addEvent(closeStdin ? "sent app runner EOF" : text ? "sent app runner input" : "sent app runner Enter", "info");
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(`app runner input failed: ${error.message || String(error)}`, "error");
+  } finally {
+    buttons.forEach((button) => { button.disabled = false; });
+  }
+}
+
+function appRunnerOutputLines(run) {
+  const lines = Array.isArray(run?.lines) ? [...run.lines] : [];
+  if (appRunnerIsRunning(run) && run?.pendingLine) lines.push(run.pendingLine);
+  return lines;
+}
+
+function appRunnerOutputText(run) {
+  return appRunnerOutputLines(run).join("\n").trimEnd();
+}
+
+function appRunnerInputDraftKey(run) {
+  return run?.id || run?.runnerId || "active";
+}
+
+function normalizeAppRunnerContextLineCount(value) {
+  const number = Number.parseInt(String(value ?? ""), 10);
+  if (!Number.isFinite(number)) return APP_RUNNER_CONTEXT_DEFAULT_LINES;
+  return Math.max(1, Math.min(APP_RUNNER_CONTEXT_MAX_LINES, number));
+}
+
+function appRunnerContextDraftKey(run) {
+  return appRunnerInputDraftKey(run);
+}
+
+async function transferAppRunnerOutputToContext(run, form) {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId || !run) return;
+  const key = appRunnerContextDraftKey(run);
+  const input = form?.querySelector?.(".app-runner-context-lines-input");
+  const lineCount = normalizeAppRunnerContextLineCount(input?.value || appRunnerContextLineDraftByRun.get(key) || APP_RUNNER_CONTEXT_DEFAULT_LINES);
+  if (input) input.value = String(lineCount);
+  appRunnerContextLineDraftByRun.set(key, String(lineCount));
+  const buttons = [...(form?.querySelectorAll?.("button") || [])];
+  buttons.forEach((button) => { button.disabled = true; });
+  try {
+    const response = await api("/api/app-runner/context", { method: "POST", body: { lineCount }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    const data = response.data || {};
+    if (data.activeRun) setAppRunnerData(tabContext.tabId, { activeRun: data.activeRun });
+    const deliveredAsSteer = data.delivery === "steer";
+    addEvent(deliveredAsSteer
+      ? `sent last ${data.lineCount || lineCount} app runner output lines as live steering context`
+      : `added last ${data.lineCount || lineCount} app runner output lines to agent context`, "info");
+    scheduleRefreshMessages(120, tabContext);
+    scheduleRefreshState(120, tabContext);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(`app runner context transfer failed: ${error.message || String(error)}`, "error");
+  } finally {
+    buttons.forEach((button) => { button.disabled = false; });
+  }
+}
+
+function renderAppRunnerContextForm(run) {
+  const key = appRunnerContextDraftKey(run);
+  const form = make("form", "app-runner-context-form");
+  form.dataset.runId = key;
+  const label = make("label", "app-runner-context-lines-label");
+  label.append(make("span", "", "Context lines"));
+  const input = make("input", "app-runner-context-lines-input");
+  input.type = "number";
+  input.min = "1";
+  input.max = String(APP_RUNNER_CONTEXT_MAX_LINES);
+  input.step = "1";
+  input.inputMode = "numeric";
+  input.value = String(normalizeAppRunnerContextLineCount(appRunnerContextLineDraftByRun.get(key) || APP_RUNNER_CONTEXT_DEFAULT_LINES));
+  input.setAttribute("aria-label", "Number of recent app runner output lines to add to agent context");
+  input.addEventListener("input", () => {
+    appRunnerContextLineDraftByRun.set(key, String(normalizeAppRunnerContextLineCount(input.value)));
+  });
+  label.append(input);
+  const transfer = make("button", "release-npm-action app-runner-context-action", "Add to context");
+  transfer.type = "submit";
+  transfer.title = "Add the selected number of recent app runner output lines to this agent session's context";
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    transferAppRunnerOutputToContext(run, form);
+  });
+  form.append(label, transfer);
+  return form;
+}
+
+function captureAppRunnerInputFocus() {
+  const input = document.activeElement;
+  if (!input?.classList?.contains("app-runner-stdin-input")) return null;
+  return {
+    runId: input.dataset.runId || "",
+    value: input.value || "",
+    selectionStart: input.selectionStart ?? input.value.length,
+    selectionEnd: input.selectionEnd ?? input.value.length,
+  };
+}
+
+function restoreAppRunnerInputFocus(state) {
+  if (!state?.runId) return;
+  const input = document.querySelector(".app-runner-stdin-input");
+  if (!input || input.dataset.runId !== state.runId) return;
+  appRunnerInputDraftByRun.set(state.runId, state.value);
+  input.value = state.value;
+  try {
+    input.focus({ preventScroll: true });
+    input.setSelectionRange(state.selectionStart, state.selectionEnd);
+  } catch {
+    input.focus();
+  }
+}
+
+async function copyAppRunnerOutput(run) {
+  const text = appRunnerOutputText(run);
+  if (!text.trim()) {
+    addEvent("app runner output is empty", "warn");
+    return;
+  }
+  try {
+    await copyText(text);
+    addEvent("copied app runner output", "info");
+  } catch (error) {
+    addEvent(`app runner output copy failed: ${error.message || String(error)}`, "warn");
+  }
+}
+
+const APP_RUNNER_SUPPORTED_ITEMS = [
+  "Project-local custom runners from .pi-webui-runners.json",
+  "package.json scripts: bun/npm/pnpm/yarn dev, start, serve",
+  "npx frameworks: Vite, Next, Astro, Storybook",
+  "Rust: cargo run",
+  "Python: uv run or python entry files such as Main.py, main.py, src/main.py",
+  "Go/Golang: go run",
+  "Zig: zig build run or zig run",
+  "C/C++: CMake, cc/c++ main files",
+  "Docker Compose: docker compose up",
+  "Shell scripts: bash/zsh/fish in root, dev/, scripts/, dev/scripts/",
+  "Deno, make, just, and plain Node entry files",
+];
+const APP_RUNNER_SUPPORTED_TOOLTIP = [
+  "No app runner detected for this tab cwd.",
+  "",
+  "Currently supported:",
+  ...APP_RUNNER_SUPPORTED_ITEMS.map((item) => `• ${item}`),
+].join("\n");
+
+function appRunnerMenuCanOpen() {
+  const data = activeAppRunnerData();
+  return Array.isArray(data.runners) && data.runners.length > 0 && !appRunnerIsRunning(data.activeRun);
+}
+
+function activeAppRunnerCustomConfig() {
+  return activeAppRunnerData().customRunnerConfig || { runners: [], projectRoot: "", displayProjectRoot: "", displayConfigFile: "" };
+}
+
+function resetAppRunnerCustomDraft({ clearFeedback = true } = {}) {
+  appRunnerCustomDraft = { id: "", label: "", command: "./", path: "", args: "" };
+  appRunnerFileBrowserState = { open: false, loading: false, path: "", data: null, error: "" };
+  if (clearFeedback) appRunnerCustomFeedback = { type: "", message: "" };
+}
+
+function setAppRunnerCustomFeedback(type, message) {
+  appRunnerCustomFeedback = { type, message: cleanStatusText(message || "") };
+}
+
+function appRunnerRelativeDir(filePath) {
+  const normalized = String(filePath || "").replace(/\\/g, "/").replace(/^\.\/+/, "");
+  const index = normalized.lastIndexOf("/");
+  return index === -1 ? "" : normalized.slice(0, index);
+}
+
+function appRunnerCustomArgsText(args) {
+  return Array.isArray(args) ? args.join(" ") : String(args || "");
+}
+
+function appRunnerCustomDraftPayload() {
+  return {
+    id: appRunnerCustomDraft.id || undefined,
+    label: appRunnerCustomDraft.label.trim(),
+    command: appRunnerCustomDraft.command.trim() || "./",
+    path: appRunnerCustomDraft.path.trim(),
+    args: appRunnerCustomDraft.args.trim(),
+  };
+}
+
+function updateAppRunnerCustomDraftFrom(container) {
+  if (!container) return;
+  appRunnerCustomDraft = {
+    id: appRunnerCustomDraft.id || "",
+    label: container.querySelector("#appRunnerCustomLabelInput")?.value || "",
+    command: container.querySelector("#appRunnerCustomCommandInput")?.value || "./",
+    path: container.querySelector("#appRunnerCustomPathInput")?.value || "",
+    args: container.querySelector("#appRunnerCustomArgsInput")?.value || "",
+  };
+}
+
+function appRunnerInputField({ id, label, value, placeholder = "", hint = "" }) {
+  const field = make("label", "app-runner-custom-field");
+  field.setAttribute("for", id);
+  field.append(make("span", "", label));
+  const input = make("input", "dialog-input");
+  input.id = id;
+  input.type = "text";
+  input.value = value || "";
+  input.placeholder = placeholder;
+  input.autocomplete = "off";
+  input.spellcheck = false;
+  field.append(input);
+  if (hint) field.append(make("small", "muted", hint));
+  input.addEventListener("input", () => updateAppRunnerCustomDraftFrom(field.closest(".app-runner-custom-form")));
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    saveAppRunnerCustomRunner(field.closest(".app-runner-custom-form"));
+  });
+  return { field, input };
+}
+
+async function saveAppRunnerCustomRunner(form) {
+  updateAppRunnerCustomDraftFrom(form);
+  const payload = appRunnerCustomDraftPayload();
+  if (!payload.path) {
+    setAppRunnerCustomFeedback("warning", "Custom app runner path is required.");
+    renderAppRunnerInfoDialog();
+    requestAnimationFrame(() => document.querySelector("#appRunnerCustomPathInput")?.focus());
+    addEvent("custom app runner path is required", "warn");
+    return;
+  }
+  const tabContext = activeTabContext();
+  try {
+    const response = await api("/api/app-runner-config", { method: "POST", body: { runner: payload }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    setAppRunnerData(tabContext.tabId, response.data || {});
+    resetAppRunnerCustomDraft({ clearFeedback: false });
+    setAppRunnerCustomFeedback("success", "Saved custom app runner. It should now appear in the Run menu when available.");
+    renderAppRunnerControls();
+    renderWidgets();
+    renderAppRunnerInfoDialog();
+    addEvent("saved custom app runner", "info");
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    const message = error.message || String(error);
+    setAppRunnerCustomFeedback("error", `Custom app runner was not saved: ${message}`);
+    renderAppRunnerInfoDialog();
+    addEvent(`custom app runner was not saved: ${message}`, "error");
+  }
+}
+
+async function deleteAppRunnerCustomRunner(id) {
+  const tabContext = activeTabContext();
+  try {
+    const response = await api("/api/app-runner-config", { method: "DELETE", body: { id }, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    setAppRunnerData(tabContext.tabId, response.data || {});
+    if (appRunnerCustomDraft.id === id) resetAppRunnerCustomDraft({ clearFeedback: false });
+    setAppRunnerCustomFeedback("success", "Deleted custom app runner.");
+    renderAppRunnerControls();
+    renderWidgets();
+    renderAppRunnerInfoDialog();
+    addEvent("deleted custom app runner", "warn");
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    const message = error.message || String(error);
+    setAppRunnerCustomFeedback("error", `Custom app runner was not deleted: ${message}`);
+    renderAppRunnerInfoDialog();
+    addEvent(`custom app runner was not deleted: ${message}`, "error");
+  }
+}
+
+async function loadAppRunnerFileBrowser(relativePath = "") {
+  const tabContext = activeTabContext();
+  const path = String(relativePath || "").replace(/^\.\/+/, "").replace(/\/+$/g, "");
+  appRunnerFileBrowserState = { open: true, loading: true, path, data: null, error: "" };
+  renderAppRunnerInfoDialog();
+  try {
+    const response = await api(`/api/app-runner-files?path=${encodeURIComponent(path)}`, { tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    appRunnerFileBrowserState = { open: true, loading: false, path, data: response.data || {}, error: "" };
+    renderAppRunnerInfoDialog();
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    appRunnerFileBrowserState = { open: true, loading: false, path, data: null, error: error.message || String(error) };
+    renderAppRunnerInfoDialog();
+  }
+}
+
+function renderAppRunnerFileBrowser() {
+  if (!appRunnerFileBrowserState.open) return null;
+  const browser = make("div", "app-runner-file-browser");
+  if (appRunnerFileBrowserState.loading) {
+    browser.append(make("div", "muted", "Loading project files…"));
+    return browser;
+  }
+  if (appRunnerFileBrowserState.error) {
+    browser.append(make("div", "path-picker-error", appRunnerFileBrowserState.error));
+    return browser;
+  }
+  const data = appRunnerFileBrowserState.data || {};
+  const header = make("div", "app-runner-file-browser-header");
+  header.append(make("strong", "", data.displayRelativeDir || "."));
+  const close = make("button", "app-runner-file-browser-close", "Hide browser");
+  close.type = "button";
+  close.addEventListener("click", () => {
+    appRunnerFileBrowserState = { open: false, loading: false, path: "", data: null, error: "" };
+    renderAppRunnerInfoDialog();
+  });
+  header.append(close);
+  browser.append(header);
+
+  const roots = make("div", "path-picker-roots app-runner-file-browser-roots");
+  if (data.parent !== null && data.parent !== undefined) roots.append(pathPickerButton("↑ Parent", data.parent || ".", () => loadAppRunnerFileBrowser(data.parent || ""), "path-picker-root-button"));
+  roots.append(pathPickerButton("Project root", data.displayProjectRoot || "Project root", () => loadAppRunnerFileBrowser(""), "path-picker-root-button"));
+  browser.append(roots);
+
+  const list = make("div", "path-picker-list app-runner-file-browser-list");
+  const directories = Array.isArray(data.directories) ? data.directories : [];
+  const files = Array.isArray(data.files) ? data.files : [];
+  for (const directory of directories) {
+    const button = pathPickerButton(`${directory.name}/`, directory.path, () => loadAppRunnerFileBrowser(directory.path), `path-picker-directory${directory.hidden ? " hidden-directory" : ""}`);
+    list.append(button);
+  }
+  for (const file of files) {
+    const button = pathPickerButton(file.name, file.path, () => {
+      appRunnerCustomDraft.path = file.path;
+      appRunnerFileBrowserState = { open: false, loading: false, path: "", data: null, error: "" };
+      renderAppRunnerInfoDialog();
+    }, `path-picker-directory app-runner-file-choice${file.hidden ? " hidden-directory" : ""}`);
+    list.append(button);
+  }
+  if (!directories.length && !files.length) list.append(make("div", "path-picker-empty muted", "No files in this directory."));
+  browser.append(list);
+  if (data.truncated) browser.append(make("div", "path-picker-error", "Showing the first project entries only."));
+  return browser;
+}
+
+function renderAppRunnerCustomSection() {
+  const config = activeAppRunnerCustomConfig();
+  const section = make("section", "app-runner-info-section app-runner-custom-section");
+  const titleRow = make("div", "app-runner-section-title-row");
+  titleRow.append(make("h3", "", "Custom project runners"));
+  if (config.displayConfigFile) titleRow.append(make("code", "", config.displayConfigFile));
+  section.append(titleRow);
+  section.append(make("p", "muted", "Add project-local runners saved in .pi-webui-runners.json. Command defaults to ./, so a selected file runs as ./path/to/file."));
+
+  const existing = make("div", "app-runner-custom-list");
+  const customRunners = Array.isArray(config.runners) ? config.runners : [];
+  if (!customRunners.length) {
+    existing.append(make("div", "app-runner-custom-empty muted", "No custom runners saved for this project yet."));
+  } else {
+    for (const runner of customRunners) {
+      const row = make("div", `app-runner-custom-item${runner.available === false ? " unavailable" : ""}`);
+      const details = make("div", "app-runner-custom-item-details");
+      details.append(make("strong", "", runner.label || runner.path || "custom runner"), make("code", "", runner.displayCommand || runner.path || ""));
+      if (runner.unavailableReason) details.append(make("span", "app-runner-custom-warning", `Not available: ${runner.unavailableReason}`));
+      const actions = make("div", "app-runner-custom-item-actions");
+      const edit = make("button", "", "Edit");
+      edit.type = "button";
+      edit.addEventListener("click", () => {
+        appRunnerCustomDraft = { id: runner.id || "", label: runner.label || "", command: runner.command || "./", path: runner.path || "", args: appRunnerCustomArgsText(runner.args) };
+        appRunnerFileBrowserState = { open: false, loading: false, path: "", data: null, error: "" };
+        renderAppRunnerInfoDialog();
+      });
+      const remove = make("button", "danger", "Delete");
+      remove.type = "button";
+      remove.addEventListener("click", () => {
+        if (!confirm(`Delete custom app runner “${runner.label || runner.path || runner.id}”?`)) return;
+        deleteAppRunnerCustomRunner(runner.id);
+      });
+      actions.append(edit, remove);
+      row.append(details, actions);
+      existing.append(row);
+    }
+  }
+  section.append(existing);
+
+  const diagnostics = Array.isArray(config.diagnostics) ? config.diagnostics.filter((item) => item?.message) : [];
+  if (diagnostics.length) {
+    const diagnosticList = make("div", "app-runner-custom-diagnostics");
+    for (const item of diagnostics) diagnosticList.append(make("div", `app-runner-custom-feedback ${item.severity || "warning"}`, item.message));
+    section.append(diagnosticList);
+  }
+
+  const form = make("div", "app-runner-custom-form");
+  const labelField = appRunnerInputField({ id: "appRunnerCustomLabelInput", label: "Label", value: appRunnerCustomDraft.label, placeholder: "My app" });
+  const commandField = appRunnerInputField({ id: "appRunnerCustomCommandInput", label: "Command", value: appRunnerCustomDraft.command || "./", placeholder: "./", hint: "Use ./ to execute the selected file directly, or use bash, python3, node, bun, uv run, etc." });
+  const pathField = appRunnerInputField({ id: "appRunnerCustomPathInput", label: "Path to file", value: appRunnerCustomDraft.path, placeholder: "dev/scripts/start.sh" });
+  const pathRow = make("div", "app-runner-custom-path-row");
+  pathRow.append(pathField.field);
+  const browse = make("button", "app-runner-custom-browse", "Browse…");
+  browse.type = "button";
+  browse.addEventListener("click", () => {
+    updateAppRunnerCustomDraftFrom(form);
+    loadAppRunnerFileBrowser(appRunnerRelativeDir(appRunnerCustomDraft.path));
+  });
+  pathRow.append(browse);
+  const argsField = appRunnerInputField({ id: "appRunnerCustomArgsInput", label: "Args", value: appRunnerCustomDraft.args, placeholder: "--port 3000", hint: "Optional extra args, space-separated." });
+  form.append(labelField.field, commandField.field, pathRow, argsField.field);
+  const formActions = make("div", "app-runner-custom-form-actions");
+  const save = make("button", "primary", appRunnerCustomDraft.id ? "Save changes" : "Add runner");
+  save.type = "button";
+  save.addEventListener("click", () => saveAppRunnerCustomRunner(form));
+  const reset = make("button", "", "Reset");
+  reset.type = "button";
+  reset.addEventListener("click", () => { resetAppRunnerCustomDraft(); renderAppRunnerInfoDialog(); });
+  formActions.append(save, reset);
+  form.append(formActions);
+  if (appRunnerCustomFeedback.message) form.append(make("div", `app-runner-custom-feedback ${appRunnerCustomFeedback.type || "info"}`, appRunnerCustomFeedback.message));
+  const browser = renderAppRunnerFileBrowser();
+  if (browser) form.append(browser);
+  section.append(form);
+  return section;
+}
+
+function renderAppRunnerControls() {
+  const menu = elements.appRunnerMenu;
+  const button = elements.appRunnerMenuButton;
+  const panel = elements.appRunnerMenuPanel;
+  if (!menu || !button || !panel) return;
+  const data = activeAppRunnerData();
+  const runners = Array.isArray(data.runners) ? data.runners : [];
+  const activeRun = data.activeRun;
+  const running = appRunnerIsRunning(activeRun);
+  menu.hidden = false;
+  menu.classList.toggle("has-runners", runners.length > 0);
+  if (elements.appRunnerInfoButton) {
+    elements.appRunnerInfoButton.hidden = runners.length === 0;
+    elements.appRunnerInfoButton.disabled = runners.length === 0;
+  }
+  button.disabled = running;
+  button.title = running
+    ? `App runner already running: ${activeRun.displayCommand || activeRun.label || "runner"}`
+    : runners.length
+      ? "Run a detected app runner"
+      : "No app runners detected in this tab working directory";
+  button.dataset.tooltip = runners.length ? "App runners: run detected project commands in this tab's working directory." : APP_RUNNER_SUPPORTED_TOOLTIP;
+  button.setAttribute("aria-label", button.title);
+  if (!runners.length || running) setAppRunnerMenuOpen(false);
+
+  panel.replaceChildren();
+  for (const runner of runners) {
+    const item = make("button", "composer-publish-menu-item composer-app-runner-menu-item");
+    item.type = "button";
+    item.setAttribute("role", "menuitem");
+    const runnerDisplayCommand = runner.shortDisplayCommand || runner.displayCommand;
+    item.title = runner.description ? `${runnerDisplayCommand}\n${runner.description}` : runnerDisplayCommand;
+    item.addEventListener("click", () => runAppRunner(runner.id));
+    const label = make("span", "app-runner-menu-item-label", runner.label || runnerDisplayCommand);
+    const command = make("span", "app-runner-menu-item-command", runnerDisplayCommand);
+    item.append(label, command);
+    panel.append(item);
+  }
+}
+
+function renderAppRunnerInfoDialog() {
+  const body = elements.appRunnerInfoBody;
+  if (!body) return;
+  const data = activeAppRunnerData();
+  const runners = Array.isArray(data.runners) ? data.runners : [];
+  body.replaceChildren();
+
+  const current = make("section", "app-runner-info-section");
+  current.append(make("h3", "", "Detected in this tab"));
+  if (runners.length) {
+    const list = make("ul", "app-runner-info-list app-runner-info-detected-list");
+    for (const runner of runners) {
+      const command = runner.shortDisplayCommand || runner.displayCommand || runner.command || runner.id;
+      const item = make("li");
+      item.append(
+        make("strong", "", runner.label || command || "runner"),
+        make("code", "", command || "detected command"),
+      );
+      if (runner.description) item.append(make("span", "", runner.description));
+      list.append(item);
+    }
+    current.append(list);
+  } else {
+    current.append(make("p", "muted", "No runners are currently detected for this tab working directory."));
+  }
+
+  const how = make("section", "app-runner-info-section");
+  how.append(make("h3", "", "How it works"));
+  const howList = make("ul", "app-runner-info-list");
+  for (const line of [
+    "Detection is scoped to the active terminal tab's current working directory.",
+    "Only commands/files that exist and runner binaries available on this system are shown.",
+    "Starting a runner keeps live output pinned above the chat/terminal area.",
+    "While a runner is active, the widget can send line-oriented stdin to interactive scripts.",
+    "Only one app runner can be active per tab; Close/Stop terminates the process/server.",
+  ]) howList.append(make("li", "", line));
+  how.append(howList);
+
+  const supported = make("section", "app-runner-info-section");
+  supported.append(make("h3", "", "Supported runner types"));
+  const supportedList = make("ul", "app-runner-info-list app-runner-info-supported-list");
+  for (const itemText of APP_RUNNER_SUPPORTED_ITEMS) supportedList.append(make("li", "", itemText));
+  supported.append(supportedList);
+
+  body.append(current, renderAppRunnerCustomSection(), how, supported);
+}
+
+function openAppRunnerInfoDialog() {
+  if (!elements.appRunnerInfoDialog) return;
+  renderAppRunnerInfoDialog();
+  setAppRunnerMenuOpen(false);
+  if (!elements.appRunnerInfoDialog.open) elements.appRunnerInfoDialog.showModal();
+}
+
+function closeAppRunnerInfoDialog() {
+  if (elements.appRunnerInfoDialog?.open) elements.appRunnerInfoDialog.close();
+}
+
+function renderAppRunnerInputForm(run) {
+  if (!appRunnerIsRunning(run)) return null;
+  const key = appRunnerInputDraftKey(run);
+  const form = make("form", "app-runner-stdin-form");
+  form.dataset.runId = key;
+  const input = make("textarea", "app-runner-stdin-input");
+  input.rows = 1;
+  input.value = appRunnerInputDraftByRun.get(key) || "";
+  input.placeholder = run.stdinClosed ? "stdin is closed" : "Send stdin… Enter sends, Shift+Enter inserts a newline";
+  input.disabled = run.stdinClosed === true;
+  input.dataset.runId = key;
+  input.setAttribute("aria-label", "Send input to app runner stdin");
+  input.addEventListener("input", () => { appRunnerInputDraftByRun.set(key, input.value); });
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey) return;
+    event.preventDefault();
+    form.requestSubmit();
+  });
+  const send = make("button", "release-npm-action app-runner-stdin-send", input.value ? "Send input" : "Send Enter");
+  send.type = "submit";
+  send.disabled = run.stdinClosed === true;
+  send.title = run.stdinClosed ? (run.stdinError || "App runner stdin is closed") : "Send this text followed by Enter to the running app runner";
+  const eof = make("button", "release-npm-action app-runner-stdin-eof", "EOF");
+  eof.type = "button";
+  eof.disabled = run.stdinClosed === true;
+  eof.title = run.stdinClosed ? (run.stdinError || "App runner stdin is closed") : "Close stdin after optionally sending the current text";
+  eof.addEventListener("click", () => sendAppRunnerInput(run, form, { closeStdin: true }));
+  input.addEventListener("input", () => { send.textContent = input.value ? "Send input" : "Send Enter"; });
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    sendAppRunnerInput(run, form);
+  });
+  form.append(input, send, eof);
+  return form;
+}
+
+function renderAppRunnerWidget() {
+  const data = activeAppRunnerData();
+  const run = data.activeRun;
+  if (!run) return null;
+  const running = appRunnerIsRunning(run);
+  const status = appRunnerStatusLabel(run);
+  const node = make("section", `widget release-npm-widget app-runner-widget${running ? " app-runner-live-widget" : " app-runner-log-widget"}`);
+  node.setAttribute("aria-label", "app runner output");
+
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(make("span", "release-npm-kicker", "app runner"), make("strong", "release-npm-title", run.label || run.displayCommand || "app runner"));
+
+  const elapsed = appRunnerElapsedLabel(run);
+  header.append(titleWrap);
+
+  const outputLines = appRunnerOutputLines(run);
+  const lines = outputLines.length ? outputLines : [run.displayCommand ? `$ ${run.displayCommand}` : "Waiting for app runner output..."];
+  const streamHeader = releaseNpmStreamHeader(running ? "Live app output" : "App output", Math.max(run.lineCount || 0, lines.length), { live: running });
+  const terminal = make("div", "release-npm-terminal");
+  terminal.setAttribute("role", "log");
+  terminal.setAttribute("aria-live", running ? "polite" : "off");
+  for (const line of lines) appendReleaseNpmTerminalLine(terminal, line);
+
+  const controlParts = [run.displayCommand, run.cwd, run.truncated ? "output truncated" : "", run.stdinError ? `stdin: ${run.stdinError}` : ""].map(cleanStatusText).filter(Boolean);
+  const controls = make("div", "release-npm-controls app-runner-output-controls");
+  const actions = make("div", "app-runner-output-actions");
+  const closeButton = appRunnerActionButton("Close", running ? stopAppRunner : clearAppRunner, running ? "danger app-runner-close-action" : "app-runner-close-action");
+  closeButton.title = running ? "Stop this app runner/process/server" : "Close app runner output";
+  const copyButton = appRunnerActionButton("Copy output", () => copyAppRunnerOutput(run), "app-runner-copy-action");
+  copyButton.title = "Copy app runner output";
+  actions.append(closeButton, copyButton);
+  if (running) {
+    actions.append(appRunnerActionButton("Stop", stopAppRunner, "danger"));
+  } else {
+    const canRunAgain = (data.runners || []).some((runner) => runner.id === run.runnerId);
+    if (canRunAgain) actions.append(appRunnerActionButton("Run again", () => runAppRunner(run.runnerId)));
+    actions.append(appRunnerActionButton("Clear", clearAppRunner));
+  }
+  const inputForm = running ? renderAppRunnerInputForm(run) : null;
+  const contextForm = renderAppRunnerContextForm(run);
+  const pills = make("div", "app-runner-output-pills");
+  if (run.kind) pills.append(make("span", "release-npm-pill", run.kind));
+  pills.append(make("span", `release-npm-pill app-runner-status ${run.status || "running"}`.trim(), status));
+  if (elapsed) pills.append(make("span", "release-npm-pill elapsed", elapsed));
+  controls.append(actions, contextForm);
+  if (inputForm) controls.append(inputForm);
+  controls.append(pills, make("span", "app-runner-output-meta", controlParts.join(" · ")));
+  const outputDetails = renderReleaseNpmOutputDetails(`app-runner:${run.id || run.runnerId || "active"}`, streamHeader, terminal, controls);
+  node.append(header, outputDetails);
+  requestAnimationFrame(() => { if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight; });
+  return node;
+}
+
+const STATS_OVERLAY_TABS = [
+  { id: "overview", label: "Overview" },
+  { id: "daily", label: "Daily" },
+  { id: "models", label: "Models" },
+  { id: "sessions", label: "Sessions" },
+  { id: "cost-cache", label: "Cost & cache" },
+  { id: "prompt", label: "Prompt/context" },
+  { id: "raw", label: "Command outputs" },
+];
+
+function statsNumber(value, fallback = 0) {
+  const number = Number(value);
+  return Number.isFinite(number) ? number : fallback;
+}
+
+function formatStatsTokens(value) {
+  const number = statsNumber(value);
+  const abs = Math.abs(number);
+  const sign = number < 0 ? "-" : "";
+  if (abs >= 1_000_000_000) return `${sign}${(abs / 1_000_000_000).toFixed(2)}B`;
+  if (abs >= 1_000_000) return `${sign}${(abs / 1_000_000).toFixed(2)}M`;
+  if (abs >= 10_000) return `${sign}${Math.round(abs / 1000)}k`;
+  if (abs >= 1000) return `${sign}${(abs / 1000).toFixed(1)}k`;
+  return `${number.toLocaleString()}`;
+}
+
+function formatStatsCost(value) {
+  const cost = statsNumber(value);
+  if (cost <= 0) return "$0.000";
+  if (cost < 0.01) return `$${cost.toFixed(4)}`;
+  if (cost < 10) return `$${cost.toFixed(3)}`;
+  return `$${cost.toFixed(2)}`;
+}
+
+function formatStatsPercent(value) {
+  return `${statsNumber(value).toFixed(1)}%`;
+}
+
+function parseStatsWebuiPayloadRaw(raw) {
+  if (!raw) return null;
+  try {
+    const parsed = JSON.parse(raw);
+    if (!parsed || parsed.type !== STATS_WEBUI_PAYLOAD_TYPE || parsed.version !== STATS_WEBUI_PAYLOAD_VERSION) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function currentStatsOverlayPayload() {
+  if (isOptionalFeatureDisabled("statsCommand")) return null;
+  return parseStatsWebuiPayloadRaw(statusEntries.get(STATS_WEBUI_STATUS_KEY)) || latestStatsOverlayPayload;
+}
+
+function statsScopeDaysFromPayload(payload) {
+  return payload?.scope?.mode === "range" && statsNumber(payload.scope.days) > 0 ? String(payload.scope.days) : "";
+}
+
+function statsScopeValueFromPayload(payload) {
+  if (payload?.scope?.mode === "all") return "all";
+  const days = statsScopeDaysFromPayload(payload);
+  if (!days) return statsOverlayLastScope;
+  return ["14", "30", "90"].includes(days) ? days : "custom";
+}
+
+function statsCustomDaysValue() {
+  const fromInput = Number.parseInt(elements.statsOverlayCustomDays?.value || "", 10);
+  if (Number.isFinite(fromInput) && fromInput > 0) return Math.max(1, Math.min(3650, fromInput));
+  const fromPayload = Number.parseInt(statsScopeDaysFromPayload(currentStatsOverlayPayload()), 10);
+  if (Number.isFinite(fromPayload) && fromPayload > 0) return Math.max(1, Math.min(3650, fromPayload));
+  return 14;
+}
+
+function statsScopeCommandArg() {
+  const value = elements.statsOverlayScope?.value || statsOverlayLastScope || "14";
+  if (value === "all") return "all";
+  const days = value === "custom" ? statsCustomDaysValue() : Math.max(1, Math.min(3650, Number.parseInt(value, 10) || 14));
+  return String(days);
+}
+
+function syncStatsScopeControls(payload = currentStatsOverlayPayload()) {
+  if (!elements.statsOverlayScope) return;
+  const nextValue = payload ? statsScopeValueFromPayload(payload) : statsOverlayLastScope;
+  elements.statsOverlayScope.value = ["14", "30", "90", "all", "custom"].includes(nextValue) ? nextValue : "custom";
+  const custom = elements.statsOverlayScope.value === "custom";
+  if (elements.statsOverlayCustomDays) {
+    const payloadDays = statsScopeDaysFromPayload(payload);
+    if (payloadDays && !["14", "30", "90"].includes(payloadDays)) elements.statsOverlayCustomDays.value = payloadDays;
+    else if (!elements.statsOverlayCustomDays.value) elements.statsOverlayCustomDays.value = "14";
+    elements.statsOverlayCustomDays.hidden = !custom;
+  }
+}
+
+function statsPromptEstimateSourceLabel(estimate = {}) {
+  if (estimate.source === "export-html") return "export-backed";
+  if (estimate.source === "fallback") return "live fallback";
+  return estimate.source || "estimate";
+}
+
+function statsMetricCard(label, value, detail = "", tone = "") {
+  const node = make("div", `stats-overlay-card ${tone}`.trim());
+  node.append(make("span", "stats-overlay-card-label", label), make("strong", undefined, value));
+  if (detail) node.append(make("span", "stats-overlay-card-detail", detail));
+  return node;
+}
+
+function statsLineBlock(lines = []) {
+  const pre = make("pre", "stats-overlay-lines");
+  pre.textContent = (Array.isArray(lines) ? lines : []).map(stripAnsi).join("\n") || "No data.";
+  return pre;
+}
+
+function renderStatsTable(headers, rows, emptyText = "No data.") {
+  if (!rows.length) return make("p", "stats-overlay-empty muted", emptyText);
+  const wrapper = make("div", "stats-overlay-table-wrap");
+  const table = make("table", "stats-overlay-table");
+  const thead = make("thead");
+  const headRow = make("tr");
+  for (const header of headers) headRow.append(make("th", undefined, header));
+  thead.append(headRow);
+  const tbody = make("tbody");
+  for (const row of rows) {
+    const tr = make("tr");
+    for (const cell of row) tr.append(make("td", undefined, cell));
+    tbody.append(tr);
+  }
+  table.append(thead, tbody);
+  wrapper.append(table);
+  return wrapper;
+}
+
+function renderStatsBarRows(daily = []) {
+  const rows = daily.filter((row) => statsNumber(row.total) > 0 || statsNumber(row.cost) > 0);
+  if (!rows.length) return make("p", "stats-overlay-empty muted", "No non-zero usage in this range.");
+  const maxTokens = Math.max(1, ...rows.map((row) => statsNumber(row.total)));
+  const list = make("div", "stats-overlay-bars");
+  for (const row of rows) {
+    const tokenRatio = Math.max(0.015, statsNumber(row.total) / maxTokens);
+    const item = make("div", "stats-overlay-bar-row");
+    const bar = make("span", "stats-overlay-bar");
+    const fill = make("span", "stats-overlay-bar-fill");
+    fill.style.width = `${Math.min(100, tokenRatio * 100)}%`;
+    bar.append(fill);
+    item.append(
+      make("span", "stats-overlay-bar-day", row.day || "—"),
+      bar,
+      make("span", "stats-overlay-bar-value", `${formatStatsTokens(row.total)} tok`),
+      make("span", "stats-overlay-bar-cost", formatStatsCost(row.cost)),
+    );
+    list.append(item);
+  }
+  return list;
+}
+
+function renderStatsOverview(payload) {
+  const node = make("div", "stats-overlay-pane stats-overlay-overview");
+  const totals = payload?.totals || {};
+  const summary = payload?.summary || {};
+  const highest = summary.highestDay;
+  const cards = make("div", "stats-overlay-cards");
+  cards.append(
+    statsMetricCard("Total tokens", formatStatsTokens(totals.total), `↑${formatStatsTokens(totals.input)} ↓${formatStatsTokens(totals.output)}`, "tone-blue"),
+    statsMetricCard("Cost", formatStatsCost(totals.cost), `projected 30d ${formatStatsCost(summary.projected30DayCost)}`, "tone-green"),
+    statsMetricCard("Messages", String(statsNumber(totals.messages)), `${payload?.sessionCount ?? 0} sessions`, "tone-mauve"),
+    statsMetricCard("PI initial prompt", `~${formatStatsTokens(payload?.promptEstimate?.total)} tok`, `${statsPromptEstimateSourceLabel(payload?.promptEstimate)} · ${payload?.promptEstimate?.confidence || "estimate"}`, "tone-yellow"),
+    statsMetricCard("Cache hit", formatStatsPercent(summary.cacheHitRate), `reads ${formatStatsTokens(totals.cacheRead)} · writes ${formatStatsTokens(totals.cacheWrite)}`, "tone-teal"),
+    statsMetricCard("Active days", `${payload?.activeDayCount ?? 0}/${payload?.dayCount ?? 0}`, highest ? `peak ${highest.day} · ${formatStatsCost(highest.cost)}` : "no peak yet", "tone-pink"),
+  );
+  node.append(cards, make("h3", undefined, "Daily usage"), renderStatsBarRows(payload?.daily || []));
+  return node;
+}
+
+function renderStatsDaily(payload) {
+  const node = make("div", "stats-overlay-pane");
+  node.append(make("h3", undefined, "Daily token and cost trend"), renderStatsBarRows(payload?.daily || []));
+  node.append(renderStatsTable(
+    ["Day", "Tokens", "Cost", "Input", "Output", "Cache R/W", "Msgs"],
+    (payload?.daily || []).map((row) => [
+      row.day || "—",
+      formatStatsTokens(row.total),
+      formatStatsCost(row.cost),
+      formatStatsTokens(row.input),
+      formatStatsTokens(row.output),
+      `${formatStatsTokens(row.cacheRead)} / ${formatStatsTokens(row.cacheWrite)}`,
+      String(statsNumber(row.messages)),
+    ]),
+  ));
+  return node;
+}
+
+function renderStatsModels(payload) {
+  return renderStatsTable(
+    ["Model", "Tokens", "Token %", "Cost", "Spend %", "$/1M", "Avg out", "Msgs"],
+    (payload?.models || []).map((model) => [
+      model.model || "unknown",
+      formatStatsTokens(model.tokens),
+      formatStatsPercent(model.percent),
+      formatStatsCost(model.cost),
+      formatStatsPercent(model.costPercent),
+      formatStatsCost(model.avgCostPerMillion),
+      formatStatsTokens(Math.round(statsNumber(model.avgOutputTokens))),
+      String(statsNumber(model.messages)),
+    ]),
+    "No model usage in this range.",
+  );
+}
+
+function renderStatsSessions(payload) {
+  return renderStatsTable(
+    ["Day", "Session", "Cost", "Tokens", "Model"],
+    (payload?.expensiveSessions || []).map((session) => [
+      session.day || "—",
+      session.displayName || session.sessionId || "unknown",
+      formatStatsCost(session.cost),
+      formatStatsTokens(session.tokens),
+      session.model || "unknown",
+    ]),
+    "No session usage in this range.",
+  );
+}
+
+function renderStatsCostCache(payload) {
+  const node = make("div", "stats-overlay-pane");
+  const totals = payload?.totals || {};
+  const summary = payload?.summary || {};
+  const cards = make("div", "stats-overlay-cards compact");
+  cards.append(
+    statsMetricCard("Avg/day", formatStatsCost(summary.calendarAvgCost), "calendar average", "tone-green"),
+    statsMetricCard("Active avg", formatStatsCost(summary.activeAvgCost), "per active day", "tone-teal"),
+    statsMetricCard("Non-cache", formatStatsTokens(summary.nonCacheTokens), `${formatStatsTokens(totals.total)} total`, "tone-blue"),
+    statsMetricCard("Cache hit", formatStatsPercent(summary.cacheHitRate), `${formatStatsTokens(totals.cacheRead)} read tokens`, "tone-yellow"),
+  );
+  node.append(cards, make("h3", undefined, "Cost trend"), statsLineBlock(payload?.lines?.costTrend), make("h3", undefined, "Cache efficiency"), statsLineBlock(payload?.lines?.cache));
+  return node;
+}
+
+function statsCalibrationButton(label, mode, className = "") {
+  const button = make("button", className, statsOverlayCalibrationBusy === mode ? "Running…" : label);
+  button.type = "button";
+  button.disabled = statsOverlayLoading || !!statsOverlayCalibrationBusy;
+  button.addEventListener("click", () => runStatsCalibration(mode));
+  return button;
+}
+
+function renderStatsCalibrationPanel(payload) {
+  const estimate = payload?.promptEstimate || {};
+  const panel = make("section", "stats-overlay-calibration-panel");
+  const text = make("div", "stats-overlay-calibration-copy");
+  text.append(
+    make("strong", undefined, "Calibration"),
+    make("span", undefined, `${statsNumber(estimate.calibrationSamples)} sample${statsNumber(estimate.calibrationSamples) === 1 ? "" : "s"} · scale ×${statsNumber(estimate.calibrationMultiplier, 1).toFixed(2)} · ${statsPromptEstimateSourceLabel(estimate)}`),
+  );
+  if (estimate.warning) text.append(make("span", "warning", estimate.warning));
+  if (statsOverlayCalibrationMessage) text.append(make("span", "muted", statsOverlayCalibrationMessage));
+  const actions = make("div", "stats-overlay-calibration-actions");
+  actions.append(
+    statsCalibrationButton("Calibrate current", "current"),
+    statsCalibrationButton("Start probe", "probe", "primary"),
+  );
+  panel.append(text, actions);
+  return panel;
+}
+
+function renderStatsPrompt(payload) {
+  const node = make("div", "stats-overlay-pane");
+  const cards = make("div", "stats-overlay-cards compact");
+  cards.append(
+    statsMetricCard("PI estimate", `~${formatStatsTokens(payload?.promptEstimate?.total)} tok`, `${statsPromptEstimateSourceLabel(payload?.promptEstimate)} · ${payload?.promptEstimate?.confidence || "estimate"}`, "tone-yellow"),
+    statsMetricCard("Prompt chars", statsNumber(payload?.promptEstimate?.systemPromptChars).toLocaleString(), `${statsNumber(payload?.promptEstimate?.activeToolSchemas)} active tool schemas`, "tone-blue"),
+    statsMetricCard("Calibration", `×${statsNumber(payload?.promptEstimate?.calibrationMultiplier, 1).toFixed(2)}`, `${statsNumber(payload?.promptEstimate?.calibrationSamples)} samples`, "tone-teal"),
+    statsMetricCard("Attempts", String(statsNumber(payload?.promptEstimate?.attempts)), payload?.promptEstimate?.settled ? "settled" : "live fallback", "tone-mauve"),
+  );
+  node.append(
+    cards,
+    renderStatsCalibrationPanel(payload),
+    make("h3", undefined, "PI prompt estimate"),
+    statsLineBlock(payload?.lines?.promptInjection),
+    make("h3", undefined, "Detailed prompt snapshot"),
+    statsLineBlock(payload?.lines?.promptDetailed),
+    make("h3", undefined, "Current context token breakdown"),
+    statsLineBlock(payload?.lines?.tokenBreakdown),
+  );
+  return node;
+}
+
+function statsCommandOutputSection(title, command, description, lines = []) {
+  const section = make("section", "stats-overlay-command-section");
+  const header = make("div", "stats-overlay-command-header");
+  const text = make("div", "stats-overlay-command-title");
+  text.append(make("h3", undefined, title), make("p", "muted", description));
+  header.append(text, make("code", "stats-overlay-command-pill", command));
+  section.append(header, statsLineBlock(lines));
+  return section;
+}
+
+function renderStatsRaw(payload) {
+  const node = make("div", "stats-overlay-pane");
+  node.append(
+    statsCommandOutputSection("Daily usage graph", "/stats-last [days|all]", "Non-zero daily token/cost graph for the selected range.", payload?.lines?.graph),
+    statsCommandOutputSection("Model comparison", "/stats-model-compare [days|all]", "Token share, spend share, average cost, and average output by model.", payload?.lines?.modelComparison),
+    statsCommandOutputSection("Most expensive sessions", "/stats-most-expense [days|all]", "Highest-cost sessions in the selected range.", payload?.lines?.expensiveSessions),
+    statsCommandOutputSection("Cost trend", "/stats-cost-trend [days|all]", "Daily averages, 30-day projection, highest day, and latest active day.", payload?.lines?.costTrend),
+    statsCommandOutputSection("Cache efficiency", "/stats-cache [days|all]", "Cache hit rate, cache read/write tokens, estimated savings, and token mix.", payload?.lines?.cache),
+    statsCommandOutputSection("PI prompt breakdown", "/stats-pi detailed", "Export-backed initial prompt estimate with detailed prompt snapshot sections.", [...(payload?.lines?.promptInjection || []), "", ...(payload?.lines?.promptDetailed || [])]),
+  );
+  return node;
+}
+
+function renderStatsOverlayPane(payload) {
+  if (!payload) return make("p", "stats-overlay-empty muted", statsOverlayLoading ? "Loading stats…" : "No stats payload loaded yet.");
+  switch (statsOverlayActiveTab) {
+    case "daily": return renderStatsDaily(payload);
+    case "models": return renderStatsModels(payload);
+    case "sessions": return renderStatsSessions(payload);
+    case "cost-cache": return renderStatsCostCache(payload);
+    case "prompt": return renderStatsPrompt(payload);
+    case "raw": return renderStatsRaw(payload);
+    default: return renderStatsOverview(payload);
+  }
+}
+
+function renderStatsOverlay() {
+  const payload = currentStatsOverlayPayload();
+  if (!elements.statsOverlayDialog) return;
+
+  if (payload) statsOverlayLastScope = statsScopeValueFromPayload(payload);
+  syncStatsScopeControls(statsOverlayLoading ? null : payload);
+
+  const generated = payload?.generatedAt ? new Date(payload.generatedAt).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" }) : "not loaded";
+  elements.statsOverlaySubtitle.textContent = payload
+    ? `${payload.scopeLabel || "stats"} · ${payload.sessionCount ?? 0} sessions · updated ${generated}`
+    : "Run stats to load the browser dashboard.";
+
+  elements.statsOverlayStatus.textContent = statsOverlayError || (statsOverlayLoading ? "Loading stats from the Pi stats extension…" : statsOverlayCalibrationMessage || (payload ? "" : "No stats payload loaded yet."));
+  elements.statsOverlayStatus.hidden = !elements.statsOverlayStatus.textContent;
+  elements.statsOverlayStatus.classList.toggle("error", !!statsOverlayError);
+
+  elements.statsOverlayTabs.replaceChildren();
+  for (const tab of STATS_OVERLAY_TABS) {
+    const button = make("button", tab.id === statsOverlayActiveTab ? "active" : "", tab.label);
+    button.type = "button";
+    button.setAttribute("role", "tab");
+    button.setAttribute("aria-selected", tab.id === statsOverlayActiveTab ? "true" : "false");
+    button.addEventListener("click", () => {
+      statsOverlayActiveTab = tab.id;
+      renderStatsOverlay();
+    });
+    elements.statsOverlayTabs.append(button);
+  }
+
+  elements.statsOverlayRefreshButton.disabled = statsOverlayLoading;
+  elements.statsOverlayBody.replaceChildren(renderStatsOverlayPane(payload));
+}
+
+function scheduleStatsRefreshAfterCalibration(tabContext, delays = [1200]) {
+  for (const delayMs of delays) {
+    setTimeout(() => {
+      if (!isCurrentTabContext(tabContext)) return;
+      requestStatsOverlayRefresh();
+    }, delayMs);
+  }
+}
+
+async function runStatsCalibration(mode) {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  const commandName = resolveAvailableCommandName("calibrate", { rpcOnly: true });
+  if (!commandName) {
+    statsOverlayError = "Calibration command unavailable: /calibrate is not loaded in this Pi tab.";
+    renderStatsOverlay();
+    return;
+  }
+  if (mode === "probe" && !confirm("Start an isolated calibration probe? This sends one tiny model request and may incur provider token usage.")) return;
+
+  const command = mode === "current" ? `/${commandName} current` : `/${commandName}`;
+  statsOverlayCalibrationBusy = mode;
+  statsOverlayCalibrationMessage = mode === "current"
+    ? "Calibrating from the current session…"
+    : "Starting isolated calibration probe…";
+  statsOverlayError = "";
+  renderStatsOverlay();
+  try {
+    await sendPrompt("prompt", command, { targetTabId: tabContext.tabId, throwOnError: true });
+    statsOverlayCalibrationMessage = mode === "current"
+      ? "Calibration command finished; refreshing stats…"
+      : "Probe started; stats will refresh after the probe response is recorded…";
+    statsOverlayCalibrationBusy = "";
+    renderStatsOverlay();
+    scheduleStatsRefreshAfterCalibration(tabContext, mode === "probe" ? [5000, 14000] : [1000]);
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    statsOverlayCalibrationBusy = "";
+    statsOverlayCalibrationMessage = "";
+    statsOverlayError = error.message || String(error);
+    renderStatsOverlay();
+  }
+}
+
+async function requestStatsOverlayRefresh() {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  const statsWebuiCommand = resolveAvailableCommandName("stats-webui", { rpcOnly: true });
+  const fallbackStatsCommand = resolveAvailableCommandName("stats", { rpcOnly: true });
+  const scopeArg = statsScopeCommandArg();
+  const command = statsWebuiCommand
+    ? `/${statsWebuiCommand}${scopeArg ? ` ${scopeArg}` : ""}`
+    : fallbackStatsCommand
+      ? `/${fallbackStatsCommand}${scopeArg ? ` ${scopeArg}` : ""} --webui`
+      : "";
+  if (!command) {
+    statsOverlayError = "Stats command unavailable: enable/install @firstpick/pi-extension-stats in Optional features.";
+    statsOverlayLoading = false;
+    renderStatsOverlay();
+    return;
+  }
+
+  statsOverlayLastScope = scopeArg;
+  statsOverlayLoading = true;
+  statsOverlayError = "";
+  renderStatsOverlay();
+  try {
+    await sendPrompt("prompt", command, { targetTabId: tabContext.tabId, throwOnError: true });
+    setTimeout(() => {
+      if (!isCurrentTabContext(tabContext) || !statsOverlayLoading) return;
+      statsOverlayLoading = false;
+      if (!currentStatsOverlayPayload()) statsOverlayError = "Stats command returned without a WebUI payload. Try /reload, then open Stats again.";
+      renderStatsOverlay();
+    }, 2500);
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    statsOverlayLoading = false;
+    statsOverlayError = error.message || String(error);
+    renderStatsOverlay();
+  }
+}
+
+function openStatsOverlay({ refresh = true } = {}) {
+  setComposerActionsOpen(false);
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  statsOverlayError = "";
+  if (!elements.statsOverlayDialog.open) elements.statsOverlayDialog.showModal();
+  renderStatsOverlay();
+  if (refresh || !currentStatsOverlayPayload()) requestStatsOverlayRefresh();
+}
+
+function handleStatsWebuiStatus(statusText) {
+  const payload = parseStatsWebuiPayloadRaw(statusText);
+  if (!payload) {
+    if (elements.statsOverlayDialog?.open) {
+      statsOverlayLoading = false;
+      renderStatsOverlay();
+    }
+    return;
+  }
+  latestStatsOverlayPayload = payload;
+  statsOverlayLoading = false;
+  statsOverlayError = "";
+  statsOverlayCalibrationMessage = "";
+  statsOverlayLastScope = statsScopeValueFromPayload(payload);
+  if (payload.open && !elements.statsOverlayDialog?.open) elements.statsOverlayDialog?.showModal();
+  if (payload.open || elements.statsOverlayDialog?.open) renderStatsOverlay();
+}
+
+function parseBtwWebuiPayloadRaw(raw) {
+  if (!raw) return null;
+  const text = String(raw || "");
+  const json = text.startsWith(BTW_WIDGET_PAYLOAD_PREFIX) ? text.slice(BTW_WIDGET_PAYLOAD_PREFIX.length) : text;
+  try {
+    const parsed = JSON.parse(json);
+    if (!BTW_WEBUI_PAYLOAD_TYPES.has(parsed?.type)) return null;
+    return parsed;
+  } catch {
+    return null;
+  }
+}
+
+function parseBtwWidgetPayload(lines = []) {
+  const first = Array.isArray(lines) ? lines[0] : "";
+  return parseBtwWebuiPayloadRaw(first);
+}
+
+function currentBtwWidgetPayload() {
+  if (isOptionalFeatureDisabled("btwCommand")) return null;
+  const outputLines = widgets.get(BTW_OUTPUT_WIDGET_KEY)?.widgetLines || [];
+  const payload = parseBtwWidgetPayload(outputLines) || parseBtwWebuiPayloadRaw(statusEntries.get(BTW_WEBUI_STATUS_KEY)) || latestBtwWidgetPayload;
+  if (payload?.id && payload.id === btwWidgetDismissedId) return null;
+  return payload;
+}
+
+function btwStatusLabel(payload) {
+  switch (payload?.status) {
+    case "done": return "Done";
+    case "error": return "Error";
+    case "aborted": return "Aborted";
+    case "streaming": return "Answering…";
+    default: return "Starting…";
+  }
+}
+
+function btwAnswerLines(payload) {
+  const text = payload?.error || payload?.answer || (payload?.status === "loading" ? "Starting side request…" : "Waiting for model output…");
+  return String(text || "").replace(/\r\n?/g, "\n").split("\n");
+}
+
+function focusBtwWidgetInput() {
+  const input = document.querySelector(".btw-widget-input");
+  if (!input) return;
+  try {
+    input.focus({ preventScroll: true });
+  } catch {
+    input.focus();
+  }
+}
+
+function openBtwComposerWidget() {
+  btwWidgetComposerOpen = true;
+  btwWidgetDismissedId = "";
+  btwWidgetFocusAfterRender = true;
+  setComposerActionsOpen(false);
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  renderWidgets();
+}
+
+function closeBtwOutputWidget() {
+  const payload = currentBtwWidgetPayload();
+  if (payload?.id) btwWidgetDismissedId = payload.id;
+  widgets.delete(BTW_OUTPUT_WIDGET_KEY);
+  widgets.delete(BTW_FOOTER_WIDGET_KEY);
+  statusEntries.delete(BTW_WEBUI_STATUS_KEY);
+  latestBtwWidgetPayload = null;
+  btwWidgetComposerOpen = false;
+  btwWidgetInputDraft = "";
+  renderWidgets();
+  renderStatus();
+}
+
+async function copyBtwWidgetAnswer(button) {
+  const payload = currentBtwWidgetPayload();
+  const answer = String(payload?.answer || payload?.error || "").trim();
+  if (!answer) return;
+  const original = button?.textContent || "Copy";
+  try {
+    await navigator.clipboard.writeText(answer);
+    if (button) button.textContent = "Copied";
+    setTimeout(() => { if (button) button.textContent = original; }, 1600);
+  } catch (error) {
+    addEvent(`copy /btw answer failed: ${error.message || String(error)}`, "error");
+  }
+}
+
+function base64UrlEncodeUtf8(value) {
+  const bytes = new TextEncoder().encode(String(value || ""));
+  let binary = "";
+  for (let offset = 0; offset < bytes.length; offset += 0x8000) {
+    binary += String.fromCharCode(...bytes.slice(offset, offset + 0x8000));
+  }
+  return btoa(binary).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/g, "");
+}
+
+function btwTransferPayload(payload) {
+  return {
+    question: payload?.question || "",
+    answer: payload?.answer || payload?.error || "",
+    status: payload?.status || "done",
+    model: payload?.model || "",
+    generatedAt: payload?.generatedAt || 0,
+    updatedAt: payload?.updatedAt || Date.now(),
+  };
+}
+
+function makeBtwTransferIcon() {
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("class", "btw-transfer-icon");
+  svg.setAttribute("viewBox", "0 0 24 24");
+  svg.setAttribute("aria-hidden", "true");
+  svg.setAttribute("focusable", "false");
+  const bubble = document.createElementNS(ns, "path");
+  bubble.setAttribute("d", "M4.5 5.75h8.75a2 2 0 0 1 2 2v3.5a2 2 0 0 1-2 2H9.8L6.5 15.6v-2.35h-2a2 2 0 0 1-2-2v-3.5a2 2 0 0 1 2-2Z");
+  bubble.setAttribute("fill", "none");
+  bubble.setAttribute("stroke", "currentColor");
+  bubble.setAttribute("stroke-width", "1.9");
+  bubble.setAttribute("stroke-linecap", "round");
+  bubble.setAttribute("stroke-linejoin", "round");
+  const arrow = document.createElementNS(ns, "path");
+  arrow.setAttribute("d", "M13 17h7m0 0-2.8-2.8M20 17l-2.8 2.8");
+  arrow.setAttribute("fill", "none");
+  arrow.setAttribute("stroke", "currentColor");
+  arrow.setAttribute("stroke-width", "2.15");
+  arrow.setAttribute("stroke-linecap", "round");
+  arrow.setAttribute("stroke-linejoin", "round");
+  const line = document.createElementNS(ns, "path");
+  line.setAttribute("d", "M6 9.4h5.6");
+  line.setAttribute("fill", "none");
+  line.setAttribute("stroke", "currentColor");
+  line.setAttribute("stroke-width", "1.9");
+  line.setAttribute("stroke-linecap", "round");
+  svg.append(bubble, line, arrow);
+  return svg;
+}
+
+async function transferBtwContextToMain(button) {
+  const payload = currentBtwWidgetPayload();
+  const transferPayload = btwTransferPayload(payload);
+  if (!transferPayload.question && !transferPayload.answer) return;
+  const targetTabId = activeTabId;
+  const liveSteer = !!currentState?.isStreaming;
+  const original = button?.querySelector("span")?.textContent || "Transfer Context";
+  const encoded = base64UrlEncodeUtf8(JSON.stringify(transferPayload));
+  try {
+    await sendPrompt("prompt", `/btw-transfer ${encoded}`, { targetTabId, throwOnError: true, streamingBehavior: liveSteer ? "steer" : undefined });
+    const label = button?.querySelector("span");
+    if (label) label.textContent = liveSteer ? "Steered" : "Transferred";
+    addEvent(liveSteer
+      ? "/btw context sent as live steering; it will be injected after the next agent action"
+      : "/btw context transferred into the main conversation", "info");
+    setTimeout(() => { if (label) label.textContent = original; }, 1800);
+  } catch {
+    // sendPrompt already reports the error.
+  }
+}
+
+function btwWidgetActionButton(label, handler, className = "") {
+  const button = make("button", `release-npm-action ${className}`.trim(), label);
+  button.type = "button";
+  button.addEventListener("click", () => handler(button));
+  return button;
+}
+
+function renderBtwComposerForm() {
+  const form = make("form", "btw-widget-composer");
+  const input = make("textarea", "btw-widget-input");
+  input.rows = 1;
+  input.placeholder = "Ask a /btw side question…";
+  input.value = btwWidgetInputDraft;
+  input.setAttribute("aria-label", "Ask a /btw side question");
+  input.addEventListener("input", () => { btwWidgetInputDraft = input.value; });
+  input.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && !event.shiftKey) {
+      event.preventDefault();
+      form.requestSubmit();
+    }
+  });
+
+  const submit = make("button", "release-npm-action btw-widget-send", "Ask /btw");
+  submit.type = "submit";
+  form.append(input, submit);
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    const question = input.value.trim();
+    if (!question) {
+      input.focus();
+      return;
+    }
+    submit.disabled = true;
+    const sent = await sendBtwQuestion(question);
+    submit.disabled = false;
+    if (!sent) return;
+    btwWidgetInputDraft = "";
+    input.value = "";
+    input.focus({ preventScroll: true });
+  });
+  return form;
+}
+
+function renderBtwOutputWidget() {
+  const payload = currentBtwWidgetPayload();
+  if (!payload && !btwWidgetComposerOpen) return null;
+
+  if (payload) latestBtwWidgetPayload = payload;
+  const running = payload?.status === "loading" || payload?.status === "streaming";
+  const lineCount = payload ? btwAnswerLines(payload).length : 0;
+  const node = make("section", `widget release-npm-widget btw-widget${running ? " btw-live-widget" : " btw-done-widget"}`);
+  node.setAttribute("aria-label", "/btw side-question output");
+
+  const header = make("div", "release-npm-header");
+  const titleWrap = make("div", "release-npm-title-wrap");
+  titleWrap.append(make("span", "release-npm-kicker", "/btw"), make("strong", "release-npm-title", payload ? btwStatusLabel(payload) : "Ready"));
+
+  const meta = make("div", "release-npm-meta");
+  meta.append(make("span", `release-npm-pill btw-status ${payload?.status || "ready"}`.trim(), payload?.status || "ready"));
+  if (payload?.model) meta.append(make("span", "release-npm-pill", payload.model));
+
+  const actions = make("div", "release-npm-actions");
+  const transferButton = btwWidgetActionButton("", transferBtwContextToMain, "btw-transfer-action");
+  transferButton.title = currentState?.isStreaming
+    ? "Transfer this /btw question and answer as live steering after the next agent action"
+    : "Transfer this /btw question and answer into the main conversation context";
+  transferButton.append(makeBtwTransferIcon(), make("span", undefined, "Transfer Context"));
+  transferButton.disabled = !payload || !(payload.answer || payload.error || payload.question);
+  actions.append(
+    transferButton,
+    btwWidgetActionButton("Copy", copyBtwWidgetAnswer),
+    btwWidgetActionButton("Close", closeBtwOutputWidget),
+  );
+  header.append(titleWrap, meta, actions);
+
+  const question = make("div", "btw-widget-question");
+  question.append(make("span", "btw-widget-question-label", "Question"), make("span", "btw-widget-question-text", payload?.question || "Start or continue with the /btw input below."));
+
+  const streamHeader = releaseNpmStreamHeader(running ? "Live side answer" : "Side answer", lineCount, { live: running });
+  const terminal = make("div", "release-npm-terminal btw-terminal");
+  terminal.setAttribute("role", "log");
+  terminal.setAttribute("aria-live", running ? "polite" : "off");
+  for (const line of (payload ? btwAnswerLines(payload) : ["Type a side question below and press Enter to run it as /btw."])) appendReleaseNpmTerminalLine(terminal, line);
+
+  const note = payload?.status === "error"
+    ? "The side request failed. The main conversation was not changed."
+    : "Ephemeral answer · every message in this input is sent as /btw · not appended to the main transcript.";
+  const controls = make("div", "release-npm-controls btw-controls", note);
+  const outputDetails = renderReleaseNpmOutputDetails(`btw:${payload?.id || "composer"}`, streamHeader, terminal, controls);
+  node.append(header, question, outputDetails, renderBtwComposerForm());
+  requestAnimationFrame(() => {
+    if (outputDetails.open) terminal.scrollTop = terminal.scrollHeight;
+    if (btwWidgetFocusAfterRender) {
+      btwWidgetFocusAfterRender = false;
+      focusBtwWidgetInput();
+    }
+  });
+  return node;
+}
+
+function handleBtwWebuiStatus(statusText) {
+  const payload = parseBtwWebuiPayloadRaw(statusText);
+  if (payload) latestBtwWidgetPayload = payload;
+  renderWidgets();
+}
+
+function remoteWebuiWidgetLines(lines = []) {
+  return (Array.isArray(lines) ? lines : [])
+    .map(stripAnsi)
+    .map((line) => String(line ?? ""))
+    .filter((line, index, array) => line.trim() || (index > 0 && index < array.length - 1));
+}
+
+function remoteWebuiLineUrl(line) {
+  const text = String(line || "").trim();
+  const match = text.match(/https?:\/\/[^\s<>"']+/i);
+  if (!match) return "";
+  const candidate = match[0].replace(/[),.;]+$/, "");
+  return safeHttpUrl(candidate);
+}
+
+function remoteWebuiQrPayload(lines = []) {
+  const cleanLines = remoteWebuiWidgetLines(lines);
+  const url = remoteWebuiLineUrl(cleanLines.find((line) => remoteWebuiLineUrl(line)) || "");
+  const scanIndex = cleanLines.findIndex((line) => /scan with your phone/i.test(line));
+  const urlIndex = cleanLines.findIndex((line, index) => index > scanIndex && remoteWebuiLineUrl(line));
+  const qrStart = scanIndex >= 0 ? scanIndex + 1 : -1;
+  const qrEnd = urlIndex >= 0 ? urlIndex : cleanLines.length;
+  const qrLines = qrStart >= 0
+    ? cleanLines.slice(qrStart, qrEnd).filter((line, index, array) => line.trim() || (index > 0 && index < array.length - 1))
+    : [];
+  const detailLines = cleanLines.filter((line, index) => {
+    if (!line.trim()) return false;
+    if (/^Pi Remote WebUI$/i.test(line.trim())) return false;
+    if (/scan with your phone/i.test(line)) return false;
+    if (qrStart >= 0 && index >= qrStart && index < qrEnd) return false;
+    return true;
+  });
+  return { cleanLines, detailLines, qrLines, url };
+}
+
+function remoteWebuiQrMatrix(qrLines = []) {
+  const lines = qrLines.map((line) => String(line ?? "")).filter((line) => /[█▀▄]/u.test(line));
+  if (!lines.length) return null;
+  const width = Math.max(...lines.map((line) => Array.from(line).length));
+  if (!Number.isFinite(width) || width <= 0) return null;
+
+  const matrix = [];
+  for (const line of lines) {
+    const chars = Array.from(line);
+    while (chars.length < width) chars.push(" ");
+    const top = [];
+    const bottom = [];
+    for (const char of chars) {
+      if (char === "█") {
+        top.push(false);
+        bottom.push(false);
+      } else if (char === "▀") {
+        top.push(false);
+        bottom.push(true);
+      } else if (char === "▄") {
+        top.push(true);
+        bottom.push(false);
+      } else {
+        top.push(true);
+        bottom.push(true);
+      }
+    }
+    matrix.push(top, bottom);
+  }
+
+  while (matrix.length > width && matrix[0]?.every(Boolean)) matrix.shift();
+  while (matrix.length > width && matrix.at(-1)?.every(Boolean)) matrix.pop();
+  if (matrix.length !== width || matrix.some((row) => row.length !== width)) return null;
+  if (!matrix.some((row) => row.some(Boolean))) return null;
+  return matrix;
+}
+
+function remoteWebuiQrSvg(qrLines = []) {
+  const matrix = remoteWebuiQrMatrix(qrLines);
+  if (!matrix) return null;
+  const size = matrix.length;
+  const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  svg.setAttribute("class", "remote-qr-svg");
+  svg.setAttribute("viewBox", `0 0 ${size} ${size}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "/remote QR code");
+  svg.setAttribute("shape-rendering", "crispEdges");
+  svg.setAttribute("focusable", "false");
+
+  const background = document.createElementNS(svg.namespaceURI, "rect");
+  background.setAttribute("class", "remote-qr-svg-bg");
+  background.setAttribute("width", String(size));
+  background.setAttribute("height", String(size));
+  svg.append(background);
+
+  for (let y = 0; y < size; y++) {
+    for (let x = 0; x < size; x++) {
+      if (!matrix[y][x]) continue;
+      const rect = document.createElementNS(svg.namespaceURI, "rect");
+      rect.setAttribute("class", "remote-qr-svg-dark");
+      rect.setAttribute("x", String(x));
+      rect.setAttribute("y", String(y));
+      rect.setAttribute("width", "1");
+      rect.setAttribute("height", "1");
+      svg.append(rect);
+    }
+  }
+  return svg;
+}
+
+function closeRemoteWebuiQrPopup() {
+  latestRemoteWebuiQrUrl = "";
+  elements.remoteQrDialog?.classList.remove("is-loading");
+  if (elements.remoteQrDialog?.open) elements.remoteQrDialog.close();
+}
+
+function openRemoteWebuiQrUrl() {
+  const url = latestRemoteWebuiQrUrl;
+  if (!url) return;
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.target = "_blank";
+  anchor.rel = "noopener noreferrer";
+  anchor.hidden = true;
+  document.body.append(anchor);
+  anchor.click();
+  anchor.remove();
+  addEvent("opened /remote URL", "info");
+}
+
+async function copyRemoteWebuiQrUrl() {
+  if (!latestRemoteWebuiQrUrl) return;
+  try {
+    await copyText(latestRemoteWebuiQrUrl);
+    addEvent("copied /remote URL", "info");
+  } catch (error) {
+    addEvent(`copy /remote URL failed: ${error.message || String(error)}`, "error");
+  }
+}
+
+function isLocalWebuiBrowserOrigin() {
+  const host = window.location.hostname.toLowerCase();
+  return host === "localhost" || host === "127.0.0.1" || host === "::1" || host === "[::1]";
+}
+
+function remoteWebuiQrLinesFromData(data = {}) {
+  const network = data.network || latestNetwork || {};
+  const auth = network.auth || {};
+  const networkUrls = Array.isArray(network.networkUrls) ? network.networkUrls : [];
+  const displayUrl = data.url || networkUrls.find((candidate) => /^https?:\/\//i.test(String(candidate || ""))) || network.localUrl || "";
+  const qrLines = Array.isArray(data.qrLines) ? data.qrLines.map((line) => String(line ?? "")) : [];
+  const hasAutoAuthQr = !!(auth.enabled && auth.pin && data.qrUrl && displayUrl && data.qrUrl !== displayUrl);
+  const authLine = auth.enabled ? `Remote PIN auth: on${auth.pin ? ` · PIN ${auth.pin}` : ""}` : "Remote PIN auth: off";
+  const warningLine = hasAutoAuthQr
+    ? "Trusted LAN only. The QR signs in with the embedded PIN; keep it private."
+    : auth.enabled
+      ? "Trusted LAN only. Anyone with this URL and PIN can control Pi/WebUI."
+      : "Trusted LAN only. Remote PIN auth is off; anyone with this URL can control Pi/WebUI.";
+  return [
+    "Pi Remote WebUI",
+    "",
+    hasAutoAuthQr ? "Scan with your phone (auto-auth QR):" : "Scan with your phone:",
+    "",
+    ...qrLines,
+    "",
+    displayUrl,
+    authLine,
+    "",
+    warningLine,
+    "Close LAN access with: /remote close",
+  ];
+}
+
+function showRemoteWebuiQrLoadingPopup(message = "Opening Remote WebUI QR…") {
+  if (!elements.remoteQrDialog || !elements.remoteQrBody) return;
+  latestRemoteWebuiQrUrl = "";
+  elements.remoteQrDialog.classList.add("is-loading");
+
+  const loading = make("div", "remote-qr-loading");
+  loading.setAttribute("role", "status");
+  loading.setAttribute("aria-live", "polite");
+  const spinner = make("div", "remote-qr-spinner");
+  spinner.setAttribute("aria-hidden", "true");
+  const copy = make("div", "remote-qr-loading-copy");
+  copy.append(
+    make("strong", "", message),
+    make("span", "muted", "Starting /remote and generating a QR code. This can take a moment."),
+  );
+  loading.append(spinner, copy);
+
+  elements.remoteQrBody.replaceChildren(loading);
+  if (elements.remoteQrMessage) elements.remoteQrMessage.textContent = "Preparing trusted-LAN browser access…";
+  if (elements.remoteQrCopyButton) elements.remoteQrCopyButton.disabled = true;
+  if (elements.remoteQrOpenButton) elements.remoteQrOpenButton.disabled = true;
+
+  try {
+    if (!elements.remoteQrDialog.open) elements.remoteQrDialog.showModal();
+  } catch (error) {
+    addEvent(`remote QR loading popup unavailable: ${error.message || String(error)}`, "warn");
+  }
+}
+
+function isRemoteWebuiQrPopupLoading() {
+  return !!elements.remoteQrDialog?.classList.contains("is-loading");
+}
+
+function remoteWebuiStatusLoadingMessage(statusText) {
+  const text = String(statusText || "").toLowerCase();
+  if (text.includes("refresh")) return "Refreshing Remote WebUI QR…";
+  if (text.includes("pin auth")) return "Preparing Remote PIN auth and QR…";
+  return "Opening Remote WebUI QR…";
+}
+
+function handleRemoteWebuiStatus(statusText) {
+  const text = String(statusText || "").toLowerCase();
+  if (text.includes("opening remote webui") || text.includes("refreshing remote qr") || text.includes("enabling remote pin auth")) {
+    showRemoteWebuiQrLoadingPopup(remoteWebuiStatusLoadingMessage(statusText));
+    return;
+  }
+  if (text.includes("closing remote webui")) {
+    closeRemoteWebuiQrPopup();
+    return;
+  }
+  if (!statusText && isRemoteWebuiQrPopupLoading()) closeRemoteWebuiQrPopup();
+}
+
+async function showRemoteWebuiQrPopupFromNetwork({ auto = false } = {}) {
+  if (auto) remoteQrAutoPopupShown = true;
+  showRemoteWebuiQrLoadingPopup("Preparing Remote WebUI QR…");
+  try {
+    const response = await api("/api/network/qr", { scoped: false });
+    openRemoteWebuiQrPopup(remoteWebuiQrLinesFromData(response.data || {}));
+    return true;
+  } catch (error) {
+    if (isRemoteWebuiQrPopupLoading()) closeRemoteWebuiQrPopup();
+    addEvent(`remote QR popup failed: ${error.message || String(error)}`, auto ? "warn" : "error");
+    return false;
+  }
+}
+
+function openRemoteWebuiQrPopup(lines = []) {
+  if (!elements.remoteQrDialog || !elements.remoteQrBody) return;
+  const { cleanLines, detailLines, qrLines, url } = remoteWebuiQrPayload(lines);
+  latestRemoteWebuiQrUrl = url;
+  elements.remoteQrDialog.classList.remove("is-loading");
+
+  const qrText = (qrLines.length ? qrLines : cleanLines).join("\n").trimEnd();
+  const card = make("div", "remote-qr-card");
+  const svgQr = remoteWebuiQrSvg(qrLines);
+  if (svgQr) {
+    card.append(svgQr);
+  } else {
+    const code = make("pre", "remote-qr-code", qrText || "QR code unavailable.");
+    code.setAttribute("aria-label", "/remote QR code");
+    card.append(code);
+  }
+
+  const details = make("div", "remote-qr-details");
+  if (url) {
+    const urlRow = make("div", "remote-qr-url-row");
+    const urlLabel = make("span", "remote-qr-url-label", "URL");
+    const link = make("a", "remote-qr-url", url);
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    urlRow.append(urlLabel, link);
+    details.append(urlRow);
+  }
+  for (const line of detailLines.filter((line) => !remoteWebuiLineUrl(line))) {
+    details.append(make("p", "remote-qr-note", line));
+  }
+  if (!details.childElementCount) details.append(make("p", "remote-qr-note muted", "Scan from a trusted device on the same local network."));
+
+  elements.remoteQrBody.replaceChildren(card, details);
+  if (elements.remoteQrMessage) {
+    elements.remoteQrMessage.textContent = url
+      ? "Scan this /remote QR code from a trusted local-network device."
+      : "The /remote QR output is ready. Use the transcript if this terminal QR cannot be scanned.";
+  }
+  if (elements.remoteQrCopyButton) elements.remoteQrCopyButton.disabled = !url;
+  if (elements.remoteQrOpenButton) elements.remoteQrOpenButton.disabled = !url;
+
+  try {
+    if (!elements.remoteQrDialog.open) elements.remoteQrDialog.showModal();
+  } catch (error) {
+    addEvent(`remote QR popup unavailable; see /remote output in transcript: ${error.message || String(error)}`, "warn");
+  }
+}
+
+function showRemoteWebuiQrPopup(widgetKey, lines = [], request = {}) {
+  if (widgetKey !== "pi-remote-webui" || !Array.isArray(lines)) return;
+  remoteQrAutoPopupShown = true;
+  openRemoteWebuiQrPopup(lines);
+}
+
+function mirrorRemoteWebuiWidgetToTranscript(widgetKey, lines = [], request = {}) {
+  if (widgetKey !== "pi-remote-webui" || request.replayed) return;
+  const content = remoteWebuiWidgetLines(lines).join("\n").trimEnd();
+  if (!content) return;
+  addTransientMessage({ role: "extension", title: "/remote", content, level: "info", widgetKey });
+}
+
+function renderWidgets() {
+  if (deferUiRenderDuringPointerActivation("widgets", renderWidgets)) return;
+  const appRunnerInputFocus = captureAppRunnerInputFocus();
+  elements.widgetArea.replaceChildren();
+  const releaseOutput = renderReleaseNpmOutputWidget();
+  if (releaseOutput) elements.widgetArea.append(releaseOutput);
+  const releaseLog = renderReleaseNpmLogWidget();
+  if (releaseLog) elements.widgetArea.append(releaseLog);
+  const releaseAurOutput = renderReleaseAurOutputWidget();
+  if (releaseAurOutput) elements.widgetArea.append(releaseAurOutput);
+  const releaseAurLog = renderReleaseAurLogWidget();
+  if (releaseAurLog) elements.widgetArea.append(releaseAurLog);
+  const workflowSubprocessWidget = renderWorkflowSubprocessWidget();
+  if (workflowSubprocessWidget) elements.widgetArea.append(workflowSubprocessWidget);
+  const appRunnerWidget = renderAppRunnerWidget();
+  if (appRunnerWidget) elements.widgetArea.append(appRunnerWidget);
+  const btwWidget = renderBtwOutputWidget();
+  if (btwWidget) elements.widgetArea.append(btwWidget);
+
+  for (const [key, value] of widgets) {
+    const widgetFeatureId = optionalFeatureWidgetFeatureId(key);
+    if (widgetFeatureId && !isOptionalFeatureEnabled(widgetFeatureId)) continue;
+    if (widgetFeatureId && optionalFeatureWidgetHasSpecializedRenderer(key)) continue;
+    const lines = Array.isArray(value.widgetLines) ? value.widgetLines : [];
+    if (key === "pi-remote-webui") continue;
+    const specialized = key === "todo-progress" && isOptionalFeatureEnabled("todoProgressWidget") ? renderTodoProgressWidget(key, lines) : null;
+    if (specialized) {
+      elements.widgetArea.append(specialized);
+      continue;
+    }
+
+    const node = make("div", "widget");
+    const cleanLines = lines.map(stripAnsi);
+    node.textContent = `${key}\n${cleanLines.join("\n")}`;
+    elements.widgetArea.append(node);
+  }
+  restoreAppRunnerInputFocus(appRunnerInputFocus);
+}
+
+function setGitWorkflow(patch, { tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId);
+  if (!workflow) return null;
+  Object.assign(workflow, patch);
+  workflow.actionsDone = createGitWorkflowActionsDone(workflow.actionsDone);
+  if (patch.step && !("process" in patch)) workflow.process = gitWorkflowProcessForStep(workflow.step, workflow.process);
+  if (tabId === activeTabId) {
+    gitWorkflow = workflow;
+    renderGitWorkflow();
+  }
+  return workflow;
+}
+
+function isCurrentGitWorkflowRun(runId, tabId = activeTabId) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  return !!workflow?.active && workflow.runId === runId;
+}
+
+function appendGitWorkflowOutput(text, { tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId);
+  if (!workflow) return;
+  const next = `${workflow.output || ""}${workflow.output ? "\n" : ""}${text}`;
+  setGitWorkflow({ output: next.slice(-60000) }, { tabId });
+}
+
+function formatGitCommandResult(result) {
+  if (!result) return "";
+  const lines = [`$ ${result.command || "git"}`];
+  if (result.stdout?.trim()) lines.push("", result.stdout.trimEnd());
+  if (result.stderr?.trim()) lines.push("", result.stderr.trimEnd());
+  if (result.exitCode !== 0 || result.signal || result.timedOut || result.cancelled) {
+    lines.push("", `[exit: ${result.exitCode ?? result.signal ?? "unknown"}${result.timedOut ? ", timed out" : ""}${result.cancelled ? ", cancelled" : ""}]`);
+  }
+  return lines.join("\n");
+}
+
+function gitWorkflowMessagePreviewPath(message, key, fallback) {
+  return normalizeDisplayPath(message?.[`${key}RelativePath`] || message?.[`${key}RepoRelativePath`] || fallback);
+}
+
+function formatCommitMessagePreview(message) {
+  if (!message) return "No commit message loaded yet.";
+  const shortPath = gitWorkflowMessagePreviewPath(message, "short", "dev/COMMIT/staged-commit-short.txt");
+  const longPath = gitWorkflowMessagePreviewPath(message, "long", "dev/COMMIT/staged-commit-long.txt");
+  return [`=== SHORT (${shortPath}) ===`, message.short || "(empty)", "", `=== LONG (${longPath}) ===`, message.long || "(empty)"].join("\n");
+}
+
+function formatInputCommitMessagePreview(message) {
+  return [`=== INPUT ===`, String(message || "").trim() || "(empty)"].join("\n");
+}
+
+function gitWorkflowMessageTitle(message) {
+  return String(message?.short || message?.long || "").split("\n").find((line) => line.trim())?.trim() || "Pull request";
+}
+
+function slugifyGitBranchPart(value) {
+  return String(value || "")
+    .normalize("NFKD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 48);
+}
+
+function defaultGitPrBranchName(message = gitWorkflow.message) {
+  const title = gitWorkflowMessageTitle(message);
+  const match = title.match(/^([a-z][a-z0-9-]*)(?:\([^)]*\))?:\s*(.+)$/i);
+  const type = slugifyGitBranchPart(match?.[1] || "feat") || "feat";
+  const summary = slugifyGitBranchPart(match?.[2] || title) || "feature";
+  return `${type}/${summary}`;
+}
+
+function formatGitPrPreview(pr) {
+  if (!pr) return "No PR description loaded yet.";
+  const header = [`=== PR DESCRIPTION ===`, `Branch: ${pr.branch || gitWorkflow.prBranch || "current branch"}`];
+  if (pr.path) header.push(`File: ${pr.path}`);
+  return [...header, "", pr.body || "(empty)"].join("\n");
+}
+
+function readGitFooterStatusSetup() {
+  try {
+    const parsed = JSON.parse(localStorage.getItem(GIT_FOOTER_STATUS_SETUP_STORAGE_KEY) || "{}");
+    const githubUsername = typeof parsed?.githubUsername === "string" ? parsed.githubUsername.trim() : "";
+    return { githubUsername };
+  } catch {
+    return { githubUsername: "" };
+  }
+}
+
+function cleanGitHubUsernameInput(value) {
+  const username = String(value || "").trim().replace(/^@+/, "");
+  if (!username) throw new Error("GitHub username is required.");
+  if (username.length > 39 || !/^[A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?$/.test(username) || username.includes("--")) {
+    throw new Error("GitHub username must be 1-39 letters/numbers/hyphens, without leading/trailing or repeated hyphens.");
+  }
+  return username;
+}
+
+function cleanGitHubRepoNameInput(value) {
+  let repoName = String(value || "").trim();
+  const githubUrlMatch = repoName.match(/github\.com[:/][^/\s]+\/([^/\s]+?)(?:\.git)?\/?$/i);
+  if (githubUrlMatch) repoName = githubUrlMatch[1];
+  if (repoName.includes("/")) repoName = repoName.split("/").filter(Boolean).pop() || "";
+  repoName = repoName.replace(/\.git$/i, "");
+  if (!repoName) throw new Error("GitHub repository name is required.");
+  if (repoName.length > 100 || repoName === "." || repoName === ".." || !/^[A-Za-z0-9._-]+$/.test(repoName)) {
+    throw new Error("GitHub repository name may only contain letters, numbers, dots, underscores, and hyphens.");
+  }
+  return repoName;
+}
+
+function writeGitFooterStatusSetup(setup) {
+  try {
+    localStorage.setItem(GIT_FOOTER_STATUS_SETUP_STORAGE_KEY, JSON.stringify({ githubUsername: setup.githubUsername }));
+  } catch {
+    addEvent("Could not persist git-footer-status-setup in browser storage; it will be asked again next time.", "warn");
+  }
+}
+
+function cleanGitInitStack(value) {
+  return String(value || "").replace(/\s+/g, " ").trim().slice(0, 160);
+}
+
+function readStoredGitInitStack() {
+  try {
+    return cleanGitInitStack(localStorage.getItem(GIT_INIT_STACK_STORAGE_KEY) || "");
+  } catch {
+    return "";
+  }
+}
+
+function writeStoredGitInitStack(stack) {
+  const cleanStack = cleanGitInitStack(stack);
+  try {
+    if (cleanStack) localStorage.setItem(GIT_INIT_STACK_STORAGE_KEY, cleanStack);
+    else localStorage.removeItem(GIT_INIT_STACK_STORAGE_KEY);
+  } catch {
+    addEvent("Could not persist the repository stack in browser storage.", "warn");
+  }
+  return cleanStack;
+}
+
+function gitInitStackDisplay(stack = "") {
+  const cleanStack = cleanGitInitStack(stack);
+  return cleanStack || "Auto-detect from codebase";
+}
+
+function gitInitFilesStatusSummary(status) {
+  if (!status) return "README.md and .gitignore status: not checked yet.";
+  const readme = status.readmeExists ? "README.md exists; it will be staged without overwriting." : "README.md is missing; it will be created.";
+  const gitignore = status.gitignoreExists ? ".gitignore exists; it will be staged without overwriting." : ".gitignore is missing; Pi will be prompted to generate it.";
+  const detected = status.detectedStack ? `Detected stack hint: ${status.detectedStack}` : "Detected stack hint: none yet.";
+  return [readme, gitignore, detected].join("\n");
+}
+
+function configureGitFooterStatusSetup({ force = true } = {}) {
+  const current = readGitFooterStatusSetup();
+  if (current.githubUsername && !force) return current;
+  const value = window.prompt("git-footer-status-setup: GitHub username for origin remotes", current.githubUsername || "");
+  if (value === null) return null;
+  try {
+    const setup = { githubUsername: cleanGitHubUsernameInput(value) };
+    writeGitFooterStatusSetup(setup);
+    addEvent(`git-footer-status-setup saved GitHub username ${setup.githubUsername}`, "success");
+    return setup;
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+    return null;
+  }
+}
+
+function ensureGitFooterStatusSetup() {
+  const setup = readGitFooterStatusSetup();
+  if (setup.githubUsername) return setup;
+  return configureGitFooterStatusSetup({ force: true });
+}
+
+function defaultGitInitRepoName(tab = activeTab()) {
+  const cwd = latestWorkspace?.cwd || tab?.cwd || latestWorkspace?.displayCwd || "";
+  const lastPart = String(cwd).split(/[\\/]+/).filter(Boolean).pop() || "new-repo";
+  try {
+    return cleanGitHubRepoNameInput(lastPart);
+  } catch {
+    return "new-repo";
+  }
+}
+
+function gitInitRemoteUrl(username, repoName) {
+  return `https://github.com/${username}/${repoName}.git`;
+}
+
+function promptGitInitRepoName(workflow = gitWorkflow) {
+  const fallback = workflow?.repoName || defaultGitInitRepoName();
+  const value = window.prompt("GitHub repository name for origin remote", fallback);
+  if (value === null) return null;
+  try {
+    return cleanGitHubRepoNameInput(value);
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+    return null;
+  }
+}
+
+function ensureGitInitRemoteDetails(tabId = activeTabId) {
+  const workflow = gitWorkflowForTab(tabId, { create: false }) || gitWorkflow;
+  const setup = ensureGitFooterStatusSetup();
+  if (!setup?.githubUsername) return null;
+  const repoName = workflow.repoName ? cleanGitHubRepoNameInput(workflow.repoName) : promptGitInitRepoName(workflow);
+  if (!repoName) return null;
+  const remoteUrl = gitInitRemoteUrl(setup.githubUsername, repoName);
+  setGitWorkflow({ githubUsername: setup.githubUsername, repoName, remoteUrl }, { tabId });
+  return { username: setup.githubUsername, repoName, remoteUrl };
+}
+
+function gitInitWorkflowSetupSummary(workflow = gitWorkflow) {
+  const username = workflow.githubUsername || readGitFooterStatusSetup().githubUsername || "not set";
+  const repoName = workflow.repoName || defaultGitInitRepoName();
+  const remoteUrl = username !== "not set" ? gitInitRemoteUrl(username, repoName) : "not configured";
+  return [`GitHub username: ${username}`, `Repository name: ${repoName}`, `Stack: ${gitInitStackDisplay(workflow.stack)}`, `Origin URL: ${remoteUrl}`].join("\n");
+}
+
+function addGitWorkflowAction(label, handler, className = "", disabled = gitWorkflow.busy, tooltip = "") {
+  const button = make("button", className, label);
+  button.type = "button";
+  button.disabled = disabled;
+  if (tooltip) {
+    button.title = tooltip;
+    button.dataset.tooltip = tooltip;
+    button.setAttribute("aria-label", `${label}. ${tooltip.replace(/\s+/g, " ")}`);
+  }
+  button.addEventListener("click", handler);
+  elements.gitWorkflowActions.append(button);
+  return button;
+}
+
+function renderGitInitStackInput() {
+  const tabId = gitWorkflowActionTabId();
+  const workflow = gitWorkflowForTab(tabId, { create: false }) || gitWorkflow;
+  const storedStack = workflow?.stack || readStoredGitInitStack();
+  const row = make("div", "git-workflow-message-input-row git-workflow-stack-input-row");
+
+  const selectField = make("label", "git-workflow-message-input-field");
+  selectField.setAttribute("for", "gitWorkflowStackSelect");
+  selectField.append(make("span", "git-workflow-message-input-label", "Stack preset"));
+  const select = make("select", "git-workflow-message-input");
+  select.id = "gitWorkflowStackSelect";
+  for (const option of GIT_INIT_STACK_OPTIONS) {
+    const node = make("option", undefined, option.label);
+    node.value = option.value;
+    select.append(node);
+  }
+  const matching = GIT_INIT_STACK_OPTIONS.some((option) => option.value === storedStack);
+  select.value = matching ? storedStack : storedStack ? "Custom" : "";
+  selectField.append(select);
+
+  const inputField = make("label", "git-workflow-message-input-field");
+  inputField.setAttribute("for", "gitWorkflowStackInput");
+  inputField.append(make("span", "git-workflow-message-input-label", "Stack input"));
+  const input = make("input", "git-workflow-message-input");
+  input.id = "gitWorkflowStackInput";
+  input.type = "text";
+  input.value = storedStack;
+  input.placeholder = "e.g. Node.js + Vite + React, Python + FastAPI, Rust CLI";
+  input.autocomplete = "off";
+  input.spellcheck = false;
+  inputField.append(input);
+
+  const saveButton = make("button", "git-workflow-message-input-commit", "Save stack");
+  saveButton.type = "button";
+  saveButton.title = GIT_INIT_STACK_TOOLTIP;
+  saveButton.dataset.tooltip = GIT_INIT_STACK_TOOLTIP;
+  const saveStack = () => {
+    const stack = writeStoredGitInitStack(input.value);
+    const current = gitWorkflowForTab(tabId, { create: false });
+    if (!current) return;
+    setGitWorkflow({ step: "readme", stack, ...gitWorkflowActionDonePatch(current, "stack"), output: `Stack saved: ${gitInitStackDisplay(stack)}\n\nNext: check README.md and .gitignore before staging. ${stack ? "Pi will use this stack for .gitignore." : "Pi will inspect the codebase and fall back to sane defaults for .gitignore."}` }, { tabId });
+  };
+  select.addEventListener("change", () => {
+    if (select.value === "Custom") {
+      input.focus();
+      input.select();
+    } else {
+      input.value = select.value;
+    }
+  });
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    saveStack();
+  });
+  saveButton.addEventListener("click", saveStack);
+  row.append(selectField, inputField, saveButton);
+  elements.gitWorkflowActions.append(row);
+}
+
+function renderGitWorkflowManualCommitInput({ appendCommitButton = true } = {}) {
+  const tabId = gitWorkflowActionTabId();
+  const workflow = gitWorkflowForTab(tabId, { create: false }) || gitWorkflow;
+  const defaultCommitMessage = String(workflow?.manualCommitMessageDefault || "").trim();
+  const row = make("div", "git-workflow-message-input-row");
+  const field = make("label", "git-workflow-message-input-field");
+  field.setAttribute("for", "gitWorkflowManualCommitMessage");
+  field.append(make("span", "git-workflow-message-input-label", "Input commit message"));
+
+  const input = make("input", "git-workflow-message-input");
+  input.id = "gitWorkflowManualCommitMessage";
+  input.type = "text";
+  input.value = workflow?.manualCommitMessage || "";
+  input.placeholder = defaultCommitMessage || "Type a commit message to use instead of short/long";
+  input.autocomplete = "off";
+  input.spellcheck = true;
+
+  const commitButton = make("button", "git-workflow-message-input-commit", "Commit input");
+  commitButton.type = "button";
+  const updateCommitState = () => {
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    const message = String(input.value || "").trim() || String(currentWorkflow?.manualCommitMessageDefault || "").trim();
+    commitButton.disabled = !currentWorkflow || !!currentWorkflow.busy || !message;
+    if (message && !String(input.value || "").trim()) commitButton.title = `Use default commit message: ${message}`;
+    else commitButton.removeAttribute("title");
+  };
+  input.addEventListener("input", () => {
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (currentWorkflow) currentWorkflow.manualCommitMessage = input.value;
+    updateCommitState();
+  });
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    if (!commitButton.disabled) commitGitWorkflow("input", tabId);
+  });
+  commitButton.addEventListener("click", () => {
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (currentWorkflow) currentWorkflow.manualCommitMessage = input.value;
+    commitGitWorkflow("input", tabId);
+  });
+  updateCommitState();
+  loadGitWorkflowDefaultCommitMessage({ runId: workflow?.runId, tabId });
+
+  field.append(input);
+  row.append(field);
+  if (appendCommitButton) row.append(commitButton);
+  elements.gitWorkflowActions.append(row);
+  return commitButton;
+}
+
+function setGitPrDialogStatus(message = "", level = "muted") {
+  if (!elements.gitPrStatus) return;
+  elements.gitPrStatus.textContent = message;
+  elements.gitPrStatus.className = `git-pr-status ${level || "muted"}`;
+}
+
+function resolveGitPrDialog(value) {
+  const resolve = activeGitPrDialogResolve;
+  activeGitPrDialogResolve = null;
+  if (elements.gitPrDialog?.open) elements.gitPrDialog.close();
+  if (resolve) resolve(value);
+}
+
+function openGitPrReviewDialog(pr, { title = "" } = {}) {
+  if (!elements.gitPrDialog || !elements.gitPrTitleInput || !elements.gitPrBodyEditor) return Promise.resolve(null);
+  if (activeGitPrDialogResolve) resolveGitPrDialog(null);
+  elements.gitPrTitleInput.value = title || gitWorkflowMessageTitle(gitWorkflow.message);
+  elements.gitPrBodyEditor.value = pr?.body || "";
+  setGitPrDialogStatus(`Review ${pr?.path || "the generated PR description"}. Edit if needed, then create the pull request.`);
+  return new Promise((resolve) => {
+    activeGitPrDialogResolve = resolve;
+    elements.gitPrDialog.showModal();
+    queueMicrotask(() => elements.gitPrBodyEditor.focus());
+  });
+}
+
+function gitWorkflowProcessForStep(step = gitWorkflow.step, fallback = gitWorkflow.process || "stage") {
+  switch (step) {
+    case "initSetup":
+    case "initRepo":
+    case "initializingRepo":
+      return "init";
+    case "initStack":
+      return "stack";
+    case "readme":
+    case "readmeCreating":
+    case "readmeGenerating":
+    case "gitignoreGenerating":
+      return "readme";
+    case "initialCommit":
+    case "initialCommitting":
+      return "commit";
+    case "mainBranch":
+    case "mainBranching":
+      return "branch";
+    case "remote":
+    case "remoteAdding":
+      return "remote";
+    case "initialPush":
+    case "initialPushing":
+      return "push";
+    case "generate":
+    case "generating":
+      return "message";
+    case "message":
+    case "branchNaming":
+    case "branching":
+    case "committing":
+      return "commit";
+    case "push":
+    case "pushing":
+    case "prGenerating":
+    case "prReview":
+    case "prCreating":
+    case "done":
+      return "push";
+    case "add":
+    case "idle":
+      return "stage";
+    case "cancelled":
+    case "error":
+      return GIT_WORKFLOW_PROCESS_VALUES.has(fallback) || GIT_INIT_WORKFLOW_PROCESS_VALUES.has(fallback) ? fallback : "stage";
+    default:
+      return "stage";
+  }
+}
+
+function selectGitInitWorkflowProcess(processValue, tabId, workflow) {
+  const process = GIT_INIT_WORKFLOW_PROCESS_VALUES.has(processValue) ? processValue : "init";
+  workflow.runId += 1;
+  const username = workflow.githubUsername || readGitFooterStatusSetup().githubUsername || "";
+  const repoName = workflow.repoName || defaultGitInitRepoName();
+  const remoteUrl = username ? gitInitRemoteUrl(username, repoName) : "";
+  const stack = workflow.stack || readStoredGitInitStack();
+  const base = {
+    mode: "initRepo",
+    active: true,
+    process,
+    busy: false,
+    error: "",
+    githubUsername: username,
+    repoName,
+    remoteUrl,
+    stack,
+    readmeRequestedAt: 0,
+    gitignoreRequestedAt: 0,
+    initFilesStatus: null,
+    message: null,
+    manualCommitMessage: "",
+    ...resetGitWorkflowManualCommitDefaultPatch(),
+    messageRequestedAt: 0,
+    branchName: "",
+    branchNameRequestedAt: 0,
+    prMode: false,
+    prBranch: "",
+    pr: null,
+    prRequestedAt: 0,
+  };
+
+  if (process === "init") {
+    setGitWorkflow({ ...base, step: username ? "initRepo" : "initSetup", output: username ? `Ready to initialize a Git repository.\n\n${gitInitWorkflowSetupSummary(base)}` : "No GitHub username stored yet. Run git-footer-status-setup first." }, { tabId });
+    return;
+  }
+  if (process === "stack") {
+    setGitWorkflow({ ...base, step: "initStack", output: `Choose a repository stack before README/.gitignore preparation.\n\nCurrent stack: ${gitInitStackDisplay(stack)}` }, { tabId });
+    return;
+  }
+  if (process === "readme") {
+    setGitWorkflow({ ...base, step: "readme", output: "Ready to check README.md and .gitignore before staging them." }, { tabId });
+    return;
+  }
+  if (process === "commit") {
+    setGitWorkflow({ ...base, step: "initialCommit", output: "Ready to create the initial commit with message: Initial commit." }, { tabId });
+    return;
+  }
+  if (process === "branch") {
+    setGitWorkflow({ ...base, step: "mainBranch", output: "Ready to rename the current branch to main with git branch -M main." }, { tabId });
+    return;
+  }
+  if (process === "remote") {
+    setGitWorkflow({ ...base, step: "remote", output: `Ready to add origin.\n\n${gitInitWorkflowSetupSummary(base)}` }, { tabId });
+    return;
+  }
+  setGitWorkflow({ ...base, step: "initialPush", output: "Ready to run git push -u origin main." }, { tabId });
+}
+
+function selectGitWorkflowProcess(processValue, tabId = gitWorkflowActionTabId()) {
+  const workflow = gitWorkflowForTab(tabId);
+  if (!workflow) return;
+  if (workflow.mode === "initRepo") {
+    selectGitInitWorkflowProcess(processValue, tabId, workflow);
+    return;
+  }
+  const process = GIT_WORKFLOW_PROCESS_VALUES.has(processValue) ? processValue : "stage";
+  workflow.runId += 1;
+  const runId = workflow.runId;
+  const base = { mode: "standard", active: true, process, busy: false, error: "", githubUsername: "", repoName: "", remoteUrl: "", stack: "", readmeRequestedAt: 0, gitignoreRequestedAt: 0, initFilesStatus: null, manualCommitMessage: "", ...resetGitWorkflowManualCommitDefaultPatch(), messageRequestedAt: 0, branchName: "", branchNameRequestedAt: 0, prMode: false, prBranch: "", pr: null, prRequestedAt: 0 };
+
+  if (process === "stage") {
+    setGitWorkflow({ ...base, step: "add", message: null, output: "Ready to stage all changes with git add ." }, { tabId });
+    return;
+  }
+  if (process === "message") {
+    setGitWorkflow({ ...base, step: "generate", message: null, output: "Ready to generate a commit message from the currently staged changes, or type one and commit it directly." }, { tabId });
+    return;
+  }
+  if (process === "commit") {
+    setGitWorkflow({ ...base, step: "message", message: null, output: "Loading current generated commit message files…" }, { tabId });
+    loadGitWorkflowMessage({ requireFresh: false, runId, tabId });
+    return;
+  }
+  setGitWorkflow({ ...base, step: "push", output: "Ready to run git push for the current branch." }, { tabId });
+}
+
+function gitWorkflowTitle() {
+  switch (gitWorkflow.step) {
+    case "initSetup": return "Set up GitHub username";
+    case "initRepo": return "Initialize Git repository";
+    case "initializingRepo": return "Running git init";
+    case "initStack": return "Choose repository stack";
+    case "readme": return "Prepare README and .gitignore";
+    case "readmeCreating": return "Preparing README and .gitignore";
+    case "readmeGenerating": return "Waiting for README";
+    case "gitignoreGenerating": return "Waiting for .gitignore";
+    case "initialCommit": return "Create initial commit";
+    case "initialCommitting": return "Committing initial files";
+    case "mainBranch": return "Rename branch to main";
+    case "mainBranching": return "Running git branch -M main";
+    case "remote": return "Add origin remote";
+    case "remoteAdding": return "Adding origin remote";
+    case "initialPush": return "Push main upstream";
+    case "initialPushing": return "Pushing main";
+    case "add": return "Stage all changes";
+    case "generate": return "Generate staged commit message";
+    case "generating": return "Waiting for /git-staged-msg";
+    case "message": return gitWorkflow.prMode ? "Choose PR branch commit message" : "Choose commit message";
+    case "branchNaming": return "Waiting for branch name";
+    case "branching": return "Opening PR branch worktree";
+    case "committing": return "Committing";
+    case "push": return gitWorkflow.prMode ? "Push branch and create PR" : "Push commit";
+    case "pushing": return "Pushing";
+    case "prGenerating": return "Waiting for /pr";
+    case "prReview": return "Review PR description";
+    case "prCreating": return "Creating pull request";
+    case "done": return gitWorkflow.mode === "initRepo" ? "Git repository setup complete" : "Git workflow complete";
+    case "cancelled": return gitWorkflow.mode === "initRepo" ? "Git repository setup cancelled" : "Git workflow cancelled";
+    case "error": return gitWorkflow.mode === "initRepo" ? "Git repository setup needs attention" : "Git workflow needs attention";
+    default: return gitWorkflow.mode === "initRepo" ? "Git repository setup" : "Git workflow";
+  }
+}
+
+function gitWorkflowHint() {
+  switch (gitWorkflow.step) {
+    case "initSetup": return "First-time setup: save the GitHub username used in https://github.com/USERNAME/REPO_NAME.git.";
+    case "initRepo": return "Step 1: run git init in the current Pi working directory.";
+    case "initializingRepo": return "Running git init. Cancel will terminate the git command.";
+    case "initStack": return "Step 2: choose a stack preset or type one; leave blank to let Pi infer it from the codebase.";
+    case "readme": return "Step 3: check README.md and .gitignore, prompt Pi for missing files, then stage them.";
+    case "readmeCreating": return "Checking README.md/.gitignore, creating missing files if needed, and staging them.";
+    case "readmeGenerating": return "Pi is filling out README.md from the selected stack and repository contents.";
+    case "gitignoreGenerating": return "Pi is generating .gitignore from the selected stack or by inspecting the codebase.";
+    case "initialCommit": return "Step 4: run git commit -m \"Initial commit\".";
+    case "initialCommitting": return "Creating the initial commit.";
+    case "mainBranch": return "Step 5: run git branch -M main.";
+    case "mainBranching": return "Renaming the current branch to main.";
+    case "remote": return "Step 6: add origin as https://github.com/USERNAME/REPO_NAME.git.";
+    case "remoteAdding": return "Adding the GitHub origin remote.";
+    case "initialPush": return "Step 7: run git push -u origin main.";
+    case "initialPushing": return "Pushing main upstream. Authentication must already be available to git.";
+    case "add": return "Step 1: run git add . in the current Pi working directory.";
+    case "generate": return "Step 2: run /git-staged-msg, or type a commit message and use Commit input.";
+    case "generating": return "Pi is generating dev/COMMIT/staged-commit-short.txt and staged-commit-long.txt.";
+    case "message": return gitWorkflow.prMode ? `Worktree branch ${gitWorkflow.prBranch || "created"}: choose short, long, or typed input before opening a PR.` : "Step 3/4: preview the native g-msg output, type a commit message if needed, commit here, or create a PR branch worktree first.";
+    case "branchNaming": return "Pi is generating dev/COMMIT/staged-branch-name.txt for a PR branch worktree. Cancel will request Pi abort.";
+    case "branching": return "Creating or opening a branch worktree, copying staged changes, and switching to that tab before committing.";
+    case "committing": return "Running native git commit with the selected message.";
+    case "push": return gitWorkflow.prMode ? "Push the PR worktree branch, generate /pr, review the description, then create the pull request." : "Step 5: push the new commit to the configured remote.";
+    case "pushing": return "Running git push. Cancel will request process termination.";
+    case "prGenerating": return "Pi is generating dev/PR/<current-branch>.md with /pr.";
+    case "prReview": return "Review or edit the generated PR description before creating the pull request.";
+    case "prCreating": return "Running gh pr create with the confirmed description.";
+    case "done": return gitWorkflow.mode === "initRepo" ? "Initial repository workflow finished. Review the output below." : gitWorkflow.prMode ? "PR workflow finished. Review the output below." : "Push finished. Review the output below.";
+    case "cancelled": return "No further workflow steps will run.";
+    case "error": return gitWorkflow.error || "Fix the issue, then retry or restart.";
+    default: return gitWorkflow.mode === "initRepo" ? "Initialize a repository, create README.md, commit, add origin, and push main." : "Stage changes, generate a commit message, commit, and push.";
+  }
+}
+
+function renderGitInitWorkflowActions() {
+  if (gitWorkflow.step === "initSetup") {
+    addGitWorkflowAction("git-footer-status-setup", () => {
+      const setup = configureGitFooterStatusSetup({ force: true });
+      if (!setup?.githubUsername) return;
+      const repoName = gitWorkflow.repoName || defaultGitInitRepoName();
+      const stack = gitWorkflow.stack || readStoredGitInitStack();
+      setGitWorkflow({ step: "initRepo", githubUsername: setup.githubUsername, repoName, stack, remoteUrl: gitInitRemoteUrl(setup.githubUsername, repoName), output: `Ready to initialize a Git repository.\n\n${gitInitWorkflowSetupSummary({ githubUsername: setup.githubUsername, repoName, stack })}` });
+    }, "primary", false, GIT_FOOTER_STATUS_SETUP_TOOLTIP);
+  } else if (gitWorkflow.step === "initRepo") {
+    addGitWorkflowAction("Run git init", () => runGitInitRepository(), "primary", false, "Run git init in the current Pi working directory.");
+  } else if (gitWorkflow.step === "initializingRepo") {
+    addGitWorkflowAction("Running git init…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "initStack") {
+    renderGitInitStackInput();
+    addGitWorkflowAction("Skip / auto-detect", () => {
+      const workflow = gitWorkflowForTab(gitWorkflowActionTabId(), { create: false }) || gitWorkflow;
+      writeStoredGitInitStack("");
+      setGitWorkflow({ step: "readme", stack: "", ...gitWorkflowActionDonePatch(workflow, "stack"), output: "Stack left blank. Pi will inspect the codebase for .gitignore and fallback to sane defaults.\n\nNext: check README.md and .gitignore before staging." });
+    }, "", false, GIT_INIT_STACK_TOOLTIP);
+  } else if (gitWorkflow.step === "readme") {
+    addGitWorkflowAction("Check and prepare files", () => prepareGitInitFiles(), "primary", false, "Check README.md and .gitignore first; create missing README.md; prompt Pi to generate missing .gitignore.");
+  } else if (gitWorkflow.step === "readmeCreating") {
+    addGitWorkflowAction("Preparing files…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "readmeGenerating") {
+    addGitWorkflowAction("Waiting for Pi…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "gitignoreGenerating") {
+    addGitWorkflowAction("Waiting for Pi…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "initialCommit") {
+    addGitWorkflowAction("Commit initial files", () => commitGitInitialReadme(), "primary", false, "Run git commit -m \"Initial commit\".");
+  } else if (gitWorkflow.step === "initialCommitting") {
+    addGitWorkflowAction("Committing…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "mainBranch") {
+    addGitWorkflowAction("Run git branch -M main", () => branchGitInitMain(), "primary", false, "Rename the current branch to main.");
+  } else if (gitWorkflow.step === "mainBranching") {
+    addGitWorkflowAction("Renaming branch…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "remote") {
+    addGitWorkflowAction("Add origin remote", () => addGitInitRemote(), "primary", false, GIT_INIT_REMOTE_TOOLTIP);
+    addGitWorkflowAction("git-footer-status-setup", () => {
+      const setup = configureGitFooterStatusSetup({ force: true });
+      if (!setup?.githubUsername) return;
+      const repoName = gitWorkflow.repoName || defaultGitInitRepoName();
+      const stack = gitWorkflow.stack || readStoredGitInitStack();
+      setGitWorkflow({ githubUsername: setup.githubUsername, repoName, stack, remoteUrl: gitInitRemoteUrl(setup.githubUsername, repoName), output: `Ready to add origin.\n\n${gitInitWorkflowSetupSummary({ githubUsername: setup.githubUsername, repoName, stack })}` });
+    }, "", false, GIT_FOOTER_STATUS_SETUP_TOOLTIP);
+  } else if (gitWorkflow.step === "remoteAdding") {
+    addGitWorkflowAction("Adding origin…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "initialPush") {
+    addGitWorkflowAction("Run git push -u origin main", () => pushGitInitWorkflow(), "primary", false, "Push main to origin and set upstream tracking.");
+  } else if (gitWorkflow.step === "initialPushing") {
+    addGitWorkflowAction("Pushing main…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "done") {
+    addGitWorkflowAction("Close", () => setGitWorkflow({ active: false }), "primary", false);
+    addGitWorkflowAction("Initialize another", () => startGitInitWorkflow(), "", false);
+  } else if (["cancelled", "error"].includes(gitWorkflow.step)) {
+    addGitWorkflowAction("Close", () => setGitWorkflow({ active: false }), "primary", false);
+    addGitWorkflowAction("Restart setup", () => startGitInitWorkflow(), "", false);
+  }
+}
+
+function renderGitWorkflow() {
+  elements.gitWorkflowPanel.hidden = !gitWorkflow.active;
+  if (!gitWorkflow.active) return;
+
+  elements.gitWorkflowPanel.dataset.mode = gitWorkflow.mode || "standard";
+  if (elements.gitWorkflowKicker) elements.gitWorkflowKicker.textContent = gitWorkflow.mode === "initRepo" ? "Git repository setup" : "Git workflow";
+  elements.gitWorkflowTitle.textContent = gitWorkflowTitle();
+  elements.gitWorkflowHint.textContent = gitWorkflowHint();
+  elements.gitWorkflowOutput.textContent = gitWorkflow.output || "Ready.";
+  elements.gitWorkflowSteps.replaceChildren();
+  elements.gitWorkflowActions.replaceChildren();
+
+  const processes = gitWorkflow.mode === "initRepo" ? GIT_INIT_WORKFLOW_PROCESSES : GIT_WORKFLOW_PROCESSES;
+  const activeIndexMap = gitWorkflow.mode === "initRepo" ? GIT_INIT_WORKFLOW_ACTIVE_INDEX : GIT_WORKFLOW_ACTIVE_INDEX;
+  const activeIndex = activeIndexMap[gitWorkflow.step] ?? 0;
+  const activeProcess = gitWorkflowProcessForStep(gitWorkflow.step, gitWorkflow.process);
+  for (const [index, process] of processes.entries()) {
+    const item = make("button", "git-workflow-step", process.label);
+    item.type = "button";
+    item.dataset.gitWorkflowProcess = process.value;
+    item.disabled = !!gitWorkflow.busy;
+    item.setAttribute("aria-pressed", String(process.value === activeProcess));
+    if (gitWorkflowActionDone(gitWorkflow, process.value)) item.classList.add("done");
+    if (index === activeIndex && !["done", "cancelled", "error"].includes(gitWorkflow.step)) item.classList.add("active");
+    elements.gitWorkflowSteps.append(item);
+  }
+
+  elements.gitWorkflowCancelButton.hidden = ["done", "cancelled"].includes(gitWorkflow.step);
+  elements.gitWorkflowCancelButton.disabled = false;
+
+  if (gitWorkflow.mode === "initRepo") {
+    renderGitInitWorkflowActions();
+    return;
+  }
+
+  if (gitWorkflow.step === "add") {
+    addGitWorkflowAction("Run git add .", () => runGitAdd(), "primary", false);
+  } else if (gitWorkflow.step === "generate") {
+    const commitInputButton = renderGitWorkflowManualCommitInput({ appendCommitButton: false });
+    addGitWorkflowAction("Run /git-staged-msg", () => runGitMessagePrompt(), "primary", false);
+    addGitWorkflowAction("Preview current message files", () => loadGitWorkflowMessage({ requireFresh: false }), "", false);
+    elements.gitWorkflowActions.append(commitInputButton);
+  } else if (gitWorkflow.step === "generating") {
+    addGitWorkflowAction("Refresh message preview", () => loadGitWorkflowMessage({ requireFresh: true }), "", false);
+  } else if (gitWorkflow.step === "message") {
+    if (!gitWorkflow.prMode) {
+      addGitWorkflowAction("Create PR worktree", () => createGitPrBranch(), "primary", false, GIT_WORKFLOW_CREATE_PR_TOOLTIP);
+      addGitWorkflowAction("Manual worktree", () => createGitPrBranchManually(), "", false, GIT_WORKFLOW_MANUAL_BRANCH_TOOLTIP);
+    }
+    const commitInputButton = renderGitWorkflowManualCommitInput({ appendCommitButton: false });
+    addGitWorkflowAction("Commit short", () => commitGitWorkflow("short"), gitWorkflow.prMode ? "primary" : "", false);
+    addGitWorkflowAction("Commit long", () => commitGitWorkflow("long"), gitWorkflow.prMode ? "primary" : "", false);
+    addGitWorkflowAction("Regenerate", () => runGitMessagePrompt(), "", false);
+    elements.gitWorkflowActions.append(commitInputButton);
+  } else if (gitWorkflow.step === "branchNaming") {
+    addGitWorkflowAction("Refresh branch name", () => loadGitWorkflowBranchName({ requireFresh: true }), "", false);
+    addGitWorkflowAction("Manual worktree", () => createGitPrBranchManually(), "", !!gitWorkflow.busy, GIT_WORKFLOW_MANUAL_BRANCH_TOOLTIP);
+  } else if (gitWorkflow.step === "branching") {
+    addGitWorkflowAction("Opening worktree…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "push") {
+    if (gitWorkflow.prMode) addGitWorkflowAction("Push and Create PR", () => pushAndCreatePrGitWorkflow(), "primary", false);
+    else addGitWorkflowAction("Run git push", () => pushGitWorkflow(), "primary", false);
+  } else if (gitWorkflow.step === "prGenerating") {
+    addGitWorkflowAction("Refresh PR description", () => loadGitWorkflowPr({ requireFresh: true }), "", false);
+  } else if (gitWorkflow.step === "prReview") {
+    addGitWorkflowAction("Create PR", () => createGitPrFromReview(), "primary", false);
+    addGitWorkflowAction("Regenerate /pr", () => runGitPrPrompt(), "", false);
+  } else if (gitWorkflow.step === "prCreating") {
+    addGitWorkflowAction("Creating PR…", () => {}, "primary", true);
+  } else if (gitWorkflow.step === "done") {
+    addGitWorkflowAction("Close", () => setGitWorkflow({ active: false }), "primary", false);
+    addGitWorkflowAction("Start another", () => startGitWorkflow(), "", false);
+  } else if (["cancelled", "error"].includes(gitWorkflow.step)) {
+    addGitWorkflowAction("Close", () => setGitWorkflow({ active: false }), "primary", false);
+    addGitWorkflowAction("Restart", () => startGitWorkflow(), "", false);
+  }
+}
+
+async function gitWorkflowRequest(path, { method = "POST", body = {}, runId, tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  const expectedRunId = runId ?? workflow?.runId;
+  let response;
+  try {
+    response = await api(path, method === "GET" ? { method, tabId } : { method, body, tabId });
+  } catch (error) {
+    if (error?.statusCode === 404 && path.startsWith("/api/git-workflow/")) {
+      throw new Error("Git workflow endpoint not found. Restart Pi Web UI so the browser and backend both load the latest git repository setup endpoints.");
+    }
+    throw error;
+  }
+  if (expectedRunId !== undefined && !isCurrentGitWorkflowRun(expectedRunId, tabId)) return null;
+  if (!response.ok) {
+    const detail = response.data ? `\n\n${formatGitCommandResult(response.data)}` : "";
+    throw new Error(`${response.error || "Git workflow request failed"}${detail}`);
+  }
+  return response.data;
+}
+
+function failGitWorkflow(error, step, { tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId);
+  if (!workflow) return;
+  const message = error?.message || String(error);
+  setGitWorkflow({
+    step: step || workflow.step || "error",
+    busy: false,
+    error: message,
+    output: `${workflow.output || ""}${workflow.output ? "\n\n" : ""}ERROR: ${message}`.slice(-60000),
+  }, { tabId });
+}
+
+function startGitWorkflow(tabId = activeTabId) {
+  if (!tabId) return;
+  if (!isOptionalFeatureEnabled("gitWorkflow")) {
+    const tabContext = activeTabContext(tabId);
+    addEvent(commandUnavailableMessage("git-staged-msg"), "warn");
+    refreshCommands(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+    });
+    return;
+  }
+  const workflow = gitWorkflowForTab(tabId);
+  if (workflow.active && !["done", "cancelled", "error"].includes(workflow.step) && !confirm("Restart the active git workflow?")) return;
+  workflow.runId += 1;
+  setGitWorkflow({
+    active: true,
+    mode: "standard",
+    step: "add",
+    process: "stage",
+    busy: false,
+    output: "Ready to stage all changes with git add .\n\nNative mode is used for g-msg/g-short/g-long: dev/COMMIT message files are read directly and git commit is run without fish. In the Message stage you can also type a commit message and use Commit input. After the message is generated, use Create PR worktree to open a branch worktree before committing.",
+    error: "",
+    githubUsername: "",
+    repoName: "",
+    remoteUrl: "",
+    stack: "",
+    readmeRequestedAt: 0,
+    gitignoreRequestedAt: 0,
+    initFilesStatus: null,
+    message: null,
+    manualCommitMessage: "",
+    ...resetGitWorkflowManualCommitDefaultPatch(),
+    messageRequestedAt: 0,
+    branchName: "",
+    branchNameRequestedAt: 0,
+    actionsDone: createGitWorkflowActionsDone(),
+    prMode: false,
+    prBranch: "",
+    pr: null,
+    prRequestedAt: 0,
+  }, { tabId });
+}
+
+function startGitInitWorkflow(tabId = activeTabId) {
+  if (!tabId) return;
+  const workflow = gitWorkflowForTab(tabId);
+  if (workflow.active && !["done", "cancelled", "error"].includes(workflow.step) && !confirm("Restart the active git repository setup workflow?")) return;
+  const setup = readGitFooterStatusSetup().githubUsername ? readGitFooterStatusSetup() : configureGitFooterStatusSetup({ force: true });
+  const githubUsername = setup?.githubUsername || "";
+  const repoName = defaultGitInitRepoName(tabs.find((tab) => tab.id === tabId) || activeTab());
+  const stack = readStoredGitInitStack();
+  workflow.runId += 1;
+  setGitWorkflow({
+    active: true,
+    mode: "initRepo",
+    step: githubUsername ? "initRepo" : "initSetup",
+    process: "init",
+    busy: false,
+    output: githubUsername
+      ? `Ready to initialize a Git repository.\n\n${gitInitWorkflowSetupSummary({ githubUsername, repoName, stack })}`
+      : "No GitHub username stored yet. Run git-footer-status-setup to save the username for https://github.com/USERNAME/REPO_NAME.git.",
+    error: "",
+    githubUsername,
+    repoName,
+    remoteUrl: githubUsername ? gitInitRemoteUrl(githubUsername, repoName) : "",
+    stack,
+    readmeRequestedAt: 0,
+    gitignoreRequestedAt: 0,
+    initFilesStatus: null,
+    message: null,
+    manualCommitMessage: "",
+    ...resetGitWorkflowManualCommitDefaultPatch(),
+    messageRequestedAt: 0,
+    branchName: "",
+    branchNameRequestedAt: 0,
+    actionsDone: createGitWorkflowActionsDone(),
+    prMode: false,
+    prBranch: "",
+    pr: null,
+    prRequestedAt: 0,
+  }, { tabId });
+}
+
+async function runGitInitRepository(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "initializingRepo", busy: true, error: "", output: "Running git init…" }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/init", { runId, tabId });
+    if (!result) return;
+    const stack = workflow.stack || readStoredGitInitStack();
+    setGitWorkflow({ step: "initStack", busy: false, stack, ...gitWorkflowActionDonePatch(workflow, "init"), output: `${formatGitCommandResult(result)}\n\nRepository initialized. Next: choose the stack used for .gitignore generation.\n\nCurrent stack: ${gitInitStackDisplay(stack)}` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "initRepo", { tabId });
+  }
+}
+
+function gitInitFilesResultSummary(result) {
+  const readme = result?.readme?.created
+    ? "Created README.md."
+    : result?.readme?.exists
+      ? "README.md already existed; staged without overwriting."
+      : "README.md was checked.";
+  const gitignore = result?.gitignore?.created
+    ? `Created .gitignore${result.gitignore.source ? ` (${result.gitignore.source})` : ""}.`
+    : result?.gitignore?.exists
+      ? ".gitignore already existed; staged without overwriting."
+      : ".gitignore was checked.";
+  return [readme, gitignore].join("\n");
+}
+
+function gitInitReadmePromptMessage({ stack = "", status = null, repoName = "" } = {}) {
+  const cleanStack = cleanGitInitStack(stack);
+  return [
+    "Create a useful README.md for this new repository.",
+    "Write or update only README.md in the current repository root. Do not commit, push, or run git add.",
+    repoName ? `Repository name: ${repoName}` : "",
+    cleanStack
+      ? `User-provided stack: ${cleanStack}`
+      : "No user stack was provided. Inspect the codebase (package manifests, lockfiles, framework configs, file extensions, build files) and infer the project purpose/stack.",
+    !cleanStack && status?.detectedStack ? `Web UI detected stack hint: ${status.detectedStack}` : "",
+    "Include a clear title, short description, basic setup/install instructions, common development commands, and usage notes that match the detected repository.",
+    "If the repository is mostly empty or unclear, create a concise README with placeholders/TODOs rather than inventing unsupported project details.",
+  ].filter(Boolean).join("\n");
+}
+
+function gitInitGitignorePromptMessage({ stack = "", status = null, repoName = "" } = {}) {
+  const cleanStack = cleanGitInitStack(stack);
+  return [
+    "Create a practical .gitignore file for this repository initialization.",
+    "Write or update only .gitignore in the current repository root. Do not commit, push, or run git add.",
+    repoName ? `Repository name: ${repoName}` : "",
+    cleanStack
+      ? `User-provided stack: ${cleanStack}`
+      : "No user stack was provided. Inspect the codebase (package manifests, lockfiles, framework configs, file extensions, build files) and infer the stack.",
+    !cleanStack && status?.detectedStack ? `Web UI detected stack hint: ${status.detectedStack}` : "",
+    "If the stack is still unclear, use sane defaults for OS/editor files, local env/secrets, dependency folders, build outputs, logs, caches, coverage, and temporary files.",
+    "Keep useful generated/project files trackable; do not ignore source files or lockfiles by default.",
+  ].filter(Boolean).join("\n");
+}
+
+async function promptGitInitReadme(status, { runId, tabId }) {
+  const tabContext = activeTabContext(tabId);
+  const targetTab = tabs.find((tab) => tab.id === tabId);
+  const targetBusy = tabId === activeTabId ? !!currentState?.isStreaming : activityForTab(targetTab).isWorking;
+  if (targetBusy) {
+    failGitWorkflow(new Error("Pi is currently running. Wait for it to finish or abort before filling out README.md."), "readme", { tabId });
+    return;
+  }
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const requestedAt = Date.now();
+  const repoName = workflow.repoName || defaultGitInitRepoName();
+  const stack = workflow.stack || "";
+  setGitWorkflow({
+    step: "readmeGenerating",
+    busy: true,
+    error: "",
+    readmeRequestedAt: requestedAt,
+    initFilesStatus: status,
+    output: `${gitInitFilesStatusSummary(status)}\n\nSending README.md fill-out request to Pi.\n\nStack: ${gitInitStackDisplay(stack)}\nCancel will request Pi abort.`,
+  }, { tabId });
+  if (isCurrentTabContext(tabContext)) setRunIndicatorActivity("Sending README.md fill-out request to Pi…");
+  try {
+    await api("/api/prompt", { method: "POST", body: { message: gitInitReadmePromptMessage({ stack, status, repoName }) }, tabId });
+    if (!isCurrentGitWorkflowRun(runId, tabId)) return;
+    appendGitWorkflowOutput("README.md request accepted. Waiting for agent_end, then README.md/.gitignore will be checked and staged. If Pi does not create README.md, Web UI will use a minimal fallback README.", { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshState(120, tabContext);
+    setTimeout(() => {
+      const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+      const targetStillBusy = tabId === activeTabId && currentState?.isStreaming;
+      if (isCurrentGitWorkflowRun(runId, tabId) && currentWorkflow?.step === "readmeGenerating" && !targetStillBusy) {
+        prepareGitInitFiles({ afterReadmePrompt: true, runId, tabId });
+      }
+    }, 2500);
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) {
+      if (isCurrentTabContext(tabContext)) clearRunIndicatorActivity();
+      failGitWorkflow(error, "readme", { tabId });
+    }
+  }
+}
+
+async function promptGitInitGitignore(status, { runId, tabId }) {
+  const tabContext = activeTabContext(tabId);
+  const targetTab = tabs.find((tab) => tab.id === tabId);
+  const targetBusy = tabId === activeTabId ? !!currentState?.isStreaming : activityForTab(targetTab).isWorking;
+  if (targetBusy) {
+    failGitWorkflow(new Error("Pi is currently running. Wait for it to finish or abort before generating .gitignore."), "readme", { tabId });
+    return;
+  }
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const requestedAt = Date.now();
+  const repoName = workflow.repoName || defaultGitInitRepoName();
+  const stack = workflow.stack || "";
+  setGitWorkflow({
+    step: "gitignoreGenerating",
+    busy: true,
+    error: "",
+    gitignoreRequestedAt: requestedAt,
+    initFilesStatus: status,
+    output: `${gitInitFilesStatusSummary(status)}\n\nSending .gitignore generation request to Pi.\n\nStack: ${gitInitStackDisplay(stack)}\nCancel will request Pi abort.`,
+  }, { tabId });
+  if (isCurrentTabContext(tabContext)) setRunIndicatorActivity("Sending .gitignore generation request to Pi…");
+  try {
+    await api("/api/prompt", { method: "POST", body: { message: gitInitGitignorePromptMessage({ stack, status, repoName }) }, tabId });
+    if (!isCurrentGitWorkflowRun(runId, tabId)) return;
+    appendGitWorkflowOutput(".gitignore request accepted. Waiting for agent_end, then README.md/.gitignore will be staged. If Pi does not create .gitignore, Web UI will use sane fallback patterns.", { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshState(120, tabContext);
+    setTimeout(() => {
+      const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+      const targetStillBusy = tabId === activeTabId && currentState?.isStreaming;
+      if (isCurrentGitWorkflowRun(runId, tabId) && currentWorkflow?.step === "gitignoreGenerating" && !targetStillBusy) {
+        prepareGitInitFiles({ afterGitignorePrompt: true, runId, tabId });
+      }
+    }, 2500);
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) {
+      if (isCurrentTabContext(tabContext)) clearRunIndicatorActivity();
+      failGitWorkflow(error, "readme", { tabId });
+    }
+  }
+}
+
+async function prepareGitInitFiles({ afterReadmePrompt = false, afterGitignorePrompt = false, runId, tabId = gitWorkflowActionTabId() } = {}) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const expectedRunId = runId ?? workflow.runId;
+  const repoName = workflow.repoName || defaultGitInitRepoName();
+  const stack = cleanGitInitStack(workflow.stack || readStoredGitInitStack());
+  setGitWorkflow({ step: "readmeCreating", busy: true, error: "", output: afterReadmePrompt || afterGitignorePrompt ? "Checking generated files, preparing README.md/.gitignore, and staging files…" : "Checking whether README.md and .gitignore already exist…" }, { tabId });
+  try {
+    const status = await gitWorkflowRequest("/api/git-workflow/init-files-status", { method: "GET", runId: expectedRunId, tabId });
+    if (!status) return;
+    setGitWorkflow({ initFilesStatus: status, output: `${gitInitFilesStatusSummary(status)}\n\nStack: ${gitInitStackDisplay(stack)}` }, { tabId });
+    if (!status.readmeExists && !afterReadmePrompt) {
+      await promptGitInitReadme(status, { runId: expectedRunId, tabId });
+      return;
+    }
+    if (!status.gitignoreExists && !afterGitignorePrompt) {
+      await promptGitInitGitignore(status, { runId: expectedRunId, tabId });
+      return;
+    }
+    const result = await gitWorkflowRequest("/api/git-workflow/readme", { body: { repoName, stack }, runId: expectedRunId, tabId });
+    if (!result) return;
+    const current = gitWorkflowForTab(tabId, { create: false }) || workflow;
+    setGitWorkflow({
+      step: "initialCommit",
+      busy: false,
+      repoName,
+      stack,
+      initFilesStatus: status,
+      actionsDone: createGitWorkflowActionsDone({ ...current.actionsDone, readme: true, gitignore: true }),
+      output: `${gitInitFilesStatusSummary(status)}\n\n${formatGitCommandResult(result)}\n\n${gitInitFilesResultSummary(result)}\nNext: commit the initial files.`,
+    }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(expectedRunId, tabId)) failGitWorkflow(error, "readme", { tabId });
+  }
+}
+
+async function commitGitInitialReadme(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "initialCommitting", busy: true, error: "", output: "Running git commit -m \"Initial commit\"…" }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/initial-commit", { runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "mainBranch", busy: false, ...gitWorkflowActionDonePatch(workflow, "commit"), output: `${formatGitCommandResult(result)}\n\nInitial commit created. Next: rename the branch to main.` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "initialCommit", { tabId });
+  }
+}
+
+async function branchGitInitMain(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "mainBranching", busy: true, error: "", output: "Running git branch -M main…" }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/main-branch", { runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "remote", busy: false, ...gitWorkflowActionDonePatch(workflow, "branch"), output: `${formatGitCommandResult(result)}\n\nBranch is main. Next: add origin.\n\n${gitInitWorkflowSetupSummary(gitWorkflowForTab(tabId, { create: false }) || workflow)}` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "mainBranch", { tabId });
+  }
+}
+
+async function addGitInitRemote(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  let details;
+  try {
+    details = ensureGitInitRemoteDetails(tabId);
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+    return;
+  }
+  if (!details) {
+    setGitWorkflow({ step: "remote", busy: false, output: `Origin setup cancelled.\n\n${gitInitWorkflowSetupSummary(workflow)}` }, { tabId });
+    return;
+  }
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "remoteAdding", busy: true, error: "", githubUsername: details.username, repoName: details.repoName, remoteUrl: details.remoteUrl, output: `Running git remote add origin ${details.remoteUrl}…` }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/remote", { body: details, runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "initialPush", busy: false, ...gitWorkflowActionDonePatch(workflow, "remote"), output: `${formatGitCommandResult(result)}\n\nOrigin added: ${result.remoteUrl || details.remoteUrl}\nNext: git push -u origin main.` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "remote", { tabId });
+  }
+}
+
+async function pushGitInitWorkflow(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "initialPushing", busy: true, error: "", output: "Running git push -u origin main…" }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/init-push", { runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "done", busy: false, ...gitWorkflowActionDonePatch(workflow, "push"), output: `${formatGitCommandResult(result)}\n\nInitial repository pushed to origin/main.` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "initialPush", { tabId });
+  }
+}
+
+async function cancelGitWorkflow(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow?.active) return;
+  const shouldAbortPi = workflow.step === "generating" || workflow.step === "branchNaming" || workflow.step === "prGenerating" || workflow.step === "readmeGenerating" || workflow.step === "gitignoreGenerating";
+  if (activeGitPrDialogResolve) resolveGitPrDialog(null);
+  workflow.runId += 1;
+  setGitWorkflow({ step: "cancelled", busy: false, error: "", output: `${workflow.output || ""}${workflow.output ? "\n\n" : ""}Cancelled by user.` }, { tabId });
+  if (shouldAbortPi && isCurrentTabContext(tabContext)) setRunIndicatorActivity("Abort requested; checking whether Pi stopped…");
+  await Promise.allSettled([
+    api("/api/git-workflow/cancel", { method: "POST", body: {}, tabId }),
+    shouldAbortPi ? api("/api/abort", { method: "POST", body: {}, tabId }) : Promise.resolve(),
+  ]);
+  if (shouldAbortPi && isCurrentTabContext(tabContext)) scheduleAbortStateChecks();
+}
+
+async function runGitAdd(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "add", busy: true, error: "", ...resetGitWorkflowManualCommitDefaultPatch(), output: "Running git add ." }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/add", { runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "generate", busy: false, ...resetGitWorkflowManualCommitDefaultPatch(), ...gitWorkflowActionDonePatch(workflow, "stage"), output: `${formatGitCommandResult(result)}\n\nStaged. Next: run /git-staged-msg.` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "add", { tabId });
+  }
+}
+
+async function loadGitWorkflowDefaultCommitMessage({ runId, tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  const expectedRunId = runId ?? workflow?.runId;
+  if (!workflow || workflow.manualCommitMessageDefaultLoading || workflow.manualCommitMessageDefaultRequestedAt) return;
+  workflow.manualCommitMessageDefaultLoading = true;
+  workflow.manualCommitMessageDefaultRequestedAt = Date.now();
+  try {
+    const data = await gitWorkflowRequest("/api/git-workflow/default-commit-message", { method: "GET", runId: expectedRunId, tabId });
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (!data || !currentWorkflow || !isCurrentGitWorkflowRun(expectedRunId, tabId)) return;
+    setGitWorkflow({
+      manualCommitMessageDefault: String(data.message || "").trim(),
+      manualCommitMessageDefaultReason: String(data.reason || ""),
+      manualCommitMessageDefaultPath: String(data.path || ""),
+      manualCommitMessageDefaultAction: String(data.action || ""),
+      manualCommitMessageDefaultLoading: false,
+    }, { tabId });
+  } catch (error) {
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (!currentWorkflow || !isCurrentGitWorkflowRun(expectedRunId, tabId)) return;
+    setGitWorkflow({
+      manualCommitMessageDefault: "",
+      manualCommitMessageDefaultReason: error?.message || String(error),
+      manualCommitMessageDefaultPath: "",
+      manualCommitMessageDefaultAction: "",
+      manualCommitMessageDefaultLoading: false,
+    }, { tabId });
+  }
+}
+
+async function runGitMessagePrompt(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const targetTab = tabs.find((tab) => tab.id === tabId);
+  const targetBusy = tabId === activeTabId ? !!currentState?.isStreaming : activityForTab(targetTab).isWorking;
+  if (targetBusy) {
+    failGitWorkflow(new Error("Pi is currently running. Wait for it to finish or abort before generating a staged commit message."), "generate", { tabId });
+    return;
+  }
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  const requestedAt = Date.now();
+  setGitWorkflow({
+    step: "generating",
+    busy: true,
+    error: "",
+    messageRequestedAt: requestedAt,
+    output: "Sending /git-staged-msg to Pi.\n\nCancel will request Pi abort.",
+  }, { tabId });
+  if (isCurrentTabContext(tabContext)) setRunIndicatorActivity("Sending /git-staged-msg to Pi…");
+  try {
+    await api("/api/prompt", { method: "POST", body: { message: "/git-staged-msg" }, tabId });
+    if (!isCurrentGitWorkflowRun(runId, tabId)) return;
+    appendGitWorkflowOutput("/git-staged-msg accepted. Waiting for agent_end, then the message files will be loaded.", { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshState(120, tabContext);
+    setTimeout(() => {
+      const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+      const targetStillBusy = tabId === activeTabId && currentState?.isStreaming;
+      if (isCurrentGitWorkflowRun(runId, tabId) && currentWorkflow?.step === "generating" && !targetStillBusy) {
+        loadGitWorkflowMessage({ requireFresh: true, retries: 1, runId, tabId });
+      }
+    }, 2500);
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) {
+      if (isCurrentTabContext(tabContext)) clearRunIndicatorActivity();
+      failGitWorkflow(error, "generate", { tabId });
+    }
+  }
+}
+
+async function loadGitWorkflowMessage({ requireFresh = false, retries = 0, runId, tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  const expectedRunId = runId ?? workflow?.runId;
+  try {
+    const message = await gitWorkflowRequest("/api/git-workflow/message", { method: "GET", runId: expectedRunId, tabId });
+    if (!message) return;
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (!currentWorkflow) return;
+    const newestMtime = Math.max(message.shortMtimeMs || 0, message.longMtimeMs || 0);
+    if (requireFresh && currentWorkflow.messageRequestedAt && newestMtime + 10000 < currentWorkflow.messageRequestedAt) {
+      throw new Error("Generated message files have not refreshed yet.");
+    }
+    setGitWorkflow({
+      step: "message",
+      busy: false,
+      error: "",
+      message,
+      ...(requireFresh && currentWorkflow.messageRequestedAt ? gitWorkflowActionDonePatch(currentWorkflow, "message") : {}),
+      output: formatCommitMessagePreview(message),
+    }, { tabId });
+  } catch (error) {
+    if (!isCurrentGitWorkflowRun(expectedRunId, tabId)) return;
+    if (retries > 0) {
+      setTimeout(() => loadGitWorkflowMessage({ requireFresh, retries: retries - 1, runId: expectedRunId, tabId }), 1400);
+      return;
+    }
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    failGitWorkflow(error, currentWorkflow?.step === "generating" ? "generate" : currentWorkflow?.step, { tabId });
+  }
+}
+
+function gitBranchNamePromptMessage() {
+  if (hasAvailableCommand("git-branch-name")) return "/git-branch-name";
+  return [
+    "Generate one PR branch name for the current staged work.",
+    "Inspect only staged changes (`git diff --cached`) and the generated commit message files if present:",
+    "- dev/COMMIT/staged-commit-short.txt",
+    "- dev/COMMIT/staged-commit-long.txt",
+    "",
+    "Write exactly one line to dev/COMMIT/staged-branch-name.txt in this format:",
+    "<type>/<short-feature-name>",
+    "",
+    "Rules: use lowercase kebab-case, no spaces/underscores/uppercase/trailing punctuation, 2-5 words after the slash, and no extra lines or prose in the file.",
+  ].join("\n");
+}
+
+async function createGitPrBranch(tabId = gitWorkflowActionTabId()) {
+  await runGitBranchNamePrompt(tabId);
+}
+
+async function createGitPrBranchManually(tabId = gitWorkflowActionTabId()) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  await createGitPrBranchWithSuggestion(workflow.branchName || defaultGitPrBranchName(workflow.message), tabId);
+}
+
+async function runGitBranchNamePrompt(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const targetTab = tabs.find((tab) => tab.id === tabId);
+  const targetBusy = tabId === activeTabId ? !!currentState?.isStreaming : activityForTab(targetTab).isWorking;
+  if (targetBusy) {
+    failGitWorkflow(new Error("Pi is currently running. Wait for it to finish or abort before generating a branch name."), "message", { tabId });
+    return;
+  }
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  const requestedAt = Date.now();
+  setGitWorkflow({
+    step: "branchNaming",
+    busy: true,
+    error: "",
+    branchNameRequestedAt: requestedAt,
+    output: "Sending branch-name request to Pi.\n\nCancel will request Pi abort.",
+  }, { tabId });
+  if (isCurrentTabContext(tabContext)) setRunIndicatorActivity("Sending branch-name request to Pi…");
+  try {
+    await api("/api/prompt", { method: "POST", body: { message: gitBranchNamePromptMessage() }, tabId });
+    if (!isCurrentGitWorkflowRun(runId, tabId)) return;
+    appendGitWorkflowOutput("Branch-name request accepted. Waiting for agent_end, then the branch name will be loaded.", { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshState(120, tabContext);
+    setTimeout(() => {
+      const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+      const targetStillBusy = tabId === activeTabId && currentState?.isStreaming;
+      if (isCurrentGitWorkflowRun(runId, tabId) && currentWorkflow?.step === "branchNaming" && !targetStillBusy) {
+        loadGitWorkflowBranchName({ requireFresh: true, retries: 1, runId, tabId });
+      }
+    }, 2500);
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) {
+      if (isCurrentTabContext(tabContext)) clearRunIndicatorActivity();
+      failGitWorkflow(error, "message", { tabId });
+    }
+  }
+}
+
+async function loadGitWorkflowBranchName({ requireFresh = false, retries = 0, runId, tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  const expectedRunId = runId ?? workflow?.runId;
+  try {
+    const branchName = await gitWorkflowRequest("/api/git-workflow/branch-name", { method: "GET", runId: expectedRunId, tabId });
+    if (!branchName) return;
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (!currentWorkflow) return;
+    if (requireFresh && currentWorkflow.branchNameRequestedAt && (branchName.mtimeMs || 0) + 10000 < currentWorkflow.branchNameRequestedAt) {
+      throw new Error("Generated branch name has not refreshed yet.");
+    }
+    const branch = branchName.branch || defaultGitPrBranchName(currentWorkflow.message);
+    setGitWorkflow({
+      step: "message",
+      busy: false,
+      error: "",
+      branchName: branch,
+      output: `${formatCommitMessagePreview(currentWorkflow.message)}\n\nGenerated branch name: ${branch}`,
+    }, { tabId });
+    await createGitPrBranchWithSuggestion(branch, tabId, expectedRunId);
+  } catch (error) {
+    if (!isCurrentGitWorkflowRun(expectedRunId, tabId)) return;
+    if (retries > 0) {
+      setTimeout(() => loadGitWorkflowBranchName({ requireFresh, retries: retries - 1, runId: expectedRunId, tabId }), 1400);
+      return;
+    }
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    failGitWorkflow(error, currentWorkflow?.step === "branchNaming" ? "message" : currentWorkflow?.step, { tabId });
+  }
+}
+
+function syncGitWorkflowWorktreeTabs(result) {
+  if (Array.isArray(result?.tabs)) {
+    tabs = result.tabs;
+    syncTabMetadata(tabs);
+  }
+  if (result?.tab) applyTabMetadata(result.tab);
+  renderTabs();
+}
+
+function gitWorkflowWorktreeOutput(result, branch) {
+  const prBranch = cleanStatusText(result?.branch || result?.tab?.gitWorkspace?.branch || branch);
+  const worktreePath = result?.worktree?.path || result?.path || result?.tab?.cwd || "worktree";
+  const copied = result?.carriedStagedChanges
+    ? "Staged changes were copied into the worktree index."
+    : result?.openedExisting || result?.openedExistingTab
+      ? "Existing worktree opened; review its current changes before committing."
+      : "Source index was clean; no staged changes were copied.";
+  return `${formatGitCommandResult(result)}\n\nOpened PR branch worktree ${prBranch || branch} at ${normalizeDisplayPath(worktreePath)}. ${copied}\n\nChoose Commit short, Commit long, or Commit input to commit in this worktree tab.`;
+}
+
+async function createGitPrBranchWithSuggestion(suggestion, tabId = gitWorkflowActionTabId(), expectedRunId) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const sourceWorkflow = { ...workflow, actionsDone: createGitWorkflowActionsDone(workflow.actionsDone) };
+  const proposedBranch = prompt("New PR branch worktree name (example: type/feature-name)", suggestion || defaultGitPrBranchName(workflow.message));
+  if (expectedRunId !== undefined && !isCurrentGitWorkflowRun(expectedRunId, tabId)) return;
+  if (proposedBranch === null) {
+    setGitWorkflow({ step: "message", busy: false, output: `${formatCommitMessagePreview(sourceWorkflow.message)}\n\nPR branch worktree creation cancelled. Use Create PR worktree to generate a branch name again or Manual worktree to type one.` }, { tabId });
+    return;
+  }
+  const branch = proposedBranch.trim();
+  if (!branch) {
+    failGitWorkflow(new Error("Branch name is required to create a PR branch worktree."), "message", { tabId });
+    return;
+  }
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "branching", prMode: true, prBranch: branch, branchName: branch, busy: true, error: "", output: `${formatCommitMessagePreview(sourceWorkflow.message)}\n\nCreating or opening branch worktree ${branch}…` }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/branch", { body: { branch, sessionMode: "fork-current", openTab: true }, runId, tabId });
+    if (!result) return;
+    syncGitWorkflowWorktreeTabs(result);
+    const targetTabId = result.tab?.id && tabs.some((tab) => tab.id === result.tab.id) ? result.tab.id : tabId;
+    const prBranch = cleanStatusText(result.branch || result.tab?.gitWorkspace?.branch || branch);
+    const output = gitWorkflowWorktreeOutput(result, prBranch || branch);
+    const nextState = {
+      active: true,
+      mode: "standard",
+      step: "message",
+      process: "commit",
+      busy: false,
+      runId,
+      output,
+      error: "",
+      githubUsername: "",
+      repoName: "",
+      remoteUrl: "",
+      stack: "",
+      readmeRequestedAt: 0,
+      gitignoreRequestedAt: 0,
+      initFilesStatus: null,
+      message: sourceWorkflow.message,
+      manualCommitMessage: sourceWorkflow.manualCommitMessage || "",
+      manualCommitMessageDefault: sourceWorkflow.manualCommitMessageDefault || "",
+      manualCommitMessageDefaultReason: sourceWorkflow.manualCommitMessageDefaultReason || "",
+      manualCommitMessageDefaultPath: sourceWorkflow.manualCommitMessageDefaultPath || "",
+      manualCommitMessageDefaultAction: sourceWorkflow.manualCommitMessageDefaultAction || "",
+      manualCommitMessageDefaultRequestedAt: sourceWorkflow.manualCommitMessageDefaultRequestedAt || 0,
+      manualCommitMessageDefaultLoading: false,
+      messageRequestedAt: sourceWorkflow.messageRequestedAt || 0,
+      branchName: prBranch || branch,
+      branchNameRequestedAt: sourceWorkflow.branchNameRequestedAt || 0,
+      actionsDone: createGitWorkflowActionsDone({ ...sourceWorkflow.actionsDone, branch: true }),
+      prMode: true,
+      prBranch: prBranch || branch,
+      pr: null,
+      prRequestedAt: 0,
+    };
+    if (targetTabId !== tabId) {
+      setGitWorkflow({ step: "message", prMode: false, prBranch: "", branchName: prBranch || branch, busy: false, output: `${formatCommitMessagePreview(sourceWorkflow.message)}\n\nOpened PR branch worktree ${prBranch || branch} in ${result.tab?.title || "a new tab"}. Continue the commit and PR flow there; this checkout stayed on its current branch.` }, { tabId });
+    }
+    setGitWorkflow(nextState, { tabId: targetTabId });
+    if (targetTabId !== tabId) await switchTab(targetTabId);
+    addEvent(`Opened PR branch worktree ${prBranch || branch}. Continue the guided Git workflow in its tab.`, "success");
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) {
+      setGitWorkflow({ prMode: false, prBranch: "" }, { tabId });
+      failGitWorkflow(error, "message", { tabId });
+    }
+  }
+}
+
+async function commitGitWorkflow(variant, tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  const failureStep = variant === "input" && workflow.step === "generate" ? "generate" : "message";
+  const inputMessage = variant === "input" ? gitWorkflowManualCommitInputMessage(workflow) : "";
+  if (variant === "input" && !inputMessage) {
+    failGitWorkflow(new Error("Type a commit message, or stage exactly one created/updated/deleted file to use the default."), failureStep, { tabId });
+    return;
+  }
+  const preview = variant === "input" ? formatInputCommitMessagePreview(inputMessage) : formatCommitMessagePreview(workflow.message);
+  setGitWorkflow({ step: "committing", busy: true, error: "", output: `${preview}\n\nRunning native ${variant} commit…` }, { tabId });
+  try {
+    const body = variant === "input" ? { variant, message: inputMessage } : { variant };
+    const result = await gitWorkflowRequest("/api/git-workflow/commit", { body, runId, tabId });
+    if (!result) return;
+    const nextAction = workflow.prMode ? "Push and Create PR." : "git push.";
+    const donePatch = variant === "input"
+      ? { actionsDone: createGitWorkflowActionsDone({ ...workflow.actionsDone, message: true, commit: true }) }
+      : gitWorkflowActionDonePatch(workflow, "commit");
+    setGitWorkflow({ step: "push", busy: false, ...donePatch, output: `${formatGitCommandResult(result)}\n\nCommit created. Next: ${nextAction}` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, failureStep, { tabId });
+  }
+}
+
+async function pushGitWorkflow(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  setGitWorkflow({ step: "pushing", busy: true, error: "", output: "Running git push…" }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/push", { runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "done", busy: false, ...gitWorkflowActionDonePatch(workflow, "push"), output: formatGitCommandResult(result) || "git push finished." }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "push", { tabId });
+  }
+}
+
+async function runGitPrPrompt(tabId = gitWorkflowActionTabId(), { prefixOutput = "" } = {}) {
+  const tabContext = activeTabContext(tabId);
+  const targetTab = tabs.find((tab) => tab.id === tabId);
+  const targetBusy = tabId === activeTabId ? !!currentState?.isStreaming : activityForTab(targetTab).isWorking;
+  if (targetBusy) {
+    failGitWorkflow(new Error("Pi is currently running. Wait for it to finish or abort before generating a PR description."), "push", { tabId });
+    return;
+  }
+  if (!hasAvailableCommand("pr")) {
+    failGitWorkflow(new Error(commandUnavailableMessage("pr")), "push", { tabId });
+    return;
+  }
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  const requestedAt = Date.now();
+  setGitWorkflow({
+    step: "prGenerating",
+    busy: true,
+    error: "",
+    prRequestedAt: requestedAt,
+    output: `${prefixOutput ? `${prefixOutput}\n\n` : ""}Sending /pr to Pi.\n\nCancel will request Pi abort.`,
+  }, { tabId });
+  if (isCurrentTabContext(tabContext)) setRunIndicatorActivity("Sending /pr to Pi…");
+  try {
+    await api("/api/prompt", { method: "POST", body: { message: "/pr" }, tabId });
+    if (!isCurrentGitWorkflowRun(runId, tabId)) return;
+    appendGitWorkflowOutput("/pr accepted. Waiting for agent_end, then the PR description will be loaded.", { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshState(120, tabContext);
+    setTimeout(() => {
+      const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+      const targetStillBusy = tabId === activeTabId && currentState?.isStreaming;
+      if (isCurrentGitWorkflowRun(runId, tabId) && currentWorkflow?.step === "prGenerating" && !targetStillBusy) {
+        loadGitWorkflowPr({ requireFresh: true, retries: 1, runId, tabId });
+      }
+    }, 2500);
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) {
+      if (isCurrentTabContext(tabContext)) clearRunIndicatorActivity();
+      failGitWorkflow(error, "push", { tabId });
+    }
+  }
+}
+
+async function loadGitWorkflowPr({ requireFresh = false, retries = 0, runId, tabId = activeTabId } = {}) {
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  const expectedRunId = runId ?? workflow?.runId;
+  try {
+    const pr = await gitWorkflowRequest("/api/git-workflow/pr-description", { method: "GET", runId: expectedRunId, tabId });
+    if (!pr) return;
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    if (!currentWorkflow) return;
+    if (requireFresh && currentWorkflow.prRequestedAt && (pr.mtimeMs || 0) + 10000 < currentWorkflow.prRequestedAt) {
+      throw new Error("Generated PR description has not refreshed yet.");
+    }
+    setGitWorkflow({
+      step: "prReview",
+      busy: false,
+      error: "",
+      pr,
+      prBranch: pr.branch || currentWorkflow.prBranch,
+      output: formatGitPrPreview(pr),
+    }, { tabId });
+  } catch (error) {
+    if (!isCurrentGitWorkflowRun(expectedRunId, tabId)) return;
+    if (retries > 0) {
+      setTimeout(() => loadGitWorkflowPr({ requireFresh, retries: retries - 1, runId: expectedRunId, tabId }), 1400);
+      return;
+    }
+    const currentWorkflow = gitWorkflowForTab(tabId, { create: false });
+    failGitWorkflow(error, currentWorkflow?.step === "prGenerating" ? "push" : currentWorkflow?.step, { tabId });
+  }
+}
+
+async function pushAndCreatePrGitWorkflow(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow) return;
+  const runId = workflow.runId;
+  const branch = workflow.prBranch || "current branch";
+  setGitWorkflow({ step: "pushing", busy: true, error: "", output: `Pushing PR branch ${branch}…` }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/push", { body: { setUpstream: true, branch: workflow.prBranch }, runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ ...gitWorkflowActionDonePatch(workflow, "push") }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+    await runGitPrPrompt(tabId, { prefixOutput: `${formatGitCommandResult(result)}\n\nPushed PR branch ${result.branch || branch}.` });
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "push", { tabId });
+  }
+}
+
+async function createGitPrFromReview(tabId = gitWorkflowActionTabId()) {
+  const tabContext = activeTabContext(tabId);
+  const workflow = gitWorkflowForTab(tabId, { create: false });
+  if (!workflow?.pr) return;
+  const runId = workflow.runId;
+  const review = await openGitPrReviewDialog(workflow.pr, { title: gitWorkflowMessageTitle(workflow.message) });
+  if (!isCurrentGitWorkflowRun(runId, tabId)) return;
+  if (!review) {
+    setGitWorkflow({ step: "prReview", busy: false, output: `${formatGitPrPreview(workflow.pr)}\n\nPR creation cancelled. Edit the description, regenerate /pr, or press Create PR again.` }, { tabId });
+    return;
+  }
+  const title = review.title.trim();
+  const body = review.body.trimEnd();
+  setGitWorkflow({ step: "prCreating", busy: true, error: "", output: `${formatGitPrPreview({ ...workflow.pr, body })}\n\nCreating pull request with gh pr create…` }, { tabId });
+  try {
+    const result = await gitWorkflowRequest("/api/git-workflow/create-pr", { body: { title, body }, runId, tabId });
+    if (!result) return;
+    setGitWorkflow({ step: "done", busy: false, ...gitWorkflowActionDonePatch(workflow, "push"), output: `${formatGitCommandResult(result)}\n\nPull request created.` }, { tabId });
+    if (isCurrentTabContext(tabContext)) scheduleRefreshFooter();
+  } catch (error) {
+    if (isCurrentGitWorkflowRun(runId, tabId)) failGitWorkflow(error, "prReview", { tabId });
+  }
+}
+
+function resumeGitWorkflowForActiveTab(tabContext = activeTabContext()) {
+  if (!isCurrentTabContext(tabContext)) return;
+  bindGitWorkflowToActiveTab();
+  renderGitWorkflow();
+  const workflowTabId = gitWorkflowActionTabId();
+  if (workflowTabId === tabContext.tabId && gitWorkflow.active && gitWorkflow.step === "generating" && !currentState?.isStreaming) {
+    const retryDelayMs = Math.max(0, 2500 - (Date.now() - (gitWorkflow.messageRequestedAt || 0)));
+    if (retryDelayMs > 0) {
+      setTimeout(() => resumeGitWorkflowForActiveTab(tabContext), retryDelayMs);
+      return;
+    }
+    loadGitWorkflowMessage({ requireFresh: true, retries: 3, runId: gitWorkflow.runId, tabId: workflowTabId });
+  }
+  if (workflowTabId === tabContext.tabId && gitWorkflow.active && gitWorkflow.step === "branchNaming" && !currentState?.isStreaming) {
+    const retryDelayMs = Math.max(0, 2500 - (Date.now() - (gitWorkflow.branchNameRequestedAt || 0)));
+    if (retryDelayMs > 0) {
+      setTimeout(() => resumeGitWorkflowForActiveTab(tabContext), retryDelayMs);
+      return;
+    }
+    loadGitWorkflowBranchName({ requireFresh: true, retries: 3, runId: gitWorkflow.runId, tabId: workflowTabId });
+  }
+  if (workflowTabId === tabContext.tabId && gitWorkflow.active && gitWorkflow.step === "prGenerating" && !currentState?.isStreaming) {
+    const retryDelayMs = Math.max(0, 2500 - (Date.now() - (gitWorkflow.prRequestedAt || 0)));
+    if (retryDelayMs > 0) {
+      setTimeout(() => resumeGitWorkflowForActiveTab(tabContext), retryDelayMs);
+      return;
+    }
+    loadGitWorkflowPr({ requireFresh: true, retries: 3, runId: gitWorkflow.runId, tabId: workflowTabId });
+  }
+  if (workflowTabId === tabContext.tabId && gitWorkflow.active && gitWorkflow.step === "readmeGenerating" && !currentState?.isStreaming) {
+    const retryDelayMs = Math.max(0, 2500 - (Date.now() - (gitWorkflow.readmeRequestedAt || 0)));
+    if (retryDelayMs > 0) {
+      setTimeout(() => resumeGitWorkflowForActiveTab(tabContext), retryDelayMs);
+      return;
+    }
+    prepareGitInitFiles({ afterReadmePrompt: true, runId: gitWorkflow.runId, tabId: workflowTabId });
+  }
+  if (workflowTabId === tabContext.tabId && gitWorkflow.active && gitWorkflow.step === "gitignoreGenerating" && !currentState?.isStreaming) {
+    const retryDelayMs = Math.max(0, 2500 - (Date.now() - (gitWorkflow.gitignoreRequestedAt || 0)));
+    if (retryDelayMs > 0) {
+      setTimeout(() => resumeGitWorkflowForActiveTab(tabContext), retryDelayMs);
+      return;
+    }
+    prepareGitInitFiles({ afterGitignorePrompt: true, runId: gitWorkflow.runId, tabId: workflowTabId });
+  }
+}
+
+function normalizeQueuedMessages(event) {
+  const normalize = (items) => (Array.isArray(items) ? items.map((item) => String(item || "")).filter((item) => item.trim()) : []);
+  return {
+    steering: normalize(event?.steering),
+    followUp: normalize(event?.followUp),
+  };
+}
+
+function queueMessageCount(snapshot) {
+  return (snapshot?.steering?.length || 0) + (snapshot?.followUp?.length || 0);
+}
+
+function updateQueueHeaderBadge(total) {
+  if (!elements.queueCountBadge) return;
+  elements.queueCountBadge.hidden = total === 0;
+  elements.queueCountBadge.textContent = String(total);
+  elements.queueCountBadge.setAttribute("aria-label", `${total} queued message${total === 1 ? "" : "s"}`);
+}
+
+function queueSummaryPill(label, count, tone) {
+  const pill = make("span", `queue-summary-pill ${tone}`.trim());
+  pill.append(make("strong", undefined, String(count)), make("span", undefined, label));
+  return pill;
+}
+
+async function removeQueuedFollowUpPrompt(index, message, tabId = activeTabId) {
+  if (!tabId) return false;
+  const tabContext = activeTabContext(tabId);
+  try {
+    const response = await api("/api/queue/remove", { method: "POST", body: { kind: "followUp", index, message }, tabId });
+    const data = response?.data || {};
+    if (data.queue && isCurrentTabContext(tabContext)) renderQueue({ tabId, ...data.queue });
+    if (data.removed) {
+      if (isCurrentTabContext(tabContext)) addEvent(`removed queued follow-up #${index + 1}`);
+      scheduleRefreshState(120, tabContext);
+      return true;
+    }
+    if (isCurrentTabContext(tabContext)) addEvent("queued follow-up changed before it could be removed; refreshed queue", "warn");
+    scheduleRefreshState(120, tabContext);
+    return false;
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+    return false;
+  }
+}
+
+function renderQueueGroup(label, items, tone, { removable = false, tabId } = {}) {
+  const group = make("section", `queue-group ${tone}`.trim());
+  const heading = make("h3", "queue-group-title");
+  heading.append(make("span", undefined, label), make("span", "queue-group-count", String(items.length)));
+  const list = make("ol", "queue-list");
+  items.forEach((item, index) => {
+    const row = make("li", `queue-item${removable ? " can-remove" : ""}`);
+    row.append(make("span", "queue-item-number", `#${index + 1}`), make("div", "queue-item-text", item));
+    if (removable) {
+      const removeButton = make("button", "queue-remove-button", "Remove");
+      removeButton.type = "button";
+      removeButton.title = `Remove queued follow-up #${index + 1}`;
+      removeButton.setAttribute("aria-label", `Remove queued follow-up #${index + 1}`);
+      removeButton.addEventListener("click", async () => {
+        removeButton.disabled = true;
+        removeButton.textContent = "Removing…";
+        const removed = await removeQueuedFollowUpPrompt(index, item, tabId);
+        if (!removed && removeButton.isConnected) {
+          removeButton.disabled = false;
+          removeButton.textContent = "Remove";
+        }
+      });
+      row.append(removeButton);
+    }
+    list.append(row);
+  });
+  group.append(heading, list);
+  return group;
+}
+
+function renderQueue(event) {
+  if (deferUiRenderDuringPointerActivation("queue", () => renderQueue(event))) return;
+  const snapshot = normalizeQueuedMessages(event);
+  const tabId = event?.tabId || activeTabId;
+  if (tabId) latestQueuedMessagesByTab.set(tabId, snapshot);
+  const steering = snapshot.steering;
+  const followUp = snapshot.followUp;
+  const total = queueMessageCount(snapshot);
+  updateQueueHeaderBadge(total);
+  elements.queueBox.replaceChildren();
+  elements.queueBox.classList.toggle("muted", total === 0);
+  elements.queueBox.classList.toggle("has-items", total > 0);
+  if (total === 0) {
+    elements.queueBox.append(make("div", "queue-empty", "No queued messages."));
+    updateStickyUserPromptButton();
+    return;
+  }
+
+  const summary = make("div", "queue-summary");
+  summary.append(make("strong", undefined, `${total} queued message${total === 1 ? "" : "s"}`));
+  const counts = make("div", "queue-summary-counts");
+  if (steering.length) counts.append(queueSummaryPill("steering", steering.length, "steering"));
+  if (followUp.length) counts.append(queueSummaryPill("follow-up", followUp.length, "follow-up"));
+  summary.append(counts);
+
+  elements.queueBox.append(summary);
+  if (steering.length) elements.queueBox.append(renderQueueGroup("Steering", steering, "steering", { tabId }));
+  if (followUp.length) elements.queueBox.append(renderQueueGroup("Follow-up", followUp, "follow-up", { removable: true, tabId }));
+  elements.queueBox.append(make("div", "queue-hint", "Alt+Up restores this queue snapshot to the composer without clearing Pi's queue. Use Remove beside follow-ups to drop them from the queue."));
+  updateStickyUserPromptButton();
+}
+
+function nextQueuedFollowUpPrompt(tabId = activeTabId) {
+  const snapshot = tabId ? latestQueuedMessagesByTab.get(tabId) : null;
+  const next = Array.isArray(snapshot?.followUp) ? snapshot.followUp.find((item) => String(item || "").trim()) : null;
+  return next ? stickyUserPromptPreviewText(next) : "";
+}
+
+function queuedMessagesForComposer(tabId = activeTabId) {
+  const snapshot = latestQueuedMessagesByTab.get(tabId) || { steering: [], followUp: [] };
+  return [...(snapshot.steering || []), ...(snapshot.followUp || [])].map((item) => String(item || "").trim()).filter(Boolean);
+}
+
+function restoreQueuedMessagesToComposerFromShortcut() {
+  const queued = queuedMessagesForComposer();
+  if (queued.length === 0) {
+    addEvent("no queued messages to restore", "warn");
+    return false;
+  }
+  const queuedText = queued.join("\n\n");
+  const currentText = elements.promptInput.value || "";
+  elements.promptInput.value = [queuedText, currentText].filter((item) => item.trim()).join("\n\n");
+  resizePromptInput();
+  renderCommandSuggestions();
+  saveActiveDraft();
+  focusPromptInput({ defer: true });
+  addEvent(`restored ${queued.length} queued message${queued.length === 1 ? "" : "s"} to composer; Pi's RPC queue is still pending upstream clear support`, "warn");
+  return true;
+}
+
+function normalizePromptListPrompts(prompts) {
+  return (Array.isArray(prompts) ? prompts : [])
+    .map((prompt) => String(prompt || "").trim())
+    .filter(Boolean);
+}
+
+function promptListStorageId() {
+  if (window.crypto?.randomUUID) return window.crypto.randomUUID();
+  return `prompt-list-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+}
+
+function promptListFallbackName(prompts) {
+  const first = String(prompts?.[0] || "").replace(/\s+/g, " ").trim();
+  if (!first) return "Untitled prompt list";
+  return first.length > 58 ? `${first.slice(0, 57)}…` : first;
+}
+
+function normalizePromptListRecord(record) {
+  const prompts = normalizePromptListPrompts(record?.prompts);
+  if (prompts.length === 0) return null;
+  const id = String(record?.id || "").trim() || promptListStorageId();
+  const now = new Date().toISOString();
+  const name = String(record?.name || "").trim() || promptListFallbackName(prompts);
+  return {
+    id,
+    name,
+    prompts,
+    createdAt: String(record?.createdAt || record?.updatedAt || now),
+    updatedAt: String(record?.updatedAt || now),
+  };
+}
+
+function readStoredPromptLists() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(PROMPT_LIST_STORAGE_KEY) || "[]");
+    const records = Array.isArray(raw) ? raw : Object.values(raw || {});
+    return records
+      .map(normalizePromptListRecord)
+      .filter(Boolean)
+      .sort((a, b) => String(b.updatedAt || "").localeCompare(String(a.updatedAt || "")));
+  } catch {
+    return [];
+  }
+}
+
+function writeStoredPromptLists(lists) {
+  localStorage.setItem(PROMPT_LIST_STORAGE_KEY, JSON.stringify(lists.map(normalizePromptListRecord).filter(Boolean)));
+}
+
+function savedPromptListById(id) {
+  const key = String(id || "");
+  return readStoredPromptLists().find((list) => list.id === key) || null;
+}
+
+function deleteStoredPromptList(id) {
+  const key = String(id || "");
+  if (!key) return null;
+  const lists = readStoredPromptLists();
+  const deleted = lists.find((list) => list.id === key) || null;
+  if (!deleted) return null;
+  writeStoredPromptLists(lists.filter((list) => list.id !== key));
+  return deleted;
+}
+
+function upsertStoredPromptList(record) {
+  const normalized = normalizePromptListRecord(record);
+  if (!normalized) throw new Error("Prompt list needs at least one prompt.");
+  const existing = readStoredPromptLists().filter((list) => list.id !== normalized.id);
+  writeStoredPromptLists([normalized, ...existing]);
+  return normalized;
+}
+
+function promptListEditorValues() {
+  return Array.from(elements.promptListEditorRows?.querySelectorAll("textarea") || [])
+    .map((textarea) => textarea.value || "");
+}
+
+function currentPromptListPrompts() {
+  return normalizePromptListPrompts(promptListEditorValues());
+}
+
+function setPromptListStatus(message = "", level = "muted") {
+  if (!elements.promptListStatus) return;
+  elements.promptListStatus.textContent = message;
+  elements.promptListStatus.className = `prompt-list-status ${level || "muted"}`.trim();
+}
+
+function renderPromptListDialogControls() {
+  const hasPrompts = currentPromptListPrompts().length > 0;
+  if (elements.promptListRunListButton) elements.promptListRunListButton.disabled = promptListRunning || !hasPrompts;
+  if (elements.promptListSaveButton) elements.promptListSaveButton.disabled = promptListRunning || !hasPrompts;
+  if (elements.promptListAddPromptButton) elements.promptListAddPromptButton.disabled = promptListRunning;
+  if (elements.promptListDialogLoadButton) elements.promptListDialogLoadButton.disabled = promptListRunning;
+  if (elements.promptListLoadSelectedButton) elements.promptListLoadSelectedButton.disabled = promptListRunning || !elements.promptListSelect?.value;
+  if (elements.promptListDeleteSelectedButton) elements.promptListDeleteSelectedButton.disabled = promptListRunning || !elements.promptListSelect?.value;
+}
+
+function renderPromptListEditor(prompts = [""]) {
+  const values = (Array.isArray(prompts) && prompts.length ? prompts : [""]).map((prompt) => String(prompt || ""));
+  elements.promptListEditorRows?.replaceChildren();
+  values.forEach((value, index) => {
+    const row = make("div", "prompt-list-editor-row");
+    const label = make("label", "prompt-list-editor-label");
+    label.setAttribute("for", `promptListPrompt${index}`);
+    label.textContent = index === 0 ? "Start prompt" : `Follow-up #${index}`;
+    const textarea = make("textarea", "dialog-editor prompt-list-textarea");
+    textarea.id = `promptListPrompt${index}`;
+    textarea.rows = index === 0 ? 4 : 3;
+    textarea.placeholder = index === 0 ? "Prompt that starts the run…" : "Follow-up prompt to queue after the start prompt…";
+    textarea.value = value;
+    textarea.addEventListener("input", () => {
+      setPromptListStatus("");
+      renderPromptListDialogControls();
+    });
+    const header = make("div", "prompt-list-editor-row-header");
+    header.append(label);
+    if (index > 0) {
+      const remove = make("button", "prompt-list-remove-button", "×");
+      remove.type = "button";
+      remove.title = `Remove follow-up #${index}`;
+      remove.setAttribute("aria-label", `Remove follow-up prompt ${index}`);
+      remove.addEventListener("click", () => {
+        const next = promptListEditorValues();
+        next.splice(index, 1);
+        renderPromptListEditor(next.length ? next : [""]);
+        setPromptListStatus("Follow-up removed.", "muted");
+      });
+      header.append(remove);
+    }
+    row.append(header, textarea);
+    elements.promptListEditorRows?.append(row);
+  });
+  renderPromptListDialogControls();
+}
+
+function populatePromptListSelect(selectedId = "") {
+  if (!elements.promptListSelect) return;
+  const lists = readStoredPromptLists();
+  elements.promptListSelect.replaceChildren();
+  if (lists.length === 0) {
+    const option = make("option", undefined, "No saved prompt lists");
+    option.value = "";
+    elements.promptListSelect.append(option);
+    elements.promptListSelect.disabled = true;
+  } else {
+    elements.promptListSelect.disabled = false;
+    for (const list of lists) {
+      const option = make("option", undefined, `${list.name} (${list.prompts.length})`);
+      option.value = list.id;
+      elements.promptListSelect.append(option);
+    }
+    elements.promptListSelect.value = selectedId && lists.some((list) => list.id === selectedId) ? selectedId : lists[0].id;
+  }
+  renderPromptListDialogControls();
+}
+
+function setPromptListLoadPanelVisible(visible) {
+  if (!elements.promptListLoadPanel) return;
+  elements.promptListLoadPanel.hidden = !visible;
+  if (visible) populatePromptListSelect(elements.promptListSelect?.value || elements.promptListDialog?.dataset.promptListId || "");
+}
+
+function loadPromptListIntoEditor(record, { updateLoaded = true } = {}) {
+  const list = normalizePromptListRecord(record);
+  if (!list) return false;
+  if (elements.promptListDialog) elements.promptListDialog.dataset.promptListId = list.id;
+  if (elements.promptListNameInput) elements.promptListNameInput.value = list.name;
+  renderPromptListEditor(list.prompts);
+  setPromptListStatus(`Loaded “${list.name}”.`, "success");
+  if (updateLoaded) setLoadedPromptList(list);
+  return true;
+}
+
+function loadSelectedPromptListIntoEditor() {
+  const list = savedPromptListById(elements.promptListSelect?.value);
+  if (!list) {
+    setPromptListStatus("No saved prompt list selected.", "warn");
+    return;
+  }
+  if (loadPromptListIntoEditor(list, { updateLoaded: true })) elements.promptListDialog?.close();
+}
+
+function deleteSelectedPromptList() {
+  const list = savedPromptListById(elements.promptListSelect?.value);
+  if (!list) {
+    setPromptListStatus("No saved prompt list selected to delete.", "warn");
+    return;
+  }
+  if (!window.confirm(`Delete prompt list “${list.name}”? This cannot be undone.`)) return;
+  const deleted = deleteStoredPromptList(list.id);
+  if (!deleted) {
+    setPromptListStatus("Prompt list was already deleted.", "warn");
+    populatePromptListSelect();
+    return;
+  }
+  if (loadedPromptList?.id === deleted.id) setLoadedPromptList(null);
+  if (elements.promptListDialog?.dataset.promptListId === deleted.id) {
+    elements.promptListDialog.dataset.promptListId = "";
+    if (elements.promptListNameInput) elements.promptListNameInput.value = "";
+    renderPromptListEditor([""]);
+  }
+  populatePromptListSelect();
+  setPromptListStatus(`Deleted “${deleted.name}”.`, "success");
+  addEvent(`deleted prompt list “${deleted.name}”`);
+}
+
+function openPromptListDialog({ mode = "create", list = null } = {}) {
+  const normalized = normalizePromptListRecord(list);
+  if (elements.promptListDialog) elements.promptListDialog.dataset.promptListId = normalized?.id || "";
+  if (elements.promptListDialogTitle) elements.promptListDialogTitle.textContent = mode === "load" ? "Load prompt list" : "Create prompt list";
+  if (elements.promptListNameInput) elements.promptListNameInput.value = normalized?.name || "";
+  renderPromptListEditor(normalized?.prompts || [""]);
+  setPromptListStatus(mode === "load" ? "Choose a saved list, then load or run it." : "");
+  setPromptListLoadPanelVisible(mode === "load");
+  if (!elements.promptListDialog?.open) elements.promptListDialog?.showModal();
+  queueMicrotask(() => {
+    const target = mode === "load" && !normalized ? elements.promptListSelect : elements.promptListEditorRows?.querySelector("textarea");
+    target?.focus();
+  });
+}
+
+function displayedPromptListRecord() {
+  const prompts = currentPromptListPrompts();
+  if (prompts.length === 0) return null;
+  const id = String(elements.promptListDialog?.dataset.promptListId || "").trim() || promptListStorageId();
+  const existing = savedPromptListById(id);
+  const now = new Date().toISOString();
+  return {
+    id,
+    name: String(elements.promptListNameInput?.value || "").trim() || promptListFallbackName(prompts),
+    prompts,
+    createdAt: existing?.createdAt || now,
+    updatedAt: now,
+  };
+}
+
+function saveDisplayedPromptList() {
+  const record = displayedPromptListRecord();
+  if (!record) {
+    setPromptListStatus("Add at least one prompt before saving.", "warn");
+    return null;
+  }
+  try {
+    const saved = upsertStoredPromptList(record);
+    if (elements.promptListDialog) elements.promptListDialog.dataset.promptListId = saved.id;
+    if (elements.promptListNameInput) elements.promptListNameInput.value = saved.name;
+    populatePromptListSelect(saved.id);
+    setLoadedPromptList(saved);
+    setPromptListStatus(`Saved “${saved.name}”.`, "success");
+    addEvent(`saved prompt list “${saved.name}” with ${saved.prompts.length} prompt${saved.prompts.length === 1 ? "" : "s"}`);
+    return saved;
+  } catch (error) {
+    setPromptListStatus(error.message || "Failed to save prompt list.", "error");
+    addEvent(error.message || "failed to save prompt list", "error");
+    return null;
+  }
+}
+
+function setLoadedPromptList(record) {
+  loadedPromptList = normalizePromptListRecord(record);
+  renderLoadedPromptListPreview();
+}
+
+function renderLoadedPromptListPreview() {
+  if (elements.runLoadedPromptListButton) elements.runLoadedPromptListButton.disabled = promptListRunning || !loadedPromptList;
+  if (!elements.loadedPromptListBox) return;
+  elements.loadedPromptListBox.replaceChildren();
+  elements.loadedPromptListBox.classList.toggle("muted", !loadedPromptList);
+  if (!loadedPromptList) {
+    elements.loadedPromptListBox.textContent = "No prompt list loaded.";
+    return;
+  }
+  const total = loadedPromptList.prompts.length;
+  const followUps = Math.max(0, total - 1);
+  const summary = make("div", "loaded-prompt-list-summary");
+  summary.append(make("strong", undefined, loadedPromptList.name), make("span", undefined, `${total} prompt${total === 1 ? "" : "s"} · ${followUps} follow-up${followUps === 1 ? "" : "s"}`));
+  const preview = make("ol", "prompt-list-preview");
+  loadedPromptList.prompts.slice(0, 4).forEach((prompt, index) => {
+    const item = make("li", "prompt-list-preview-item");
+    item.append(make("span", "prompt-list-preview-index", index === 0 ? "Start" : `#${index}`), make("span", "prompt-list-preview-text", prompt));
+    preview.append(item);
+  });
+  if (loadedPromptList.prompts.length > 4) {
+    const more = make("li", "prompt-list-preview-more", `+${loadedPromptList.prompts.length - 4} more follow-up prompt${loadedPromptList.prompts.length - 4 === 1 ? "" : "s"}`);
+    preview.append(more);
+  }
+  elements.loadedPromptListBox.append(summary, preview);
+}
+
+function setPromptListRunning(running) {
+  promptListRunning = !!running;
+  renderLoadedPromptListPreview();
+  renderPromptListDialogControls();
+}
+
+async function runPromptList(prompts, { name = "Prompt list" } = {}) {
+  const listPrompts = normalizePromptListPrompts(prompts);
+  if (listPrompts.length === 0) {
+    setPromptListStatus("Add or load at least one prompt before running.", "warn");
+    return;
+  }
+  const targetTabId = activeTabId;
+  if (!targetTabId) {
+    addEvent("cannot run prompt list without an active tab", "error");
+    setPromptListStatus("No active tab available.", "error");
+    return;
+  }
+  if (promptListRunning) return;
+  const tabContext = activeTabContext(targetTabId);
+  setPromptListRunning(true);
+  setPromptListStatus(`Running “${name}”…`, "muted");
+  addEvent(`running prompt list “${name}” (${listPrompts.length} prompt${listPrompts.length === 1 ? "" : "s"})`);
+  try {
+    await sendPrompt("prompt", listPrompts[0], { targetTabId, throwOnError: true });
+    for (const prompt of listPrompts.slice(1)) {
+      await sendPrompt("follow-up", prompt, { targetTabId, throwOnError: true });
+    }
+    setPromptListStatus(`Queued “${name}”.`, "success");
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(`queued prompt list “${name}”: 1 start prompt and ${Math.max(0, listPrompts.length - 1)} follow-up${listPrompts.length === 2 ? "" : "s"}`);
+      scheduleRefreshState(120, tabContext);
+    }
+  } catch (error) {
+    setPromptListStatus(error.message || "Failed to run prompt list.", "error");
+    addEvent(error.message || "failed to run prompt list", "error");
+  } finally {
+    setPromptListRunning(false);
+  }
+}
+
+async function runDisplayedPromptList() {
+  const saved = saveDisplayedPromptList();
+  if (!saved) {
+    setPromptListStatus("Save the list before running so it stays available afterward.", "warn");
+    return;
+  }
+  await runPromptList(saved.prompts, { name: saved.name });
+}
+
+async function runLoadedPromptList() {
+  if (!loadedPromptList) {
+    openPromptListDialog({ mode: "load" });
+    return;
+  }
+  await runPromptList(loadedPromptList.prompts, { name: loadedPromptList.name });
+}
+
+function appendText(parent, text, className = "text-block") {
+  const block = make("pre", className);
+  block.textContent = text || "";
+  parent.append(block);
+  return block;
+}
+
+function safeMarkdownLinkHref(url) {
+  const href = String(url || "").trim();
+  if (!href || /[\u0000-\u001f\u007f]/.test(href)) return "";
+  if (/^(?:https?:|mailto:)/i.test(href)) return href;
+  if (/^(?:#|\/(?!\/)|\.\/|\.\.\/)/.test(href)) return href;
+  return "";
+}
+
+function appendInlineMarkdown(parent, text, depth = 0) {
+  const value = String(text || "");
+  if (!value) return;
+  if (depth > 6) {
+    parent.append(document.createTextNode(value));
+    return;
+  }
+  let index = 0;
+  const appendPlain = (end) => {
+    if (end > index) parent.append(document.createTextNode(value.slice(index, end)));
+    index = end;
+  };
+  while (index < value.length) {
+    if (value[index] === "`") {
+      const end = value.indexOf("`", index + 1);
+      if (end > index + 1) {
+        const code = make("code", "markdown-inline-code", value.slice(index + 1, end));
+        parent.append(code);
+        index = end + 1;
+        continue;
+      }
+    }
+    if (value[index] === "[") {
+      const labelEnd = value.indexOf("](", index + 1);
+      const linkEnd = labelEnd === -1 ? -1 : value.indexOf(")", labelEnd + 2);
+      if (labelEnd !== -1 && linkEnd !== -1) {
+        const label = value.slice(index + 1, labelEnd);
+        const href = safeMarkdownLinkHref(value.slice(labelEnd + 2, linkEnd));
+        if (href) {
+          const link = make("a");
+          link.href = href;
+          if (/^https?:/i.test(href)) {
+            link.target = "_blank";
+            link.rel = "noopener noreferrer";
+          }
+          appendInlineMarkdown(link, label, depth + 1);
+          parent.append(link);
+        } else {
+          parent.append(document.createTextNode(value.slice(index, linkEnd + 1)));
+        }
+        index = linkEnd + 1;
+        continue;
+      }
+    }
+    const strongMarker = value.startsWith("**", index) ? "**" : value.startsWith("__", index) ? "__" : "";
+    if (strongMarker) {
+      const end = value.indexOf(strongMarker, index + 2);
+      if (end > index + 2) {
+        const strong = make("strong");
+        appendInlineMarkdown(strong, value.slice(index + 2, end), depth + 1);
+        parent.append(strong);
+        index = end + 2;
+        continue;
+      }
+    }
+    if (value.startsWith("~~", index)) {
+      const end = value.indexOf("~~", index + 2);
+      if (end > index + 2) {
+        const del = make("del");
+        appendInlineMarkdown(del, value.slice(index + 2, end), depth + 1);
+        parent.append(del);
+        index = end + 2;
+        continue;
+      }
+    }
+    const emphasisMarker = value[index] === "*" || value[index] === "_" ? value[index] : "";
+    if (emphasisMarker && value[index + 1] !== emphasisMarker) {
+      const end = value.indexOf(emphasisMarker, index + 1);
+      if (end > index + 1) {
+        const em = make("em");
+        appendInlineMarkdown(em, value.slice(index + 1, end), depth + 1);
+        parent.append(em);
+        index = end + 1;
+        continue;
+      }
+    }
+    const nextSpecials = ["`", "[", "**", "__", "~~", "*", "_"]
+      .map((marker) => value.indexOf(marker, index + 1))
+      .filter((pos) => pos !== -1);
+    appendPlain(nextSpecials.length ? Math.min(...nextSpecials) : value.length);
+  }
+}
+
+function appendMarkdownParagraph(parent, lines) {
+  const paragraph = make("p");
+  lines.forEach((line, index) => {
+    if (index > 0) paragraph.append(make("br"));
+    appendInlineMarkdown(paragraph, line);
+  });
+  parent.append(paragraph);
+}
+
+function setMarkdownCodeCopyButtonState(button, copied) {
+  clearTimeout(button._markdownCodeCopyResetTimer);
+  const label = button._markdownCodeCopyDefaultLabel || "Copy";
+  button.classList.toggle("copied", copied);
+  button.textContent = copied ? "Copied" : label;
+  button.title = copied ? "Copied code block" : `${label} code block`;
+  button.setAttribute("aria-label", button.title);
+  if (copied) {
+    button._markdownCodeCopyResetTimer = setTimeout(() => setMarkdownCodeCopyButtonState(button, false), 1400);
+  }
+}
+
+async function copyMarkdownCodeBlock(button) {
+  const wrapper = button.closest(".markdown-code-block");
+  const codeNode = wrapper?.querySelector(":scope > pre.markdown-code > code, :scope > details.markdown-mermaid-source pre.markdown-code > code");
+  const text = codeNode?.textContent || "";
+  if (!text) {
+    addEvent("code block has no text to copy", "warn");
+    return;
+  }
+  button.disabled = true;
+  try {
+    await copyText(text);
+    setMarkdownCodeCopyButtonState(button, true);
+  } catch (error) {
+    addEvent(`code block copy failed: ${error.message || String(error)}`, "warn");
+  } finally {
+    button.disabled = false;
+  }
+}
+
+function attachMarkdownCodeCopyButton(wrapper, label = "Copy") {
+  if (!wrapper) return null;
+  const existing = wrapper.querySelector(":scope > .markdown-code-copy-button");
+  if (existing) return existing;
+  const button = make("button", "markdown-code-copy-button", label);
+  button.type = "button";
+  button._markdownCodeCopyDefaultLabel = label;
+  setMarkdownCodeCopyButtonState(button, false);
+  button.addEventListener("click", (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    copyMarkdownCodeBlock(button);
+  });
+  wrapper.classList.add("has-code-copy-action");
+  wrapper.append(button);
+  return button;
+}
+
+function normalizedMarkdownLanguage(language) {
+  return String(language || "").trim().toLowerCase();
+}
+
+function isMermaidLanguage(language) {
+  return MERMAID_LANGUAGES.has(normalizedMarkdownLanguage(language));
+}
+
+function mermaidCssVar(styles, name, fallback) {
+  return styles.getPropertyValue(name).trim() || fallback;
+}
+
+function mermaidConfig() {
+  const styles = getComputedStyle(document.documentElement);
+  const text = mermaidCssVar(styles, "--ctp-text", "#cdd6f4");
+  const subtext = mermaidCssVar(styles, "--ctp-subtext", "#bac2de");
+  const surface = mermaidCssVar(styles, "--ctp-surface", "#313244");
+  const base = mermaidCssVar(styles, "--ctp-base", "#1e1e2e");
+  const crust = mermaidCssVar(styles, "--ctp-crust", "#11111b");
+  const mauve = mermaidCssVar(styles, "--ctp-mauve", "#cba6f7");
+  const blue = mermaidCssVar(styles, "--ctp-blue", "#89b4fa");
+  const teal = mermaidCssVar(styles, "--ctp-teal", "#94e2d5");
+  const yellow = mermaidCssVar(styles, "--ctp-yellow", "#f9e2af");
+  const red = mermaidCssVar(styles, "--ctp-red", "#f38ba8");
+  return {
+    startOnLoad: false,
+    securityLevel: "strict",
+    logLevel: "error",
+    maxTextSize: MERMAID_MAX_TEXT_SIZE,
+    theme: "base",
+    flowchart: { htmlLabels: false },
+    themeVariables: {
+      darkMode: true,
+      background: "transparent",
+      mainBkg: base,
+      secondBkg: surface,
+      primaryColor: surface,
+      primaryTextColor: text,
+      primaryBorderColor: mauve,
+      secondaryColor: base,
+      secondaryTextColor: text,
+      secondaryBorderColor: blue,
+      tertiaryColor: crust,
+      tertiaryTextColor: text,
+      tertiaryBorderColor: teal,
+      lineColor: subtext,
+      textColor: text,
+      titleColor: teal,
+      nodeTextColor: text,
+      clusterBkg: crust,
+      clusterBorder: mauve,
+      edgeLabelBackground: base,
+      noteBkgColor: crust,
+      noteTextColor: text,
+      noteBorderColor: yellow,
+      errorBkgColor: crust,
+      errorTextColor: red,
+      fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
+    },
+  };
+}
+
+function initializeMermaid(mermaid) {
+  const config = mermaidConfig();
+  const signature = JSON.stringify(config);
+  if (signature !== mermaidThemeSignature) {
+    mermaid.initialize(config);
+    mermaidThemeSignature = signature;
+  }
+}
+
+async function loadMermaid() {
+  if (!mermaidModulePromise) {
+    mermaidModulePromise = import(MERMAID_MODULE_URL)
+      .then((module) => module.default || module)
+      .catch((error) => {
+        mermaidModulePromise = null;
+        throw error;
+      });
+  }
+  const mermaid = await mermaidModulePromise;
+  initializeMermaid(mermaid);
+  return mermaid;
+}
+
+function mermaidRenderErrorMessage(error) {
+  return String(error?.str || error?.message || error || "Unknown Mermaid render error").trim();
+}
+
+async function renderMermaidDiagram(diagram, status, source) {
+  const token = `${Date.now().toString(36)}-${++mermaidRenderSequence}`;
+  diagram.dataset.mermaidRenderToken = token;
+  try {
+    if (source.length > MERMAID_MAX_TEXT_SIZE) throw new Error(`Mermaid diagram is too large (${source.length} characters, max ${MERMAID_MAX_TEXT_SIZE}).`);
+    const mermaid = await loadMermaid();
+    const id = `mermaid-${token.replace(/[^a-z0-9_-]/gi, "-")}`;
+    const { svg, bindFunctions } = await mermaid.render(id, source);
+    if (!diagram.isConnected || diagram.dataset.mermaidRenderToken !== token) return;
+    diagram.innerHTML = svg;
+    bindFunctions?.(diagram);
+    diagram.classList.add("rendered");
+    status.textContent = "";
+    status.hidden = true;
+  } catch (error) {
+    if (!diagram.isConnected || diagram.dataset.mermaidRenderToken !== token) return;
+    diagram.classList.add("render-error");
+    status.hidden = false;
+    status.classList.add("error");
+    status.textContent = `Mermaid render failed: ${mermaidRenderErrorMessage(error)}`;
+  }
+}
+
+function appendMarkdownMermaidBlock(parent, code) {
+  const source = String(code || "").replace(/\n+$/g, "");
+  const wrapper = make("div", "markdown-code-block markdown-mermaid-block");
+  wrapper.append(make("div", "markdown-code-language", "mermaid"));
+  const diagram = make("div", "markdown-mermaid-diagram");
+  diagram.setAttribute("role", "img");
+  diagram.setAttribute("aria-label", "Mermaid diagram");
+  const status = make("div", "markdown-mermaid-status muted", "Rendering Mermaid diagram…");
+  const sourceDetails = make("details", "markdown-mermaid-source");
+  sourceDetails.append(make("summary", undefined, "Mermaid source"));
+  const pre = make("pre", "code-block markdown-code");
+  const codeNode = make("code", "language-mermaid");
+  codeNode.textContent = source;
+  pre.append(codeNode);
+  sourceDetails.append(pre);
+  wrapper.append(diagram, status, sourceDetails);
+  attachMarkdownCodeCopyButton(wrapper, "Copy source");
+  parent.append(wrapper);
+  queueMicrotask(() => renderMermaidDiagram(diagram, status, source));
+}
+
+function appendMarkdownCodeBlock(parent, code, language = "", { closed = true } = {}) {
+  if (closed && isMermaidLanguage(language)) {
+    appendMarkdownMermaidBlock(parent, code);
+    return;
+  }
+  const wrapper = make("div", "markdown-code-block");
+  if (language) wrapper.append(make("div", "markdown-code-language", language));
+  const pre = make("pre", "code-block markdown-code");
+  const codeNode = make("code", language ? `language-${language.replace(/[^a-z0-9_-]/gi, "")}` : "");
+  codeNode.textContent = String(code || "").replace(/\n+$/g, "");
+  pre.append(codeNode);
+  wrapper.append(pre);
+  attachMarkdownCodeCopyButton(wrapper);
+  parent.append(wrapper);
+}
+
+function markdownTableSeparator(line) {
+  return /^\s*\|?\s*:?-{3,}:?\s*(?:\|\s*:?-{3,}:?\s*)+\|?\s*$/.test(line || "");
+}
+
+function splitMarkdownTableRow(line) {
+  let row = String(line || "").trim();
+  if (row.startsWith("|")) row = row.slice(1);
+  if (row.endsWith("|")) row = row.slice(0, -1);
+  return row.split(/(?<!\\)\|/).map((cell) => cell.replace(/\\\|/g, "|").trim());
+}
+
+function appendMarkdownTable(parent, rows) {
+  const wrapper = make("div", "markdown-table-wrapper");
+  const table = make("table", "markdown-table");
+  const thead = make("thead");
+  const tbody = make("tbody");
+  const headerRow = make("tr");
+  for (const cell of rows[0] || []) {
+    const th = make("th");
+    appendInlineMarkdown(th, cell);
+    headerRow.append(th);
+  }
+  thead.append(headerRow);
+  for (const row of rows.slice(1)) {
+    const tr = make("tr");
+    for (const cell of row) {
+      const td = make("td");
+      appendInlineMarkdown(td, cell);
+      tr.append(td);
+    }
+    tbody.append(tr);
+  }
+  table.append(thead, tbody);
+  wrapper.append(table);
+  parent.append(wrapper);
+}
+
+function markdownListMatch(line) {
+  const unordered = line.match(/^\s{0,3}[-*+]\s+(.+)$/);
+  if (unordered) return { ordered: false, text: unordered[1] };
+  const ordered = line.match(/^\s{0,3}(\d+)[.)]\s+(.+)$/);
+  if (ordered) return { ordered: true, start: Number(ordered[1]), text: ordered[2] };
+  return null;
+}
+
+function appendMarkdownList(parent, items, ordered = false, start = null) {
+  const list = make(ordered ? "ol" : "ul", "markdown-list");
+  if (ordered && Number.isFinite(start) && start > 1) list.start = start;
+  for (const itemText of items) {
+    const li = make("li");
+    const task = String(itemText).match(/^\[( |x|X|-)\]\s+(.+)$/);
+    if (task) {
+      li.classList.add("markdown-task-item");
+      const checkbox = make("input", "markdown-task-checkbox");
+      checkbox.type = "checkbox";
+      checkbox.disabled = true;
+      checkbox.checked = task[1].toLowerCase() === "x";
+      li.append(checkbox);
+      appendInlineMarkdown(li, task[2]);
+    } else {
+      appendInlineMarkdown(li, itemText);
+    }
+    list.append(li);
+  }
+  parent.append(list);
+}
+
+function renderMarkdownInto(parent, text) {
+  const raw = String(text || "").replace(/\r\n?/g, "\n");
+  const lines = raw.split("\n");
+  let index = 0;
+  let paragraph = [];
+  const flushParagraph = () => {
+    if (paragraph.length) appendMarkdownParagraph(parent, paragraph);
+    paragraph = [];
+  };
+
+  while (index < lines.length) {
+    const line = lines[index];
+    if (!line.trim()) {
+      flushParagraph();
+      index += 1;
+      continue;
+    }
+    const fence = line.match(/^\s*```\s*([\w.+-]*)\s*$/);
+    if (fence) {
+      flushParagraph();
+      const language = fence[1] || "";
+      const codeLines = [];
+      index += 1;
+      while (index < lines.length && !/^\s*```\s*$/.test(lines[index])) {
+        codeLines.push(lines[index]);
+        index += 1;
+      }
+      const closed = index < lines.length;
+      if (closed) index += 1;
+      appendMarkdownCodeBlock(parent, codeLines.join("\n"), language, { closed });
+      continue;
+    }
+    if (markdownTableSeparator(lines[index + 1]) && line.includes("|")) {
+      flushParagraph();
+      const rows = [splitMarkdownTableRow(line)];
+      index += 2;
+      while (index < lines.length && lines[index].includes("|") && lines[index].trim()) {
+        rows.push(splitMarkdownTableRow(lines[index]));
+        index += 1;
+      }
+      appendMarkdownTable(parent, rows);
+      continue;
+    }
+    const heading = line.match(/^\s{0,3}(#{1,6})\s+(.+?)\s*#*\s*$/);
+    if (heading) {
+      flushParagraph();
+      const level = Math.min(6, heading[1].length);
+      const node = make(`h${level}`, `markdown-heading markdown-heading-${level}`);
+      appendInlineMarkdown(node, heading[2]);
+      parent.append(node);
+      index += 1;
+      continue;
+    }
+    if (/^\s{0,3}(?:-{3,}|\*{3,}|_{3,})\s*$/.test(line)) {
+      flushParagraph();
+      parent.append(make("hr", "markdown-rule"));
+      index += 1;
+      continue;
+    }
+    if (/^\s{0,3}>\s?/.test(line)) {
+      flushParagraph();
+      const quoteLines = [];
+      while (index < lines.length && /^\s{0,3}>\s?/.test(lines[index])) {
+        quoteLines.push(lines[index].replace(/^\s{0,3}>\s?/, ""));
+        index += 1;
+      }
+      const quote = make("blockquote", "markdown-blockquote");
+      renderMarkdownInto(quote, quoteLines.join("\n"));
+      parent.append(quote);
+      continue;
+    }
+    const listMatch = markdownListMatch(line);
+    if (listMatch) {
+      flushParagraph();
+      const ordered = listMatch.ordered;
+      const start = listMatch.start || null;
+      const items = [];
+      while (index < lines.length) {
+        const item = markdownListMatch(lines[index]);
+        if (!item || item.ordered !== ordered) break;
+        items.push(item.text);
+        index += 1;
+      }
+      appendMarkdownList(parent, items, ordered, start);
+      continue;
+    }
+    paragraph.push(line);
+    index += 1;
+  }
+  flushParagraph();
+}
+
+function appendMarkdown(parent, text) {
+  const block = make("div", "markdown-body");
+  renderMarkdownInto(block, text);
+  parent.append(block);
+  return block;
+}
+
+function renderMarkdown(block, text) {
+  block.replaceChildren();
+  renderMarkdownInto(block, text);
+}
+
+/**
+ * Incremental renderer for streaming assistant markdown. The block-based
+ * parser in renderMarkdownInto only ever closes a block at a blank line
+ * outside a code fence, so everything before the last such boundary is
+ * stable: it is parsed exactly once and its DOM is never rebuilt. Only the
+ * open tail is re-parsed per streaming tick, keeping per-tick cost flat
+ * instead of O(message length).
+ */
+let streamMarkdownState = null;
+
+function streamingMarkdownStableBoundary(text) {
+  const lines = text.split("\n");
+  let inFence = false;
+  let boundary = 0;
+  let offset = 0;
+  // Exclude the final line: it may still be streaming in.
+  for (let index = 0; index < lines.length - 1; index += 1) {
+    const line = lines[index];
+    if (inFence) {
+      if (/^\s*```\s*$/.test(line)) inFence = false;
+    } else if (/^\s*```\s*[\w.+-]*\s*$/.test(line)) {
+      inFence = true;
+    }
+    offset += line.length + 1;
+    if (!inFence && !line.trim()) boundary = offset;
+  }
+  return boundary;
+}
+
+function clearStreamingMarkdownBlock(block) {
+  while (block.firstChild) block.firstChild.remove();
+}
+
+function renderStreamingMarkdown(block, text) {
+  let state = streamMarkdownState;
+  if (!state || state.block !== block) {
+    clearStreamingMarkdownBlock(block);
+    state = streamMarkdownState = { block, stableText: "", tailNodes: [] };
+  }
+  if (!text.startsWith(state.stableText)) {
+    // Derived streaming text should be append-only; if a provider still sends a
+    // retroactive rewrite, reset the streaming renderer without replaceChildren
+    // so this path cannot tear down external chrome or widget nodes.
+    clearStreamingMarkdownBlock(block);
+    state.stableText = "";
+    state.tailNodes = [];
+  }
+  for (const node of state.tailNodes) node.remove();
+  state.tailNodes = [];
+  const boundary = streamingMarkdownStableBoundary(text);
+  if (boundary > state.stableText.length) {
+    renderMarkdownInto(block, text.slice(state.stableText.length, boundary));
+    state.stableText = text.slice(0, boundary);
+  }
+  const tail = text.slice(state.stableText.length);
+  if (tail.trim()) {
+    const fragment = document.createDocumentFragment();
+    renderMarkdownInto(fragment, tail);
+    state.tailNodes = [...fragment.childNodes];
+    block.append(fragment);
+  }
+}
+
+function appendImage(parent, part) {
+  const wrapper = make("div", "image-block");
+  const img = document.createElement("img");
+  img.alt = "attached image";
+  img.loading = "lazy";
+  img.style.maxWidth = "100%";
+  img.style.borderRadius = "0.6rem";
+  img.src = `data:${part.mimeType || "image/png"};base64,${part.data || part.content || ""}`;
+  wrapper.append(img);
+  parent.append(wrapper);
+}
+
+function isActionFeedbackMessage(message) {
+  return message?.role === "assistant" || message?.role === "toolExecution" || message?.role === "toolResult" || message?.role === "bashExecution";
+}
+
+function truncateActionFeedbackText(text, limit = ACTION_FEEDBACK_SNIPPET_LIMIT) {
+  const value = String(text || "").trim();
+  if (value.length <= limit) return value;
+  return `${value.slice(0, limit - 1)}…`;
+}
+
+function actionFeedbackKey(message, messageIndex) {
+  return [
+    activeTabId || "tab",
+    messageIndex,
+    message?.role || "message",
+    message?.toolName || "",
+    message?.toolCallId || "",
+    message?.command || "",
+    message?.timestamp || "",
+  ].join("|");
+}
+
+function actionFeedbackSummary(message) {
+  if (message?.role === "assistant") {
+    return { kind: "final output", title: message.title || "final output", snippet: truncateActionFeedbackText(textFromContent(message?.content)) };
+  }
+  const title = messageTitle(message);
+  if (message?.role === "bashExecution") {
+    return {
+      kind: "action",
+      title,
+      snippet: truncateActionFeedbackText(`$ ${message.command || ""}\n\n${message.output || ""}`),
+    };
+  }
+  if (message?.role === "toolExecution") {
+    const result = toolExecutionResult(message);
+    const args = message.arguments === undefined ? "" : JSON.stringify(message.arguments, null, 2);
+    const output = toolResultText(result);
+    return { kind: "action", title, snippet: truncateActionFeedbackText([args, output].filter(Boolean).join("\n\n")) };
+  }
+  return { kind: "action", title, snippet: truncateActionFeedbackText(textFromContent(message?.content)) };
+}
+
+function feedbackMapForTab(tabId = activeTabId) {
+  if (!tabId) return new Map();
+  let map = actionFeedbackByTab.get(tabId);
+  if (!map) {
+    map = new Map();
+    actionFeedbackByTab.set(tabId, map);
+  }
+  return map;
+}
+
+function queuedActionFeedback(tabId = activeTabId) {
+  const map = actionFeedbackByTab.get(tabId);
+  return map ? [...map.values()].sort((a, b) => a.messageIndex - b.messageIndex) : [];
+}
+
+function actionFeedbackSteerMessage(item) {
+  const comment = item.comment ? `\nUser comment: ${item.comment}` : "";
+  const snippet = item.snippet ? `\nAction excerpt:\n${item.snippet}` : "";
+  const target = item.kind || "action";
+  if (item.reaction === "up") return `Direct feedback: 👍 Good job! Keep this kind of ${target}.\nTarget (${target}): ${item.title}${snippet}`;
+  if (item.reaction === "down") return `Direct feedback: 👎 Avoid or reconsider this ${target} and similar future patterns.\nTarget (${target}): ${item.title}${comment}${snippet}`;
+  return `Direct feedback: ? Please explain this ${target} in detail in your final output.\nTarget (${target}): ${item.title}${snippet}`;
+}
+
+async function sendLiveActionFeedback(item) {
+  const tabContext = activeTabContext(item.tabId);
+  if (!isRunActive()) return;
+  await api("/api/steer", { method: "POST", body: { message: actionFeedbackSteerMessage(item) }, tabId: item.tabId });
+  if (isCurrentTabContext(tabContext)) addEvent(`sent ${ACTION_FEEDBACK_REACTIONS[item.reaction]?.icon || "feedback"} action feedback as live steering`);
+}
+
+function setActionFeedback(message, messageIndex, reaction) {
+  const tabId = activeTabId;
+  if (!tabId || !ACTION_FEEDBACK_REACTIONS[reaction]) return;
+  const key = actionFeedbackKey(message, messageIndex);
+  const map = feedbackMapForTab(tabId);
+  const existing = map.get(key);
+  let comment = existing?.comment || "";
+  if (reaction === "down") {
+    const nextComment = window.prompt("Optional comment for Pi about what to avoid:", comment);
+    if (nextComment === null) return;
+    comment = nextComment.trim();
+  }
+  const summary = actionFeedbackSummary(message);
+  const item = {
+    key,
+    tabId,
+    messageIndex,
+    reaction,
+    comment,
+    kind: summary.kind,
+    title: summary.title,
+    snippet: summary.snippet,
+    createdAt: new Date().toISOString(),
+  };
+  map.set(key, item);
+  renderAllMessages({ preserveScroll: true });
+  renderFeedbackTray();
+  if (isRunActive()) sendLiveActionFeedback(item).catch((error) => addEvent(error.message, "error"));
+  else addEvent("feedback queued; send it after the agent has finished to create a LEARNING");
+}
+
+function serializeActionFeedback(item) {
+  return {
+    reaction: item.reaction,
+    comment: item.comment,
+    kind: item.kind,
+    title: item.title,
+    snippet: item.snippet,
+    messageIndex: item.messageIndex,
+    createdAt: item.createdAt,
+  };
+}
+
+function feedbackReactionLabel(reaction) {
+  if (reaction === "up") return "👍 thumbs up — Good job; repeat this pattern when appropriate.";
+  if (reaction === "down") return "👎 thumbs down — avoid or reconsider this target/pattern; prioritize the user comment.";
+  return "? question mark — explain this target in detail in the final output.";
+}
+
+function formatActionFeedbackLearningPrompt(items) {
+  const lines = [
+    "The user submitted direct feedback on specific Web UI action or final-output cards from your last run.",
+    "Use it to steer future behavior and create or update a concise LEARNING note from this feedback.",
+    "Reaction semantics:",
+    "- 👍 thumbs up: treat as 'Good job!' and reinforce the action/pattern.",
+    "- 👎 thumbs down: avoid or reconsider this target/pattern; include any user comment.",
+    "- ? question mark: explain the target in detail in your final output.",
+    "",
+    "Feedback items:",
+  ];
+  items.forEach((item, index) => {
+    lines.push(
+      `${index + 1}. ${feedbackReactionLabel(item.reaction)}`,
+      `   Target (${item.kind || "action"}): ${item.title}`,
+      item.comment ? `   User comment: ${item.comment}` : undefined,
+      item.snippet ? `   Target excerpt:\n${item.snippet.split(/\r?\n/).map((line) => `     ${line}`).join("\n")}` : undefined,
+    );
+  });
+  lines.push(
+    "",
+    "After processing this feedback, report which LEARNING was created or updated. If any item used '?', include the requested detailed explanation in the final response.",
+  );
+  return lines.filter((line) => line !== undefined).join("\n");
+}
+
+function isMissingActionFeedbackEndpoint(error) {
+  return error?.statusCode === 404 || /not found/i.test(error?.message || "");
+}
+
+async function postQueuedFeedback(tabId, items, tabContext = activeTabContext(tabId)) {
+  const feedback = items.map(serializeActionFeedback);
+  try {
+    await api("/api/action-feedback", { method: "POST", body: { feedback }, tabId });
+  } catch (error) {
+    if (!isMissingActionFeedbackEndpoint(error)) throw error;
+    if (isCurrentTabContext(tabContext)) addEvent("/api/action-feedback not found; falling back to a normal prompt. Restart Web UI to use the dedicated endpoint.", "warn");
+    await api("/api/prompt", { method: "POST", body: { message: formatActionFeedbackLearningPrompt(feedback) }, tabId });
+  }
+}
+
+function renderActionFeedbackControls(bubble, message, messageIndex) {
+  if (!isActionFeedbackMessage(message) || messageIndex < 0) return;
+  const key = actionFeedbackKey(message, messageIndex);
+  const selected = actionFeedbackByTab.get(activeTabId)?.get(key)?.reaction;
+  const controls = make("div", "action-feedback-controls");
+  controls.setAttribute("aria-label", message?.role === "assistant" ? "Final output feedback" : "Action feedback");
+  for (const [reaction, meta] of Object.entries(ACTION_FEEDBACK_REACTIONS)) {
+    const button = make("button", `action-feedback-button feedback-${reaction}${selected === reaction ? " active" : ""}`, meta.icon);
+    button.type = "button";
+    button.title = meta.title;
+    button.setAttribute("aria-label", meta.title);
+    button.setAttribute("aria-pressed", selected === reaction ? "true" : "false");
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      event.stopPropagation();
+      setActionFeedback(message, messageIndex, reaction);
+    });
+    controls.append(button);
+  }
+  bubble.classList.add("has-action-feedback");
+  bubble.append(controls);
+}
+
+function renderFeedbackTray() {
+  if (deferUiRenderDuringPointerActivation("feedback-tray", renderFeedbackTray)) return;
+  const items = queuedActionFeedback();
+  const hasItems = items.length > 0;
+  elements.feedbackTray.hidden = !hasItems;
+  if (!hasItems) return;
+  const questions = items.filter((item) => item.reaction === "question").length;
+  const downs = items.filter((item) => item.reaction === "down").length;
+  const ups = items.filter((item) => item.reaction === "up").length;
+  const parts = [ups ? `${ups} 👍` : "", downs ? `${downs} 👎` : "", questions ? `${questions} ?` : ""].filter(Boolean).join(" · ");
+  elements.feedbackTraySummary.textContent = `${items.length} action reaction${items.length === 1 ? "" : "s"} queued${parts ? ` (${parts})` : ""}.`;
+  const runActive = isRunActive();
+  elements.sendFeedbackButton.disabled = actionFeedbackSendBusy || runActive;
+  elements.sendFeedbackButton.textContent = actionFeedbackSendBusy ? "Sending…" : runActive ? "Send after finish" : "Send & create LEARNING";
+}
+
+async function submitQueuedActionFeedback() {
+  const tabId = activeTabId;
+  const tabContext = activeTabContext(tabId);
+  const items = queuedActionFeedback(tabId);
+  if (!tabId || items.length === 0 || actionFeedbackSendBusy) return;
+  if (isRunActive()) {
+    addEvent("wait for the agent to finish before sending queued action feedback", "warn");
+    renderFeedbackTray();
+    return;
+  }
+
+  actionFeedbackSendBusy = true;
+  markTabWorkingLocally(tabId);
+  setRunIndicatorActivity("Sending action feedback to Pi…");
+  renderFeedbackTray();
+  try {
+    await postQueuedFeedback(tabId, items, tabContext);
+    actionFeedbackByTab.get(tabId)?.clear();
+    if (!isCurrentTabContext(tabContext)) return;
+    renderAllMessages({ preserveScroll: true });
+    addEvent("feedback sent; Pi will create a LEARNING");
+    scheduleRefreshState(120, tabContext);
+    scheduleRefreshMessages(120, tabContext);
+    scheduleRefreshFooter(300, tabContext);
+  } catch (error) {
+    markTabIdleLocally(tabId);
+    if (isCurrentTabContext(tabContext)) {
+      clearRunIndicatorActivity();
+      addEvent(error.message, "error");
+      addTransientMessage({ role: "error", title: "feedback", content: error.message, level: "error" });
+    }
+  } finally {
+    actionFeedbackSendBusy = false;
+    renderFeedbackTray();
+  }
+}
+
+function renderContent(parent, content, { markdown = false } = {}) {
+  if (content === undefined || content === null) return;
+  if (typeof content === "string") {
+    if (markdown) appendMarkdown(parent, stripTodoProgressLines(content));
+    else appendText(parent, content);
+    return;
+  }
+  if (!Array.isArray(content)) {
+    appendText(parent, JSON.stringify(content, null, 2), "code-block");
+    return;
+  }
+
+  for (const part of content) {
+    if (!part || typeof part !== "object") {
+      appendText(parent, String(part));
+      continue;
+    }
+    if (part.type === "text") {
+      const text = assistantTextPartText(part);
+      if (markdown) appendMarkdown(parent, stripTodoProgressLines(text));
+      else appendText(parent, text);
+    } else if (part.type === "thinking") {
+      const thinking = visibleThinkingText(assistantThinkingText(part));
+      if (!thinkingOutputVisible || !thinking) continue;
+      const details = make("details", "thinking-block");
+      details.open = true;
+      details.append(make("summary", undefined, "thinking"));
+      appendText(details, thinking, "thinking-text");
+      parent.append(details);
+    } else if (part.type === "toolCall") {
+      const details = make("details");
+      details.open = true;
+      details.append(make("summary", undefined, `tool call: ${part.name || "unknown"}`));
+      appendText(details, JSON.stringify(part.arguments || {}, null, 2), "code-block");
+      parent.append(details);
+    } else if (part.type === "image") {
+      appendImage(parent, part);
+    } else {
+      appendText(parent, JSON.stringify(part, null, 2), "code-block");
+    }
+  }
+}
+
+function messageTitle(message) {
+  if (message.role === "assistant") return message.title || "final output";
+  if (message.title) return message.title;
+  if (message.role === "thinking") return "thinking";
+  if (message.role === "toolCall") return `tool call: ${message.toolName || "unknown"}`;
+  if (message.role === "toolExecution") return toolExecutionTitle(message);
+  if (message.role === "assistantEvent") return "assistant event";
+  if (message.role === "toolResult") return `tool result: ${message.toolName || "unknown"}`;
+  if (message.role === "bashExecution") return `bash: ${message.command || ""}`;
+  if (message.role === "compactionSummary") return "compaction summary";
+  return message.role || "message";
+}
+
+function assistantThinkingText(part) {
+  if (!part || typeof part !== "object") return "";
+  if (part.type !== "thinking" && typeof part.thinking !== "string") return "";
+  if (typeof part.thinking === "string") return part.thinking;
+  return typeof part.content === "string" ? part.content : "";
+}
+
+function visibleThinkingText(text) {
+  const value = String(text || "");
+  const trimmed = value.trim();
+  if (!trimmed || trimmed === UNEXPOSED_THINKING_TEXT) return "";
+  return value;
+}
+
+function escapeRegExp(value) {
+  return String(value).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function isPartialThinkingFormatOpenTag(text) {
+  const value = String(text || "").trimStart().toLowerCase();
+  if (!value) return false;
+  if ("<think>".startsWith(value)) return true;
+  if (value === "<|" || /^<\|[a-z][\w-]*$/i.test(value)) return true;
+  return /^<think\b[^>]*$/i.test(value);
+}
+
+function stripPartialThinkingFormatClose(text, closeTag = "</think>") {
+  const value = String(text || "");
+  const lower = value.toLowerCase();
+  const expected = String(closeTag || "").toLowerCase();
+  const start = lower.lastIndexOf("<");
+  if (start < 0) return value;
+  const partial = lower.slice(start).trimEnd();
+  return expected.startsWith(partial) ? value.slice(0, start) : value;
+}
+
+function stripThinkingFormatOutputSeparator(text) {
+  return String(text || "").replace(/^(?:[ \t]*\r?\n)+/, "").replace(/^[ \t]+/, "");
+}
+
+function joinedThinkingFormatParts(parts) {
+  return parts.map((part) => String(part || "")).filter((part) => part.length > 0).join("\n\n");
+}
+
+function thinkingFormatOpenMatch(text) {
+  const value = String(text || "");
+  const think = THINKING_FORMAT_OPEN_TAG_REGEX.exec(value);
+  if (think) return { raw: think[0], closeRegex: THINKING_FORMAT_CLOSE_TAG_REGEX, closeTag: "</think>" };
+  const channel = CHANNEL_THINKING_FORMAT_OPEN_TAG_REGEX.exec(value);
+  if (!channel) return null;
+  const name = channel[1];
+  return { raw: channel[0], closeRegex: new RegExp(`<${escapeRegExp(name)}\\|>`, "i"), closeTag: `<${name}|>` };
+}
+
+function splitThinkingFormatText(text, { streaming = false } = {}) {
+  let rest = String(text ?? "").trimStart();
+  if (!rest) return null;
+  if (!thinkingFormatOpenMatch(rest)) {
+    return streaming && isPartialThinkingFormatOpenTag(rest)
+      ? { hasThinkingFormat: true, thinkingText: "", finalText: "", complete: false }
+      : null;
+  }
+
+  const thinkingParts = [];
+  let open = thinkingFormatOpenMatch(rest);
+  while (open) {
+    const afterOpen = rest.slice(open.raw.length);
+    const close = open.closeRegex.exec(afterOpen);
+    if (!close) {
+      thinkingParts.push(streaming ? stripPartialThinkingFormatClose(afterOpen, open.closeTag) : afterOpen);
+      return { hasThinkingFormat: true, thinkingText: joinedThinkingFormatParts(thinkingParts), finalText: "", complete: false };
+    }
+
+    thinkingParts.push(afterOpen.slice(0, close.index));
+    rest = afterOpen.slice(close.index + close[0].length);
+    const next = rest.trimStart();
+    open = thinkingFormatOpenMatch(next);
+    if (open) {
+      rest = next;
+      continue;
+    }
+    break;
+  }
+
+  return {
+    hasThinkingFormat: true,
+    thinkingText: joinedThinkingFormatParts(thinkingParts),
+    finalText: stripThinkingFormatOutputSeparator(rest),
+    complete: true,
+  };
+}
+
+function appendThinkingFormatDisplayMessages(displayMessages, base, parsed) {
+  const thinking = visibleThinkingText(parsed?.thinkingText || "");
+  if (thinking) displayMessages.push({ ...base, role: "thinking", title: "thinking", content: thinking, thinking });
+}
+
+function isAssistantToolCallPart(part) {
+  return !!(part && typeof part === "object" && (part.type === "toolCall" || part.toolCall));
+}
+
+function assistantHasToolCallAfter(content, index) {
+  return Array.isArray(content) && content.slice(index + 1).some(isAssistantToolCallPart);
+}
+
+function assistantToolCallName(part) {
+  return String(part?.name || part?.toolName || part?.toolCall?.name || "unknown");
+}
+
+function assistantToolCallArguments(part) {
+  return part?.arguments || part?.args || part?.input || part?.toolCall?.arguments || {};
+}
+
+function toolCallArgumentsText(value, { includeEmptyObject = true } = {}) {
+  if (typeof value === "string") return value;
+  if (value === undefined || value === null) return includeEmptyObject ? "{}" : "";
+  if (typeof value === "object") {
+    if (!includeEmptyObject && !Array.isArray(value) && Object.keys(value).length === 0) return "";
+    try {
+      return JSON.stringify(value, null, 2);
+    } catch {
+      return String(value);
+    }
+  }
+  return String(value);
+}
+
+function toolCallDisplayText(message, options = {}) {
+  if (typeof message?.rawArguments === "string" && message.rawArguments.length > 0) return message.rawArguments;
+  return toolCallArgumentsText(message?.arguments ?? message?.content ?? {}, options);
+}
+
+function renderToolCallMessageBody(body, message, { placeholder = "{}" } = {}) {
+  const text = toolCallDisplayText(message).trimEnd() || placeholder;
+  appendText(body, text, "code-block tool-call-arguments");
+}
+
+function assistantTextPartText(part) {
+  if (!part || typeof part !== "object" || part.type !== "text") return "";
+  if (typeof part.text === "string") return part.text;
+  return typeof part.content === "string" ? part.content : "";
+}
+
+function isEmptyAssistantTextPart(part) {
+  return !!(part && typeof part === "object" && part.type === "text" && !assistantTextPartText(part).trim());
+}
+
+function assistantFinalOutputPart(part) {
+  if (part === undefined || part === null) return null;
+  if (typeof part !== "object") {
+    const text = String(part);
+    return text.trim() ? { type: "text", text } : null;
+  }
+  if (part.type === "text") {
+    const text = assistantTextPartText(part);
+    return text.trim() ? { ...part, type: "text", text } : null;
+  }
+  if (typeof part.text === "string") return part.text.trim() ? { ...part, type: "text", text: part.text } : null;
+  if (part.type === "image") return part;
+  if (typeof part.content === "string" && part.type !== "thinking" && part.type !== "toolCall" && typeof part.thinking !== "string") {
+    return part.content.trim() ? { type: "text", text: part.content } : null;
+  }
+  return null;
+}
+
+function assistantDisplayMessages(message) {
+  if (message?.role !== "assistant") return [message];
+  const base = { timestamp: message.timestamp };
+  const content = message.content;
+  if (typeof content === "string") {
+    const parsed = splitThinkingFormatText(content);
+    if (parsed?.hasThinkingFormat) {
+      const displayMessages = [];
+      appendThinkingFormatDisplayMessages(displayMessages, base, parsed);
+      if (parsed.finalText.trim()) displayMessages.push({ ...message, title: "final output", content: parsed.finalText });
+      return displayMessages;
+    }
+    return content.trim() ? [{ ...message, title: "final output" }] : [];
+  }
+  if (!Array.isArray(content)) {
+    return content === undefined || content === null ? [] : [{ ...message, title: "final output" }];
+  }
+
+  const displayMessages = [];
+  const finalParts = [];
+  for (let index = 0; index < content.length; index += 1) {
+    const part = content[index];
+    const isThinkingPart = part && typeof part === "object" && (part.type === "thinking" || typeof part.thinking === "string");
+    if (isThinkingPart) {
+      const thinking = visibleThinkingText(assistantThinkingText(part));
+      if (thinking) displayMessages.push({ ...base, role: "thinking", title: "thinking", content: thinking, thinking });
+      continue;
+    }
+    if (isAssistantToolCallPart(part)) {
+      const toolName = assistantToolCallName(part);
+      const args = assistantToolCallArguments(part);
+      const toolCallId = assistantToolCallId(part);
+      displayMessages.push({ ...base, role: "toolCall", title: `tool call: ${toolName}`, toolName, toolCallId, arguments: args, content: args });
+      continue;
+    }
+    const primitiveText = part !== undefined && part !== null && typeof part !== "object" ? String(part) : "";
+    const textForThinkingFormat = primitiveText || (part && typeof part === "object" && (part.type === "text" || typeof part.text === "string") ? assistantTextPartText(part) || part.text : "");
+    if (textForThinkingFormat) {
+      const parsed = splitThinkingFormatText(textForThinkingFormat);
+      if (parsed?.hasThinkingFormat) {
+        appendThinkingFormatDisplayMessages(displayMessages, base, parsed);
+        if (parsed.finalText.trim() && !assistantHasToolCallAfter(content, index)) finalParts.push(part && typeof part === "object" ? { ...part, type: "text", text: parsed.finalText } : { type: "text", text: parsed.finalText });
+        continue;
+      }
+    }
+    const finalPart = assistantFinalOutputPart(part);
+    if (finalPart) {
+      if (!assistantHasToolCallAfter(content, index)) finalParts.push(finalPart);
+      continue;
+    }
+    if (isEmptyAssistantTextPart(part)) continue;
+    if (part !== undefined && part !== null) {
+      displayMessages.push({ ...base, role: "assistantEvent", title: part?.type ? `assistant ${part.type}` : "assistant event", content: part });
+    }
+  }
+
+  if (finalParts.length > 0) {
+    displayMessages.push({ ...message, title: "final output", content: finalParts });
+  }
+  return displayMessages;
+}
+
+function stickyUserPromptPreviewText(text) {
+  const value = cleanStatusText(text);
+  if (!value) return "(empty prompt)";
+  if (value.length <= STICKY_USER_PROMPT_PREVIEW_LIMIT) return value;
+  return `${value.slice(0, STICKY_USER_PROMPT_PREVIEW_LIMIT - 1)}…`;
+}
+
+function messageUserPromptText(message) {
+  return cleanStatusText(textFromContent(message?.content));
+}
+
+function stickyUserPromptPreview(message) {
+  return stickyUserPromptPreviewText(messageUserPromptText(message));
+}
+
+function promptHistoryText(value) {
+  return stripAnsi(String(value ?? "")).replace(/\r\n?/g, "\n").trim();
+}
+
+function promptHistoryMessageText(message) {
+  if (message?.role !== "user") return "";
+  const text = promptHistoryText(textFromContent(message.content));
+  return text.startsWith("/") ? "" : text;
+}
+
+function promptHistoryForTab(tabId = activeTabId) {
+  if (!tabId) return [];
+  return promptHistoryByTab.get(tabId) || [];
+}
+
+function promptHistoryWithEntry(history, text) {
+  const prompt = promptHistoryText(text);
+  if (!prompt) return history || [];
+  return [...(history || []).filter((entry) => entry !== prompt), prompt].slice(-PROMPT_HISTORY_LIMIT_PER_TAB);
+}
+
+function promptHistoryEqual(left = [], right = []) {
+  return left.length === right.length && left.every((entry, index) => entry === right[index]);
+}
+
+function setPromptHistoryForTab(tabId, history, { persist = true } = {}) {
+  if (!tabId) return;
+  const entries = (history || []).map(promptHistoryText).filter(Boolean).slice(-PROMPT_HISTORY_LIMIT_PER_TAB);
+  if (entries.length) promptHistoryByTab.set(tabId, entries);
+  else promptHistoryByTab.delete(tabId);
+  if (persist) persistPromptHistoryCache();
+}
+
+function loadPromptHistoryCache() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(PROMPT_HISTORY_STORAGE_KEY) || "{}");
+    promptHistoryByTab = new Map(Object.entries(raw)
+      .map(([tabId, entries]) => [tabId, Array.isArray(entries) ? entries.map(promptHistoryText).filter(Boolean).slice(-PROMPT_HISTORY_LIMIT_PER_TAB) : []])
+      .filter(([, entries]) => entries.length));
+  } catch {
+    promptHistoryByTab = new Map();
+  }
+}
+
+function persistPromptHistoryCache() {
+  try {
+    const entries = [...promptHistoryByTab.entries()]
+      .filter(([tabId, history]) => tabId && Array.isArray(history) && history.length)
+      .slice(-24)
+      .map(([tabId, history]) => [tabId, history.slice(-PROMPT_HISTORY_LIMIT_PER_TAB)]);
+    localStorage.setItem(PROMPT_HISTORY_STORAGE_KEY, JSON.stringify(Object.fromEntries(entries)));
+  } catch {
+    // Ignore storage failures; in-memory prompt history still works for this page load.
+  }
+}
+
+function rememberPromptHistory(text, { tabId = activeTabId } = {}) {
+  if (!tabId) return;
+  setPromptHistoryForTab(tabId, promptHistoryWithEntry(promptHistoryForTab(tabId), text));
+}
+
+function syncPromptHistoryFromMessages(messages = latestMessages) {
+  if (!activeTabId) return;
+  const prompts = (messages || []).map(promptHistoryMessageText).filter(Boolean);
+  if (!prompts.length) return;
+  const currentHistory = promptHistoryForTab(activeTabId);
+  let nextHistory = currentHistory;
+  for (const prompt of prompts) nextHistory = promptHistoryWithEntry(nextHistory, prompt);
+  if (!promptHistoryEqual(currentHistory, nextHistory)) setPromptHistoryForTab(activeTabId, nextHistory);
+}
+
+function resetPromptHistoryNavigation() {
+  promptHistoryNavigation = null;
+}
+
+function activePromptHistoryNavigation(history = promptHistoryForTab()) {
+  if (!promptHistoryNavigation || promptHistoryNavigation.tabId !== activeTabId) return null;
+  const index = promptHistoryNavigation.index;
+  if (!Number.isInteger(index) || index < 0 || index >= history.length || elements.promptInput.value !== history[index]) {
+    resetPromptHistoryNavigation();
+    return null;
+  }
+  return promptHistoryNavigation;
+}
+
+function applyPromptHistoryValue(value) {
+  const input = elements.promptInput;
+  input.value = value || "";
+  resizePromptInput();
+  try {
+    input.setSelectionRange(input.value.length, input.value.length);
+  } catch {
+    // Some input implementations can reject selection updates; history recall still worked.
+  }
+  hideCommandSuggestions();
+}
+
+function recallPreviousPromptFromHistory() {
+  if (!activeTabId) return false;
+  const history = promptHistoryForTab(activeTabId);
+  if (!history.length) return false;
+  const navigation = activePromptHistoryNavigation(history);
+  if (!navigation && elements.promptInput.value.trim()) return false;
+  const index = navigation ? Math.max(0, navigation.index - 1) : history.length - 1;
+  promptHistoryNavigation = {
+    tabId: activeTabId,
+    index,
+    draft: navigation ? navigation.draft : elements.promptInput.value || "",
+  };
+  applyPromptHistoryValue(history[index]);
+  return true;
+}
+
+function recallNextPromptFromHistory() {
+  if (!activeTabId) return false;
+  const history = promptHistoryForTab(activeTabId);
+  const navigation = activePromptHistoryNavigation(history);
+  if (!navigation) return false;
+  if (navigation.index >= history.length - 1) {
+    const draft = navigation.draft || "";
+    resetPromptHistoryNavigation();
+    applyPromptHistoryValue(draft);
+    return true;
+  }
+  const index = navigation.index + 1;
+  promptHistoryNavigation = { ...navigation, index };
+  applyPromptHistoryValue(history[index]);
+  return true;
+}
+
+function loadLastUserPromptCache() {
+  try {
+    const raw = JSON.parse(localStorage.getItem(LAST_USER_PROMPT_STORAGE_KEY) || "{}");
+    lastUserPromptByTab = new Map(Object.entries(raw).filter(([, entry]) => entry && typeof entry.text === "string"));
+  } catch {
+    lastUserPromptByTab = new Map();
+  }
+}
+
+function persistLastUserPromptCache() {
+  try {
+    localStorage.setItem(LAST_USER_PROMPT_STORAGE_KEY, JSON.stringify(Object.fromEntries([...lastUserPromptByTab.entries()].slice(-24))));
+  } catch {
+    // Ignore storage failures; the in-memory prompt cache still works for this page load.
+  }
+}
+
+function rememberLastUserPrompt(text, { tabId = activeTabId, messageIndex = null } = {}) {
+  if (!tabId) return null;
+  const cleanText = cleanStatusText(text);
+  if (!cleanText) return null;
+  const entry = {
+    text: cleanText,
+    preview: stickyUserPromptPreviewText(cleanText),
+    messageIndex: Number.isInteger(messageIndex) ? messageIndex : null,
+    updatedAt: Date.now(),
+  };
+  lastUserPromptByTab.set(tabId, entry);
+  persistLastUserPromptCache();
+  return entry;
+}
+
+function forgetLastUserPrompt(tabId = activeTabId) {
+  if (!tabId || !lastUserPromptByTab.delete(tabId)) return;
+  persistLastUserPromptCache();
+}
+
+function syncLastUserPromptFromMessages(messages = latestMessages) {
+  const lastUserIndex = (messages || []).findLastIndex((message) => message?.role === "user");
+  if (lastUserIndex >= 0) {
+    rememberLastUserPrompt(messageUserPromptText(messages[lastUserIndex]), { messageIndex: lastUserIndex });
+    return;
+  }
+  if (!(messages || []).some((message) => message?.role === "compactionSummary")) forgetLastUserPrompt();
+}
+
+function cachedLastUserPromptTarget() {
+  const entry = activeTabId ? lastUserPromptByTab.get(activeTabId) : null;
+  if (!entry?.text) return null;
+  const summaryNode = elements.chat.querySelector('.message.compactionSummary[data-message-index]');
+  return {
+    index: Number.isInteger(entry.messageIndex) ? entry.messageIndex : -1,
+    message: null,
+    node: summaryNode,
+    top: summaryNode ? chatScrollTopForNode(summaryNode) : 0,
+    preview: entry.preview || stickyUserPromptPreviewText(entry.text),
+    compacted: true,
+  };
+}
+
+function chatScrollTopForNode(node) {
+  if (!node) return 0;
+  const chatRect = elements.chat.getBoundingClientRect();
+  const nodeRect = node.getBoundingClientRect();
+  return elements.chat.scrollTop + nodeRect.top - chatRect.top;
+}
+
+function stickyUserPromptViewportGap() {
+  const button = elements.stickyUserPromptButton;
+  if (!button || button.hidden) return STICKY_USER_PROMPT_TOP_GAP_PX;
+  return Math.ceil(button.getBoundingClientRect().height) + STICKY_USER_PROMPT_TOP_GAP_PX;
+}
+
+function resetChatOutput() {
+  liveToolCards.clear();
+  renderedTranscriptState = { epoch: "", entries: [] };
+  const preservedNodes = [];
+  if (elements.stickyUserPromptButton) preservedNodes.push(elements.stickyUserPromptButton);
+  if (runIndicatorBubble?.parentElement === elements.chat) preservedNodes.push(runIndicatorBubble);
+  elements.chat.replaceChildren(...preservedNodes);
+}
+
+function appendChatMessageBubble(bubble) {
+  if (runIndicatorBubble?.parentElement === elements.chat && bubble !== runIndicatorBubble) {
+    elements.chat.insertBefore(bubble, runIndicatorBubble);
+  } else {
+    elements.chat.append(bubble);
+  }
+}
+
+function userPromptTargets() {
+  return [...elements.chat.querySelectorAll('.message[data-user-prompt="true"][data-message-index]')]
+    .map((node) => {
+      const index = Number(node.dataset.messageIndex);
+      if (!Number.isInteger(index)) return null;
+      const message = latestMessages[index];
+      if (!message) return null;
+      return { index, message, node, top: chatScrollTopForNode(node), preview: stickyUserPromptPreview(message) };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.index - b.index);
+}
+
+function findStickyUserPromptTarget(targets = userPromptTargets()) {
+  if (targets.length === 0) return cachedLastUserPromptTarget();
+  const viewportTop = elements.chat.scrollTop + stickyUserPromptViewportGap();
+  const previousPrompt = targets.filter((target) => target.top < viewportTop - STICKY_USER_PROMPT_TOP_GAP_PX).at(-1);
+  if (previousPrompt) return previousPrompt;
+
+  const latestPrompt = targets.at(-1);
+  const latestTopInView = latestPrompt.top - elements.chat.scrollTop;
+  const latestVisibleNearTop = latestTopInView >= 0 && latestTopInView <= Math.min(elements.chat.clientHeight * 0.55, 180);
+  if (targets.length === 1 && latestVisibleNearTop) return null;
+  return latestPrompt;
+}
+
+function updateStickyUserPromptButton() {
+  if (deferUiRenderDuringPointerActivation("sticky-user-prompt", updateStickyUserPromptButton)) return;
+  const button = elements.stickyUserPromptButton;
+  if (!button) return;
+  const targets = userPromptTargets();
+  const target = findStickyUserPromptTarget(targets);
+  if (!target) {
+    button.hidden = true;
+    button.removeAttribute("data-message-index");
+    button.removeAttribute("data-compacted");
+    button.replaceChildren();
+    return;
+  }
+
+  const ordinal = target.compacted ? 1 : targets.findIndex((item) => item.index === target.index) + 1;
+  const isLatest = target.compacted || ordinal === targets.length;
+  const label = target.compacted ? "Last user prompt (compacted)" : isLatest ? "Last user prompt" : "Previous user prompt";
+  const meta = target.compacted ? "summary ↑" : `${ordinal}/${targets.length} ↑`;
+  button.hidden = false;
+  button.dataset.compacted = target.compacted ? "true" : "false";
+  if (Number.isInteger(target.index) && target.index >= 0) button.dataset.messageIndex = String(target.index);
+  else button.removeAttribute("data-message-index");
+  const nextFollowUp = nextQueuedFollowUpPrompt();
+  const baseTitle = target.compacted ? `Prompt was compacted; jump to compaction summary: ${target.preview}` : `Jump to ${label.toLowerCase()}: ${target.preview}`;
+  const baseAriaLabel = target.compacted ? `Prompt was compacted; jump to compaction summary: ${target.preview}` : `Jump to ${label.toLowerCase()} (${ordinal} of ${targets.length}): ${target.preview}`;
+  button.title = nextFollowUp ? `${baseTitle}\nNext follow-up prompt: ${nextFollowUp}` : baseTitle;
+  button.setAttribute("aria-label", nextFollowUp ? `${baseAriaLabel}. Next follow-up prompt: ${nextFollowUp}` : baseAriaLabel);
+  const children = [
+    make("span", "sticky-user-prompt-label", label),
+    make("span", "sticky-user-prompt-text", target.preview),
+    make("span", "sticky-user-prompt-meta", meta),
+  ];
+  if (nextFollowUp) {
+    const followUp = make("span", "sticky-user-follow-up-prompt");
+    followUp.append(make("span", "sticky-user-follow-up-label", "Next follow-up"), make("span", "sticky-user-follow-up-text", nextFollowUp));
+    children.push(followUp);
+  }
+  button.replaceChildren(...children);
+}
+
+function assistantToolCallId(part) {
+  const id = part?.id || part?.toolCallId || part?.tool_call_id || part?.toolCall?.id || part?.toolCall?.toolCallId || part?.toolCall?.tool_call_id;
+  return id === undefined || id === null ? "" : String(id);
+}
+
+function toolResultCallId(message) {
+  const id = message?.toolCallId || message?.tool_call_id;
+  return id === undefined || id === null ? "" : String(id);
+}
+
+function buildToolResultMap(messages = latestMessages) {
+  const results = new Map();
+  for (const message of messages || []) {
+    if (message?.role !== "toolResult") continue;
+    const id = toolResultCallId(message);
+    if (id && !results.has(id)) results.set(id, message);
+  }
+  return results;
+}
+
+function buildAssistantToolCallIdSet(messages = latestMessages) {
+  const ids = new Set();
+  for (const message of messages || []) {
+    if (message?.role !== "assistant" || !Array.isArray(message.content)) continue;
+    for (const part of message.content) {
+      if (!isAssistantToolCallPart(part)) continue;
+      const id = assistantToolCallId(part);
+      if (id) ids.add(id);
+    }
+  }
+  return ids;
+}
+
+function toolResultForCallId(toolCallId, messages = latestMessages) {
+  const id = String(toolCallId || "");
+  if (!id) return null;
+  for (const message of messages || []) {
+    if (message?.role === "toolResult" && toolResultCallId(message) === id) return message;
+  }
+  return null;
+}
+
+function cleanupLiveToolRunsForMessages(messages = latestMessages) {
+  const results = buildToolResultMap(messages);
+  for (const id of liveToolRuns.keys()) {
+    if (results.has(id)) {
+      liveToolRuns.delete(id);
+      cancelQueuedLiveToolRunRender(id);
+    }
+  }
+}
+
+function shortenToolPath(value, fallback = ".") {
+  const path = normalizeDisplayPath(value || fallback);
+  if (path.length <= 96) return path;
+  return `…${path.slice(-95)}`;
+}
+
+function toolArgValue(args, keys) {
+  const keyList = Array.isArray(keys) ? keys : [keys];
+  for (const key of keyList) {
+    if (args && Object.prototype.hasOwnProperty.call(args, key)) return args[key];
+  }
+  return undefined;
+}
+
+function toolArgText(args, keys, fallback = "") {
+  const value = toolArgValue(args, keys);
+  if (value === undefined || value === null) return fallback;
+  if (typeof value === "string") return value;
+  return String(value);
+}
+
+function toolExecutionResult(message) {
+  if (message?.result) return message.result;
+  if (message?.partialResult) return { ...message.partialResult, isError: false };
+  if (message?.role === "toolResult") return message;
+  return null;
+}
+
+function toolResultText(result) {
+  if (!result) return "";
+  return stripAnsi(textFromContent(result.content)).replace(/\s+$/g, "");
+}
+
+function toolExecutionStatus(message) {
+  const result = toolExecutionResult(message);
+  if (message?.isPartial) return "running";
+  if (!result) return "pending";
+  return message?.isError || result?.isError ? "error" : "success";
+}
+
+function toolExecutionTitle(message) {
+  const name = runIndicatorToolName(message?.toolName || message?.name || "tool");
+  const status = toolExecutionStatus(message);
+  if (status === "running") return `tool: ${name} (running)`;
+  if (status === "pending") return `tool: ${name} (pending)`;
+  if (status === "error") return `tool: ${name} (failed)`;
+  return `tool: ${name}`;
+}
+
+function toolLineRange(args) {
+  const offset = toolArgValue(args, "offset");
+  const limit = toolArgValue(args, "limit");
+  const start = Number.isFinite(Number(offset)) ? Number(offset) : null;
+  const count = Number.isFinite(Number(limit)) ? Number(limit) : null;
+  if (start === null && count === null) return "";
+  const first = start ?? 1;
+  const last = count === null ? "" : first + count - 1;
+  return `:${first}${last ? `-${last}` : ""}`;
+}
+
+function appendToolTitle(parent, name, subject = "", meta = []) {
+  const line = make("div", "tool-title-line");
+  line.append(make("span", "tool-name", name));
+  if (subject) line.append(make("span", "tool-subject", subject));
+  parent.append(line);
+  const items = meta.filter(Boolean);
+  if (items.length > 0) {
+    const metaLine = make("div", "tool-meta-line");
+    for (const item of items) metaLine.append(make("span", "tool-meta-pill", item));
+    parent.append(metaLine);
+  }
+}
+
+function appendToolCommand(parent, command, meta = []) {
+  const line = make("pre", "tool-command-line");
+  line.textContent = `$ ${command || "..."}`;
+  parent.append(line);
+  const items = meta.filter(Boolean);
+  if (items.length > 0) {
+    const metaLine = make("div", "tool-meta-line");
+    for (const item of items) metaLine.append(make("span", "tool-meta-pill", item));
+    parent.append(metaLine);
+  }
+}
+
+function appendToolImages(parent, result) {
+  if (!Array.isArray(result?.content)) return;
+  for (const part of result.content) {
+    if (part?.type === "image") appendImage(parent, part);
+  }
+}
+
+function appendToolOutput(parent, text, { label = "output", previewLines = 10, previewFromEnd = false, open = false, emptyText = "" } = {}) {
+  const clean = stripAnsi(text).replace(/\s+$/g, "");
+  if (!clean) {
+    if (emptyText) appendText(parent, emptyText, "code-block tool-output-code muted-output");
+    return;
+  }
+  const lines = clean.split(/\r?\n/);
+  if (lines.length > previewLines) {
+    const details = make("details", "tool-output-details");
+    details.open = open || toolOutputGloballyExpanded;
+    details.append(make("summary", "tool-output-summary", `${label} (${lines.length} lines; expand)`));
+    appendText(details, clean, "code-block tool-output-code");
+    parent.append(details);
+
+    const preview = make("div", "tool-output-preview");
+    const visibleLines = previewFromEnd ? lines.slice(-previewLines) : lines.slice(0, previewLines);
+    const omitted = lines.length - visibleLines.length;
+    const hint = previewFromEnd
+      ? `… ${omitted} earlier line${omitted === 1 ? "" : "s"}; expand for full output`
+      : `… ${omitted} more line${omitted === 1 ? "" : "s"}; expand for full output`;
+    appendText(preview, `${visibleLines.join("\n")}\n${hint}`, "code-block tool-output-code tool-output-preview-text");
+    parent.append(preview);
+    return;
+  }
+  appendText(parent, clean, "code-block tool-output-code");
+}
+
+function appendToolWarnings(parent, details = {}) {
+  const warnings = [];
+  if (details.fullOutputPath) warnings.push(`Full output: ${details.fullOutputPath}`);
+  const truncation = details.truncation;
+  if (truncation?.truncated) {
+    if (truncation.truncatedBy === "lines") warnings.push(`Truncated: showing ${truncation.outputLines} of ${truncation.totalLines} lines`);
+    else if (truncation.outputLines) warnings.push(`Truncated: ${truncation.outputLines} lines shown`);
+    else warnings.push("Output truncated");
+  }
+  if (details.matchLimitReached) warnings.push(`Match limit reached: ${details.matchLimitReached}`);
+  if (details.resultLimitReached) warnings.push(`Result limit reached: ${details.resultLimitReached}`);
+  if (details.entryLimitReached) warnings.push(`Entry limit reached: ${details.entryLimitReached}`);
+  if (warnings.length === 0) return;
+  const box = make("div", "tool-warnings");
+  for (const warning of warnings) box.append(make("div", "tool-warning", warning));
+  parent.append(box);
+}
+
+function appendToolDiff(parent, diff) {
+  const value = String(diff || "").replace(/\s+$/g, "");
+  if (!value) return false;
+  const block = make("div", "tool-diff");
+  for (const line of value.split(/\r?\n/)) {
+    const cls = /^@@/.test(line)
+      ? "diff-hunk"
+      : /^\+/.test(line) && !/^\+\+\+/.test(line)
+        ? "diff-added"
+        : /^-/.test(line) && !/^---/.test(line)
+          ? "diff-removed"
+          : /^(?:\+\+\+|---)/.test(line)
+            ? "diff-file"
+            : "diff-context";
+    block.append(make("div", cls, line || " "));
+  }
+  parent.append(block);
+  return true;
+}
+
+function normalizeToolExecution(message) {
+  const result = toolExecutionResult(message);
+  const args = message?.arguments ?? message?.args ?? {};
+  const name = runIndicatorToolName(message?.toolName || message?.name || "tool");
+  return {
+    name,
+    args,
+    result,
+    text: toolResultText(result),
+    details: result?.details || message?.details || {},
+    isPartial: !!message?.isPartial,
+    isError: !!(message?.isError || result?.isError),
+    startedAt: message?.startedAt || null,
+    endedAt: message?.endedAt || null,
+  };
+}
+
+function toolElapsedLabel(tool) {
+  if (!tool.startedAt) return "";
+  const end = tool.endedAt || Date.now();
+  return `${tool.isPartial ? "elapsed" : "took"} ${formatDuration(end - tool.startedAt)}`;
+}
+
+function toolStatusLabel(tool) {
+  if (tool.isPartial) return "live";
+  if (tool.isError) return "failed";
+  if (tool.result) return "done";
+  return "pending";
+}
+
+function toolStateMeta(tool) {
+  return [toolElapsedLabel(tool), toolStatusLabel(tool)];
+}
+
+function toolLineCountLabel(text, label = "line") {
+  const value = String(text || "").replace(/\s+$/g, "");
+  if (!value) return "";
+  const count = value.split(/\r?\n/).length;
+  return `${count} ${label}${count === 1 ? "" : "s"}`;
+}
+
+function toolRawDetailsReplacer(key, value) {
+  if (typeof value === "string" && value.length > 4000) return `${value.slice(0, 4000)}… (${value.length - 4000} chars omitted)`;
+  return value;
+}
+
+function appendToolRawDetails(parent, tool) {
+  const raw = JSON.stringify({ arguments: tool.args ?? {}, result: tool.result ?? null, details: tool.details ?? {} }, toolRawDetailsReplacer, 2);
+  const details = make("details", "tool-raw-details");
+  details.append(make("summary", "tool-raw-summary", "raw tool data"));
+  appendText(details, raw, "code-block tool-raw-code");
+  parent.append(details);
+}
+
+function toolRenderSignatureReplacer() {
+  const seen = new WeakSet();
+  return (key, value) => {
+    if (typeof value === "bigint") return `${value}n`;
+    if (typeof value === "string" && value.length > 8000) return `${value.slice(0, 4000)}…${value.slice(-4000)} (${value.length} chars)`;
+    if (value && typeof value === "object") {
+      if (seen.has(value)) return "[Circular]";
+      seen.add(value);
+    }
+    return toolRawDetailsReplacer(key, value);
+  };
+}
+
+function toolExecutionRenderSignature(message) {
+  const tool = normalizeToolExecution(message);
+  try {
+    return JSON.stringify({
+      name: tool.name,
+      args: tool.args,
+      result: tool.result,
+      details: tool.details,
+      isPartial: tool.isPartial,
+      isError: tool.isError,
+      startedAt: tool.startedAt,
+      endedAt: tool.endedAt,
+    }, toolRenderSignatureReplacer());
+  } catch {
+    return `${message?.toolName || message?.name || "tool"}|${message?.toolCallId || ""}|${message?.isPartial ? "partial" : "final"}|${message?.isError ? "error" : "ok"}`;
+  }
+}
+
+function renderBashToolExecution(parent, tool) {
+  const command = toolArgText(tool.args, "command", "");
+  const timeout = toolArgValue(tool.args, "timeout");
+  const meta = [timeout ? `timeout ${timeout}s` : "", ...toolStateMeta(tool)];
+  appendToolCommand(parent, command, meta);
+  appendToolOutput(parent, tool.text, { label: tool.isPartial ? "live output" : "output", previewLines: 5, previewFromEnd: true, open: tool.isError, emptyText: tool.isPartial ? "(no output yet)" : "" });
+  appendToolWarnings(parent, tool.details);
+}
+
+function renderReadToolExecution(parent, tool) {
+  const path = toolArgText(tool.args, ["file_path", "path"], "");
+  appendToolTitle(parent, "read", `${shortenToolPath(path)}${toolLineRange(tool.args)}`, [toolLineCountLabel(tool.text), ...toolStateMeta(tool)]);
+  appendToolImages(parent, tool.result);
+  appendToolOutput(parent, tool.text, { label: "file output", previewLines: 10, open: tool.isError });
+  appendToolWarnings(parent, tool.details);
+}
+
+function renderWriteToolExecution(parent, tool) {
+  const path = toolArgText(tool.args, ["file_path", "path"], "");
+  const content = toolArgText(tool.args, "content", "");
+  const lineCount = content ? content.split(/\r?\n/).length : 0;
+  appendToolTitle(parent, "write", shortenToolPath(path), [lineCount > 0 ? `${lineCount} line${lineCount === 1 ? "" : "s"}` : "", ...toolStateMeta(tool)]);
+  appendToolOutput(parent, content, { label: "content", previewLines: 10 });
+  appendToolOutput(parent, tool.text, { label: "result", previewLines: 6, open: tool.isError });
+}
+
+function renderEditToolExecution(parent, tool) {
+  const path = toolArgText(tool.args, ["file_path", "path"], "");
+  const edits = Array.isArray(tool.args?.edits) ? tool.args.edits.length : 0;
+  appendToolTitle(parent, "edit", shortenToolPath(path), [edits ? `${edits} replacement${edits === 1 ? "" : "s"}` : "", ...toolStateMeta(tool)]);
+  const hasDiff = appendToolDiff(parent, tool.details?.diff || tool.details?.patch);
+  appendToolOutput(parent, tool.text, { label: "result", previewLines: hasDiff ? 4 : 10, open: tool.isError });
+}
+
+function renderGrepToolExecution(parent, tool) {
+  const pattern = toolArgText(tool.args, "pattern", "");
+  const path = toolArgText(tool.args, "path", ".");
+  appendToolTitle(parent, "grep", `/${pattern || "…"}/ in ${shortenToolPath(path)}`, [tool.args?.glob ? `glob ${tool.args.glob}` : "", tool.args?.ignoreCase ? "ignore-case" : "", tool.args?.literal ? "literal" : "", toolLineCountLabel(tool.text, "match line"), ...toolStateMeta(tool)]);
+  appendToolOutput(parent, tool.text, { label: "matches", previewLines: 10, open: tool.isError });
+  appendToolWarnings(parent, tool.details);
+}
+
+function renderFindToolExecution(parent, tool) {
+  const pattern = toolArgText(tool.args, "pattern", "");
+  const path = toolArgText(tool.args, "path", ".");
+  appendToolTitle(parent, "find", `${pattern || "…"} in ${shortenToolPath(path)}`, [tool.args?.limit ? `limit ${tool.args.limit}` : "", toolLineCountLabel(tool.text, "result"), ...toolStateMeta(tool)]);
+  appendToolOutput(parent, tool.text, { label: "results", previewLines: 10, open: tool.isError });
+  appendToolWarnings(parent, tool.details);
+}
+
+function renderLsToolExecution(parent, tool) {
+  const path = toolArgText(tool.args, "path", ".");
+  appendToolTitle(parent, "ls", shortenToolPath(path), [tool.args?.limit ? `limit ${tool.args.limit}` : "", toolLineCountLabel(tool.text, "entry"), ...toolStateMeta(tool)]);
+  appendToolOutput(parent, tool.text, { label: "entries", previewLines: 20, open: tool.isError });
+  appendToolWarnings(parent, tool.details);
+}
+
+function renderGenericToolExecution(parent, tool) {
+  appendToolTitle(parent, tool.name, "", toolStateMeta(tool));
+  appendToolOutput(parent, JSON.stringify(tool.args ?? {}, null, 2), { label: "arguments", previewLines: 12 });
+  appendToolImages(parent, tool.result);
+  appendToolOutput(parent, tool.text, { label: "result", previewLines: 10, open: tool.isError });
+  appendToolWarnings(parent, tool.details);
+}
+
+const WEBUI_TOOL_RENDERERS = {
+  bash: renderBashToolExecution,
+  read: renderReadToolExecution,
+  write: renderWriteToolExecution,
+  edit: renderEditToolExecution,
+  grep: renderGrepToolExecution,
+  find: renderFindToolExecution,
+  ls: renderLsToolExecution,
+};
+
+function renderToolExecution(parent, message) {
+  const tool = normalizeToolExecution(message);
+  const renderer = WEBUI_TOOL_RENDERERS[tool.name] || renderGenericToolExecution;
+  renderer(parent, tool);
+  appendToolRawDetails(parent, tool);
+}
+
+function liveToolRunMessage(run) {
+  return {
+    role: "toolExecution",
+    title: toolExecutionTitle(run),
+    toolName: run.toolName,
+    toolCallId: run.toolCallId,
+    arguments: run.arguments,
+    result: run.result,
+    isPartial: run.isPartial,
+    isError: run.isError,
+    startedAt: run.startedAt,
+    endedAt: run.endedAt,
+    timestamp: run.timestamp,
+    live: true,
+  };
+}
+
+function applyToolExecutionBubbleState(bubble, message) {
+  const status = toolExecutionStatus(message);
+  const nextClass = `tool-${status}`;
+  if (bubble.dataset.toolStatus !== status || !bubble.classList.contains(nextClass)) {
+    for (const className of ["tool-pending", "tool-running", "tool-success", "tool-error"]) {
+      if (className !== nextClass) bubble.classList.remove(className);
+    }
+    bubble.classList.add(nextClass);
+    bubble.dataset.toolStatus = status;
+  }
+  bubble.classList.toggle("error", !!(message.isError || status === "error"));
+  if (message.toolCallId) {
+    const id = String(message.toolCallId);
+    bubble.dataset.toolCallId = id;
+    if (message.live) liveToolCards.set(id, bubble);
+  }
+}
+
+function toolDetailsStateKey(details, counts) {
+  const classKey = Array.from(details.classList || []).sort().join(".") || "details";
+  const summaryText = details.querySelector("summary")?.textContent || "";
+  const summaryKey = summaryText.replace(/\s*\([^)]*\)\s*$/g, "").trim();
+  const base = `${classKey}|${summaryKey}`;
+  const index = counts.get(base) || 0;
+  counts.set(base, index + 1);
+  return `${base}|${index}`;
+}
+
+function captureToolDetailsOpenState(root) {
+  const state = new Set();
+  const counts = new Map();
+  for (const details of root.querySelectorAll("details")) {
+    const key = toolDetailsStateKey(details, counts);
+    if (details.open) state.add(key);
+  }
+  return state;
+}
+
+function restoreToolDetailsOpenState(root, state) {
+  if (!state?.size) return;
+  const counts = new Map();
+  for (const details of root.querySelectorAll("details")) {
+    if (state.has(toolDetailsStateKey(details, counts))) details.open = true;
+  }
+}
+
+function captureReusableToolCards() {
+  const cards = new Map();
+  for (const bubble of elements.chat.querySelectorAll(".message.toolExecution[data-tool-call-id]")) {
+    const id = bubble.dataset.toolCallId;
+    if (id) cards.set(id, bubble);
+  }
+  return cards;
+}
+
+function reuseToolExecutionBubble(reusableToolCards, message, { streaming = false, messageIndex = -1, transient = false } = {}) {
+  if (streaming || message?.role !== "toolExecution" || !message.toolCallId || !reusableToolCards) return null;
+  const id = String(message.toolCallId);
+  const bubble = reusableToolCards.get(id);
+  if (!bubble) return null;
+  reusableToolCards.delete(id);
+  const body = bubble.querySelector(":scope > .message-body");
+  if (!body || !updateLiveToolCard(bubble, message)) return null;
+  bubble.classList.remove("action-enter", "streaming", "has-action-feedback");
+  bubble.querySelector(":scope > .action-feedback-controls")?.remove();
+  if (!transient && messageIndex >= 0) {
+    bubble.dataset.messageIndex = String(messageIndex);
+    bubble.removeAttribute("data-user-prompt");
+  } else {
+    bubble.removeAttribute("data-message-index");
+    bubble.removeAttribute("data-user-prompt");
+  }
+  if (!streaming && !transient) renderActionFeedbackControls(bubble, message, messageIndex);
+  appendChatMessageBubble(bubble);
+  return { bubble, body };
+}
+
+function updateLiveToolCard(bubble, message) {
+  if (!bubble) return false;
+  const header = bubble.querySelector(":scope > .message-header");
+  const body = bubble.querySelector(":scope > .message-body");
+  if (!body) return false;
+  attachMessageCopyButton(bubble, message, body);
+  applyToolExecutionBubbleState(bubble, message);
+  const role = header?.querySelector(".message-role");
+  if (role) role.textContent = messageTitle(message);
+  const timestamp = header?.querySelector(".muted");
+  if (timestamp) timestamp.textContent = formatDate(message.timestamp);
+  const nextRenderSignature = toolExecutionRenderSignature(message);
+  if (bubble._toolRenderSignature === nextRenderSignature && body.childElementCount > 0) return true;
+  const detailsOpenState = captureToolDetailsOpenState(body);
+  body.replaceChildren();
+  renderToolExecution(body, message);
+  restoreToolDetailsOpenState(body, detailsOpenState);
+  bubble._toolRenderSignature = nextRenderSignature;
+  return true;
+}
+
+function cancelQueuedLiveToolRunRender(toolCallId = "") {
+  if (toolCallId) liveToolRenderQueue.delete(String(toolCallId));
+  else liveToolRenderQueue.clear();
+  if (liveToolRenderQueue.size === 0) {
+    clearTimeout(liveToolRenderTimer);
+    liveToolRenderTimer = null;
+  }
+}
+
+function clearLiveToolRenderQueue() {
+  cancelQueuedLiveToolRunRender();
+}
+
+function flushLiveToolRunRenderQueue() {
+  const entries = Array.from(liveToolRenderQueue.values());
+  clearLiveToolRenderQueue();
+  for (const entry of entries) renderLiveToolRun(entry.run, { scroll: entry.scroll });
+}
+
+function scheduleLiveToolRunRender(run, { scroll = false } = {}) {
+  if (!run?.toolCallId) return;
+  const id = String(run.toolCallId);
+  const existing = liveToolRenderQueue.get(id);
+  liveToolRenderQueue.set(id, { run, scroll: !!(existing?.scroll || scroll) });
+  if (liveToolRenderTimer) return;
+  liveToolRenderTimer = setTimeout(() => {
+    liveToolRenderTimer = null;
+    const flush = () => flushLiveToolRunRenderQueue();
+    if (typeof requestAnimationFrame === "function") requestAnimationFrame(flush);
+    else flush();
+  }, TOOL_LIVE_UPDATE_THROTTLE_MS);
+}
+
+function renderLiveToolRun(run, { scroll = true } = {}) {
+  if (!run?.toolCallId) return;
+  const id = String(run.toolCallId);
+  cancelQueuedLiveToolRunRender(id);
+  const existing = liveToolCards.get(id);
+  const existingConnected = !!(existing?.isConnected && existing.parentElement === elements.chat);
+  const shouldFollow = scroll && (autoFollowChat || isChatNearBottom());
+  const message = liveToolRunMessage(run);
+  rememberActionEntries([{ message, messageIndex: -1, transient: true }]);
+  if (existingConnected && updateLiveToolCard(existing, message)) {
+    renderRunIndicator({ scroll: false });
+    if (shouldFollow) scrollChatToBottom();
+    return;
+  }
+  const created = appendMessage(message, { transient: true, animateEntry: !existingConnected });
+  if (existingConnected && existing !== created.bubble) existing.replaceWith(created.bubble);
+  renderRunIndicator({ scroll: false });
+  if (shouldFollow) scrollChatToBottom();
+}
+
+function upsertLiveToolRun(event, patch = {}) {
+  const id = String(event.toolCallId || "");
+  if (!id) return null;
+  const existing = liveToolRuns.get(id) || {};
+  const now = Date.now();
+  const run = {
+    ...existing,
+    role: "toolExecution",
+    live: true,
+    toolCallId: id,
+    toolName: event.toolName || existing.toolName || "tool",
+    arguments: event.args ?? existing.arguments ?? {},
+    timestamp: existing.timestamp || now,
+    startedAt: existing.startedAt || now,
+    updatedAt: now,
+    ...patch,
+  };
+  liveToolRuns.set(id, run);
+  return run;
+}
+
+function handleToolExecutionStart(event) {
+  const run = upsertLiveToolRun(event, { isPartial: true, isError: false });
+  if (run) renderLiveToolRun(run);
+}
+
+function handleToolExecutionUpdate(event) {
+  const result = { ...(event.partialResult || {}), isError: false };
+  const run = upsertLiveToolRun(event, { result, isPartial: true, isError: false });
+  if (run) scheduleLiveToolRunRender(run, { scroll: false });
+}
+
+function handleToolExecutionEnd(event) {
+  const result = { ...(event.result || {}), isError: !!event.isError };
+  const run = upsertLiveToolRun(event, { result, isPartial: false, isError: !!event.isError, endedAt: Date.now() });
+  if (run) renderLiveToolRun(run);
+}
+
+function toolResultPreviewText(message, lineLimit = 10) {
+  const text = textFromContent(message?.content).replace(/\s+$/g, "");
+  if (!text) return "(empty tool result)";
+  const lines = text.split(/\r?\n/);
+  const preview = lines.slice(0, lineLimit).join("\n");
+  const remaining = Math.max(0, lines.length - lineLimit);
+  return remaining > 0 ? `${preview}\n… ${remaining} more line${remaining === 1 ? "" : "s"}; expand for full output` : preview;
+}
+
+function jumpToStickyUserPrompt() {
+  const button = elements.stickyUserPromptButton;
+  const index = Number(button?.dataset.messageIndex);
+  let target = Number.isInteger(index) ? elements.chat.querySelector(`.message[data-user-prompt="true"][data-message-index="${index}"]`) : null;
+  if (!target && button?.dataset.compacted === "true") target = elements.chat.querySelector('.message.compactionSummary[data-message-index]');
+  if (!target) return;
+  autoFollowChat = false;
+  lastChatProgrammaticScrollAt = performance.now();
+  setChatScrollTopInstant(Math.max(0, chatScrollTopForNode(target) - stickyUserPromptViewportGap()));
+  updateJumpToLatestButton();
+  updateStickyUserPromptButton();
+  requestAnimationFrame(updateStickyUserPromptButton);
+}
+
+function appendMessage(message, { streaming = false, messageIndex = -1, transient = false, animateEntry = false, reusableToolCards = null, itemKey = "" } = {}) {
+  const reused = reuseToolExecutionBubble(reusableToolCards, message, { streaming, messageIndex, transient });
+  if (reused) {
+    if (itemKey) reused.bubble.dataset.itemKey = itemKey;
+    return reused;
+  }
+  const role = String(message.role || "message");
+  const safeRole = role.replace(/[^a-z0-9_-]/gi, "");
+  const bubble = make("article", `message ${safeRole}${message.level ? ` ${message.level}` : ""}${streaming ? " streaming" : ""}${animateEntry ? " action-enter" : ""}`);
+  if (message.role === "toolExecution") applyToolExecutionBubbleState(bubble, message);
+  if (!transient && messageIndex >= 0) {
+    bubble.dataset.messageIndex = String(messageIndex);
+    if (role === "user") bubble.dataset.userPrompt = "true";
+  }
+  if (itemKey) bubble.dataset.itemKey = itemKey;
+  const isCollapsibleOutput = !streaming && (message.role === "toolResult" || message.role === "bashExecution" || message.role === "compactionSummary");
+
+  const hideMessageHeader = message.role === "assistant" && !isCollapsibleOutput;
+  if (hideMessageHeader) bubble.setAttribute("aria-label", messageTitle(message));
+  const header = make(isCollapsibleOutput ? "summary" : "div", "message-header");
+  header.append(make("span", "message-role", messageTitle(message)));
+  header.append(make("span", "muted", formatDate(message.timestamp)));
+  const body = make("div", "message-body");
+
+  if (message.role === "bashExecution") {
+    appendText(body, `$ ${message.command || ""}\n\n${message.output || ""}`, "code-block");
+  } else if (message.role === "compactionSummary") {
+    appendText(body, message.summary || "Context was compacted.");
+  } else if (message.role === "toolResult") {
+    renderContent(body, message.content);
+    if (message.isError) bubble.classList.add("error");
+  } else if (message.role === "toolExecution") {
+    renderToolExecution(body, message);
+    bubble._toolRenderSignature = toolExecutionRenderSignature(message);
+  } else if (message.role === "thinking") {
+    const thinkingText = visibleThinkingText(message.thinking || textFromContent(message.content));
+    if (thinkingOutputVisible && thinkingText) appendText(body, thinkingText, "thinking-text");
+  } else if (message.role === "toolCall") {
+    renderToolCallMessageBody(body, message);
+  } else if (message.role === "assistantEvent") {
+    appendText(body, typeof message.content === "string" ? message.content : JSON.stringify(message.content ?? {}, null, 2), "code-block");
+  } else {
+    renderContent(body, message.content, { markdown: message.role === "assistant" });
+  }
+
+  if (isCollapsibleOutput) {
+    const details = make("details", "message-collapse");
+    if (message.isError || toolOutputGloballyExpanded) details.open = true;
+    details.append(header, body);
+    bubble.append(details);
+    if (message.role === "toolResult" && !message.isError) {
+      const preview = make("div", "tool-result-preview");
+      appendText(preview, toolResultPreviewText(message, 10), "code-block tool-result-preview-text");
+      bubble.append(preview);
+    }
+  } else if (hideMessageHeader) {
+    bubble.append(body);
+  } else {
+    bubble.append(header, body);
+  }
+  attachMessageCopyButton(bubble, message, body);
+  attachMessageEditRetryButton(bubble, message, messageIndex, { streaming, transient });
+  if (!streaming && !transient) renderActionFeedbackControls(bubble, message, messageIndex);
+  appendChatMessageBubble(bubble);
+  return { bubble, body };
+}
+
+function appendTranscriptMessage(message, { streaming = false, messageIndex = -1, transient = false, animateEntry = false, reusableToolCards = null, itemKey = "" } = {}) {
+  if (streaming || transient || message?.role !== "assistant") {
+    return appendMessage(message, { streaming, messageIndex, transient, animateEntry, reusableToolCards, itemKey });
+  }
+
+  let finalOutput = null;
+  const displayMessages = assistantDisplayMessages(message);
+  displayMessages.forEach((displayMessage) => {
+    let transcriptMessage = displayMessage;
+    if (displayMessage.role === "toolCall" && displayMessage.toolCallId) {
+      const result = toolResultForCallId(displayMessage.toolCallId);
+      const liveRun = liveToolRuns.get(displayMessage.toolCallId);
+      transcriptMessage = {
+        ...displayMessage,
+        role: "toolExecution",
+        title: `tool: ${displayMessage.toolName || "unknown"}`,
+        arguments: liveRun?.arguments ?? displayMessage.arguments,
+        result: result || liveRun?.result || null,
+        isPartial: !result && !!liveRun?.isPartial,
+        isError: !!(result?.isError || liveRun?.isError),
+        startedAt: liveRun?.startedAt || null,
+        endedAt: liveRun?.endedAt || null,
+        live: !!liveRun && !result,
+      };
+    }
+    if (transcriptMessage.role === "thinking" && !thinkingOutputVisible) return;
+    const created = appendMessage(transcriptMessage, {
+      streaming: false,
+      messageIndex: ["assistant", "toolExecution"].includes(transcriptMessage.role) ? messageIndex : -1,
+      transient: false,
+      animateEntry: animateEntry && isActionTranscriptMessage(transcriptMessage),
+      reusableToolCards,
+      itemKey,
+    });
+    if (transcriptMessage.role === "assistant") finalOutput = created;
+  });
+  return finalOutput;
+}
+
+function stateHasRunIndicatorActivity(state = currentState) {
+  return !!state?.isStreaming || !!state?.isCompacting || isUserBashActive();
+}
+
+function runIndicatorIsActive() {
+  return runIndicatorLocallyActive || stateHasRunIndicatorActivity(currentState) || isUserBashActive();
+}
+
+function clearRunIndicatorGraceCheck() {
+  clearTimeout(runIndicatorGraceCheckTimer);
+  runIndicatorGraceCheckTimer = null;
+}
+
+function scheduleRunIndicatorGraceCheck(tabContext = activeTabContext()) {
+  if (!runIndicatorLocallyActive || stateHasRunIndicatorActivity(currentState) || !runIndicatorStartedAt) return;
+  const elapsedMs = performance.now() - runIndicatorStartedAt;
+  const delayMs = Math.max(120, RUN_INDICATOR_START_GRACE_MS - elapsedMs + 120);
+  clearRunIndicatorGraceCheck();
+  runIndicatorGraceCheckTimer = setTimeout(() => {
+    runIndicatorGraceCheckTimer = null;
+    if (!isCurrentTabContext(tabContext) || !runIndicatorLocallyActive || stateHasRunIndicatorActivity(currentState)) return;
+    runIndicatorLastStateCheckAt = performance.now();
+    refreshState(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+    });
+  }, delayMs);
+}
+
+function maybeRefreshRunIndicatorState(tabContext = activeTabContext()) {
+  if (!runIndicatorIsActive()) return;
+  const now = performance.now();
+  if (now - runIndicatorLastStateCheckAt < RUN_INDICATOR_STATE_RECHECK_MS) return;
+  runIndicatorLastStateCheckAt = now;
+  refreshState(tabContext).catch((error) => {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  });
+}
+
+function formatRunIndicatorElapsed() {
+  if (!runIndicatorStartedAt) return "live";
+  const elapsedSeconds = Math.max(0, Math.floor((performance.now() - runIndicatorStartedAt) / 1000));
+  const minutes = Math.floor(elapsedSeconds / 60);
+  const seconds = elapsedSeconds % 60;
+  return minutes > 0 ? `${minutes}m ${String(seconds).padStart(2, "0")}s` : `${seconds}s`;
+}
+
+function runIndicatorHeadline() {
+  if (currentState?.isCompacting && !currentState?.isStreaming) return "Pi is compacting context:";
+  return "Agent is running: ";
+}
+
+function runIndicatorShowsElapsed() {
+  return !/^Abort requested/i.test(runIndicatorActivity || "");
+}
+
+function runIndicatorDetail() {
+  if (runIndicatorActivity) return runIndicatorActivity;
+  if (currentState?.isCompacting && !currentState?.isStreaming) return "Compacting context…";
+  return "Waiting for output or action…";
+}
+
+function startRunIndicatorTicker() {
+  if (runIndicatorTimer) return;
+  runIndicatorTimer = setInterval(() => {
+    if (!runIndicatorIsActive()) {
+      removeRunIndicatorBubble();
+      return;
+    }
+    updateRunIndicatorBubble();
+    maybeRefreshRunIndicatorState();
+  }, RUN_INDICATOR_TICK_MS);
+}
+
+function stopRunIndicatorTicker() {
+  clearInterval(runIndicatorTimer);
+  runIndicatorTimer = null;
+}
+
+function createRunIndicatorBubble() {
+  runIndicatorBubble = make("article", "message runIndicator run-indicator-message streaming");
+  runIndicatorBubble.setAttribute("aria-live", "polite");
+  runIndicatorBubble.setAttribute("aria-label", "Agent is running:");
+
+  const body = make("div", "message-body");
+  const row = make("div", "run-indicator-row");
+  const pulse = make("span", "run-indicator-pulse");
+  pulse.setAttribute("aria-hidden", "true");
+  runIndicatorText = make("span", "run-indicator-text");
+  runIndicatorMeta = make("span", "run-indicator-meta");
+  row.append(pulse, runIndicatorText, runIndicatorMeta);
+  body.append(row);
+  runIndicatorBubble.append(body);
+}
+
+function ensureRunIndicatorBubble() {
+  if (!runIndicatorBubble || !runIndicatorText || !runIndicatorMeta) createRunIndicatorBubble();
+  if (elements.chat.lastElementChild !== runIndicatorBubble) elements.chat.append(runIndicatorBubble);
+}
+
+function updateRunIndicatorBubble() {
+  if (!runIndicatorIsActive()) return;
+  if (!runIndicatorStartedAt) runIndicatorStartedAt = performance.now();
+  ensureRunIndicatorBubble();
+  const headline = runIndicatorHeadline();
+  if (runIndicatorText.textContent !== headline) runIndicatorText.textContent = headline;
+  const detail = runIndicatorDetail();
+  const meta = runIndicatorShowsElapsed() ? `${detail} · run time ${formatRunIndicatorElapsed()}` : detail;
+  if (runIndicatorMeta.textContent !== meta) runIndicatorMeta.textContent = meta;
+}
+
+function removeRunIndicatorBubble() {
+  stopRunIndicatorTicker();
+  runIndicatorBubble?.remove();
+  runIndicatorBubble = null;
+  runIndicatorText = null;
+  runIndicatorMeta = null;
+}
+
+function renderRunIndicator({ scroll = false } = {}) {
+  if (!runIndicatorIsActive()) {
+    removeRunIndicatorBubble();
+    return;
+  }
+  const shouldFollow = scroll && (autoFollowChat || isChatNearBottom());
+  updateRunIndicatorBubble();
+  startRunIndicatorTicker();
+  if (shouldFollow) scrollChatToBottom();
+}
+
+function scheduleRunIndicatorRender({ scroll = false } = {}) {
+  runIndicatorRenderScroll = runIndicatorRenderScroll || scroll;
+  if (runIndicatorRenderFrame !== null) return;
+  const flush = () => {
+    const shouldScroll = runIndicatorRenderScroll;
+    runIndicatorRenderFrame = null;
+    runIndicatorRenderScroll = false;
+    renderRunIndicator({ scroll: shouldScroll });
+  };
+  if (typeof requestAnimationFrame === "function") runIndicatorRenderFrame = requestAnimationFrame(flush);
+  else runIndicatorRenderFrame = setTimeout(flush, 0);
+}
+
+function setRunIndicatorActivity(activity, { active = true, scroll = true } = {}) {
+  const wasLocallyActive = runIndicatorLocallyActive;
+  const previousActivity = runIndicatorActivity;
+  const hadRunIndicatorBubble = runIndicatorBubble?.parentElement === elements.chat;
+  if (active) {
+    runIndicatorLocallyActive = true;
+    if (!runIndicatorStartedAt) runIndicatorStartedAt = performance.now();
+  }
+  runIndicatorActivity = activity || runIndicatorActivity || "Waiting for output or action…";
+  const needsRender = scroll || !hadRunIndicatorBubble || wasLocallyActive !== runIndicatorLocallyActive || previousActivity !== runIndicatorActivity;
+  if (needsRender) scheduleRunIndicatorRender({ scroll });
+  else if (runIndicatorIsActive()) startRunIndicatorTicker();
+  scheduleComposerModeButtonsUpdate();
+  if (active) scheduleRunIndicatorGraceCheck();
+}
+
+function clearRunIndicatorActivity({ render = true } = {}) {
+  clearRunIndicatorGraceCheck();
+  runIndicatorLastStateCheckAt = 0;
+  runIndicatorLocallyActive = false;
+  runIndicatorStartedAt = null;
+  runIndicatorActivity = "Waiting for output or action…";
+  if (render) renderRunIndicator();
+  updateComposerModeButtons();
+}
+
+function syncRunIndicatorFromState(state = currentState) {
+  if (stateHasRunIndicatorActivity(state)) {
+    clearRunIndicatorGraceCheck();
+    runIndicatorLocallyActive = true;
+    if (!runIndicatorStartedAt) runIndicatorStartedAt = performance.now();
+    if (state.isCompacting && !state.isStreaming && runIndicatorActivity === "Waiting for output or action…") {
+      runIndicatorActivity = "Compacting context…";
+    }
+    renderRunIndicator({ scroll: true });
+  } else if (runIndicatorLocallyActive && runIndicatorStartedAt && performance.now() - runIndicatorStartedAt < RUN_INDICATOR_START_GRACE_MS) {
+    renderRunIndicator({ scroll: true });
+    scheduleRunIndicatorGraceCheck();
+  } else if (runIndicatorLocallyActive) {
+    clearRunIndicatorActivity();
+  } else {
+    renderRunIndicator();
+  }
+  updateComposerModeButtons();
+}
+
+function runIndicatorToolName(name) {
+  return cleanStatusText(name || "tool") || "tool";
+}
+
+function scheduleAbortStateChecks(tabContext = activeTabContext()) {
+  for (const delay of [250, 900, 1800, 3600]) {
+    setTimeout(() => {
+      if (!isCurrentTabContext(tabContext)) return;
+      refreshState(tabContext).catch((error) => {
+        if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+      });
+    }, delay);
+  }
+}
+
+function messageTimestampMs(message) {
+  const timestamp = message?.timestamp;
+  const date = typeof timestamp === "number" ? new Date(timestamp) : new Date(String(timestamp || ""));
+  const time = date.getTime();
+  return Number.isFinite(time) ? time : 0;
+}
+
+function isActionTranscriptMessage(message) {
+  return ["assistantEvent", "bashExecution", "toolCall", "toolExecution", "toolResult"].includes(message?.role);
+}
+
+function assistantMessageHasActionContent(message) {
+  return message?.role === "assistant" && Array.isArray(message.content) && message.content.some(isAssistantToolCallPart);
+}
+
+function isActionEntryItem(item) {
+  return isActionTranscriptMessage(item?.message) || assistantMessageHasActionContent(item?.message);
+}
+
+function actionEntrySeenKeys(tabId = activeTabId) {
+  if (!tabId) return new Set();
+  let keys = actionEntrySeenKeysByTab.get(tabId);
+  if (!keys) {
+    keys = new Set();
+    actionEntrySeenKeysByTab.set(tabId, keys);
+  }
+  return keys;
+}
+
+function actionEntryKey(item) {
+  const message = item?.message || {};
+  const keyedToolExecution = message.role === "toolExecution" && message.toolCallId;
+  return [
+    keyedToolExecution ? "toolExecution" : item?.transient ? "transient" : "message",
+    keyedToolExecution ? "" : (item?.messageIndex ?? -1),
+    message.role || "message",
+    message.toolName || "",
+    message.toolCallId || "",
+    keyedToolExecution ? "" : message.command || "",
+    keyedToolExecution ? "" : message.title || "",
+    keyedToolExecution ? "" : message.timestamp || "",
+    keyedToolExecution ? "" : textFromContent(message.content).slice(0, 240),
+  ].join("|");
+}
+
+function shouldAnimateActionEntry(item) {
+  if (!activeTabId || !actionEntryAnimationPrimedTabs.has(activeTabId) || !isActionEntryItem(item)) return false;
+  return !actionEntrySeenKeys(activeTabId).has(actionEntryKey(item));
+}
+
+function rememberActionEntries(items) {
+  if (!activeTabId) return;
+  const keys = actionEntrySeenKeys(activeTabId);
+  for (const item of items) {
+    if (isActionEntryItem(item)) keys.add(actionEntryKey(item));
+  }
+  actionEntryAnimationPrimedTabs.add(activeTabId);
+}
+
+function orderedTranscriptItems() {
+  const items = [];
+  const assistantToolCallIds = buildAssistantToolCallIdSet(latestMessages);
+  const toolResults = buildToolResultMap(latestMessages);
+  latestMessages.forEach((message, index) => {
+    const resultId = message?.role === "toolResult" ? toolResultCallId(message) : "";
+    if (resultId && assistantToolCallIds.has(resultId)) return;
+    items.push({ message, messageIndex: index, transient: false, timestampMs: messageTimestampMs(message), order: index });
+  });
+  transientMessages.forEach((message, index) => {
+    items.push({ message, messageIndex: index, transient: true, timestampMs: messageTimestampMs(message), order: latestMessages.length + index });
+  });
+  let liveOrder = latestMessages.length + transientMessages.length;
+  for (const [toolCallId, run] of liveToolRuns.entries()) {
+    if (assistantToolCallIds.has(toolCallId) || toolResults.has(toolCallId)) continue;
+    const message = liveToolRunMessage(run);
+    items.push({ message, messageIndex: -1, transient: true, timestampMs: messageTimestampMs(message), order: liveOrder++ });
+  }
+  return items.sort((a, b) => a.timestampMs - b.timestampMs || a.order - b.order);
+}
+
+/**
+ * Keyed transcript reconciliation state. Each transcript item gets a stable
+ * key plus a cheap content signature; renders reuse the longest common
+ * prefix of unchanged items and only rebuild DOM from the first divergence
+ * (typically the last one or two items), instead of rebuilding every bubble.
+ */
+let renderedTranscriptState = { epoch: "", entries: [] };
+
+function transcriptRenderEpoch() {
+  return `${activeTabId || ""}|${thinkingOutputVisible ? 1 : 0}`;
+}
+
+function transcriptItemKey(item) {
+  if (!item.transient) return `m:${item.messageIndex}`;
+  if (item.messageIndex >= 0) return `t:${item.messageIndex}`;
+  return `live:${item.message?.toolCallId || `o${item.order}`}`;
+}
+
+function safeJsonLength(value) {
+  if (value === undefined || value === null) return 0;
+  try {
+    return JSON.stringify(value).length;
+  } catch {
+    return -1;
+  }
+}
+
+function contentSignature(content) {
+  if (content === undefined || content === null) return "";
+  if (typeof content === "string") return `s${content.length}`;
+  if (!Array.isArray(content)) return `o${safeJsonLength(content)}`;
+  let sig = `a${content.length}`;
+  for (const part of content) {
+    if (!part || typeof part !== "object") {
+      sig += ";x";
+      continue;
+    }
+    const text = typeof part.text === "string" ? part.text
+      : typeof part.thinking === "string" ? part.thinking
+        : typeof part.data === "string" ? part.data
+          : typeof part.content === "string" ? part.content : "";
+    sig += `;${part.type || "?"}:${text.length}:${part.toolCallId || part.id || ""}`;
+  }
+  return sig;
+}
+
+function toolCallLiveStateSignature(toolCallId) {
+  if (!toolCallId) return "";
+  const id = String(toolCallId);
+  const result = toolResultForCallId(id);
+  const run = liveToolRuns.get(id);
+  let sig = "";
+  if (result) sig += `r:${contentSignature(result.content)}:${result.isError ? "e" : ""}`;
+  if (run) sig += `|l:${run.isPartial ? "p" : ""}${run.isError ? "e" : ""}:${run.endedAt || ""}:${contentSignature(run.result?.content)}:${safeJsonLength(run.arguments)}`;
+  return sig;
+}
+
+function actionFeedbackSignature(messageIndex) {
+  const map = actionFeedbackByTab.get(activeTabId);
+  if (!map?.size) return "";
+  let sig = "";
+  for (const entry of map.values()) {
+    if (entry.messageIndex === messageIndex) sig += `${entry.key}=${entry.reaction};`;
+  }
+  return sig;
+}
+
+// Cache of the message-object-derived part of an item signature. Session
+// messages are append-only and treated as immutable, and delta merges keep
+// previous object identities, so cached entries stay valid until a full
+// fetch replaces the array (when the cache simply rebuilds).
+const messageStaticSignatureCache = new WeakMap();
+
+function messageStaticSignature(message) {
+  const cacheable = message && typeof message === "object";
+  if (cacheable) {
+    const cached = messageStaticSignatureCache.get(message);
+    if (cached !== undefined) return cached;
+  }
+  const sig = [
+    message.role || "",
+    String(message.timestamp || ""),
+    message.level || "",
+    String(message.title || ""),
+    contentSignature(message.content),
+    typeof message.command === "string" ? `c${message.command.length}` : "",
+    typeof message.output === "string" ? `out${message.output.length}` : "",
+    typeof message.summary === "string" ? `sum${message.summary.length}` : "",
+    typeof message.thinking === "string" ? `th${message.thinking.length}` : "",
+  ];
+  if (message.role === "toolExecution") {
+    sig.push(
+      message.live ? "live" : "",
+      message.isPartial ? "p" : "",
+      message.isError ? "e" : "",
+      String(message.startedAt || ""),
+      String(message.endedAt || ""),
+      contentSignature(message.result?.content),
+      String(safeJsonLength(message.arguments)),
+    );
+  }
+  const joined = sig.join("|");
+  if (cacheable) messageStaticSignatureCache.set(message, joined);
+  return joined;
+}
+
+function transcriptItemSignature(item) {
+  const message = item.message || {};
+  const sig = [messageStaticSignature(message)];
+  if (message.role === "toolExecution") sig.push(toolCallLiveStateSignature(message.toolCallId));
+  if (message.role === "assistant" && Array.isArray(message.content)) {
+    for (const part of message.content) {
+      if (isAssistantToolCallPart(part)) sig.push(toolCallLiveStateSignature(assistantToolCallId(part)));
+    }
+  }
+  if (!item.transient && item.messageIndex >= 0) sig.push(actionFeedbackSignature(item.messageIndex));
+  return sig.join("|");
+}
+
+function removeChatBubblesAfterPrefix(keptKeys) {
+  for (const child of [...elements.chat.children]) {
+    if (child === elements.stickyUserPromptButton || child === runIndicatorBubble) continue;
+    const key = child.dataset?.itemKey;
+    if (key && keptKeys.has(key)) continue;
+    child.remove();
+  }
+}
+
+function pruneDisconnectedLiveToolCards() {
+  for (const [id, bubble] of liveToolCards) {
+    if (!bubble.isConnected) liveToolCards.delete(id);
+  }
+}
+
+function renderAllMessages({ preserveScroll = false, forceRebuild = false } = {}) {
+  if (deferUiRenderDuringPointerActivation("messages", () => renderAllMessages({ preserveScroll, forceRebuild }))) return;
+  const shouldFollow = !preserveScroll && (autoFollowChat || isChatNearBottom());
+  const previousScrollTop = elements.chat.scrollTop;
+  const transcriptItems = orderedTranscriptItems();
+  const epoch = transcriptRenderEpoch();
+  const nextEntries = transcriptItems.map((item) => ({ item, key: transcriptItemKey(item), sig: transcriptItemSignature(item) }));
+  let prefixLength = 0;
+  if (!forceRebuild && epoch === renderedTranscriptState.epoch) {
+    const previous = renderedTranscriptState.entries;
+    const limit = Math.min(previous.length, nextEntries.length);
+    while (prefixLength < limit && previous[prefixLength].key === nextEntries[prefixLength].key && previous[prefixLength].sig === nextEntries[prefixLength].sig) {
+      prefixLength += 1;
+    }
+  }
+  const reusableToolCards = captureReusableToolCards();
+  if (prefixLength === 0) resetChatOutput();
+  else removeChatBubblesAfterPrefix(new Set(nextEntries.slice(0, prefixLength).map((entry) => entry.key)));
+  for (let index = prefixLength; index < nextEntries.length; index += 1) {
+    const entry = nextEntries[index];
+    appendTranscriptMessage(entry.item.message, {
+      messageIndex: entry.item.messageIndex,
+      transient: entry.item.transient,
+      animateEntry: shouldAnimateActionEntry(entry.item),
+      reusableToolCards,
+      itemKey: entry.key,
+    });
+  }
+  pruneDisconnectedLiveToolCards();
+  renderedTranscriptState = { epoch, entries: nextEntries.map(({ key, sig }) => ({ key, sig })) };
+  rememberActionEntries(transcriptItems);
+  applyToolOutputExpansionToDom();
+  renderRunIndicator({ scroll: false });
+  updateStickyUserPromptButton();
+  if (shouldFollow) scrollChatToBottom({ force: true });
+  else {
+    elements.chat.scrollTop = Math.min(previousScrollTop, elements.chat.scrollHeight);
+    autoFollowChat = isChatNearBottom();
+    updateJumpToLatestButton();
+  }
+  updateStickyUserPromptButton();
+}
+
+function applyNativeSlashCommandEffects(response, message, tabContext = activeTabContext()) {
+  const data = response?.data || {};
+  if (!isCurrentTabContext(tabContext)) return;
+
+  for (const warning of data.warnings || []) {
+    if (warning) addEvent(String(warning), "warn");
+  }
+  for (const toast of data.toasts || []) {
+    if (toast?.message) addEvent(String(toast.message), toast.level || "info");
+  }
+
+  if (data.copyText) {
+    copyText(data.copyText).catch((error) => {
+      addTransientMessage({
+        role: "native",
+        title: message.split(/\s+/, 1)[0],
+        content: `${data.message || "Copy requested, but clipboard access failed."}\n\nClipboard access failed: ${error.message}\n\n${data.copyText}`,
+        level: "warn",
+      });
+    });
+  }
+
+  if (data.download && handleNativeDownloadResponse(data.download, data.command)) {
+    addEvent(data.command === "export" ? `export ready: ${data.download.fileName || data.download.url}` : `download started: ${data.download.fileName || data.download.url}`, "info");
+  }
+
+  const cards = Array.isArray(data.cards) && data.cards.length ? data.cards : null;
+  if (cards) {
+    for (const card of cards) {
+      addTransientMessage({
+        role: "native",
+        title: card.title || message.split(/\s+/, 1)[0],
+        content: card.content,
+        level: card.level || data.level || "info",
+      });
+    }
+  } else if (data.message) {
+    addTransientMessage({
+      role: "native",
+      title: message.split(/\s+/, 1)[0],
+      content: data.message,
+      level: data.level || "info",
+    });
+  }
+
+  const refresh = Array.isArray(data.refresh) ? data.refresh : ["state"];
+  if (refresh.includes("state")) scheduleRefreshState(120, tabContext);
+  if (refresh.includes("tabs")) scheduleRefreshTabs(300);
+  if (refresh.includes("commands")) refreshCommands(tabContext).catch((error) => addEvent(error.message || String(error), "error"));
+  if (refresh.includes("workspace")) scheduleRefreshState(120, tabContext);
+  if (refresh.includes("themes")) initializeThemes().catch((error) => addEvent(error.message || String(error), "error"));
+}
+
+function addTransientMessage({ role = "notice", title, content, level = "info", ...details }) {
+  transientMessages.push({
+    role,
+    title,
+    level,
+    content,
+    ...details,
+    timestamp: Date.now(),
+  });
+  if (transientMessages.length > 80) transientMessages.splice(0, transientMessages.length - 80);
+  renderAllMessages();
+}
+
+function addAbortTranscriptNotice({ activeRun = false, errorMessage = "" } = {}) {
+  if (errorMessage) {
+    addTransientMessage({ role: "error", title: "Abort failed", content: `Abort request failed: ${errorMessage}`, level: "error" });
+    return;
+  }
+  addTransientMessage({
+    role: "native",
+    title: activeRun ? "Agent aborted" : "Abort requested",
+    content: activeRun
+      ? "⛔ Agent run aborted by user from the Web UI. Pi was told to stop; this transcript marks the run as aborted."
+      : "⛔ Abort requested from the Web UI, but no active agent run was visible in this tab.",
+    level: activeRun ? "warn" : "info",
+  });
+}
+
+function isChatNearBottom() {
+  const remaining = elements.chat.scrollHeight - elements.chat.scrollTop - elements.chat.clientHeight;
+  return remaining <= CHAT_BOTTOM_THRESHOLD_PX;
+}
+
+function updateJumpToLatestButton() {
+  elements.jumpToLatestButton.hidden = autoFollowChat || isChatNearBottom();
+}
+
+function noteChatUserScrollIntent(event) {
+  if (event?.type === "wheel" && event.deltaY >= 0 && autoFollowChat) return;
+  chatUserScrollIntentUntil = performance.now() + CHAT_USER_SCROLL_INTENT_MS;
+}
+
+function isChatUserScrollIntentActive() {
+  return performance.now() <= chatUserScrollIntentUntil;
+}
+
+function setChatScrollTopInstant(top) {
+  const previousBehavior = elements.chat.style.scrollBehavior;
+  elements.chat.style.scrollBehavior = "auto";
+  elements.chat.scrollTop = top;
+  if (previousBehavior) elements.chat.style.scrollBehavior = previousBehavior;
+  else elements.chat.style.removeProperty("scroll-behavior");
+}
+
+function applyChatFollowScroll() {
+  chatFollowFrame = null;
+  if (!autoFollowChat) {
+    updateJumpToLatestButton();
+    updateStickyUserPromptButton();
+    return;
+  }
+  lastChatProgrammaticScrollAt = performance.now();
+  setChatScrollTopInstant(elements.chat.scrollHeight);
+  updateJumpToLatestButton();
+  updateStickyUserPromptButton();
+}
+
+function scheduleChatFollowScroll({ settle = true } = {}) {
+  if (chatFollowFrame === null) chatFollowFrame = requestAnimationFrame(applyChatFollowScroll);
+  if (!settle) return;
+  chatFollowNeedsSettle = true;
+  clearTimeout(chatFollowSettleTimer);
+  chatFollowSettleTimer = setTimeout(() => {
+    chatFollowSettleTimer = null;
+    if (!chatFollowNeedsSettle) return;
+    chatFollowNeedsSettle = false;
+    applyChatFollowScroll();
+  }, CHAT_FOLLOW_SETTLE_DELAY_MS);
+}
+
+function scrollChatToBottom({ force = false } = {}) {
+  if (deferChatFollowScrollDuringPointerActivation({ force })) return;
+  if (deferChatFollowScrollDuringInteractiveDropdown({ force })) return;
+  if (force) autoFollowChat = true;
+  scheduleChatFollowScroll();
+}
+
+function syncAutoFollowFromChatScroll() {
+  const nearBottom = isChatNearBottom();
+  const recentProgrammaticScroll = performance.now() - lastChatProgrammaticScrollAt <= CHAT_PROGRAMMATIC_SCROLL_GRACE_MS;
+  if (nearBottom || isChatUserScrollIntentActive() || !autoFollowChat || !recentProgrammaticScroll) {
+    autoFollowChat = nearBottom;
+  } else {
+    scheduleChatFollowScroll();
+  }
+  updateJumpToLatestButton();
+  updateStickyUserPromptButton();
+}
+
+function jumpToLatest() {
+  scrollChatToBottom({ force: true });
+  markTabOutputSeen(activeTabId, { force: true });
+}
+
+function syncMobileChatToBottomForInput() {
+  if (!isMobileView()) return;
+  autoFollowChat = true;
+  scrollChatToBottom({ force: true });
+  requestAnimationFrame(() => scrollChatToBottom({ force: true }));
+  setTimeout(() => scrollChatToBottom({ force: true }), 140);
+  setTimeout(() => scrollChatToBottom({ force: true }), 360);
+}
+
+function showComposerButtonTooltip(button) {
+  if (!button) return;
+  button.classList.add("tooltip-open");
+  button.focus({ preventScroll: true });
+  clearTimeout(button._tooltipTimer);
+  button._tooltipTimer = setTimeout(() => button.classList.remove("tooltip-open"), 3200);
+}
+
+function sendPromptFromModeButton(kind, button) {
+  if (!hasComposerPayload()) {
+    showComposerButtonTooltip(button);
+    return;
+  }
+  sendPrompt(kind);
+}
+
+async function sendBtwQuestion(question, { clearComposerDraft = false } = {}) {
+  const cleanQuestion = String(question || "").trim();
+  if (!cleanQuestion) return false;
+  const message = /^\/btw(?:\s|$)/.test(cleanQuestion) ? cleanQuestion : `/btw ${cleanQuestion}`;
+  const targetTabId = activeTabId;
+  btwWidgetComposerOpen = true;
+  btwWidgetDismissedId = "";
+  try {
+    await sendPrompt("prompt", message, { targetTabId, throwOnError: true });
+  } catch {
+    return false;
+  }
+  if (!targetTabId) return true;
+  if (clearComposerDraft) {
+    if (targetTabId === activeTabId) {
+      elements.promptInput.value = "";
+      resizePromptInput();
+      hideCommandSuggestions();
+      saveActiveDraft();
+    } else {
+      tabDrafts.set(targetTabId, "");
+    }
+  }
+  return true;
+}
+
+async function sendBtwPromptFromButton() {
+  const question = String(elements.promptInput.value || "").trim();
+  if (!question) {
+    openBtwComposerWidget();
+    return;
+  }
+  await sendBtwQuestion(question, { clearComposerDraft: true });
+}
+
+function setPublishMenuOpen(open) {
+  publishMenuOpen = !!open;
+  elements.publishButton.setAttribute("aria-expanded", publishMenuOpen ? "true" : "false");
+  elements.publishButton.classList.toggle("menu-open", publishMenuOpen);
+  elements.publishButton.parentElement?.classList.toggle("open", publishMenuOpen);
+  scheduleMobileDropdownScrollBoundsUpdate();
+  if (!publishMenuOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function setNativeCommandMenuOpen(open) {
+  nativeCommandMenuOpen = !!open;
+  elements.nativeCommandMenuButton.setAttribute("aria-expanded", nativeCommandMenuOpen ? "true" : "false");
+  elements.nativeCommandMenuButton.classList.toggle("menu-open", nativeCommandMenuOpen);
+  elements.nativeCommandMenuButton.parentElement?.classList.toggle("open", nativeCommandMenuOpen);
+  scheduleMobileDropdownScrollBoundsUpdate();
+  if (!nativeCommandMenuOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function setAppRunnerMenuOpen(open) {
+  appRunnerMenuOpen = !!open;
+  elements.appRunnerMenuButton?.setAttribute("aria-expanded", appRunnerMenuOpen ? "true" : "false");
+  elements.appRunnerMenuButton?.classList.toggle("menu-open", appRunnerMenuOpen);
+  elements.appRunnerMenuButton?.parentElement?.classList.toggle("open", appRunnerMenuOpen);
+  scheduleMobileDropdownScrollBoundsUpdate();
+  if (!appRunnerMenuOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function setOptionsMenuOpen(open) {
+  optionsMenuOpen = !!open;
+  elements.optionsMenuButton.setAttribute("aria-expanded", optionsMenuOpen ? "true" : "false");
+  elements.optionsMenuButton.classList.toggle("menu-open", optionsMenuOpen);
+  elements.optionsMenuButton.parentElement?.classList.toggle("open", optionsMenuOpen);
+  scheduleMobileDropdownScrollBoundsUpdate();
+  if (!optionsMenuOpen) scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function optionalFeatureIdForCommand(name) {
+  const baseName = commandBaseName(name);
+  if (OPTIONAL_COMMAND_FEATURES.has(baseName)) return OPTIONAL_COMMAND_FEATURES.get(baseName);
+  if (baseName === "release-toggle" || baseName === "release-abort" || baseName === "release-npm-logs") return "releaseNpm";
+  if (baseName === "release-aur" || baseName.startsWith("release-aur-")) return "releaseAur";
+  if (baseName === "stats" || baseName.startsWith("stats-") || baseName === "calibrate") return "statsCommand";
+  return null;
+}
+
+function isCommandVisible(command) {
+  if (HIDDEN_COMMAND_NAMES.has(command.name)) return false;
+  if (command.enabled === false) return false;
+  const featureId = optionalFeatureIdForCommand(command.name);
+  return !featureId || isOptionalFeatureEnabled(featureId);
+}
+
+function visibleCommands() {
+  return availableCommands.filter(isCommandVisible);
+}
+
+function commandBaseName(name) {
+  return String(name || "").replace(/:\d+$/, "");
+}
+
+function commandNameMatches(commandName, requestedName) {
+  const commandText = String(commandName || "");
+  const requested = String(requestedName || "");
+  if (!requested) return false;
+  if (commandText === requested) return true;
+  if (!commandText.startsWith(`${requested}:`)) return false;
+  return /^\d+$/.test(commandText.slice(requested.length + 1));
+}
+
+function canUseCommandBaseAlias(name) {
+  return availableCommands.some((command) => commandBaseName(command.name) === name && command.invokeName && command.duplicateCount > 1);
+}
+
+function resolveAvailableCommand(name, { rpcOnly = false } = {}) {
+  const requested = String(name || "").trim();
+  if (!requested) return null;
+  const commands = (rpcOnly ? rawAvailableCommands : availableCommands).filter((command) => !rpcOnly || command.source !== "native");
+  const exact = commands.find((command) => command.name === requested || command.invokeName === requested || command.duplicateNames?.includes(requested));
+  if (exact) return exact;
+  if (!canUseCommandBaseAlias(requested)) return null;
+  return commands.find((command) => commandNameMatches(command?.name, requested)) || null;
+}
+
+function resolveAvailableCommandName(name, options = {}) {
+  return resolveAvailableCommand(name, options)?.name || "";
+}
+
+function resolveRpcSlashCommandMessage(message) {
+  const text = String(message || "");
+  const match = text.match(/^\/([^\s]+)([\s\S]*)$/);
+  if (!match) return text;
+  const resolvedName = resolveAvailableCommandName(match[1], { rpcOnly: true });
+  return resolvedName && resolvedName !== match[1] ? `/${resolvedName}${match[2]}` : text;
+}
+
+function hasAvailableCommand(name) {
+  return !!resolveAvailableCommand(name);
+}
+
+function hasLoadedRpcCommand(name) {
+  return !!resolveAvailableCommand(name, { rpcOnly: true });
+}
+
+function optionalFeatureUnavailableMessage(featureId) {
+  const feature = OPTIONAL_FEATURE_BY_ID.get(featureId);
+  if (!feature) return "Optional feature unavailable.";
+  if (isOptionalFeatureDisabled(featureId)) return `${feature.label} is disabled in the Web UI optional-features panel.`;
+  return `${feature.label} unavailable: ${feature.capabilityLabel} is not loaded. Install or enable ${feature.packageName}.`;
+}
+
+function rememberOptionalControlDefault(button, key, value) {
+  if (!(key in button.dataset)) button.dataset[key] = value || "";
+}
+
+function setOptionalControlState(button, available, unavailableTitle) {
+  if (!button) return;
+  rememberOptionalControlDefault(button, "defaultTitle", button.getAttribute("title"));
+  rememberOptionalControlDefault(button, "defaultAriaLabel", button.getAttribute("aria-label"));
+  if (button.hasAttribute("data-tooltip")) rememberOptionalControlDefault(button, "defaultTooltip", button.getAttribute("data-tooltip"));
+
+  const nextTitle = available ? button.dataset.defaultTitle : unavailableTitle;
+  const nextAriaLabel = available ? button.dataset.defaultAriaLabel : unavailableTitle;
+  const nextTooltip = available ? button.dataset.defaultTooltip : unavailableTitle;
+
+  button.disabled = !available;
+  button.setAttribute("aria-disabled", available ? "false" : "true");
+  button.classList.toggle("feature-unavailable", !available);
+  if (nextTitle) button.setAttribute("title", nextTitle);
+  else button.removeAttribute("title");
+  if (nextAriaLabel) button.setAttribute("aria-label", nextAriaLabel);
+  else button.removeAttribute("aria-label");
+  if (button.dataset.defaultTooltip !== undefined) {
+    if (nextTooltip) button.setAttribute("data-tooltip", nextTooltip);
+    else button.removeAttribute("data-tooltip");
+  }
+}
+
+function resetOptionalFeatureAvailability() {
+  for (const key of Object.keys(optionalFeatureAvailability)) optionalFeatureAvailability[key] = false;
+  optionalFeatureAvailability.themeBundle = availableThemes.length > 0;
+  renderOptionalFeatureControls();
+}
+
+function optionalFeaturePackageStatus(featureId) {
+  return optionalFeaturePackageStatuses.get(featureId) || null;
+}
+
+function optionalFeaturePackageVersionLabel(status) {
+  if (!status?.installedVersion) return "";
+  return status.declaredSpec ? `${status.installedVersion} (expects ${status.declaredSpec})` : status.installedVersion;
+}
+
+async function refreshOptionalFeaturePackageStatuses({ announce = false } = {}) {
+  try {
+    const response = await api("/api/optional-features", { scoped: false });
+    optionalFeaturePackageStatuses.clear();
+    for (const status of response.data?.features || []) {
+      if (status?.featureId) optionalFeaturePackageStatuses.set(status.featureId, status);
+    }
+    renderOptionalFeatureControls();
+    return true;
+  } catch (error) {
+    if (announce) addEvent(`optional feature package status check failed: ${error.message || String(error)}`, "warn");
+    return false;
+  }
+}
+
+function requestGitFooterWebuiPayload(tabContext = activeTabContext(), { force = false, silent = true, allowDuringRun = false } = {}) {
+  if (!tabContext.tabId || isOptionalFeatureDisabled("gitFooterStatus")) return;
+  if (!allowDuringRun && (currentState?.isStreaming || currentState?.isCompacting)) return;
+  const refreshCommand = resolveAvailableCommandName("git-footer-refresh", { rpcOnly: true });
+  if (!refreshCommand || (!force && statusEntries.has(GIT_FOOTER_WEBUI_STATUS_KEY))) return;
+  if (gitFooterPayloadRefreshInFlightByTab.has(tabContext.tabId)) return;
+
+  gitFooterPayloadRefreshInFlightByTab.add(tabContext.tabId);
+  if (isCurrentTabContext(tabContext)) renderFooter();
+  api("/api/prompt", {
+    method: "POST",
+    body: { message: `/${refreshCommand}${silent ? " --webui-silent" : ""}`, streamingBehavior: "steer" },
+    tabId: tabContext.tabId,
+  }).catch((error) => {
+    if (isCurrentTabContext(tabContext)) addEvent(`git footer payload refresh failed: ${error.message || String(error)}`, "warn");
+  }).finally(() => {
+    gitFooterPayloadRefreshInFlightByTab.delete(tabContext.tabId);
+    if (isCurrentTabContext(tabContext)) renderFooter();
+  });
+}
+
+function updateOptionalFeatureAvailability() {
+  optionalFeatureAvailability.btwCommand = hasAvailableCommand("btw") || optionalFeatureAvailability.btwCommand || statusEntries.has(BTW_WEBUI_STATUS_KEY) || widgets.has(BTW_OUTPUT_WIDGET_KEY);
+  optionalFeatureAvailability.gitWorkflow = hasAvailableCommand("git-staged-msg");
+  optionalFeatureAvailability.releaseNpm = hasAvailableCommand("release-npm");
+  optionalFeatureAvailability.releaseAur = hasAvailableCommand("release-aur");
+  optionalFeatureAvailability.workflows = hasAvailableCommand("workflow") || hasAvailableCommand("workflow-clear") || optionalFeatureAvailability.workflows || widgets.has("workflow") || widgets.has("workflow:subprocess");
+  optionalFeatureAvailability.safetyGuard = hasAvailableCommand("safety-guard") || optionalFeatureAvailability.safetyGuard || statusEntries.has("safety-guard");
+  optionalFeatureAvailability.statsCommand = hasAvailableCommand("stats");
+  optionalFeatureAvailability.gitFooterStatus = hasAvailableCommand("git-footer-refresh") || optionalFeatureAvailability.gitFooterStatus || statusEntries.has("git-footer") || statusEntries.has(GIT_FOOTER_WEBUI_STATUS_KEY);
+  optionalFeatureAvailability.tuiSkillsCommand = hasLoadedRpcCommand("skills");
+  optionalFeatureAvailability.todoProgressWidget = hasAvailableCommand("todo-progress-status") || optionalFeatureAvailability.todoProgressWidget || widgets.has("todo-progress");
+  optionalFeatureAvailability.tuiToolsCommand = hasLoadedRpcCommand("tools");
+  optionalFeatureAvailability.remoteWebui = hasAvailableCommand("remote") || optionalFeatureAvailability.remoteWebui || statusEntries.has("pi-remote-webui") || statusEntries.has(REMOTE_WEBUI_CONTROLS_STATUS_KEY) || widgets.has("pi-remote-webui");
+  optionalFeatureAvailability.themeBundle = availableThemes.length > 0;
+  requestGitFooterWebuiPayload();
+  renderOptionalFeatureControls();
+}
+
+function optionalFeatureStatus(featureId) {
+  const detected = isOptionalFeatureDetected(featureId);
+  const disabled = isOptionalFeatureDisabled(featureId);
+  const packageStatus = optionalFeaturePackageStatus(featureId);
+  const installMessage = optionalFeatureInstallMessages.get(featureId);
+  const versionLabel = optionalFeaturePackageVersionLabel(packageStatus);
+  const versionSuffix = versionLabel ? ` · package ${versionLabel}` : "";
+  if (optionalFeatureInstallInProgress.has(featureId)) return { label: "Installing", className: "updating", detail: installMessage || "npm install is running; waiting for the package manager to finish" };
+  if (packageStatus?.updateAvailable) return { label: "Update available", className: "updating", detail: packageStatus.updateReason || `Installed package is older than the Web UI expects${versionSuffix}` };
+  if (detected && !disabled) return { label: "Enabled", className: "enabled", detail: `Detected and enabled in Web UI${versionSuffix}` };
+  if (detected && disabled) return { label: "Disabled", className: "disabled", detail: `Detected, but disabled in Web UI${versionSuffix}` };
+  if (packageStatus?.installed) return { label: "Installed", className: "installed", detail: `Package is installed but not loaded in the active Pi tab${versionSuffix}` };
+  return { label: "Install needed", className: "missing", detail: installMessage || "Package is not installed or not visible from the Web UI package root" };
+}
+
+function optionalFeatureTooltip(feature, status) {
+  return [
+    feature.label,
+    `Status: ${status.label}`,
+    status.detail,
+    "",
+    feature.description,
+    "",
+    `Check: ${feature.capabilityLabel}`,
+    `Package: ${feature.packageName}`,
+  ].join("\n");
+}
+
+function optionalFeatureWidgetFeatureId(key) {
+  if (key.startsWith("btw:")) return "btwCommand";
+  if (key.startsWith("release-npm:")) return "releaseNpm";
+  if (key.startsWith("release-aur:")) return "releaseAur";
+  if (key === "workflow" || key.startsWith("workflow:")) return "workflows";
+  if (key === "todo-progress") return "todoProgressWidget";
+  if (key === "pi-remote-webui") return "remoteWebui";
+  return null;
+}
+
+function optionalFeatureWidgetHasSpecializedRenderer(key) {
+  return key.startsWith("btw:") || key.startsWith("release-npm:") || key.startsWith("release-aur:") || key === "workflow:subprocess";
+}
+
+function renderOptionalFeaturePanel() {
+  if (!elements.optionalFeaturesBox) return;
+  elements.optionalFeaturesBox.replaceChildren();
+  elements.optionalFeaturesBox.classList.remove("muted");
+
+  for (const feature of OPTIONAL_FEATURES) {
+    const detected = isOptionalFeatureDetected(feature.id);
+    const enabled = isOptionalFeatureEnabled(feature.id);
+    const installing = optionalFeatureInstallInProgress.has(feature.id);
+    const packageStatus = optionalFeaturePackageStatus(feature.id);
+    const status = optionalFeatureStatus(feature.id);
+    const row = make("div", `optional-feature-row ${status.className}`);
+    const tooltip = optionalFeatureTooltip(feature, status);
+    row.dataset.tooltip = tooltip;
+    row.setAttribute("aria-label", tooltip.replace(/\s+/g, " "));
+    row.tabIndex = 0;
+
+    const main = make("div", "optional-feature-main");
+    const title = make("div", "optional-feature-title");
+    title.append(make("strong", undefined, feature.label), make("span", `optional-feature-pill ${status.className}`, status.label));
+    main.append(title);
+
+    const actions = make("div", "optional-feature-actions");
+    const action = make("button", "optional-feature-action");
+    action.type = "button";
+    action.disabled = installing;
+    if (installing) {
+      action.textContent = "Installing…";
+    } else if (packageStatus?.updateAvailable) {
+      action.textContent = "Update…";
+      action.classList.add("update");
+      action.addEventListener("click", () => installOptionalFeature(feature.id, { update: true }));
+    } else if (detected) {
+      action.textContent = enabled ? "Disable" : "Enable";
+      action.addEventListener("click", () => setOptionalFeatureDisabled(feature.id, enabled));
+    } else if (packageStatus?.installed) {
+      action.textContent = "Reload";
+      action.addEventListener("click", () => sendPrompt("prompt", "/reload"));
+    } else {
+      action.textContent = "Install…";
+      action.classList.add("install");
+      action.addEventListener("click", () => installOptionalFeature(feature.id));
+    }
+    actions.append(action);
+
+    row.append(main, actions);
+    elements.optionalFeaturesBox.append(row);
+  }
+}
+
+function renderOptionalFeatureControls() {
+  const hasBtwCommand = isOptionalFeatureEnabled("btwCommand");
+  if (elements.btwButton) {
+    elements.btwButton.hidden = !hasBtwCommand;
+    setOptionalControlState(
+      elements.btwButton,
+      hasBtwCommand,
+      optionalFeatureUnavailableMessage("btwCommand"),
+    );
+  }
+
+  const hasGitWorkflow = isOptionalFeatureEnabled("gitWorkflow");
+  elements.gitWorkflowButton.hidden = !hasGitWorkflow;
+  setOptionalControlState(
+    elements.gitWorkflowButton,
+    hasGitWorkflow,
+    optionalFeatureUnavailableMessage("gitWorkflow"),
+  );
+
+  elements.releaseNpmButton.hidden = !isOptionalFeatureEnabled("releaseNpm");
+  elements.releaseAurButton.hidden = !isOptionalFeatureEnabled("releaseAur");
+  const hasPublishWorkflow = isOptionalFeatureEnabled("releaseNpm") || isOptionalFeatureEnabled("releaseAur");
+  const publishContainer = elements.publishButton.parentElement;
+  if (publishContainer) publishContainer.hidden = !hasPublishWorkflow;
+  elements.publishButton.hidden = !hasPublishWorkflow;
+  setOptionalControlState(
+    elements.publishButton,
+    hasPublishWorkflow,
+    "Publish workflows unavailable: enable/install NPM Release and/or AUR Release in Optional features.",
+  );
+  if (!hasPublishWorkflow && publishMenuOpen) setPublishMenuOpen(false);
+
+  const hasNativeCommandMenu = isOptionalFeatureEnabled("tuiSkillsCommand") || isOptionalFeatureEnabled("tuiToolsCommand");
+  elements.nativeSkillsButton.hidden = !isOptionalFeatureEnabled("tuiSkillsCommand");
+  elements.nativeToolsButton.hidden = !isOptionalFeatureEnabled("tuiToolsCommand");
+  const nativeCommandMenuContainer = elements.nativeCommandMenuButton.parentElement;
+  if (nativeCommandMenuContainer) nativeCommandMenuContainer.hidden = !hasNativeCommandMenu;
+  elements.nativeCommandMenuButton.hidden = !hasNativeCommandMenu;
+  setOptionalControlState(
+    elements.nativeCommandMenuButton,
+    hasNativeCommandMenu,
+    "Slash command menu unavailable: enable/install TUI Skills command and/or TUI Tools command in Optional features.",
+  );
+  if (!hasNativeCommandMenu && nativeCommandMenuOpen) setNativeCommandMenuOpen(false);
+
+  const hasStatsCommand = isOptionalFeatureEnabled("statsCommand");
+  if (elements.optionsStatsButton) {
+    elements.optionsStatsButton.hidden = !hasStatsCommand;
+    setOptionalControlState(
+      elements.optionsStatsButton,
+      hasStatsCommand,
+      optionalFeatureUnavailableMessage("statsCommand"),
+    );
+  }
+
+  const hasRemoteWebuiCommand = isOptionalFeatureEnabled("remoteWebui") && hasAvailableCommand("remote");
+  if (elements.optionsRemoteButton) {
+    elements.optionsRemoteButton.hidden = !hasRemoteWebuiCommand;
+    setOptionalControlState(
+      elements.optionsRemoteButton,
+      hasRemoteWebuiCommand,
+      optionalFeatureUnavailableMessage("remoteWebui"),
+    );
+  }
+  syncRemoteWebuiControlVisibility(hasRemoteWebuiCommand);
+
+  renderOptionalFeaturePanel();
+}
+
+function syncRemoteWebuiControlVisibility(hasRemoteWebuiCommand = isOptionalFeatureEnabled("remoteWebui") && hasAvailableCommand("remote")) {
+  if (!elements.networkControlField) return;
+  elements.networkControlField.hidden = !hasRemoteWebuiCommand;
+  elements.networkControlField.classList.toggle("feature-unavailable", !hasRemoteWebuiCommand);
+  const label = elements.networkControlField.querySelector("label");
+  const payload = remoteWebuiControlsPayload();
+  if (label) label.textContent = payload?.title || "Remote WebUI";
+  elements.networkControlField.title = hasRemoteWebuiCommand
+    ? payload?.description || "Remote WebUI controls are provided by @firstpick/pi-package-remote-webui."
+    : optionalFeatureUnavailableMessage("remoteWebui");
+}
+
+function commandUnavailableMessage(commandName) {
+  const featureId = optionalFeatureIdForCommand(commandName);
+  if (featureId) return optionalFeatureUnavailableMessage(featureId);
+  return `Command unavailable: /${commandName} is not loaded in the active Pi tab.`;
+}
+
+async function installOptionalFeature(featureId, { update = false } = {}) {
+  const feature = OPTIONAL_FEATURE_BY_ID.get(featureId);
+  if (!feature || optionalFeatureInstallInProgress.has(featureId)) return;
+
+  const actionLabel = update ? "Update" : "Install";
+  const warning = [
+    `${actionLabel} optional feature: ${feature.label}?`,
+    "",
+    `This will run npm install for ${feature.packageName} in the Web UI package install root.`,
+    "It can download code from npm and modify the local Pi/Web UI npm installation.",
+    "Progress and failures will be shown in the optional-features row and activity log.",
+    "If this feature is already installed but disabled in Pi settings, cancel and enable it there instead.",
+    "",
+    "Continue?",
+  ].join("\n");
+  if (!confirm(warning)) return;
+
+  optionalFeatureInstallInProgress.add(featureId);
+  optionalFeatureInstallMessages.set(featureId, `${actionLabel} running via npm; waiting for package-manager output…`);
+  renderOptionalFeatureControls();
+  addEvent(`${update ? "updating" : "installing"} optional feature ${feature.label} (${feature.packageName})…`, "warn");
+  try {
+    const response = await api("/api/optional-feature-install", { method: "POST", body: { featureId }, scoped: false });
+    disabledOptionalFeatures.delete(featureId);
+    storeDisabledOptionalFeatures();
+    const command = response.data?.command ? ` · ${response.data.command}` : "";
+    optionalFeatureInstallMessages.set(featureId, `${response.data?.message || `${actionLabel} finished`}${command}`);
+    addEvent(response.data?.message || `${update ? "updated" : "installed"} ${feature.packageName}`, "info");
+    const output = [response.data?.stderr, response.data?.stdout].filter(Boolean).join("\n").trim();
+    if (output) addEvent(`npm output for ${feature.packageName}:\n${output.slice(-4000)}`, "info");
+    await refreshOptionalFeaturePackageStatuses({ announce: true });
+    if (confirm(`${feature.label} ${actionLabel.toLowerCase()} finished. Reload the active Pi tab now to enable newly loaded resources?`)) {
+      sendPrompt("prompt", "/reload");
+    } else {
+      const tabContext = activeTabContext();
+      await Promise.allSettled([refreshCommands(tabContext), initializeThemes()]);
+      if (isCurrentTabContext(tabContext)) renderOptionalFeatureControls();
+    }
+  } catch (error) {
+    optionalFeatureInstallMessages.set(featureId, `${actionLabel} failed: ${error.message || String(error)}`);
+    addEvent(error.message || String(error), "error");
+  } finally {
+    optionalFeatureInstallInProgress.delete(featureId);
+    renderOptionalFeatureControls();
+  }
+}
+
+function runPublishWorkflow(command) {
+  setComposerActionsOpen(false);
+  setPublishMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  const commandText = String(command || "");
+  const commandWithoutSlash = commandText.replace(/^\//, "");
+  const commandName = commandWithoutSlash.split(/\s+/)[0];
+  const commandRest = commandWithoutSlash.slice(commandName.length);
+  const featureId = OPTIONAL_COMMAND_FEATURES.get(commandName);
+  const resolvedCommandName = resolveAvailableCommandName(commandName, { rpcOnly: true });
+  if ((featureId && !isOptionalFeatureEnabled(featureId)) || !resolvedCommandName) {
+    const tabContext = activeTabContext();
+    addEvent(commandUnavailableMessage(commandName), "warn");
+    refreshCommands(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+    });
+    return;
+  }
+  sendPrompt("prompt", `/${resolvedCommandName}${commandRest}`);
+}
+
+async function runNativeCommandMenu(command) {
+  setComposerActionsOpen(false);
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  const commandName = String(command || "").replace(/^\//, "").split(/\s+/)[0].toLowerCase();
+  const featureId = optionalFeatureIdForCommand(commandName);
+  if ((featureId && !isOptionalFeatureEnabled(featureId)) || !hasAvailableCommand(commandName)) {
+    const tabContext = activeTabContext();
+    addEvent(commandUnavailableMessage(commandName), "warn");
+    refreshCommands(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+    });
+    return;
+  }
+  if (await handleNativeSlashSelectorCommand(command)) return;
+  await sendPrompt("prompt", command);
+}
+
+function slashCommandName(message) {
+  const match = String(message || "").trim().match(/^\/([^\s]+)$/);
+  return match ? match[1].toLowerCase() : "";
+}
+
+function openNativeCommandDialog({ title, message = "", searchPlaceholder = "" } = {}) {
+  nativeCommandTabId ||= activeTabId;
+  elements.nativeCommandTitle.textContent = title || "Pi command";
+  elements.nativeCommandMessage.textContent = message;
+  elements.nativeCommandMessage.hidden = !message;
+  elements.nativeCommandSearch.value = "";
+  elements.nativeCommandSearch.placeholder = searchPlaceholder || "Filter choices…";
+  elements.nativeCommandSearch.hidden = !searchPlaceholder;
+  elements.nativeCommandSearch.oninput = null;
+  elements.nativeCommandBody.replaceChildren();
+  elements.nativeCommandError.hidden = true;
+  elements.nativeCommandError.textContent = "";
+  elements.nativeCommandActions.replaceChildren();
+  addNativeCommandAction("Cancel", closeNativeCommandDialog);
+  if (!elements.nativeCommandDialog.open) elements.nativeCommandDialog.showModal();
+  if (searchPlaceholder) queueMicrotask(() => elements.nativeCommandSearch.focus());
+}
+
+function closeNativeCommandDialog() {
+  if (elements.nativeCommandDialog.open) elements.nativeCommandDialog.close();
+  elements.nativeCommandSearch.oninput = null;
+  nativeCommandTabId = null;
+}
+
+function nativeCommandApi(path, options = {}) {
+  return api(path, { ...options, tabId: options.tabId || nativeCommandTabId || activeTabId });
+}
+
+function setNativeCommandError(message) {
+  elements.nativeCommandError.textContent = message || "";
+  elements.nativeCommandError.hidden = !message;
+}
+
+function addNativeCommandAction(label, handler, className) {
+  const button = make("button", className, label);
+  button.type = "button";
+  button.addEventListener("click", handler);
+  elements.nativeCommandActions.append(button);
+  return button;
+}
+
+function renderNativeLoading(label = "Loading…") {
+  elements.nativeCommandBody.replaceChildren(make("div", "native-command-empty muted", label));
+}
+
+function nativeSelectorMatches(item, query) {
+  if (!query) return true;
+  const needle = query.toLowerCase();
+  const tags = Array.isArray(item.tags) ? item.tags.map((tag) => tag?.label) : [];
+  return [item.label, item.description, item.meta, item.badge, ...tags]
+    .filter(Boolean)
+    .some((value) => String(value).toLowerCase().includes(needle));
+}
+
+function renderNativeSelectorItems(items, { emptyText = "No choices.", onSelect, activeId, numbered = false } = {}) {
+  const query = elements.nativeCommandSearch.value.trim();
+  const filtered = items.filter((item) => nativeSelectorMatches(item, query));
+  elements.nativeCommandBody.replaceChildren();
+  if (!filtered.length) {
+    elements.nativeCommandBody.append(make("div", "native-command-empty muted", emptyText));
+    return;
+  }
+  const list = make("div", "native-selector-list");
+  for (const [index, item] of filtered.entries()) {
+    const button = make("button", `native-selector-item${item.id === activeId ? " active" : ""}`);
+    button.type = "button";
+    button.disabled = item.disabled === true;
+    button.addEventListener("click", () => onSelect?.(item));
+    const title = make("span", "native-selector-title");
+    if (numbered) title.append(make("span", "native-selector-index", `${index + 1}.`));
+    title.append(make("strong", undefined, item.label || item.id || "choice"));
+    if (item.badge) {
+      const badgeState = String(item.badge).toLowerCase();
+      const badge = make("span", `native-selector-badge${item.badgeClass ? ` ${item.badgeClass}` : ""}`, item.badge);
+      badge.dataset.badgeState = badgeState;
+      if (badgeState === "disabled" || String(item.badgeClass || "").includes("disabled")) {
+        badge.style.borderColor = "rgba(255, 159, 67, 0.62)";
+        badge.style.color = "#ff9f43";
+        badge.style.background = "rgba(255, 159, 67, 0.10)";
+      }
+      title.append(badge);
+    }
+    for (const tag of Array.isArray(item.tags) ? item.tags : []) {
+      if (!tag?.label) continue;
+      title.append(make("span", `native-selector-badge${tag.className ? ` ${tag.className}` : ""}`, tag.label));
+    }
+    const detail = make("span", "native-selector-detail", item.description || "");
+    const meta = make("span", "native-selector-meta", item.meta || "");
+    button.append(title);
+    if (item.description) button.append(detail);
+    if (item.meta) button.append(meta);
+    list.append(button);
+  }
+  elements.nativeCommandBody.append(list);
+}
+
+function setNativeActionBusy(button, busy, label = "Working…") {
+  if (!button) return;
+  if (!button.dataset.defaultLabel) button.dataset.defaultLabel = button.textContent || "";
+  button.disabled = busy;
+  button.textContent = busy ? label : button.dataset.defaultLabel;
+}
+
+function modelOptionLabel(model) {
+  return `${model.provider}/${model.id}`;
+}
+
+async function openNativeModelSelector() {
+  openNativeCommandDialog({ title: "/model", message: "Select the active model for this Pi tab.", searchPlaceholder: "Filter models…" });
+  renderNativeLoading("Loading models…");
+  try {
+    const response = await nativeCommandApi("/api/models");
+    const models = Array.isArray(response.data?.models) ? response.data.models : [];
+    const activeId = currentState?.model ? `${currentState.model.provider}/${currentState.model.id}` : "";
+    const items = models.map((model) => ({
+      id: modelOptionLabel(model),
+      label: modelOptionLabel(model),
+      description: model.name || model.description || "",
+      meta: model.contextWindow ? `context ${model.contextWindow}` : model.provider,
+      model,
+      badge: modelOptionLabel(model) === activeId ? "current" : "",
+    }));
+    const render = () => renderNativeSelectorItems(items, {
+      emptyText: "No models match this filter.",
+      activeId,
+      onSelect: async (item) => {
+        setNativeCommandError("");
+        const tabContext = activeTabContext(nativeCommandTabId || activeTabId);
+        try {
+          const response = await nativeCommandApi("/api/model", { method: "POST", body: { provider: item.model.provider, modelId: item.model.id } });
+          applyOptimisticModelSelection(response.data || item.model, tabContext);
+          addTransientMessage({ role: "native", title: "/model", content: `Model set to ${item.label}.`, level: "info" });
+          closeNativeCommandDialog();
+          await refreshState(tabContext);
+        } catch (error) {
+          setNativeCommandError(error.message || String(error));
+        }
+      },
+    });
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+function openNativeThemeSelector() {
+  openNativeCommandDialog({ title: "/theme", message: "Select the browser Web UI theme. Pi terminal theme changes remain native-TUI only.", searchPlaceholder: "Filter themes…" });
+  const load = async () => {
+    if (!availableThemes.length) await initializeThemes();
+    const items = availableThemes.map((theme) => ({
+      id: theme.name,
+      label: theme.label || displayThemeName(theme.name) || theme.name,
+      description: theme.name,
+      meta: theme.author ? `by ${theme.author}` : "browser theme",
+      theme,
+      badge: theme.name === currentThemeName ? "current" : "",
+    }));
+    const render = () => renderNativeSelectorItems(items, {
+      emptyText: "No themes match this filter.",
+      activeId: currentThemeName,
+      onSelect: async (item) => {
+        try {
+          await setThemeByName(item.theme.name, { persist: true, announce: true });
+          addTransientMessage({ role: "native", title: "/theme", content: `Theme set to ${item.label}.`, level: "info" });
+          closeNativeCommandDialog();
+        } catch (error) {
+          setNativeCommandError(error.message || String(error));
+        }
+      },
+    });
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  };
+  renderNativeLoading("Loading themes…");
+  load().catch((error) => {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  });
+}
+
+function nativeSettingsBadge(label, tone = "") {
+  return make("span", `native-settings-badge${tone ? ` native-settings-badge-${tone}` : ""}`, label);
+}
+
+function normalizedSettingsBadge(badge) {
+  if (!badge) return null;
+  if (typeof badge === "string") return { label: badge, tone: "" };
+  return badge;
+}
+
+function nativeSettingsLabelRow(label, badge) {
+  const row = make("span", "native-settings-label-row");
+  row.append(make("span", "native-settings-label", label));
+  const normalized = normalizedSettingsBadge(badge);
+  if (normalized?.label) row.append(nativeSettingsBadge(normalized.label, normalized.tone));
+  return row;
+}
+
+function normalizedSettingOptions(options) {
+  return options.map((option) => {
+    if (typeof option === "string" || typeof option === "number") return { value: String(option), label: String(option) };
+    return { value: String(option.value), label: option.label || String(option.value) };
+  });
+}
+
+function nativeSettingSelect(label, value, options, hint, badge) {
+  const field = make("label", "native-settings-field");
+  field.append(nativeSettingsLabelRow(label, badge));
+  const select = make("select");
+  for (const option of normalizedSettingOptions(options)) {
+    const element = make("option", undefined, option.label);
+    element.value = option.value;
+    select.append(element);
+  }
+  select.value = String(value);
+  field.append(select);
+  if (hint) field.append(make("span", "native-settings-hint", hint));
+  return { field, select };
+}
+
+function nativeSettingToggle(label, checked, hint, badge) {
+  const field = make("label", "native-settings-toggle");
+  const input = make("input");
+  input.type = "checkbox";
+  input.checked = !!checked;
+  const text = make("span");
+  text.append(nativeSettingsLabelRow(label, badge));
+  if (hint) text.append(make("span", "native-settings-hint", hint));
+  field.append(input, text);
+  return { field, input };
+}
+
+function nativeSettingsSection(title, description, controls, { open = true, badge } = {}) {
+  const section = make("details", "native-settings-section");
+  section.open = !!open;
+  const summary = make("summary", "native-settings-section-summary");
+  const titleRow = make("span", "native-settings-section-title");
+  titleRow.append(make("strong", undefined, title));
+  const normalized = normalizedSettingsBadge(badge);
+  if (normalized?.label) titleRow.append(nativeSettingsBadge(normalized.label, normalized.tone));
+  summary.append(titleRow);
+  if (description) summary.append(make("span", "native-settings-section-description", description));
+  const grid = make("div", "native-settings-grid");
+  grid.append(...controls.map((control) => control.field || control));
+  section.append(summary, grid);
+  return section;
+}
+
+function nativeSettingsNote(title, text) {
+  const note = make("div", "native-settings-note");
+  note.append(make("strong", undefined, title));
+  note.append(make("span", undefined, text));
+  return note;
+}
+
+function currentHttpIdleTimeoutValue(settings) {
+  return String(settings.httpIdleTimeoutMs ?? "300000");
+}
+
+function httpIdleTimeoutOptions(settings) {
+  const current = currentHttpIdleTimeoutValue(settings);
+  if (SETTINGS_HTTP_IDLE_TIMEOUT_OPTIONS.some((option) => option.value === current)) return SETTINGS_HTTP_IDLE_TIMEOUT_OPTIONS;
+  const label = Number(current) === 0 ? "disabled (current)" : `${Number(current) / 1000} sec (current)`;
+  return [{ value: current, label }, ...SETTINGS_HTTP_IDLE_TIMEOUT_OPTIONS];
+}
+
+function collectNativeSettingsPayload(controls) {
+  return {
+    transport: controls.transport.select.value,
+    httpIdleTimeoutMs: Number(controls.httpIdleTimeout.select.value),
+    autoResizeImages: controls.autoResizeImages.input.checked,
+    blockImages: controls.blockImages.input.checked,
+    enableSkillCommands: controls.skillCommands.input.checked,
+    hideThinkingBlock: !controls.thinkingOutput.input.checked,
+    showImages: controls.showImages.input.checked,
+    imageWidthCells: Number(controls.imageWidth.select.value),
+    collapseChangelog: controls.collapseChangelog.input.checked,
+    quietStartup: controls.quietStartup.input.checked,
+    enableInstallTelemetry: controls.installTelemetry.input.checked,
+    doubleEscapeAction: controls.doubleEscape.select.value,
+    treeFilterMode: controls.treeFilter.select.value,
+    showHardwareCursor: controls.hardwareCursor.input.checked,
+    editorPaddingX: Number(controls.editorPadding.select.value),
+    autocompleteMaxVisible: Number(controls.autocompleteMax.select.value),
+    clearOnShrink: controls.clearOnShrink.input.checked,
+    showTerminalProgress: controls.terminalProgress.input.checked,
+    warnings: { anthropicExtraUsage: controls.anthropicWarning.input.checked },
+  };
+}
+
+function nativeSettingsChangedMessage(response, reloadRequested) {
+  const changed = response.data?.changed || [];
+  const reloadRecommended = response.data?.reloadRecommended || [];
+  if (response.data?.reloaded) return `Settings updated and tab reloaded (${changed.length || 0} changed).`;
+  if (reloadRecommended.length) return `Settings updated. Reload tab to apply: ${reloadRecommended.join(", ")}.`;
+  if (reloadRequested) return `Settings updated. No reload-needed changes were detected.`;
+  return `Settings updated${changed.length ? ` (${changed.length} changed)` : ""}.`;
+}
+
+async function openNativeSettingsDialog() {
+  openNativeCommandDialog({ title: "/settings", message: "Pi settings for this Web UI tab. Badges show whether changes apply now, in the browser, or after reloading the tab." });
+  renderNativeLoading("Loading settings…");
+  let settingsData;
+  try {
+    const response = await nativeCommandApi("/api/settings");
+    settingsData = response.data || {};
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+    return;
+  }
+
+  const state = currentState || {};
+  const settings = settingsData.settings || {};
+  applyNativeSettingsForBrowser(settings);
+
+  const controls = {
+    thinking: nativeSettingSelect("Thinking level", state.thinkingLevel || "off", SETTINGS_THINKING_OPTIONS, "Reasoning depth for thinking-capable models.", { label: "now", tone: "now" }),
+    autoCompact: nativeSettingToggle("Auto-compact", state.autoCompactionEnabled !== false, "Let Pi compact when context is nearly full.", { label: "now", tone: "now" }),
+    steering: nativeSettingSelect("Steering mode", state.steeringMode || "one-at-a-time", [
+      { value: "one-at-a-time", label: "one at a time" },
+      { value: "all", label: "all queued" },
+    ], "How Enter messages are delivered while the agent is streaming.", { label: "now", tone: "now" }),
+    followUp: nativeSettingSelect("Follow-up mode", state.followUpMode || "one-at-a-time", [
+      { value: "one-at-a-time", label: "one at a time" },
+      { value: "all", label: "all queued" },
+    ], "How queued follow-ups are delivered after the current response.", { label: "now", tone: "now" }),
+    transport: nativeSettingSelect("Transport", settings.transport || "auto", SETTINGS_TRANSPORT_OPTIONS, "Preferred provider transport when multiple transports are supported.", { label: "reload", tone: "reload" }),
+    httpIdleTimeout: nativeSettingSelect("HTTP idle timeout", currentHttpIdleTimeoutValue(settings), httpIdleTimeoutOptions(settings), "Maximum idle gap while waiting for provider HTTP data.", { label: "reload", tone: "reload" }),
+    busyBehavior: nativeSettingSelect("Busy prompt behavior", busyPromptBehavior, [
+      { value: "followUp", label: "follow-up" },
+      { value: "steer", label: "steer" },
+    ], "When you submit a normal prompt while a tab is already busy.", { label: "browser", tone: "browser" }),
+    thinkingOutput: nativeSettingToggle("Show thinking output", settings.hideThinkingBlock !== true, "Browser transcript visibility; also writes Pi's hide-thinking setting.", { label: "browser", tone: "browser" }),
+    doneNotifications: nativeSettingToggle("Agent done notifications", agentDoneNotificationsEnabled, "Browser notification after background tab work completes.", { label: "browser", tone: "browser" }),
+    autocompleteMax: nativeSettingSelect("Autocomplete max items", settings.autocompleteMaxVisible ?? autocompleteMaxVisible, SETTINGS_AUTOCOMPLETE_OPTIONS, "Maximum visible slash/path suggestions.", { label: "browser", tone: "browser" }),
+    doubleEscape: nativeSettingSelect("Double-escape action", settings.doubleEscapeAction || doubleEscapeAction, SETTINGS_DOUBLE_ESCAPE_OPTIONS, "Action when pressing Escape twice with an empty composer.", { label: "browser", tone: "browser" }),
+    treeFilter: nativeSettingSelect("Tree filter mode", settings.treeFilterMode || treeFilterMode, SETTINGS_TREE_FILTER_OPTIONS, "Default filter when opening /tree.", { label: "browser", tone: "browser" }),
+    autoResizeImages: nativeSettingToggle("Auto-resize images", settings.autoResizeImages !== false, "Resize large images to 2000x2000 max for better model compatibility.", { label: "reload", tone: "reload" }),
+    blockImages: nativeSettingToggle("Block images", settings.blockImages === true, "Prevent images from being sent to LLM providers.", { label: "reload", tone: "reload" }),
+    showImages: nativeSettingToggle("Show terminal images", settings.showImages !== false, "Native TUI inline image rendering preference.", { label: "TUI", tone: "tui" }),
+    imageWidth: nativeSettingSelect("Terminal image width", settings.imageWidthCells || 60, SETTINGS_IMAGE_WIDTH_OPTIONS, "Native TUI inline image width in terminal cells.", { label: "TUI", tone: "tui" }),
+    skillCommands: nativeSettingToggle("Skill commands", settings.enableSkillCommands !== false, "Register skills as /skill:name commands.", { label: "reload", tone: "reload" }),
+    anthropicWarning: nativeSettingToggle("Anthropic extra usage warning", settings.warnings?.anthropicExtraUsage !== false, "Warn when Anthropic subscription auth may use paid extra usage.", { label: "safety", tone: "safety" }),
+    collapseChangelog: nativeSettingToggle("Collapse changelog", settings.collapseChangelog === true, "Show condensed changelog after updates.", { label: "startup", tone: "startup" }),
+    quietStartup: nativeSettingToggle("Quiet startup", settings.quietStartup === true, "Disable verbose printing at startup.", { label: "startup", tone: "startup" }),
+    installTelemetry: nativeSettingToggle("Install telemetry", settings.enableInstallTelemetry !== false, "Send anonymous version/update ping after changelog-detected updates.", { label: "startup", tone: "startup" }),
+    hardwareCursor: nativeSettingToggle("Show hardware cursor", settings.showHardwareCursor === true, "Native TUI cursor display for IME support.", { label: "TUI", tone: "tui" }),
+    editorPadding: nativeSettingSelect("Editor padding", settings.editorPaddingX ?? 0, SETTINGS_EDITOR_PADDING_OPTIONS, "Native TUI horizontal input padding.", { label: "TUI", tone: "tui" }),
+    clearOnShrink: nativeSettingToggle("Clear on shrink", settings.clearOnShrink === true, "Native TUI row clearing when content shrinks; may flicker.", { label: "TUI", tone: "tui" }),
+    terminalProgress: nativeSettingToggle("Terminal progress", settings.showTerminalProgress === true, "Native TUI OSC 9;4 terminal progress indicators.", { label: "TUI", tone: "tui" }),
+  };
+
+  const body = make("div", "native-settings-panel");
+  body.append(
+    nativeSettingsNote("Scopes", "Runtime settings apply to the active tab. Reload-badged settings are saved globally and need a tab reload for the running Pi process."),
+    nativeSettingsSection("Runtime", "Model behavior and request transport.", [controls.thinking, controls.autoCompact, controls.steering, controls.followUp, controls.transport, controls.httpIdleTimeout], { open: true }),
+    nativeSettingsSection("Browser workflow", "Local Web UI behavior plus shared composer defaults.", [controls.busyBehavior, controls.thinkingOutput, controls.doneNotifications, controls.autocompleteMax, controls.doubleEscape, controls.treeFilter], { open: true }),
+    nativeSettingsSection("Images", "Provider image policy and native terminal image display.", [controls.autoResizeImages, controls.blockImages, controls.showImages, controls.imageWidth], { open: true }),
+    nativeSettingsSection("Startup & safety", "Command registration, warnings, update/startup behavior.", [controls.skillCommands, controls.anthropicWarning, controls.collapseChangelog, controls.quietStartup, controls.installTelemetry], { open: false }),
+    nativeSettingsSection("Native TUI advanced", "Saved for the terminal UI; mostly informational in the browser.", [controls.hardwareCursor, controls.editorPadding, controls.clearOnShrink, controls.terminalProgress], { open: false })
+  );
+  elements.nativeCommandBody.replaceChildren(body);
+  elements.nativeCommandActions.replaceChildren();
+  addNativeCommandAction("Model…", () => openNativeModelSelector());
+  addNativeCommandAction("Theme…", () => openNativeThemeSelector());
+  addNativeCommandAction("Cancel", closeNativeCommandDialog);
+
+  const applySettings = async (reload, button) => {
+    setNativeActionBusy(button, true, reload ? "Applying & reloading…" : "Applying…");
+    setNativeCommandError("");
+    try {
+      const requests = [];
+      const thinkingLevelChanged = controls.thinking.select.value !== (state.thinkingLevel || "off");
+      if (thinkingLevelChanged) requests.push(nativeCommandApi("/api/thinking", { method: "POST", body: { level: controls.thinking.select.value } }));
+      if (controls.steering.select.value !== (state.steeringMode || "one-at-a-time")) requests.push(nativeCommandApi("/api/steering-mode", { method: "POST", body: { mode: controls.steering.select.value } }));
+      if (controls.followUp.select.value !== (state.followUpMode || "one-at-a-time")) requests.push(nativeCommandApi("/api/follow-up-mode", { method: "POST", body: { mode: controls.followUp.select.value } }));
+      if (controls.autoCompact.input.checked !== (state.autoCompactionEnabled !== false)) requests.push(nativeCommandApi("/api/auto-compaction", { method: "POST", body: { enabled: controls.autoCompact.input.checked } }));
+      setBusyPromptBehavior(controls.busyBehavior.select.value);
+      if (controls.thinkingOutput.input.checked !== thinkingOutputVisible) setThinkingOutputVisible(controls.thinkingOutput.input.checked);
+      if (controls.doneNotifications.input.checked !== agentDoneNotificationsEnabled) await setAgentDoneNotificationsEnabled(controls.doneNotifications.input.checked);
+      await Promise.all(requests);
+      const response = await nativeCommandApi("/api/settings", { method: "POST", body: { settings: collectNativeSettingsPayload(controls), reload } });
+      applyResponseTab(response);
+      applyNativeSettingsForBrowser(response.data?.settings || collectNativeSettingsPayload(controls));
+      if (thinkingLevelChanged) requestGitFooterWebuiPayload(activeTabContext(), { force: true });
+      addTransientMessage({ role: "native", title: "/settings", content: nativeSettingsChangedMessage(response, reload), level: response.data?.reloadRecommended?.length && !response.data?.reloaded ? "warn" : "info" });
+      closeNativeCommandDialog();
+      await refreshAll();
+    } catch (error) {
+      setNativeCommandError(error.message || String(error));
+    } finally {
+      setNativeActionBusy(button, false);
+    }
+  };
+
+  const reloadButton = addNativeCommandAction("Apply & reload tab", () => applySettings(true, reloadButton));
+  const save = addNativeCommandAction("Apply", () => applySettings(false, save), "primary");
+}
+
+async function openNativeForkSelector() {
+  openNativeCommandDialog({ title: "/fork", message: "Choose a previous user message to fork before.", searchPlaceholder: "Filter fork points…" });
+  renderNativeLoading("Loading fork points…");
+  try {
+    const response = await nativeCommandApi("/api/fork-messages");
+    const items = (response.data?.messages || []).map((message, index) => ({
+      id: message.entryId,
+      label: `#${index + 1} user message`,
+      description: message.text || "",
+      meta: message.entryId,
+      message,
+    })).reverse();
+    const render = () => renderNativeSelectorItems(items, {
+      emptyText: "No user messages are available to fork from.",
+      onSelect: async (item) => {
+        setNativeCommandError("");
+        try {
+          const result = await nativeCommandApi("/api/fork", { method: "POST", body: { entryId: item.message.entryId } });
+          applyResponseTab(result);
+          const restoredText = result.data?.text || result.data?.result?.text || "";
+          if (restoredText) {
+            elements.promptInput.value = restoredText;
+            resizePromptInput();
+            focusPromptInput({ defer: true });
+          }
+          addTransientMessage({ role: "native", title: "/fork", content: result.data?.message || "Forked the current session.", level: "info" });
+          closeNativeCommandDialog();
+          await refreshAll();
+        } catch (error) {
+          setNativeCommandError(error.message || String(error));
+        }
+      },
+    });
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+function openNativeCloneDialog() {
+  openNativeCommandDialog({ title: "/clone", message: "Duplicate the current session at the current position." });
+  elements.nativeCommandBody.append(make("p", "native-command-note", "This creates a new forked session and switches this Web UI tab to it."));
+  elements.nativeCommandActions.replaceChildren();
+  addNativeCommandAction("Cancel", closeNativeCommandDialog);
+  const clone = addNativeCommandAction("Clone session", async () => {
+    setNativeActionBusy(clone, true, "Cloning…");
+    try {
+      const result = await nativeCommandApi("/api/clone", { method: "POST", body: {} });
+      applyResponseTab(result);
+      addTransientMessage({ role: "native", title: "/clone", content: result.data?.message || "Cloned the current session.", level: "info" });
+      closeNativeCommandDialog();
+      await refreshAll();
+    } catch (error) {
+      setNativeCommandError(error.message || String(error));
+    } finally {
+      setNativeActionBusy(clone, false);
+    }
+  }, "primary");
+}
+
+function openNativeNameDialog() {
+  openNativeCommandDialog({ title: "/name", message: "Set the session and browser tab name." });
+  const field = make("label", "native-settings-field");
+  field.append(make("span", "native-settings-label", "Session name"));
+  const input = make("input", "dialog-input");
+  input.type = "text";
+  input.autocomplete = "off";
+  input.placeholder = "New session name";
+  input.value = activeTab()?.title || "";
+  field.append(input);
+  elements.nativeCommandBody.append(field);
+  elements.nativeCommandActions.replaceChildren();
+  addNativeCommandAction("Cancel", closeNativeCommandDialog);
+  const save = addNativeCommandAction("Name session", async () => {
+    const name = input.value.trim();
+    if (!name) {
+      setNativeCommandError("Enter a session name.");
+      input.focus();
+      return;
+    }
+    setNativeActionBusy(save, true, "Saving…");
+    closeNativeCommandDialog();
+    await sendPrompt("prompt", `/name ${name}`);
+  }, "primary");
+  input.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter") return;
+    event.preventDefault();
+    save.click();
+  });
+  queueMicrotask(() => {
+    input.focus();
+    input.select();
+  });
+}
+
+async function openNativeResumeSelector(scope = "current") {
+  openNativeCommandDialog({ title: "/resume", message: "Select a session, then resume, rename metadata, or delete it.", searchPlaceholder: "Filter sessions…" });
+  renderNativeLoading("Loading sessions…");
+  const selectedScope = scope === "all" ? "all" : "current";
+  let selectedItem = null;
+  let resumeDeleteArmed = false;
+
+  const renderActions = () => {
+    elements.nativeCommandActions.replaceChildren();
+    const resumeButton = addNativeCommandAction("Resume", async () => {
+      if (!selectedItem || selectedItem.disabled) return;
+      setNativeCommandError("");
+      try {
+        const result = await nativeCommandApi("/api/switch-session", { method: "POST", body: { sessionPath: selectedItem.session.path } });
+        applyResponseTab(result);
+        addTransientMessage({ role: "native", title: "/resume", content: result.data?.message || "Resumed selected session.", level: "info" });
+        closeNativeCommandDialog();
+        await refreshAll();
+      } catch (error) {
+        setNativeCommandError(error.message || String(error));
+      }
+    }, selectedItem && !selectedItem.disabled ? "primary" : undefined);
+    resumeButton.disabled = !selectedItem || selectedItem.disabled;
+
+    const renameButton = addNativeCommandAction("Rename", async () => {
+      if (!selectedItem) return;
+      const nextName = window.prompt("Session display name", selectedItem.session.name || selectedItem.label || "");
+      if (nextName === null) return;
+      setNativeCommandError("");
+      try {
+        const result = await nativeCommandApi("/api/session-rename", { method: "POST", body: { sessionPath: selectedItem.session.path, name: nextName } });
+        addTransientMessage({ role: "native", title: "/resume", content: result.data?.message || "Renamed session metadata.", level: "info" });
+        await openNativeResumeSelector(selectedScope);
+      } catch (error) {
+        setNativeCommandError(error.message || String(error));
+      }
+    });
+    renameButton.disabled = !selectedItem;
+
+    const deleteButton = addNativeCommandAction(resumeDeleteArmed ? "Confirm delete" : "Delete", async () => {
+      if (!selectedItem || selectedItem.disabled) return;
+      if (!resumeDeleteArmed) {
+        resumeDeleteArmed = true;
+        setNativeCommandError("Delete is permanent when trash is unavailable. Click Confirm delete to proceed.");
+        renderActions();
+        return;
+      }
+      setNativeCommandError("");
+      try {
+        const result = await nativeCommandApi("/api/session-delete", { method: "POST", body: { sessionPath: selectedItem.session.path, confirmed: true } });
+        addTransientMessage({ role: "native", title: "/resume", content: result.data?.message || "Session deleted.", level: "warn" });
+        await openNativeResumeSelector(selectedScope);
+      } catch (error) {
+        setNativeCommandError(error.message || String(error));
+        resumeDeleteArmed = false;
+        renderActions();
+      }
+    }, resumeDeleteArmed ? "danger" : undefined);
+    deleteButton.disabled = !selectedItem || selectedItem.disabled;
+
+    addNativeCommandAction(selectedScope === "all" ? "Current cwd" : "All sessions", () => openNativeResumeSelector(selectedScope === "all" ? "current" : "all"));
+    addNativeCommandAction("Cancel", closeNativeCommandDialog);
+  };
+
+  try {
+    const response = await nativeCommandApi(`/api/sessions?scope=${encodeURIComponent(selectedScope)}`);
+    const items = (response.data?.sessions || []).map((session) => ({
+      id: session.path,
+      label: session.name || session.firstMessage || session.id || session.path,
+      description: session.firstMessage || "(no messages)",
+      meta: `${session.cwd || "unknown cwd"} · ${session.messageCount || 0} messages · ${session.modified || "unknown time"}`,
+      badge: session.current ? "current" : "",
+      disabled: session.current,
+      session,
+    }));
+    const render = () => {
+      resumeDeleteArmed = false;
+      renderNativeSelectorItems(items, {
+        emptyText: selectedScope === "all" ? "No sessions match this filter." : "No sessions for this working directory match this filter.",
+        activeId: selectedItem?.id,
+        onSelect: (item) => {
+          selectedItem = item;
+          setNativeCommandError("");
+          render();
+          renderActions();
+        },
+      });
+    };
+    elements.nativeCommandSearch.oninput = () => {
+      selectedItem = null;
+      resumeDeleteArmed = false;
+      render();
+      renderActions();
+    };
+    renderActions();
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+function nativeTreeFilterMatches(node, filter) {
+  const settingsTypes = new Set(["label", "custom", "custom_message", "model_change", "thinking_level_change", "session_info"]);
+  switch (filter) {
+    case "user-only":
+      return node.type === "message" && node.role === "user";
+    case "no-tools":
+      return !settingsTypes.has(node.type) && !(node.type === "message" && node.role === "toolResult");
+    case "labeled-only":
+      return node.label !== undefined;
+    case "all":
+      return true;
+    default:
+      return !settingsTypes.has(node.type);
+  }
+}
+
+async function openNativeTreeSelector() {
+  openNativeCommandDialog({ title: "/tree", message: "Navigate the current session tree. Choosing a user message restores it into the editor.", searchPlaceholder: "Filter tree…" });
+  renderNativeLoading("Loading session tree…");
+  try {
+    const response = await nativeCommandApi("/api/session-tree");
+    const nodes = response.data?.nodes || [];
+    let selectedFilter = treeFilterMode || "default";
+    const filterField = nativeSettingSelect("Filter", selectedFilter, SETTINGS_TREE_FILTER_OPTIONS, "Temporary filter for this tree view.");
+    const summarize = nativeSettingToggle("Summarize abandoned branch", false, "Optional; may call the active model before switching branches.");
+    const labelField = make("label", "native-settings-field");
+    labelField.append(nativeSettingsLabelRow("Optional label"));
+    const labelInput = make("input", "dialog-input");
+    labelInput.placeholder = "checkpoint label";
+    labelField.append(labelInput);
+    const options = make("div", "native-tree-options");
+    options.append(filterField.field, summarize.field, labelField);
+    const toItems = () => nodes.filter((node) => nativeTreeFilterMatches(node, selectedFilter)).map((node) => ({
+      id: node.id,
+      label: `${node.title}${node.label ? ` · ${node.label}` : ""}`,
+      description: node.text || "",
+      meta: `${node.timestamp || ""}${node.childCount ? ` · ${node.childCount} child${node.childCount === 1 ? "" : "ren"}` : ""}`,
+      badge: node.currentLeaf ? "leaf" : "",
+      node,
+    }));
+    const navigate = async (item) => {
+      setNativeCommandError("");
+      try {
+        const result = await nativeCommandApi("/api/tree-navigate", {
+          method: "POST",
+          body: {
+            entryId: item.node.id,
+            summarize: summarize.input.checked,
+            label: labelInput.value.trim() || undefined,
+          },
+        });
+        applyResponseTab(result);
+        addTransientMessage({ role: "native", title: "/tree", content: result.data?.message || "Navigated the session tree.", level: "info" });
+        closeNativeCommandDialog();
+        await refreshAll();
+      } catch (error) {
+        setNativeCommandError(error.message || String(error));
+      }
+    };
+    const render = () => {
+      renderNativeSelectorItems(toItems(), { emptyText: "No session tree entries match this filter.", onSelect: navigate, numbered: true });
+      elements.nativeCommandBody.prepend(options);
+    };
+    filterField.select.addEventListener("change", () => {
+      selectedFilter = filterField.select.value;
+      render();
+    });
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+function openNativeScopedModelsInfo() {
+  openNativeCommandDialog({ title: "/scoped-models", message: "Scoped model selection is available in the footer model picker." });
+  elements.nativeCommandBody.append(make("p", "native-command-note", "Use the footer model chip to choose among scoped models. The full native scoped-models editor is still TUI-only."));
+}
+
+function nativeResourceSourceLabel(resource) {
+  const info = resource?.sourceInfo || {};
+  return [info.source, info.scope, info.origin].filter(Boolean).join(" · ") || resource?.location || "loaded resource";
+}
+
+function nativeToolOriginTag(resource) {
+  return resource?.sourceInfo?.source === "builtin"
+    ? { label: "Pi Native", className: "native-selector-badge-pi-native" }
+    : { label: "External", className: "native-selector-badge-external" };
+}
+
+function nativeResourceCounts(resources) {
+  const disabled = resources.filter((resource) => resource.enabled === false).length;
+  return { total: resources.length, disabled, enabled: resources.length - disabled };
+}
+
+function nativeResourceFilterMatches(resource, filter) {
+  if (filter === "enabled") return resource.enabled !== false;
+  if (filter === "disabled") return resource.enabled === false;
+  return true;
+}
+
+function renderNativeResourceToggles(resources, { savingName, filter = "all", onToggle, getResourceTag } = {}) {
+  const filteredResources = resources.filter((resource) => nativeResourceFilterMatches(resource, filter));
+  const counts = nativeResourceCounts(resources);
+  const items = filteredResources.map((resource) => {
+    const resourceTag = getResourceTag?.(resource);
+    return {
+      id: resource.name,
+      label: resource.name,
+      description: resource.description || "No description provided.",
+      meta: nativeResourceSourceLabel(resource),
+      badge: resource.enabled === false ? "disabled" : "enabled",
+      badgeClass: resource.enabled === false ? "disabled native-selector-badge-disabled" : "enabled native-selector-badge-enabled",
+      tags: resourceTag ? [resourceTag] : [],
+      disabled: Boolean(savingName),
+      resource,
+    };
+  });
+  const filterLabel = filter === "enabled" ? "enabled" : filter === "disabled" ? "disabled" : "all";
+  renderNativeSelectorItems(items, {
+    emptyText: `No ${filterLabel} entries match this filter.`,
+    onSelect: (item) => onToggle?.(item.resource),
+  });
+  elements.nativeCommandBody.prepend(make("div", "native-resource-summary muted", `${counts.total} total · ${counts.enabled} enabled · ${counts.disabled} disabled · showing ${filterLabel}`));
+}
+
+function renderNativeResourceFilterActions(filter, setFilter, render) {
+  elements.nativeCommandActions.replaceChildren();
+  for (const option of [
+    { value: "all", label: "All" },
+    { value: "enabled", label: "Enabled" },
+    { value: "disabled", label: "Disabled" },
+  ]) {
+    addNativeCommandAction(option.label, () => {
+      setFilter(option.value);
+      render();
+    }, filter === option.value ? "primary" : undefined);
+  }
+  addNativeCommandAction("Cancel", closeNativeCommandDialog);
+}
+
+async function openNativeToolsSelector() {
+  openNativeCommandDialog({ title: "Tools Setup", message: "Enable or disable tools for the active Pi tab. Changes apply to the next model turn and persist on this session branch.", searchPlaceholder: "Filter tools…" });
+  renderNativeLoading("Loading tools…");
+  let tools = [];
+  let savingName = "";
+  let filter = "all";
+  const render = () => {
+    renderNativeResourceToggles(tools, {
+      savingName,
+      filter,
+      getResourceTag: nativeToolOriginTag,
+      onToggle: async (tool) => {
+        if (!tool || savingName) return;
+        const enabledTools = new Set(tools.filter((item) => item.enabled !== false).map((item) => item.name));
+        if (tool.enabled === false) enabledTools.add(tool.name);
+        else enabledTools.delete(tool.name);
+        savingName = tool.name;
+        setNativeCommandError("");
+        render();
+        try {
+          const response = await nativeCommandApi("/api/tools", { method: "POST", body: { enabledTools: [...enabledTools] } });
+          tools = Array.isArray(response.data?.tools) ? response.data.tools : [];
+          addTransientMessage({ role: "native", title: "/tools", content: `Tool ${tool.name} ${enabledTools.has(tool.name) ? "enabled" : "disabled"}.`, level: "info" });
+        } catch (error) {
+          setNativeCommandError(error.message || String(error));
+        } finally {
+          savingName = "";
+          render();
+        }
+      },
+    });
+    renderNativeResourceFilterActions(filter, (value) => { filter = value; }, render);
+  };
+  try {
+    const response = await nativeCommandApi("/api/tools");
+    tools = Array.isArray(response.data?.tools) ? response.data.tools : [];
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+async function openNativeSkillsSelector() {
+  openNativeCommandDialog({ title: "Skills Setup", message: "Enable or disable skills for automatic model invocation in the active Pi tab. Disabled skills are removed from the system prompt and their /skill:name commands are blocked by Web UI.", searchPlaceholder: "Filter skills…" });
+  renderNativeLoading("Loading skills…");
+  let skills = [];
+  let savingName = "";
+  let filter = "all";
+  const render = () => {
+    renderNativeResourceToggles(skills, {
+      savingName,
+      filter,
+      onToggle: async (skill) => {
+        if (!skill || savingName) return;
+        const enabledSkills = new Set(skills.filter((item) => item.enabled !== false).map((item) => item.name));
+        if (skill.enabled === false) enabledSkills.add(skill.name);
+        else enabledSkills.delete(skill.name);
+        savingName = skill.name;
+        setNativeCommandError("");
+        render();
+        try {
+          const response = await nativeCommandApi("/api/skills", { method: "POST", body: { enabledSkills: [...enabledSkills] } });
+          skills = Array.isArray(response.data?.skills) ? response.data.skills : [];
+          addTransientMessage({ role: "native", title: "/skills", content: `Skill ${skill.name} ${enabledSkills.has(skill.name) ? "enabled" : "disabled"}.`, level: "info" });
+          refreshCommands(activeTabContext()).catch((error) => addEvent(error.message || String(error), "error"));
+        } catch (error) {
+          setNativeCommandError(error.message || String(error));
+        } finally {
+          savingName = "";
+          render();
+        }
+      },
+    });
+    renderNativeResourceFilterActions(filter, (value) => { filter = value; }, render);
+  };
+  try {
+    const response = await nativeCommandApi("/api/skills");
+    skills = Array.isArray(response.data?.skills) ? response.data.skills : [];
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+async function openNativeAuthSelector(mode) {
+  const command = mode === "logout" ? "/logout" : "/login";
+  openNativeCommandDialog({
+    title: command,
+    message: mode === "logout" ? "Remove stored provider credentials from auth.json." : "Provider login still requires the Pi TUI.",
+    searchPlaceholder: "Filter providers…",
+  });
+  renderNativeLoading("Loading provider auth status…");
+  try {
+    const response = await nativeCommandApi("/api/auth-providers");
+    const providers = mode === "logout" ? response.data?.logoutProviders || [] : response.data?.loginProviders || [];
+    const guidance = String(response.data?.guidance || "").trim();
+    const items = providers.map((provider) => ({
+      id: provider.id,
+      label: provider.name || provider.id,
+      description: provider.authType === "oauth" ? "OAuth / subscription" : "API key",
+      meta: provider.status?.configured
+        ? `configured via ${provider.status.source || "stored"}`
+        : "not configured in auth.json",
+      badge: provider.status?.configured ? "configured" : "",
+      provider,
+    }));
+    if (!items.length) {
+      elements.nativeCommandBody.replaceChildren(make("p", "native-command-note", mode === "logout"
+        ? "No stored credentials to remove. /logout only removes credentials saved by /login."
+        : "No providers are currently available."));
+      if (guidance) elements.nativeCommandBody.append(make("p", "native-command-note muted", guidance));
+      return;
+    }
+    const render = () => renderNativeSelectorItems(items, {
+      emptyText: "No providers match this filter.",
+      onSelect: async (item) => {
+        if (mode === "login") {
+          setNativeCommandError(`Run /login in the Pi TUI for ${item.label}. Browser login is not implemented yet.`);
+          return;
+        }
+        if (!window.confirm(`Remove stored credentials for ${item.label}?`)) return;
+        setNativeCommandError("");
+        try {
+          const result = await nativeCommandApi("/api/auth-logout", {
+            method: "POST",
+            body: { provider: item.provider.id, confirmed: true },
+          });
+          addTransientMessage({ role: "native", title: "/logout", content: result.data?.message || "Provider credentials removed.", level: "info" });
+          closeNativeCommandDialog();
+          scheduleRefreshState(120);
+        } catch (error) {
+          setNativeCommandError(error.message || String(error));
+        }
+      },
+    });
+    elements.nativeCommandSearch.oninput = render;
+    render();
+  } catch (error) {
+    setNativeCommandError(error.message || String(error));
+    elements.nativeCommandBody.replaceChildren();
+  }
+}
+
+async function handleNativeSlashSelectorCommand(message, { usesPromptInput = false } = {}) {
+  const name = slashCommandName(message);
+  if (!NATIVE_SELECTOR_COMMANDS.has(name)) return false;
+  const featureId = optionalFeatureIdForCommand(name);
+  if (featureId && !isOptionalFeatureEnabled(featureId)) {
+    const tabContext = activeTabContext();
+    addEvent(commandUnavailableMessage(name), "warn");
+    refreshCommands(tabContext).catch((error) => {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+    });
+    return true;
+  }
+  setComposerActionsOpen(false);
+  hideCommandSuggestions();
+  if (usesPromptInput) {
+    elements.promptInput.value = "";
+    resizePromptInput();
+  }
+  switch (name) {
+    case "model":
+      await openNativeModelSelector();
+      return true;
+    case "settings":
+      await openNativeSettingsDialog();
+      return true;
+    case "theme":
+      openNativeThemeSelector();
+      return true;
+    case "fork":
+      await openNativeForkSelector();
+      return true;
+    case "clone":
+      openNativeCloneDialog();
+      return true;
+    case "name":
+      openNativeNameDialog();
+      return true;
+    case "resume":
+      await openNativeResumeSelector();
+      return true;
+    case "tree":
+      await openNativeTreeSelector();
+      return true;
+    case "scoped-models":
+      openNativeScopedModelsInfo();
+      return true;
+    case "tools":
+      await openNativeToolsSelector();
+      return true;
+    case "skills":
+      await openNativeSkillsSelector();
+      return true;
+    case "login":
+    case "logout":
+      await openNativeAuthSelector(name);
+      return true;
+    default:
+      return false;
+  }
+}
+
+function shouldSendPromptFromEnter(event) {
+  if (event.key !== "Enter" || event.shiftKey || event.isComposing) return false;
+  if (event.ctrlKey || event.metaKey) return true;
+  return !isMobileView();
+}
+
+function renderMessages(messages) {
+  latestMessages = messages || [];
+  cleanupLiveToolRunsForMessages(latestMessages);
+  syncLastUserPromptFromMessages(latestMessages);
+  syncPromptHistoryFromMessages(latestMessages);
+  trackSkillsFromMessages(latestMessages, activeTabId);
+  renderAllMessages();
+  renderFooter();
+  renderFeedbackTray();
+}
+
+function cancelStreamBubbleHide() {
+  clearTimeout(streamBubbleHideTimer);
+  streamBubbleHideTimer = null;
+}
+
+function cancelStreamingAssistantTextRender() {
+  clearTimeout(streamTextRenderTimer);
+  streamTextRenderTimer = null;
+  if (streamTextRenderFrame !== null && typeof cancelAnimationFrame === "function") cancelAnimationFrame(streamTextRenderFrame);
+  streamTextRenderFrame = null;
+}
+
+function removeStreamBubble() {
+  cancelStreamingAssistantTextRender();
+  cancelStreamBubbleHide();
+  streamBubble?.remove();
+  streamBubble = null;
+  streamText = null;
+  streamBubbleVisibleSince = 0;
+  renderRunIndicator({ scroll: false });
+}
+
+function resetStreamDerivedTextCache() {
+  streamDerivedTextCache = { rawText: null, assistantText: "", thinkingFormat: null, finalText: "" };
+}
+
+function setStreamRawText(text) {
+  const nextText = String(text || "");
+  if (nextText === streamRawText) return false;
+  streamRawText = nextText;
+  resetStreamDerivedTextCache();
+  return true;
+}
+
+function appendStreamRawText(delta) {
+  const text = String(delta || "");
+  if (!text) return false;
+  streamRawText += text;
+  resetStreamDerivedTextCache();
+  return true;
+}
+
+function streamingAssistantTextFallback(event) {
+  // Fallback for legacy/summary events that do not carry a delta. The hot
+  // text_delta path appends update.delta and avoids this accumulated-message scan.
+  return assistantTextFromMessage(assistantStreamingMessage(event), { streaming: true });
+}
+
+function syncStreamRawTextFromUpdate(event, update) {
+  if (update.type === "text_delta") {
+    const delta = update.delta ?? update.text ?? update.content ?? "";
+    if (appendStreamRawText(delta)) return true;
+  }
+  if (typeof update.content === "string") return setStreamRawText(update.content);
+  if (typeof update.text === "string") return setStreamRawText(update.text);
+  const partialText = streamingAssistantTextFallback(event);
+  return typeof partialText === "string" ? setStreamRawText(partialText) : false;
+}
+
+function streamDerivedText() {
+  if (streamDerivedTextCache.rawText === streamRawText) return streamDerivedTextCache;
+  const assistantText = stripTodoProgressLines(streamRawText, { streaming: true });
+  const thinkingFormat = splitThinkingFormatText(assistantText, { streaming: true });
+  const finalText = thinkingFormat?.hasThinkingFormat ? stripTodoProgressLines(thinkingFormat.finalText, { streaming: true }) : assistantText;
+  streamDerivedTextCache = { rawText: streamRawText, assistantText, thinkingFormat, finalText };
+  return streamDerivedTextCache;
+}
+
+function streamRenderableAssistantText() {
+  return streamDerivedText().finalText;
+}
+
+function scheduleStreamBubbleHide() {
+  if (!streamBubble) return;
+  const visibleForMs = streamBubbleVisibleSince ? performance.now() - streamBubbleVisibleSince : STREAM_OUTPUT_MIN_VISIBLE_MS;
+  const delayMs = Math.max(STREAM_OUTPUT_HIDE_DELAY_MS, STREAM_OUTPUT_MIN_VISIBLE_MS - visibleForMs);
+  clearTimeout(streamBubbleHideTimer);
+  streamBubbleHideTimer = setTimeout(() => {
+    streamBubbleHideTimer = null;
+    if (streamRenderableAssistantText() || !streamBubble) return;
+    removeStreamBubble();
+  }, delayMs);
+}
+
+function syncStreamingThinkingFormat() {
+  const parsed = streamDerivedText().thinkingFormat;
+  if (!parsed?.hasThinkingFormat) return null;
+  const thinking = visibleThinkingText(parsed.thinkingText);
+  if (thinking) setStreamingThinkingText(thinking);
+  if (parsed.complete && streamThinkingBubble) streamThinkingBubble.classList.add("complete");
+  return parsed;
+}
+
+function renderStreamingAssistantText() {
+  const thinkingFormat = syncStreamingThinkingFormat();
+  const finalText = thinkingFormat?.hasThinkingFormat ? streamDerivedText().finalText : streamRenderableAssistantText();
+  if (finalText) {
+    ensureStreamBubble();
+    renderStreamingMarkdown(streamText, finalText);
+  } else {
+    scheduleStreamBubbleHide();
+  }
+}
+
+function scheduleStreamingAssistantTextRender({ immediate = false } = {}) {
+  if (streamTextRenderTimer || streamTextRenderFrame !== null) return;
+  const flush = () => {
+    streamTextRenderTimer = null;
+    streamTextRenderFrame = null;
+    renderStreamingAssistantText();
+    scheduleChatFollowScroll();
+  };
+  if (immediate && typeof requestAnimationFrame === "function") streamTextRenderFrame = requestAnimationFrame(flush);
+  else streamTextRenderTimer = setTimeout(flush, immediate ? 0 : STREAM_OUTPUT_TOOLCALL_GUARD_MS);
+}
+
+function suppressStreamingAssistantTextBeforeToolCall() {
+  setStreamRawText("");
+  removeStreamBubble();
+}
+
+function resetStreamingToolCallState({ remove = true } = {}) {
+  if (remove) streamToolCallBubble?.remove();
+  streamToolCallBubble = null;
+  streamToolCallText = null;
+  streamToolCallRawArguments = "";
+  streamToolCallName = "";
+  streamToolCallId = "";
+  streamToolCallContentIndex = null;
+  streamToolCallComplete = false;
+}
+
+function streamingToolCallTitle() {
+  const name = streamToolCallName || "tool";
+  return `tool call: ${name}${streamToolCallComplete ? " (ready)" : " (building)"}`;
+}
+
+function streamingToolCallMessage() {
+  return {
+    role: "toolCall",
+    title: streamingToolCallTitle(),
+    timestamp: Date.now(),
+    toolName: streamToolCallName || "tool",
+    toolCallId: streamToolCallId,
+    rawArguments: streamToolCallRawArguments,
+    content: streamToolCallRawArguments,
+  };
+}
+
+function renderStreamingToolCallCard({ scroll = false } = {}) {
+  const message = streamingToolCallMessage();
+  const displayText = streamToolCallRawArguments || (streamToolCallComplete ? "{}" : "(waiting for argument stream…)");
+  if (!streamToolCallBubble?.parentElement || !streamToolCallText) {
+    const created = appendMessage(message, { streaming: true });
+    streamToolCallBubble = created.bubble;
+    streamToolCallText = created.body.querySelector(".tool-call-arguments") || created.body.querySelector(".code-block");
+  }
+  streamToolCallBubble._copyMessage = message;
+  const role = streamToolCallBubble.querySelector(":scope > .message-header .message-role");
+  if (role && role.textContent !== message.title) role.textContent = message.title;
+  if (streamToolCallText && streamToolCallText.textContent !== displayText) streamToolCallText.textContent = displayText;
+  renderRunIndicator({ scroll: false });
+  if (scroll) scrollChatToBottom();
+}
+
+function removeStreamingToolCallCard() {
+  resetStreamingToolCallState({ remove: true });
+  renderRunIndicator({ scroll: false });
+}
+
+function ensureStreamBubble() {
+  cancelStreamBubbleHide();
+  if (streamBubble?.parentElement === elements.chat) return;
+  const created = appendMessage({ role: "assistant", title: "final output", timestamp: Date.now(), content: "" }, { streaming: true });
+  streamBubble = created.bubble;
+  streamText = make("div", "markdown-body streaming-markdown");
+  created.body.append(streamText);
+  streamBubbleVisibleSince = performance.now();
+  renderRunIndicator({ scroll: false });
+  scrollChatToBottom();
+}
+
+function ensureStreamingThinkingBubble() {
+  if (!thinkingOutputVisible) return false;
+  if (streamThinkingBubble?.parentElement === elements.chat) return true;
+  const created = appendMessage({ role: "thinking", title: "thinking", timestamp: Date.now(), content: "" }, { streaming: true });
+  streamThinkingBubble = created.bubble;
+  streamThinking = appendText(created.body, "", "thinking-text");
+  renderRunIndicator({ scroll: false });
+  scrollChatToBottom();
+  return true;
+}
+
+function showStreamingThinking(initialText = "") {
+  if (!ensureStreamingThinkingBubble()) return;
+  if (initialText && !streamThinking.textContent) streamThinking.textContent = initialText;
+}
+
+function resetStreamBubble() {
+  cancelStreamingAssistantTextRender();
+  cancelStreamBubbleHide();
+  streamBubble = null;
+  streamText = null;
+  streamRawText = "";
+  streamThinkingRawText = "";
+  resetStreamDerivedTextCache();
+  streamMarkdownState = null;
+  streamBubbleVisibleSince = 0;
+  streamToolCallSeen = false;
+  resetStreamingToolCallState({ remove: true });
+  streamThinkingBubble = null;
+  streamThinking = null;
+  streamMessageActive = false;
+}
+
+function liveStreamRenderActive() {
+  return streamMessageActive && currentState?.isStreaming === true && Boolean(streamBubble || streamThinkingBubble || streamToolCallBubble || streamRawText || streamToolCallRawArguments);
+}
+
+/**
+ * The chat DOM was rebuilt while an assistant message is still streaming:
+ * drop references to the detached nodes but keep stream text state, then
+ * re-append the live thinking/text bubbles so no partial output is lost.
+ */
+function restoreStreamRenderAfterChatRebuild() {
+  const thinkingText = streamThinking?.textContent || "";
+  const thinkingComplete = streamThinkingBubble?.classList.contains("complete") === true;
+  const toolCallWasVisible = !!(streamToolCallBubble?.parentElement === elements.chat || streamToolCallRawArguments || streamToolCallName);
+  streamBubble = null;
+  streamText = null;
+  streamThinkingBubble = null;
+  streamThinking = null;
+  streamToolCallBubble = null;
+  streamToolCallText = null;
+  streamBubbleVisibleSince = 0;
+  if (thinkingText && setStreamingThinkingText(thinkingText) && thinkingComplete) {
+    streamThinkingBubble?.classList.add("complete");
+  }
+  if (toolCallWasVisible) renderStreamingToolCallCard();
+  if (streamRenderableAssistantText()) renderStreamingAssistantText();
+}
+
+function thinkingDeltaText(update) {
+  return visibleThinkingText(update.delta || update.thinking || update.content || "");
+}
+
+function assistantStreamingMessage(event) {
+  if (event?.message?.role === "assistant") return event.message;
+  const partial = event?.assistantMessageEvent?.partial;
+  return partial?.role === "assistant" ? partial : null;
+}
+
+function assistantToolCallPartFromUpdate(event, update = event?.assistantMessageEvent || {}) {
+  if (isAssistantToolCallPart(update.toolCall)) return update.toolCall;
+  const message = assistantStreamingMessage(event);
+  const content = message?.content;
+  if (!Array.isArray(content)) return null;
+  const contentIndex = Number(update.contentIndex);
+  if (Number.isInteger(contentIndex) && isAssistantToolCallPart(content[contentIndex])) return content[contentIndex];
+  for (let index = content.length - 1; index >= 0; index -= 1) {
+    if (isAssistantToolCallPart(content[index])) return content[index];
+  }
+  return null;
+}
+
+function streamToolCallNameFromUpdate(update, part) {
+  const rawName = update.name || update.toolName || update.toolCall?.name || assistantToolCallName(part);
+  const name = runIndicatorToolName(rawName);
+  return name === "unknown" ? "tool" : name;
+}
+
+function streamingToolCallContentIndexFromUpdate(update) {
+  const contentIndex = Number(update.contentIndex);
+  return Number.isInteger(contentIndex) ? contentIndex : null;
+}
+
+function updateStreamingToolCallFromEvent(event, { reset = false, appendDelta = false, complete = false, scroll = false } = {}) {
+  const update = event.assistantMessageEvent || {};
+  const part = assistantToolCallPartFromUpdate(event, update);
+  const contentIndex = streamingToolCallContentIndexFromUpdate(update);
+  if (reset || (contentIndex !== null && streamToolCallContentIndex !== null && contentIndex !== streamToolCallContentIndex)) {
+    resetStreamingToolCallState({ remove: true });
+  }
+  streamToolCallContentIndex = contentIndex ?? streamToolCallContentIndex;
+  streamToolCallName = streamToolCallNameFromUpdate(update, part) || streamToolCallName || "tool";
+  streamToolCallId = assistantToolCallId(update.toolCall || part) || streamToolCallId;
+  streamToolCallComplete = !!complete;
+
+  const partArgumentText = toolCallArgumentsText(assistantToolCallArguments(update.toolCall || part), { includeEmptyObject: false });
+  if (reset) streamToolCallRawArguments = partArgumentText || "";
+  if (appendDelta && update.delta !== undefined && update.delta !== null) streamToolCallRawArguments += typeof update.delta === "string" ? update.delta : String(update.delta);
+  if (!streamToolCallRawArguments && partArgumentText) streamToolCallRawArguments = partArgumentText;
+  if (complete) {
+    const finalArgumentText = toolCallArgumentsText(assistantToolCallArguments(update.toolCall || part), { includeEmptyObject: true });
+    if (finalArgumentText && (finalArgumentText !== "{}" || !streamToolCallRawArguments)) streamToolCallRawArguments = finalArgumentText;
+    if (!streamToolCallRawArguments) streamToolCallRawArguments = "{}";
+  }
+
+  renderStreamingToolCallCard({ scroll });
+  return streamToolCallName || "tool";
+}
+
+function assistantTextFromMessage(message, { streaming = false } = {}) {
+  void streaming;
+  const content = message?.content;
+  if (typeof content === "string") return content;
+  if (!Array.isArray(content)) return null;
+  const parts = [];
+  for (let index = 0; index < content.length; index += 1) {
+    const part = content[index];
+    const text = assistantTextPartText(part) || (part && typeof part === "object" && typeof part.text === "string" ? part.text : part !== undefined && part !== null && typeof part !== "object" ? String(part) : "");
+    if (text && !assistantHasToolCallAfter(content, index)) parts.push(text);
+  }
+  return parts.length ? parts.join("\n\n") : "";
+}
+
+function assistantThinkingTextFromMessage(message, { streaming = false } = {}) {
+  const content = message?.content;
+  if (typeof content === "string") {
+    const parsed = splitThinkingFormatText(content, { streaming });
+    return parsed?.hasThinkingFormat ? visibleThinkingText(parsed.thinkingText) : null;
+  }
+  if (!Array.isArray(content)) return null;
+  const parts = [];
+  for (const part of content) {
+    if (part && typeof part === "object" && (part.type === "thinking" || typeof part.thinking === "string")) {
+      const thinking = visibleThinkingText(assistantThinkingText(part));
+      if (thinking.trim()) parts.push(thinking);
+      continue;
+    }
+    const text = assistantTextPartText(part) || (part && typeof part === "object" && typeof part.text === "string" ? part.text : part !== undefined && part !== null && typeof part !== "object" ? String(part) : "");
+    const parsed = splitThinkingFormatText(text, { streaming });
+    const thinking = parsed?.hasThinkingFormat ? visibleThinkingText(parsed.thinkingText) : "";
+    if (thinking.trim()) parts.push(thinking);
+  }
+  return parts.length ? parts.join("\n\n") : "";
+}
+
+function setStreamingThinkingText(text) {
+  const thinking = visibleThinkingText(text);
+  if (!thinkingOutputVisible || !thinking) return false;
+  showStreamingThinking("");
+  if (streamThinking) streamThinking.textContent = thinking;
+  return true;
+}
+
+function streamingThinkingTextFallback(event) {
+  return assistantThinkingTextFromMessage(assistantStreamingMessage(event), { streaming: true });
+}
+
+function setStreamThinkingRawText(text) {
+  const thinking = visibleThinkingText(text);
+  if (thinking === streamThinkingRawText) return false;
+  streamThinkingRawText = thinking;
+  return true;
+}
+
+function appendStreamThinkingText(delta) {
+  const thinking = visibleThinkingText(delta);
+  if (!thinking) return false;
+  streamThinkingRawText += thinking;
+  return true;
+}
+
+function syncStreamingThinkingFromUpdate(event, update, { placeholder = "" } = {}) {
+  if (!thinkingOutputVisible) return true;
+  const delta = thinkingDeltaText(update);
+  if (update.type === "thinking_delta" && delta) {
+    appendStreamThinkingText(delta);
+    return setStreamingThinkingText(streamThinkingRawText || placeholder);
+  }
+  if (update.type === "thinking_start") {
+    if (delta) setStreamThinkingRawText(delta);
+    return streamThinkingRawText ? setStreamingThinkingText(streamThinkingRawText || placeholder) : false;
+  }
+  if (update.type === "thinking_end") {
+    if (delta) setStreamThinkingRawText(delta);
+    else {
+      const fallback = streamingThinkingTextFallback(event);
+      if (fallback !== null) setStreamThinkingRawText(fallback);
+    }
+    return setStreamingThinkingText(streamThinkingRawText || placeholder);
+  }
+  const fallback = streamingThinkingTextFallback(event);
+  if (fallback === null) return false;
+  setStreamThinkingRawText(fallback);
+  return setStreamingThinkingText(streamThinkingRawText || placeholder);
+}
+
+function handleMessageUpdate(event) {
+  const update = event.assistantMessageEvent || {};
+  if (update.type === "thinking_start") {
+    setRunIndicatorActivity("Thinking…", { scroll: false });
+    syncStreamingThinkingFromUpdate(event, update);
+    scheduleChatFollowScroll();
+  } else if (update.type === "thinking_delta") {
+    const delta = thinkingDeltaText(update);
+    setRunIndicatorActivity("Thinking…", { scroll: false });
+    const synced = syncStreamingThinkingFromUpdate(event, update);
+    if (thinkingOutputVisible && delta && (!synced || !streamThinking?.textContent)) {
+      showStreamingThinking("");
+      if (streamThinking?.textContent === "Thinking…") streamThinking.textContent = "";
+      if (streamThinking) streamThinking.textContent += delta;
+    }
+    scheduleChatFollowScroll();
+  } else if (update.type === "thinking_end") {
+    if (syncStreamingThinkingFromUpdate(event, update)) streamThinkingBubble?.classList.add("complete");
+    setRunIndicatorActivity("Finished thinking; waiting for the next output or action…", { scroll: false });
+  } else if (update.type === "text_delta" || update.type === "text_end") {
+    syncStreamRawTextFromUpdate(event, update);
+    scheduleLiveTodoProgressWidgetSync(streamRawText, event.tabId || activeTabId);
+    setRunIndicatorActivity("Writing response…", { scroll: false });
+    scheduleStreamingAssistantTextRender({ immediate: !!(streamToolCallSeen || streamBubble) });
+    // Streaming output must stay transcript-local. Full footer/status
+    // reconciliation happens on message/state refreshes, not per token.
+    scheduleChatFollowScroll();
+  } else if (update.type === "toolcall_start") {
+    streamToolCallSeen = true;
+    suppressStreamingAssistantTextBeforeToolCall();
+    const name = updateStreamingToolCallFromEvent(event, { reset: true, scroll: true });
+    setRunIndicatorActivity(`Building tool call: ${name}…`, { scroll: false });
+    addEvent(`tool call started in assistant message`, "info");
+  } else if (update.type === "toolcall_delta") {
+    streamToolCallSeen = true;
+    suppressStreamingAssistantTextBeforeToolCall();
+    const name = updateStreamingToolCallFromEvent(event, { appendDelta: true });
+    setRunIndicatorActivity(`Building tool call: ${name}…`, { scroll: false });
+    scheduleChatFollowScroll();
+  } else if (update.type === "toolcall_end") {
+    streamToolCallSeen = true;
+    suppressStreamingAssistantTextBeforeToolCall();
+    const name = updateStreamingToolCallFromEvent(event, { complete: true, scroll: true });
+    setRunIndicatorActivity(`Tool call ready: ${name}; waiting to run…`, { scroll: false });
+  } else if (update.type === "error") {
+    setRunIndicatorActivity("Assistant stream reported an error…");
+    appendMessage({ role: "error", title: "assistant error", timestamp: Date.now(), content: update.reason || update.errorMessage || "assistant error", level: "error" }, { streaming: true });
+    renderRunIndicator({ scroll: false });
+    scheduleChatFollowScroll();
+  }
+}
+
+function modelStateKey(model) {
+  return model ? `${model.provider || ""}/${model.id || ""}` : "";
+}
+
+function gitFooterRelevantStateChanged(previousState, nextState) {
+  if (!previousState || !nextState) return false;
+  return previousState.thinkingLevel !== nextState.thinkingLevel || modelStateKey(previousState.model) !== modelStateKey(nextState.model);
+}
+
+async function refreshState(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const response = await api("/api/state", { tabId: tabContext.tabId });
+  if (!isCurrentTabContext(tabContext)) return;
+  const previousState = currentState;
+  currentState = response.data || null;
+  if (latestMessages.length) {
+    latestMessagesSessionKey = resolveMessagesSessionKey(tabContext.tabId);
+    cacheMessagesForTab(tabContext.tabId, latestMessages, latestMessagesSessionKey);
+  }
+  const shouldRefreshGitFooter = gitFooterRelevantStateChanged(previousState, currentState);
+  syncActiveTabActivityFromState(currentState);
+  syncRunIndicatorFromState(currentState);
+  renderStatus();
+  requestGitFooterWebuiPayload(tabContext, { force: shouldRefreshGitFooter });
+}
+
+async function refreshStats(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const response = await api("/api/stats", { tabId: tabContext.tabId });
+  if (!isCurrentTabContext(tabContext)) return;
+  latestStats = response.data || null;
+  renderFooter();
+  renderContextMeter();
+  renderWorkspaceDashboard();
+}
+
+async function refreshWorkspace(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  let nextWorkspace = null;
+  try {
+    const response = await api("/api/workspace", { tabId: tabContext.tabId });
+    nextWorkspace = response.data || null;
+  } catch (error) {
+    if (!isCurrentTabContext(tabContext)) return;
+    // Older webui server processes do not have /api/workspace. Fall back to /api/health,
+    // which has exposed cwd from the beginning, so the footer still shows the real path.
+    const health = await api("/api/health", { tabId: tabContext.tabId });
+    nextWorkspace = health.cwd
+      ? {
+          cwd: health.cwd,
+          displayCwd: normalizeDisplayPath(health.cwd),
+          uptimeMs: latestWorkspace?.uptimeMs || 0,
+        }
+      : null;
+  }
+  if (!isCurrentTabContext(tabContext)) return;
+  latestWorkspace = nextWorkspace;
+  rememberServerStartCwd(nextWorkspace?.cwd);
+  renderFooter();
+  renderWorkspaceDashboard();
+}
+
+function renderNetworkStatus() {
+  const network = latestNetwork;
+  const open = !!network?.open;
+  const opening = !!network?.opening;
+  const closing = !!network?.closing;
+  const rebinding = opening || closing;
+  const localUrl = network?.localUrl || `${window.location.origin}/`;
+  const networkUrls = Array.isArray(network?.networkUrls) ? network.networkUrls : [];
+  syncRemoteWebuiControlVisibility();
+  elements.networkStatus.className = `network-status ${opening ? "opening" : closing ? "closing" : open ? "open" : "closed"}`;
+  elements.networkStatus.title = closing
+    ? "Closing network access and returning to local-only"
+    : open
+      ? `Reachable on local network${networkUrls.length ? `:\n${networkUrls.join("\n")}` : " (no LAN address detected)"}`
+      : "Only reachable from this machine";
+
+  const heading = make(
+    "div",
+    "network-status-heading",
+    opening ? "Opening to local network…" : closing ? "Closing network access…" : open ? "Open to local network" : "Closed · local only",
+  );
+  const detail = make(
+    "div",
+    "network-status-detail",
+    closing
+      ? "Rebinding to local-only access. Network clients will disconnect."
+      : open
+        ? "Use one of these URLs from a trusted device:"
+        : "Only this machine can connect until you open the network listener.",
+  );
+  const list = make("div", "network-url-list");
+
+  const addUrl = (label, url) => {
+    const href = safeHttpUrl(url);
+    if (!href) return;
+    const row = make("div", "network-status-url-row");
+    const labelNode = make("span", "network-status-url-label", label);
+    const link = make("a", "network-status-url", url);
+    link.href = href;
+    link.target = "_blank";
+    link.rel = "noreferrer";
+    row.append(labelNode, link);
+    list.append(row);
+  };
+
+  addUrl("Local", localUrl);
+  if (open) {
+    for (const url of networkUrls) addUrl("LAN", url);
+    if (networkUrls.length === 0) list.append(make("div", "network-status-empty", "No LAN address detected."));
+  }
+
+  const auth = network?.auth || {};
+  const authText = auth.enabled
+    ? auth.pin
+      ? `Remote PIN auth on · PIN ${auth.pin}`
+      : "Remote PIN auth on"
+    : "Remote PIN auth off";
+  const authDetail = make("div", "network-status-detail", authText);
+
+  elements.networkStatus.replaceChildren(heading, detail, list, authDetail);
+  elements.remoteAuthToggle.checked = !!auth.enabled;
+  elements.remoteAuthToggle.disabled = rebinding;
+  elements.remoteAuthStatus.textContent = auth.enabled
+    ? auth.pin
+      ? `PIN ${auth.pin}`
+      : "On"
+    : "Off";
+  elements.openNetworkButton.disabled = rebinding;
+  elements.openNetworkButton.textContent = opening ? "Opening…" : closing ? "Closing…" : open ? "Close for network" : "Open to network";
+}
+
+async function refreshNetworkStatus() {
+  const hadNetworkStatus = networkStatusLoaded;
+  const wasOpen = !!latestNetwork?.open;
+  try {
+    const response = await api("/api/network", { scoped: false });
+    latestNetwork = response.data || null;
+  } catch {
+    const health = await api("/api/health", { scoped: false });
+    latestNetwork = health.network || { open: false, opening: false, localUrl: window.location.origin };
+  }
+  renderNetworkStatus();
+  networkStatusLoaded = true;
+
+  const open = !!latestNetwork?.open;
+  if (!open) {
+    remoteQrAutoPopupShown = false;
+    return;
+  }
+
+  if (!hadNetworkStatus) {
+    remoteQrAutoPopupShown = true;
+    return;
+  }
+
+  if (!wasOpen && !remoteQrAutoPopupShown && isLocalWebuiBrowserOrigin()) {
+    showRemoteWebuiQrPopupFromNetwork({ auto: true }).catch((error) => addEvent(error.message || String(error), "warn"));
+  }
+}
+
+async function runRemoteWebuiCommand(command) {
+  const commandName = String(command || "").replace(/^\//, "").split(/\s+/, 1)[0] || "remote";
+  if (!isOptionalFeatureEnabled("remoteWebui") || !hasAvailableCommand(commandName)) {
+    const message = commandUnavailableMessage(commandName);
+    addEvent(message, "warn");
+    refreshCommands(activeTabContext()).catch((error) => addEvent(error.message || String(error), "error"));
+    return false;
+  }
+  await runNativeCommandMenu(command);
+  return true;
+}
+
+async function toggleRemoteAuth() {
+  const enable = !latestNetwork?.auth?.enabled;
+  elements.remoteAuthToggle.disabled = true;
+  try {
+    await runRemoteWebuiCommand(remoteWebuiCommand(enable ? "authOn" : "authOff", enable ? "/remote auth on" : "/remote auth off"));
+    await delay(250);
+    await refreshNetworkStatus();
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+  } finally {
+    renderNetworkStatus();
+  }
+}
+
+async function refreshFooterData(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  await Promise.allSettled([refreshStats(tabContext), refreshWorkspace(tabContext)]);
+}
+
+// Session key of the last applied transcript fetch; deltas are only
+// attempted while the tab+session is unchanged.
+function resolveMessagesSessionKey(tabId = activeTabId) {
+  if (!tabId) return "";
+  const stateSessionId = tabId === activeTabId ? currentState?.sessionId : null;
+  if (stateSessionId) return `${tabId}|${stateSessionId}`;
+  if (latestMessagesSessionKey.startsWith(`${tabId}|`)) return latestMessagesSessionKey;
+  const cached = tabMessagesCache.get(tabId);
+  if (cached?.sessionKey?.startsWith(`${tabId}|`)) return cached.sessionKey;
+  return `${tabId}|`;
+}
+
+function cacheMessagesForTab(tabId = activeTabId, messages = latestMessages, sessionKey = latestMessagesSessionKey) {
+  if (!tabId || !Array.isArray(messages)) return;
+  const stateSessionKey = tabId === activeTabId && currentState?.sessionId ? `${tabId}|${currentState.sessionId}` : "";
+  const resolvedSessionKey = stateSessionKey || (sessionKey?.startsWith(`${tabId}|`) ? sessionKey : resolveMessagesSessionKey(tabId));
+  tabMessagesCache.set(tabId, { messages, sessionKey: resolvedSessionKey });
+}
+
+function restoreCachedMessagesForActiveTab() {
+  if (!activeTabId) return false;
+  const cached = tabMessagesCache.get(activeTabId);
+  if (!cached || !Array.isArray(cached.messages)) return false;
+  latestMessages = cached.messages;
+  latestMessagesSessionKey = cached.sessionKey || resolveMessagesSessionKey(activeTabId);
+  renderMessages(latestMessages);
+  return true;
+}
+
+function messagesLookEqual(a, b) {
+  return !!a && !!b && a.role === b.role && String(a.timestamp || "") === String(b.timestamp || "")
+    && contentSignature(a.content) === contentSignature(b.content);
+}
+
+/**
+ * Merge a /api/messages?since= delta into the previous transcript. Returns
+ * null whenever the delta cannot be applied safely — history shrank
+ * (compaction), counts are inconsistent, or the one-message overlap no
+ * longer matches (fork/resume/retroactive edit) — in which case the caller
+ * falls back to a full fetch. Merged arrays keep previous message object
+ * identities, which keeps the WeakMap signature cache hot.
+ */
+function mergeMessagesDelta(previous, data) {
+  if (!data || !Array.isArray(data.messages)) return null;
+  const since = Number(data.since);
+  const totalCount = Number(data.totalCount);
+  if (!Number.isInteger(since) || !Number.isInteger(totalCount)) return null;
+  if (since > previous.length || totalCount < previous.length) return null;
+  if (totalCount !== since + data.messages.length) return null;
+  if (since < previous.length && !messagesLookEqual(previous[since], data.messages[0])) return null;
+  return previous.slice(0, since).concat(data.messages);
+}
+
+async function refreshMessages(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const previousMessages = latestMessages;
+  const sessionKey = resolveMessagesSessionKey(tabContext.tabId);
+  let nextMessages = null;
+  if (previousMessages.length > 1 && sessionKey === latestMessagesSessionKey) {
+    // Delta fetch with a one-message overlap: the last known message is
+    // re-requested so retroactive changes are detected via mergeMessagesDelta.
+    const response = await api(`/api/messages?since=${previousMessages.length - 1}`, { tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    nextMessages = mergeMessagesDelta(previousMessages, response.data);
+  }
+  if (!nextMessages) {
+    const response = await api("/api/messages", { tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    nextMessages = response.data?.messages || [];
+  }
+  latestMessages = nextMessages;
+  latestMessagesSessionKey = sessionKey;
+  cacheMessagesForTab(tabContext.tabId, latestMessages, latestMessagesSessionKey);
+  const preserveLiveStream = liveStreamRenderActive();
+  if (!preserveLiveStream) resetStreamBubble();
+  renderMessages(latestMessages);
+  if (preserveLiveStream) restoreStreamRenderAfterChatRebuild();
+  markTabOutputSeen();
+  renderFooter();
+}
+
+async function refreshModels(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const response = await api("/api/models", { tabId: tabContext.tabId });
+  const models = response.data?.models || [];
+  let scopedModels = [];
+  let scopedModelPatterns = [];
+  let scopedModelSource = "none";
+  let scopedModelError = null;
+  try {
+    const scopedResponse = await api("/api/scoped-models", { tabId: tabContext.tabId });
+    scopedModels = scopedResponse.data?.models || [];
+    scopedModelPatterns = scopedResponse.data?.patterns || [];
+    scopedModelSource = scopedResponse.data?.source || "none";
+  } catch (error) {
+    scopedModelError = error;
+  }
+  if (!isCurrentTabContext(tabContext)) return;
+  availableModels = models;
+  footerScopedModels = scopedModels;
+  footerScopedModels = orderedFooterScopedModels();
+  footerScopedModelPatterns = scopedModelPatterns;
+  footerScopedModelSource = scopedModelSource;
+  if (scopedModelError) addEvent(`failed to load scoped models: ${scopedModelError.message}`, "warn");
+  populateModelSelect(models, elements.modelSearchInput?.value || "");
+  syncModelSelectToState();
+  renderFooter();
+  renderFeedbackTray();
+  if (elements.commandPaletteDialog?.open) renderCommandPalette({ preserveScroll: true });
+}
+
+function modelSelectOptionText(model) {
+  return `${model.provider}/${model.id}${model.name ? ` · ${model.name}` : ""}`;
+}
+
+function modelSelectValue(model) {
+  return JSON.stringify({ provider: model.provider, modelId: model.id });
+}
+
+function modelSearchDisplayParts(model) {
+  const id = `${model.provider}/${model.id}`;
+  const name = String(model.name || "").trim();
+  if (!name) return { primary: id, secondary: "" };
+  const match = name.match(/^(.*?)(\s+\([^)]+\))$/);
+  return { primary: (match?.[1] || name).trim(), secondary: `${id}${match?.[2] || ""}` };
+}
+
+let modelSearchResultsSignature = null;
+
+function renderModelSearchResults(models = []) {
+  if (!elements.modelSearchResults) return;
+  // Skip redundant rebuilds (e.g. extension status pushes during streaming that
+  // funnel through renderStatus -> syncModelSelectToState) so the Controls-panel
+  // model list does not flicker or drop an in-progress interaction.
+  const signature = JSON.stringify({
+    hidden: !!elements.modelSearchInput?.hidden,
+    selected: elements.modelSelect?.value || "",
+    models: models.map((model) => `${modelSelectValue(model)}\u0000${modelSelectOptionText(model)}`),
+  });
+  if (signature === modelSearchResultsSignature) return;
+  modelSearchResultsSignature = signature;
+  elements.modelSearchResults.replaceChildren();
+  if (elements.modelSearchInput?.hidden) return;
+  if (!models.length) {
+    elements.modelSearchResults.append(make("div", "model-search-empty", "No models match the search"));
+    elements.modelSearchResults.hidden = false;
+    return;
+  }
+  for (const model of models) {
+    const value = modelSelectValue(model);
+    const selected = elements.modelSelect?.value === value;
+    const button = make("button", `model-search-result${selected ? " active" : ""}`);
+    button.type = "button";
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", String(selected));
+    button.title = modelSelectOptionText(model);
+    const display = modelSearchDisplayParts(model);
+    button.append(
+      make("span", "model-search-result-main", display.primary),
+      make("span", "model-search-result-name", display.secondary),
+    );
+    button.addEventListener("click", () => {
+      if (elements.modelSelect) elements.modelSelect.value = value;
+      renderModelSearchResults(models);
+    });
+    button.addEventListener("dblclick", () => elements.setModelButton?.click());
+    elements.modelSearchResults.append(button);
+  }
+  elements.modelSearchResults.hidden = false;
+}
+
+function populateModelSelect(models = availableModels, query = "") {
+  if (!elements.modelSelect) return;
+  const previousValue = elements.modelSelect.value;
+  const normalizedQuery = String(query || "").trim().toLowerCase();
+  const matchingModels = models.filter((model) => !normalizedQuery || modelSelectOptionText(model).toLowerCase().includes(normalizedQuery));
+  elements.modelSelect.replaceChildren();
+  for (const model of matchingModels) {
+    const option = document.createElement("option");
+    option.value = modelSelectValue(model);
+    option.textContent = modelSelectOptionText(model);
+    elements.modelSelect.append(option);
+  }
+  if (!matchingModels.length) {
+    const option = document.createElement("option");
+    option.value = "";
+    option.textContent = "No models match the search";
+    option.disabled = true;
+    elements.modelSelect.append(option);
+  }
+  if (previousValue && [...elements.modelSelect.options].some((option) => option.value === previousValue)) elements.modelSelect.value = previousValue;
+  renderModelSearchResults(matchingModels);
+}
+
+function showModelSearchInput({ focus = true } = {}) {
+  if (!elements.modelSearchInput) return;
+  elements.modelSearchInput.hidden = false;
+  elements.modelSearchResults.hidden = false;
+  elements.modelSelect.classList.add("model-select-expanded");
+  populateModelSelect(availableModels, elements.modelSearchInput.value);
+  if (focus) {
+    requestAnimationFrame(() => {
+      elements.modelSearchInput.focus();
+      elements.modelSearchInput.select();
+    });
+  }
+}
+
+function hideModelSearchInput() {
+  if (!elements.modelSearchInput) return;
+  elements.modelSearchInput.hidden = true;
+  elements.modelSearchInput.value = "";
+  if (elements.modelSearchResults) {
+    elements.modelSearchResults.hidden = true;
+    elements.modelSearchResults.replaceChildren();
+  }
+  elements.modelSelect?.classList.remove("model-select-expanded");
+  populateModelSelect(availableModels, "");
+  syncModelSelectToState();
+  scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function syncModelSelectToState() {
+  if (!currentState?.model || !elements.modelSelect.options.length) return;
+  const value = JSON.stringify({ provider: currentState.model.provider, modelId: currentState.model.id });
+  for (const option of elements.modelSelect.options) {
+    if (option.value === value) {
+      elements.modelSelect.value = value;
+      renderModelSearchResults(availableModels.filter((model) => !elements.modelSearchInput?.value.trim() || modelSelectOptionText(model).toLowerCase().includes(elements.modelSearchInput.value.trim().toLowerCase())));
+      break;
+    }
+  }
+}
+
+function normalizedCommandIdentity(command) {
+  return [commandBaseName(command.name), command.description, command.source, command.enabled ? "enabled" : "disabled"].join("\u0000");
+}
+
+function combineIdenticalDuplicateCommands(commands) {
+  const duplicateGroups = new Map();
+  for (const command of commands) {
+    if (commandBaseName(command.name) === command.name) continue;
+    const key = normalizedCommandIdentity(command);
+    if (!duplicateGroups.has(key)) duplicateGroups.set(key, []);
+    duplicateGroups.get(key).push(command);
+  }
+  const combinedKeys = new Set([...duplicateGroups.entries()].filter(([, group]) => group.length > 1).map(([key]) => key));
+  const emittedKeys = new Set();
+  const emittedNames = new Set();
+  const result = [];
+
+  for (const command of commands) {
+    const key = normalizedCommandIdentity(command);
+    if (!combinedKeys.has(key)) {
+      if (emittedNames.has(command.name)) continue;
+      emittedNames.add(command.name);
+      result.push(command);
+      continue;
+    }
+
+    if (emittedKeys.has(key)) continue;
+    emittedKeys.add(key);
+    const group = duplicateGroups.get(key);
+    const baseName = commandBaseName(command.name);
+    const displayName = emittedNames.has(baseName) ? command.name : baseName;
+    emittedNames.add(displayName);
+    result.push({
+      ...command,
+      name: displayName,
+      invokeName: command.name,
+      duplicateNames: group.map((item) => item.name),
+      duplicateCount: group.length,
+      location: command.location || `${group.length} identical loaded commands`,
+    });
+  }
+
+  return result;
+}
+
+function normalizeCommands(commands, { dedupe = true } = {}) {
+  const normalized = (commands || [])
+    .map((command) => {
+      const name = String(command.name || "").trim();
+      return {
+        name,
+        invokeName: name,
+        description: String(command.description || "").trim(),
+        source: String(command.source || "command").trim(),
+        location: String(command.location || "").trim(),
+        enabled: command.enabled !== false,
+      };
+    })
+    .filter((command) => command.name);
+
+  return (dedupe ? combineIdenticalDuplicateCommands(normalized) : normalized)
+    .sort((a, b) => a.name.localeCompare(b.name));
+}
+
+function commandSourceLabel(command) {
+  return [command.source, command.location].filter(Boolean).join(" · ") || "command";
+}
+
+function normalizePathSuggestions(suggestions) {
+  const seen = new Set();
+  return (suggestions || [])
+    .map((suggestion) => {
+      const path = String(suggestion.path || "").trim();
+      return {
+        path,
+        label: String(suggestion.label || path).trim(),
+        description: String(suggestion.description || path).trim(),
+        type: suggestion.type === "directory" || path.endsWith("/") ? "directory" : "file",
+      };
+    })
+    .filter((suggestion) => {
+      if (!suggestion.path || seen.has(suggestion.path)) return false;
+      seen.add(suggestion.path);
+      return true;
+    });
+}
+
+function getCommandTrigger() {
+  const input = elements.promptInput;
+  const cursor = input.selectionStart ?? input.value.length;
+  const selectionEnd = input.selectionEnd ?? cursor;
+  if (cursor !== selectionEnd) return null;
+
+  const beforeCursor = input.value.slice(0, cursor);
+  const match = beforeCursor.match(/(^|[\s(])\/([^\s]*)$/);
+  if (!match) return null;
+
+  const query = match[2] || "";
+  return {
+    start: cursor - query.length - 1,
+    end: cursor,
+    query,
+  };
+}
+
+function getPathTrigger() {
+  const input = elements.promptInput;
+  const cursor = input.selectionStart ?? input.value.length;
+  const selectionEnd = input.selectionEnd ?? cursor;
+  if (cursor !== selectionEnd) return null;
+
+  const beforeCursor = input.value.slice(0, cursor);
+  const quotedMatch = beforeCursor.match(/(^|[\s(])@"([^"]*)$/);
+  if (quotedMatch) {
+    const query = quotedMatch[2] || "";
+    return { start: cursor - query.length - 2, end: cursor, query, quoted: true };
+  }
+
+  const match = beforeCursor.match(/(^|[\s(])@([^\s"']*)$/);
+  if (!match) return null;
+  const query = match[2] || "";
+  return { start: cursor - query.length - 1, end: cursor, query, quoted: false };
+}
+
+function scoreCommandSuggestion(command, query) {
+  if (!query) return 0;
+  const q = query.toLowerCase();
+  const names = [command.name, command.invokeName, ...(command.duplicateNames || [])]
+    .filter(Boolean)
+    .map((name) => name.toLowerCase());
+  const description = command.description.toLowerCase();
+  if (names.some((name) => name === q)) return 0;
+  if (names.some((name) => name.startsWith(q))) return 1;
+  if (names.some((name) => name.includes(q))) return 2;
+  if (description.includes(q)) return 3;
+  return Number.POSITIVE_INFINITY;
+}
+
+function getCommandMatches(query) {
+  return visibleCommands()
+    .map((command) => ({ command, score: scoreCommandSuggestion(command, query) }))
+    .filter((item) => Number.isFinite(item.score))
+    .sort((a, b) => a.score - b.score || a.command.name.localeCompare(b.command.name))
+    .slice(0, clampAutocompleteMaxVisible(autocompleteMaxVisible))
+    .map((item) => item.command);
+}
+
+function commandSearchQuery() {
+  return String(elements.commandSearchInput?.value || "").trim().replace(/^\/+/, "").toLowerCase();
+}
+
+function commandMatchesSearch(command, query) {
+  if (!query) return true;
+  return [command.name, command.invokeName, ...(command.duplicateNames || []), command.description, command.source, command.location]
+    .filter(Boolean)
+    .join(" ")
+    .toLowerCase()
+    .includes(query);
+}
+
+function activeSuggestionCount() {
+  return suggestionMode === "path" ? pathSuggestions.length : commandSuggestions.length;
+}
+
+function abortPathSuggestionRequest() {
+  pathSuggestAbortController?.abort();
+  pathSuggestAbortController = null;
+}
+
+function cancelPathSuggestionRequest() {
+  pathSuggestRequestSerial++;
+  pathSuggestActiveQuery = null;
+  abortPathSuggestionRequest();
+}
+
+function hideCommandSuggestions() {
+  cancelPathSuggestionRequest();
+  elements.commandSuggest.hidden = true;
+  elements.commandSuggest.removeAttribute("aria-busy");
+  elements.commandSuggest.replaceChildren();
+  commandSuggestions = [];
+  pathSuggestions = [];
+  suggestionMode = "none";
+  commandSuggestIndex = 0;
+  scheduleDeferredUiFlushAfterDropdownClose();
+}
+
+function setActiveCommandSuggestion(index) {
+  const count = activeSuggestionCount();
+  if (!count) return;
+  commandSuggestIndex = (index + count) % count;
+  const items = [...elements.commandSuggest.querySelectorAll(".command-suggest-item")];
+  for (const [itemIndex, item] of items.entries()) {
+    const active = itemIndex === commandSuggestIndex;
+    item.classList.toggle("active", active);
+    item.setAttribute("aria-selected", active ? "true" : "false");
+    if (active) item.scrollIntoView({ block: "nearest" });
+  }
+}
+
+function pointerPositionFromEvent(event) {
+  if (!Number.isFinite(event.clientX) || !Number.isFinite(event.clientY)) return null;
+  return { x: event.clientX, y: event.clientY };
+}
+
+function rememberPointerPosition(event) {
+  lastPointerPosition = pointerPositionFromEvent(event);
+}
+
+function commandSuggestionPointerActuallyMoved(event) {
+  const movementX = Number.isFinite(event.movementX) ? event.movementX : 0;
+  const movementY = Number.isFinite(event.movementY) ? event.movementY : 0;
+  if (movementX !== 0 || movementY !== 0) return true;
+
+  const position = pointerPositionFromEvent(event);
+  return Boolean(
+    position &&
+      lastPointerPosition &&
+      (position.x !== lastPointerPosition.x || position.y !== lastPointerPosition.y),
+  );
+}
+
+function setActiveCommandSuggestionFromPointerMove(index, event) {
+  if (!commandSuggestionPointerActuallyMoved(event)) return;
+  setActiveCommandSuggestion(index);
+}
+
+function renderCommandSuggestionItems(trigger, { keepIndex = false } = {}) {
+  suggestionMode = "command";
+  pathSuggestions = [];
+  commandSuggestions = getCommandMatches(trigger.query);
+  elements.commandSuggest.replaceChildren();
+
+  if (commandSuggestions.length === 0) {
+    elements.commandSuggest.append(make("div", "command-suggest-empty", `No command matches /${trigger.query}`));
+    elements.commandSuggest.hidden = false;
+    return;
+  }
+
+  for (const [index, command] of commandSuggestions.entries()) {
+    const item = make("button", "command-suggest-item");
+    item.type = "button";
+    item.setAttribute("role", "option");
+    item.addEventListener("mousedown", (event) => event.preventDefault());
+    item.addEventListener("pointermove", (event) => setActiveCommandSuggestionFromPointerMove(index, event));
+    item.addEventListener("click", () => insertCommandSuggestion(index));
+
+    item.append(
+      make("span", "command-suggest-name", `/${command.name}`),
+      make("span", "command-suggest-desc", command.description || "No description"),
+      make("span", "command-suggest-source", commandSourceLabel(command)),
+    );
+    elements.commandSuggest.append(item);
+  }
+
+  elements.commandSuggest.hidden = false;
+  setActiveCommandSuggestion(keepIndex ? commandSuggestIndex : 0);
+}
+
+function pathSuggestionIsDirectory(suggestion) {
+  return suggestion.type === "directory" || suggestion.path.endsWith("/");
+}
+
+function formatPathReference(pathText, forceQuoted = false) {
+  const normalized = String(pathText || "").replace(/\\/g, "/");
+  if (!forceQuoted && !/[\s"']/.test(normalized)) return `@${normalized}`;
+  return `@"${normalized.replace(/(["\\])/g, "\\$1")}"`;
+}
+
+function renderPathSuggestionItems(trigger, { keepIndex = false } = {}) {
+  suggestionMode = "path";
+  commandSuggestions = [];
+  elements.commandSuggest.replaceChildren();
+
+  if (pathSuggestions.length === 0) {
+    elements.commandSuggest.append(make("div", "command-suggest-empty", `No path matches @${trigger.query}`));
+    elements.commandSuggest.hidden = false;
+    return;
+  }
+
+  for (const [index, suggestion] of pathSuggestions.entries()) {
+    const isDirectory = pathSuggestionIsDirectory(suggestion);
+    const item = make("button", `command-suggest-item path-suggest-item ${isDirectory ? "directory" : "file"}`);
+    item.type = "button";
+    item.setAttribute("role", "option");
+    item.addEventListener("mousedown", (event) => event.preventDefault());
+    item.addEventListener("pointermove", (event) => setActiveCommandSuggestionFromPointerMove(index, event));
+    item.addEventListener("click", () => insertPathSuggestion(index));
+
+    item.append(
+      make("span", "command-suggest-name path-suggest-name", `@${suggestion.path}`),
+      make("span", "command-suggest-desc", suggestion.description || suggestion.path),
+      make("span", "command-suggest-source", isDirectory ? "directory" : "file"),
+    );
+    elements.commandSuggest.append(item);
+  }
+
+  elements.commandSuggest.hidden = false;
+  setActiveCommandSuggestion(keepIndex ? commandSuggestIndex : 0);
+}
+
+async function renderPathSuggestions(trigger, { keepIndex = false } = {}) {
+  if (suggestionMode === "path" && pathSuggestActiveQuery === trigger.query && !elements.commandSuggest.hidden) {
+    if (keepIndex && activeSuggestionCount() > 0) setActiveCommandSuggestion(commandSuggestIndex);
+    return;
+  }
+
+  const keepExistingPathMenu = suggestionMode === "path" && !elements.commandSuggest.hidden && elements.commandSuggest.childElementCount > 0;
+  abortPathSuggestionRequest();
+  const requestSerial = ++pathSuggestRequestSerial;
+  const controller = new AbortController();
+  pathSuggestActiveQuery = trigger.query;
+  pathSuggestAbortController = controller;
+  suggestionMode = "path";
+  commandSuggestions = [];
+  if (!keepExistingPathMenu) {
+    pathSuggestions = [];
+    elements.commandSuggest.replaceChildren(make("div", "command-suggest-empty", "Finding paths…"));
+  }
+  elements.commandSuggest.hidden = false;
+  elements.commandSuggest.setAttribute("aria-busy", "true");
+
+  try {
+    const response = await api(`/api/path-suggestions?query=${encodeURIComponent(trigger.query)}`, { signal: controller.signal });
+    if (requestSerial !== pathSuggestRequestSerial || document.activeElement !== elements.promptInput) return;
+    pathSuggestions = normalizePathSuggestions(response.data?.suggestions || []);
+    renderPathSuggestionItems(trigger, { keepIndex });
+  } catch (error) {
+    if (error?.name === "AbortError" || requestSerial !== pathSuggestRequestSerial) return;
+    pathSuggestions = [];
+    elements.commandSuggest.replaceChildren(make("div", "command-suggest-empty", `Path suggestions unavailable: ${error.message}`));
+    elements.commandSuggest.hidden = false;
+  } finally {
+    if (requestSerial === pathSuggestRequestSerial) {
+      pathSuggestAbortController = null;
+      elements.commandSuggest.removeAttribute("aria-busy");
+    }
+  }
+}
+
+function renderCommandSuggestions({ keepIndex = false } = {}) {
+  if (document.activeElement !== elements.promptInput) {
+    hideCommandSuggestions();
+    return;
+  }
+
+  const pathTrigger = getPathTrigger();
+  if (pathTrigger) {
+    renderPathSuggestions(pathTrigger, { keepIndex });
+    return;
+  }
+
+  cancelPathSuggestionRequest();
+  const trigger = getCommandTrigger();
+  if (!trigger || availableCommands.length === 0) {
+    hideCommandSuggestions();
+    return;
+  }
+
+  renderCommandSuggestionItems(trigger, { keepIndex });
+}
+
+function insertCommandSuggestion(index = commandSuggestIndex) {
+  if (suggestionMode === "path") return insertPathSuggestion(index);
+  const command = commandSuggestions[index];
+  const trigger = getCommandTrigger();
+  if (!command || !trigger) return false;
+
+  const input = elements.promptInput;
+  const value = input.value;
+  let tokenEnd = trigger.end;
+  while (tokenEnd < value.length && !/\s/.test(value[tokenEnd])) tokenEnd++;
+
+  const commandText = `/${command.name}`;
+  const suffix = value.slice(tokenEnd);
+  const separator = suffix && /^\s/.test(suffix) ? "" : " ";
+  input.value = `${value.slice(0, trigger.start)}${commandText}${separator}${suffix}`;
+
+  const whitespaceOffset = separator ? 1 : suffix && /^\s/.test(suffix) ? 1 : 0;
+  const cursor = trigger.start + commandText.length + whitespaceOffset;
+  input.setSelectionRange(cursor, cursor);
+  input.focus();
+  hideCommandSuggestions();
+  return true;
+}
+
+function insertPathSuggestion(index = commandSuggestIndex) {
+  const suggestion = pathSuggestions[index];
+  const trigger = getPathTrigger();
+  if (!suggestion || !trigger) return false;
+
+  const input = elements.promptInput;
+  const value = input.value;
+  let tokenEnd = trigger.end;
+  if (trigger.quoted) {
+    while (tokenEnd < value.length && value[tokenEnd] !== '"') tokenEnd++;
+    if (value[tokenEnd] === '"') tokenEnd++;
+  } else {
+    while (tokenEnd < value.length && !/\s/.test(value[tokenEnd])) tokenEnd++;
+  }
+
+  const isDirectory = pathSuggestionIsDirectory(suggestion);
+  const reference = formatPathReference(suggestion.path, trigger.quoted);
+  const suffix = value.slice(tokenEnd);
+  const separator = isDirectory || (suffix && /^\s/.test(suffix)) ? "" : " ";
+  input.value = `${value.slice(0, trigger.start)}${reference}${separator}${suffix}`;
+
+  const cursorOffset = isDirectory && reference.endsWith('"') ? reference.length - 1 : reference.length + separator.length;
+  const cursor = trigger.start + cursorOffset;
+  input.setSelectionRange(cursor, cursor);
+  input.focus();
+  resizePromptInput();
+  if (isDirectory) renderCommandSuggestions();
+  else hideCommandSuggestions();
+  return true;
+}
+
+function renderCommands() {
+  elements.commandsBox.replaceChildren();
+  if (!availableCommands.length) {
+    elements.commandsBox.textContent = "No RPC-visible commands.";
+    elements.commandsBox.classList.add("muted");
+    hideCommandSuggestions();
+    return;
+  }
+  const commandsToShow = visibleCommands();
+  if (!commandsToShow.length) {
+    elements.commandsBox.textContent = "No enabled commands visible. Re-enable optional features to show their commands.";
+    elements.commandsBox.classList.add("muted");
+    hideCommandSuggestions();
+    return;
+  }
+  const searchQuery = commandSearchQuery();
+  const filteredCommands = commandsToShow.filter((command) => commandMatchesSearch(command, searchQuery));
+  if (!filteredCommands.length) {
+    elements.commandsBox.textContent = `No commands match “${elements.commandSearchInput?.value.trim() || searchQuery}”.`;
+    elements.commandsBox.classList.add("muted");
+    renderCommandSuggestions();
+    return;
+  }
+  elements.commandsBox.classList.remove("muted");
+  for (const command of filteredCommands.slice(0, 80)) {
+    const item = make("button", "command-item");
+    item.type = "button";
+    item.title = `Send /${command.name}`;
+    item.setAttribute("aria-label", `Send /${command.name}${command.description ? `: ${command.description}` : ""}`);
+    item.addEventListener("click", () => sendPrompt("prompt", `/${command.name}`));
+
+    const code = make("code", undefined, `/${command.name}`);
+    item.append(code);
+    if (command.description) item.append(document.createTextNode(` — ${command.description}`));
+    elements.commandsBox.append(item);
+  }
+  renderCommandSuggestions();
+}
+
+async function refreshCommands(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const response = await api("/api/commands", { tabId: tabContext.tabId });
+  if (!isCurrentTabContext(tabContext)) return;
+  rawAvailableCommands = normalizeCommands(response.data?.commands || [], { dedupe: false });
+  availableCommands = normalizeCommands(response.data?.commands || []);
+  updateOptionalFeatureAvailability();
+  renderCommands();
+  if (elements.commandPaletteDialog?.open) renderCommandPalette({ preserveScroll: true });
+}
+
+function paletteText(value) {
+  return String(value || "").toLowerCase();
+}
+
+function paletteItemMatches(item, query) {
+  const text = [item.label, item.description, item.kind, item.keywords].map(paletteText).join(" ");
+  return query.split(/\s+/).filter(Boolean).every((token) => text.includes(token));
+}
+
+function commandPaletteCoreItems() {
+  const items = [
+    { kind: "Action", label: "New tab", description: "Start an isolated Pi terminal in the current directory", keywords: "workspace session", run: () => createTerminalTab() },
+    { kind: "Action", label: "Choose directory for new tab", description: "Pick a cwd before starting a tab", keywords: "cwd folder workspace", run: () => createTerminalTabFromChosenDirectory({ triggerButton: elements.commandPaletteButton }) },
+    { kind: "Git", label: "Branch worktree", description: "Create or open a Git worktree tab for parallel branch work", keywords: "git branch worktree parallel checkout", run: () => openBranchWorktreePicker() },
+    { kind: "Action", label: "New session", description: "Start a fresh session in the active tab", keywords: "/new clear", run: () => elements.newSessionButton.click() },
+    { kind: "Action", label: "Compact context", description: contextUsageDetail(), keywords: "/compact context window tokens", run: () => requestManualCompaction() },
+    { kind: "Action", label: footerAutoCompactionEnabled() ? "Disable auto-compaction" : "Enable auto-compaction", description: footerAutoCompactionToggleAction(), keywords: "context automatic", run: () => toggleFooterAutoCompaction() },
+    { kind: "Action", label: workspaceDashboardCollapsed ? "Show workspace dashboard" : "Hide workspace dashboard", description: "Toggle the launch/workspace overview", keywords: "home overview", run: () => setWorkspaceDashboardCollapsed(!workspaceDashboardCollapsed) },
+    { kind: "Action", label: document.body.classList.contains("side-panel-collapsed") ? "Show side panel" : "Hide side panel", description: "Toggle the Control Deck", keywords: "controls settings", run: () => setSidePanelCollapsed(!document.body.classList.contains("side-panel-collapsed"), { focusPanel: true }) },
+    { kind: "Action", label: "Change working directory", description: "Restart active tab in another cwd", keywords: "cwd folder workspace", run: () => changeActiveTabCwd() },
+    { kind: "Action", label: "Search transcript", description: "Open transcript search", keywords: "find", run: () => openChatSearch() },
+    { kind: "Pi", label: "/model", description: "Select the active model", keywords: "provider llm", run: () => runNativeCommandMenu("/model") },
+    { kind: "Pi", label: "/resume", description: "Resume a previous session", keywords: "sessions history", run: () => runNativeCommandMenu("/resume") },
+    { kind: "Pi", label: "/fork", description: "Fork from a previous user message", keywords: "branch edit retry", run: () => runNativeCommandMenu("/fork") },
+    { kind: "Pi", label: "/tree", description: "Navigate the session tree", keywords: "branch history", run: () => runNativeCommandMenu("/tree") },
+    { kind: "Pi", label: "/settings", description: "Open settings", keywords: "configuration", run: () => runNativeCommandMenu("/settings") },
+    { kind: "Pi", label: "/scoped-models", description: "Manage model cycling scope", keywords: "models cycle ctrl p", run: () => runNativeCommandMenu("/scoped-models") },
+    { kind: "Pi", label: "/tools", description: "Manage active tools", keywords: "capabilities", run: () => runNativeCommandMenu("/tools") },
+    { kind: "Pi", label: "/skills", description: "Manage active skills", keywords: "system prompt", run: () => runNativeCommandMenu("/skills") },
+  ];
+  if (isOptionalFeatureEnabled("statsCommand")) items.push({ kind: "Pi", label: "/stats-webui", description: "Open usage dashboard", keywords: "tokens cost budget", run: () => openStatsOverlay({ refresh: true }) });
+  return items;
+}
+
+function commandPaletteTabItems() {
+  return tabs.map((tab) => {
+    const indicator = tabIndicator(tab);
+    return {
+      kind: "Tab",
+      label: tab.id === activeTabId ? `Current tab: ${tab.title}` : `Switch to tab: ${tab.title}`,
+      description: `${indicator.label} · ${normalizeDisplayPath(tab.cwd || "")}`,
+      keywords: `${tab.id} ${tab.cwd || ""}`,
+      run: () => switchTab(tab.id),
+    };
+  });
+}
+
+function commandPaletteModelItems() {
+  return availableModels.map((model) => ({
+    kind: "Model",
+    label: `${model.provider}/${model.id}`,
+    description: model.name || (model.contextWindow ? `context ${formatFooterTokenCount(model.contextWindow)}` : "Set active model"),
+    keywords: `${model.provider} ${model.id} ${model.name || ""}`,
+    run: async () => {
+      const tabContext = activeTabContext();
+      const response = await api("/api/model", { method: "POST", body: { provider: model.provider, modelId: model.id }, tabId: tabContext.tabId });
+      if (!isCurrentTabContext(tabContext)) return;
+      applyOptimisticModelSelection(response.data || model, tabContext);
+      await refreshState(tabContext);
+      await refreshModels(tabContext);
+    },
+  }));
+}
+
+function commandPaletteSlashItems() {
+  return visibleCommands().slice(0, 140).map((command) => ({
+    kind: command.source || "Command",
+    label: `/${command.name}`,
+    description: command.description || "Run slash command",
+    keywords: `${command.location || ""} ${command.path || ""}`,
+    run: () => sendPrompt("prompt", `/${command.name}`),
+  }));
+}
+
+function buildCommandPaletteItems() {
+  return [
+    ...commandPaletteCoreItems(),
+    ...commandPaletteTabItems(),
+    ...commandPaletteModelItems(),
+    ...commandPaletteSlashItems(),
+  ];
+}
+
+function filteredCommandPaletteItems() {
+  const query = paletteText(elements.commandPaletteInput?.value || "").trim();
+  const items = buildCommandPaletteItems();
+  return (query ? items.filter((item) => paletteItemMatches(item, query)) : items).slice(0, 80);
+}
+
+function setCommandPaletteIndex(index) {
+  const count = commandPaletteItems.length;
+  commandPaletteIndex = count ? (index + count) % count : 0;
+  renderCommandPaletteList();
+}
+
+function renderCommandPaletteList({ preserveScroll = false } = {}) {
+  const list = elements.commandPaletteList;
+  if (!list) return;
+  const scrollTop = preserveScroll ? list.scrollTop : 0;
+  list.replaceChildren();
+  if (!commandPaletteItems.length) {
+    list.append(make("div", "command-palette-empty muted", "No matching actions."));
+    if (preserveScroll) list.scrollTop = scrollTop;
+    return;
+  }
+  commandPaletteItems.forEach((item, index) => {
+    const button = make("button", `command-palette-item${index === commandPaletteIndex ? " active" : ""}`);
+    button.type = "button";
+    button.setAttribute("role", "option");
+    button.setAttribute("aria-selected", index === commandPaletteIndex ? "true" : "false");
+    button.addEventListener("click", () => executeCommandPaletteItem(item));
+    button.append(
+      make("span", "command-palette-item-kind", item.kind || "Action"),
+      make("span", "command-palette-item-label", item.label || "Untitled action"),
+      make("span", "command-palette-item-description", item.description || ""),
+    );
+    list.append(button);
+  });
+  if (preserveScroll) {
+    list.scrollTop = scrollTop;
+    return;
+  }
+  const active = list.children[commandPaletteIndex];
+  active?.scrollIntoView({ block: "nearest" });
+}
+
+function renderCommandPalette({ preserveScroll = false } = {}) {
+  commandPaletteItems = filteredCommandPaletteItems();
+  if (commandPaletteIndex >= commandPaletteItems.length) commandPaletteIndex = 0;
+  renderCommandPaletteList({ preserveScroll });
+}
+
+function openCommandPalette(initialQuery = "") {
+  setComposerActionsOpen(false);
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  if (elements.commandPaletteInput) elements.commandPaletteInput.value = initialQuery;
+  commandPaletteIndex = 0;
+  renderCommandPalette();
+  if (!elements.commandPaletteDialog.open) elements.commandPaletteDialog.showModal();
+  queueMicrotask(() => {
+    elements.commandPaletteInput?.focus();
+    elements.commandPaletteInput?.select();
+  });
+}
+
+function closeCommandPalette() {
+  if (elements.commandPaletteDialog?.open) elements.commandPaletteDialog.close();
+}
+
+async function executeCommandPaletteItem(item = commandPaletteItems[commandPaletteIndex]) {
+  if (!item) return;
+  closeCommandPalette();
+  try {
+    await item.run?.();
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+  }
+}
+
+async function refreshAll(tabContext = activeTabContext()) {
+  if (!tabContext.tabId) return;
+  const results = await Promise.allSettled([
+    refreshState(tabContext),
+    refreshMessages(tabContext),
+    refreshModels(tabContext),
+    refreshCommands(tabContext),
+    refreshStats(tabContext),
+    refreshWorkspace(tabContext),
+    refreshAppRunners(tabContext),
+    refreshNativeSettings(tabContext),
+    refreshNetworkStatus(),
+    refreshWebuiVersion(),
+  ]);
+  if (!isCurrentTabContext(tabContext)) return;
+  for (const result of results) {
+    if (result.status === "rejected") addEvent(result.reason.message || String(result.reason), "error");
+  }
+  resumeGitWorkflowForActiveTab(tabContext);
+}
+
+function ensureActiveEventStream(tabContext = activeTabContext()) {
+  if (!tabContext.tabId || !isCurrentTabContext(tabContext)) return;
+  if (!eventSource || eventSource.readyState === EventSource.CLOSED) connectEvents(tabContext);
+}
+
+async function reconcileForegroundState(reason = "resume") {
+  if (document.visibilityState === "hidden") return;
+
+  const tabResult = await Promise.allSettled([refreshTabs()]);
+  const tabContext = activeTabContext();
+  ensureActiveEventStream(tabContext);
+
+  const results = [...tabResult];
+  if (tabContext.tabId) results.push(...(await Promise.allSettled([refreshAll(tabContext)])));
+  if (!isCurrentTabContext(tabContext)) return;
+
+  for (const result of results) {
+    if (result.status === "rejected") addEvent(`foreground refresh failed after ${reason}: ${result.reason?.message || String(result.reason)}`, "error");
+  }
+}
+
+function scheduleForegroundReconcile(reason = "resume", delay = FOREGROUND_RECONCILE_DELAY_MS) {
+  clearTimeout(foregroundReconcileTimer);
+  foregroundReconcileTimer = setTimeout(() => {
+    foregroundReconcileTimer = null;
+    reconcileForegroundState(reason).catch((error) => addEvent(`foreground refresh failed after ${reason}: ${error.message || String(error)}`, "error"));
+  }, delay);
+}
+
+async function openToNetwork() {
+  const open = !!latestNetwork?.open;
+  elements.openNetworkButton.disabled = true;
+  elements.openNetworkButton.textContent = open ? "Closing…" : "Opening…";
+  try {
+    await runRemoteWebuiCommand(remoteWebuiCommand(open ? "close" : "open", open ? "/remote close" : "/remote"));
+    await delay(350);
+    await refreshNetworkStatus();
+  } catch (error) {
+    addEvent(error.message || String(error), "error");
+  } finally {
+    renderNetworkStatus();
+  }
+}
+
+async function closeNetworkAccess() {
+  if (!latestNetwork?.open) return;
+  await openToNetwork();
+}
+
+function setServerActionStatus(message = "", level = "info") {
+  const status = elements.serverActionStatus;
+  if (!status) return;
+  status.textContent = message;
+  status.hidden = !message;
+  status.className = `server-action-status ${level} ${message ? "" : "muted"}`.trim();
+}
+
+function updateServerActionButton() {
+  const action = elements.serverActionSelect?.value || "";
+  const button = elements.runServerActionButton;
+  if (!button) return;
+  button.disabled = !action;
+  button.textContent = action === "restart" ? "Restart" : action === "update" || action === "update-all" ? "Update" : action === "stop" ? "Stop" : "Run";
+  button.classList.toggle("danger", action === "stop");
+  if (action === "restart") setServerActionStatus("Ready to restart the Web UI server.", "info");
+  else if (action === "update") setServerActionStatus("Ready to run pi update for Pi only, then restart the Web UI server.", "info");
+  else if (action === "update-all") setServerActionStatus("Ready to run pi update --all for Pi and configured packages, then restart the Web UI server.", "info");
+  else if (action === "stop") setServerActionStatus("Ready to stop the Web UI server.", "info");
+  else setServerActionStatus();
+}
+
+function setServerActionBusy(label) {
+  if (elements.serverActionSelect) elements.serverActionSelect.disabled = true;
+  if (elements.runServerActionButton) {
+    elements.runServerActionButton.disabled = true;
+    elements.runServerActionButton.textContent = label;
+  }
+}
+
+function resetServerActionControls() {
+  if (elements.serverActionSelect) {
+    elements.serverActionSelect.disabled = false;
+    elements.serverActionSelect.value = "";
+  }
+  updateServerActionButton();
+}
+
+async function waitForServerRestart() {
+  for (let attempt = 0; attempt < 40; attempt++) {
+    await delay(attempt === 0 ? 900 : 500);
+    const message = `Restarting… reconnect attempt ${attempt + 1}/40`;
+    setServerActionStatus(message, "warn");
+    setServerRestartOverlay(true, message);
+    try {
+      await api("/api/health", { scoped: false });
+      setBackendOffline(false);
+      await initializeTabs();
+      setServerRestartOverlay(false);
+      setServerActionStatus("Server restarted and reconnected.", "success");
+      addEvent("Pi Web UI server restarted", "warn");
+      return true;
+    } catch (error) {
+      setBackendOffline(true, error);
+    }
+  }
+  return false;
+}
+
+async function restartServer() {
+  if (!confirm("Restart the Pi Web UI server?\n\nThis briefly disconnects browser clients and restarts the Pi tabs managed by this Web UI.")) return;
+
+  setServerActionBusy("Restarting…");
+  setServerActionStatus("Restart requested. Waiting for the server to come back…", "warn");
+  setServerRestartOverlay(true, "Restart requested. Waiting for the server to come back…");
+  try {
+    await api("/api/restart", { method: "POST", scoped: false });
+    addEvent("Pi Web UI server restart requested", "warn");
+  } catch (error) {
+    if (!error?.backendOffline) {
+      const missingRestartEndpoint = error.statusCode === 404 || /not found/i.test(error.message || "");
+      const message = missingRestartEndpoint
+        ? "Restart is not available in the currently running server. Stop/start manually once to load the new backend."
+        : error.message || String(error);
+      addEvent(message, "error");
+      setServerRestartOverlay(false);
+      resetServerActionControls();
+      setServerActionStatus(message, "error");
+      return;
+    }
+    addEvent("Pi Web UI server connection dropped during restart request", "warn");
+  }
+
+  setBackendOffline(true, new Error("restart requested from side panel"));
+  const restarted = await waitForServerRestart();
+  if (elements.serverActionSelect) {
+    elements.serverActionSelect.disabled = false;
+    elements.serverActionSelect.value = "";
+  }
+  updateServerActionButton();
+  if (restarted) {
+    setServerActionStatus("Server restarted and reconnected.", "success");
+  } else {
+    setServerRestartOverlay(false);
+    setBackendOffline(true, new Error("restart reconnect timed out"));
+    setServerActionStatus("Restart requested, but the server did not reconnect automatically.", "error");
+    addEvent("Pi Web UI server did not come back online after restart request", "error");
+  }
+}
+
+async function stopServer() {
+  if (!confirm("Stop the Pi Web UI server?\n\nThis disconnects all browser clients and stops the Pi tabs managed by this Web UI.")) return;
+
+  setServerActionBusy("Stopping…");
+  setServerActionStatus("Stop requested. The Web UI will disconnect.", "warn");
+  try {
+    await api("/api/shutdown", { method: "POST", scoped: false });
+    addEvent("Pi Web UI server stop requested", "warn");
+    setBackendOffline(true, new Error("stop requested from side panel"));
+  } catch (error) {
+    if (error?.backendOffline) {
+      addEvent("Pi Web UI server appears to be offline after stop request", "warn");
+      setBackendOffline(true, error);
+      return;
+    }
+    addEvent(error.message || String(error), "error");
+    resetServerActionControls();
+    setServerActionStatus(error.message || String(error), "error");
+  }
+}
+
+async function runSelectedServerAction() {
+  const action = elements.serverActionSelect?.value || "";
+  if (action === "restart") await restartServer();
+  else if (action === "update") await runPiUpdateAndRestart();
+  else if (action === "update-all") await runPiUpdateAndRestart({ all: true });
+  else if (action === "stop") await stopServer();
+}
+
+function appShortcutModelLabel(model) {
+  return model ? `${model.provider}/${model.id}` : "unknown model";
+}
+
+async function cycleModelFromShortcut(direction = "forward") {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  try {
+    const response = await api("/api/model-cycle", { method: "POST", body: { direction }, tabId: tabContext.tabId });
+    applyResponseTab(response);
+    const model = response.data?.model;
+    const scope = response.data?.scoped ? `scoped (${response.data.scopeSource})` : "all models";
+    if (isCurrentTabContext(tabContext)) {
+      applyOptimisticModelSelection(model, tabContext);
+      addTransientMessage({ role: "native", title: "model cycle", content: `Model set to ${appShortcutModelLabel(model)} via ${direction} cycle over ${scope}.`, level: "info" });
+      await Promise.allSettled([refreshState(tabContext), refreshModels(tabContext), refreshStats(tabContext)]);
+    }
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(error.message, "error");
+      addTransientMessage({ role: "error", title: "model cycle", content: error.message, level: "error" });
+    }
+  }
+}
+
+async function cycleThinkingFromShortcut() {
+  const tabContext = activeTabContext();
+  if (!tabContext.tabId) return;
+  try {
+    const response = await api("/api/thinking-cycle", { method: "POST", body: {}, tabId: tabContext.tabId });
+    if (isCurrentTabContext(tabContext)) {
+      applyOptimisticThinkingSelection(response.data, tabContext);
+      addTransientMessage({ role: "native", title: "thinking", content: response.data?.level ? `Thinking level: ${response.data.level}` : "Thinking level did not change.", level: "info" });
+      if (response.data?.level) requestGitFooterWebuiPayload(tabContext, { force: true });
+      await Promise.allSettled([refreshState(tabContext), refreshStats(tabContext)]);
+    }
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(error.message, "error");
+      addTransientMessage({ role: "error", title: "thinking", content: error.message, level: "error" });
+    }
+  }
+}
+
+function clearPromptFromShortcut() {
+  const input = elements.promptInput;
+  if (document.activeElement !== input) return false;
+  if (input.selectionStart !== input.selectionEnd) return false;
+  if (!input.value) return false;
+  input.value = "";
+  resizePromptInput();
+  renderCommandSuggestions();
+  addEvent("prompt cleared", "info");
+  return true;
+}
+
+function parseUserBashInput(message) {
+  const text = String(message || "").trim();
+  if (!text.startsWith("!") || text === "!" || text === "!!") return null;
+  const excludeFromContext = text.startsWith("!!");
+  const command = text.slice(excludeFromContext ? 2 : 1).trim();
+  if (!command) return null;
+  return { command, excludeFromContext };
+}
+
+function userBashOutputSummary(result = {}, excludeFromContext = false) {
+  const output = String(result.output || "").trimEnd();
+  const status = result.cancelled ? "cancelled" : result.exitCode === 0 ? "exit 0" : result.exitCode === undefined || result.exitCode === null ? "finished" : `exit ${result.exitCode}`;
+  const context = excludeFromContext ? "excluded from LLM context" : "included in the next LLM context";
+  const lines = [`# ${status}; ${context}`];
+  if (output) lines.push("", output);
+  if (result.truncated && result.fullOutputPath) lines.push("", `Full output: ${result.fullOutputPath}`);
+  return lines.join("\n");
+}
+
+function clearComposerAfterUserBash({ usesPromptInput, targetTabId, tabContext }) {
+  if (!usesPromptInput) return;
+  clearAttachments(targetTabId);
+  if (isCurrentTabContext(tabContext)) {
+    elements.promptInput.value = "";
+    resizePromptInput();
+  } else {
+    tabDrafts.set(targetTabId, "");
+  }
+}
+
+function enqueueUserBashCommand(parsed, { usesPromptInput = false, targetTabId = activeTabId } = {}) {
+  if (!targetTabId || !parsed?.command) return;
+  const tabContext = activeTabContext(targetTabId);
+  clearComposerAfterUserBash({ usesPromptInput, targetTabId, tabContext });
+  const queue = userBashQueueForTab(targetTabId);
+  queue.push({ command: parsed.command, excludeFromContext: parsed.excludeFromContext === true, enqueuedAt: Date.now() });
+  const waiting = queue.length;
+  if (isCurrentTabContext(tabContext)) {
+    addTransientMessage({
+      role: "bashExecution",
+      title: parsed.excludeFromContext ? "bash (!! queued)" : "bash (! queued)",
+      command: parsed.command,
+      output: `Queued behind the active bash command. Position: ${waiting}.\n\nOutput will be ${parsed.excludeFromContext ? "excluded from" : "included in the next"} LLM context when it runs.`,
+      excludeFromContext: parsed.excludeFromContext === true,
+      level: "info",
+    });
+    addEvent(`bash queued (${waiting} waiting): ${parsed.command}`, "info");
+    setRunIndicatorActivity(`Bash queued (${waiting} waiting)…`);
+    updateComposerModeButtons();
+  }
+}
+
+function dequeueNextUserBashCommand(targetTabId) {
+  return userBashQueueForTab(targetTabId).shift() || null;
+}
+
+async function runUserBashCommand(parsed, { usesPromptInput = false, targetTabId = activeTabId, queued = false } = {}) {
+  if (!targetTabId || !parsed?.command) return;
+  const tabContext = activeTabContext(targetTabId);
+  const { command, excludeFromContext } = parsed;
+  autoFollowChat = true;
+  setComposerActionsOpen(false);
+  hideCommandSuggestions();
+  userBashByTab.set(targetTabId, { command, excludeFromContext, startedAt: Date.now() });
+  markTabWorkingLocally(targetTabId);
+  if (isCurrentTabContext(tabContext)) {
+    const waiting = queuedUserBashCount(targetTabId);
+    setRunIndicatorActivity(`Running bash: ${command}${waiting ? ` (${waiting} queued)` : ""}`);
+    addTransientMessage({
+      role: "bashExecution",
+      title: excludeFromContext ? "bash (!!)" : "bash (!)" ,
+      command,
+      output: `${queued ? "Dequeued and running.\n\n" : ""}${excludeFromContext ? "Output will be excluded from LLM context." : "Output will be included in the next LLM context."}\n\nRunning…`,
+      excludeFromContext,
+      level: "info",
+    });
+  }
+  clearComposerAfterUserBash({ usesPromptInput, targetTabId, tabContext });
+
+  try {
+    const response = await api("/api/bash", { method: "POST", body: { command, excludeFromContext }, tabId: targetTabId });
+    const result = response.data || {};
+    applyResponseTab(response);
+    if (isCurrentTabContext(tabContext)) {
+      for (const warning of response.warnings || []) {
+        if (warning) addEvent(String(warning), "warn");
+      }
+      addTransientMessage({
+        role: "bashExecution",
+        title: excludeFromContext ? "bash (!! complete)" : "bash (! complete)",
+        command,
+        output: userBashOutputSummary(result, excludeFromContext),
+        exitCode: result.exitCode,
+        cancelled: result.cancelled === true,
+        truncated: result.truncated === true,
+        fullOutputPath: result.fullOutputPath,
+        excludeFromContext,
+        level: result.cancelled ? "warn" : result.exitCode ? "error" : "info",
+      });
+      addEvent(`bash ${result.cancelled ? "cancelled" : "finished"}: ${command}`, result.cancelled || result.exitCode ? "warn" : "info");
+      scheduleRefreshMessages(250, tabContext);
+      scheduleRefreshState(250, tabContext);
+    } else {
+      scheduleRefreshTabs(300);
+    }
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(error.message, "error");
+      addTransientMessage({ role: "error", title: excludeFromContext ? "!! bash failed" : "! bash failed", content: error.message, level: "error" });
+    }
+  } finally {
+    userBashByTab.delete(targetTabId);
+    const nextQueued = dequeueNextUserBashCommand(targetTabId);
+    if (isCurrentTabContext(tabContext)) {
+      if (nextQueued) {
+        setRunIndicatorActivity(`Starting queued bash (${queuedUserBashCount(targetTabId)} waiting)…`);
+      } else if (!currentState?.isStreaming && !currentState?.isCompacting) {
+        markTabIdleLocally(targetTabId);
+        clearRunIndicatorActivity();
+      } else {
+        syncRunIndicatorFromState(currentState);
+      }
+      updateComposerModeButtons();
+    }
+    if (nextQueued) void runUserBashCommand(nextQueued, { usesPromptInput: false, targetTabId, queued: true });
+  }
+}
+
+async function sendUserBashCommand(parsed, { usesPromptInput = false, targetTabId = activeTabId } = {}) {
+  if (!targetTabId || !parsed?.command) return;
+  if (isUserBashActive(targetTabId) || queuedUserBashCount(targetTabId) > 0) {
+    enqueueUserBashCommand(parsed, { usesPromptInput, targetTabId });
+    return;
+  }
+  await runUserBashCommand(parsed, { usesPromptInput, targetTabId });
+}
+
+async function sendPrompt(kind = "prompt", explicitMessage, { targetTabId = activeTabId, throwOnError = false, streamingBehavior } = {}) {
+  const usesPromptInput = explicitMessage === undefined;
+  const rawMessage = usesPromptInput ? elements.promptInput.value : explicitMessage;
+  const originalMessage = String(rawMessage || "").trim();
+  if (!targetTabId) return;
+  const tabContext = activeTabContext(targetTabId);
+  const attachments = usesPromptInput ? [...attachmentsForTab(targetTabId)] : [];
+  if (!originalMessage && attachments.length === 0) return;
+  if (kind === "prompt" && attachments.length === 0 && await handleNativeSlashSelectorCommand(originalMessage, { usesPromptInput })) return;
+  const userBash = kind === "prompt" && attachments.length === 0 ? parseUserBashInput(originalMessage) : null;
+  if (userBash) {
+    await sendUserBashCommand(userBash, { usesPromptInput, targetTabId });
+    return;
+  }
+
+  const targetWasStreaming = !!currentState?.isStreaming;
+  const busyBehavior = normalizeBusyPromptBehavior(busyPromptBehavior);
+  const startsRun = kind === "prompt" && !targetWasStreaming;
+  autoFollowChat = true;
+  updateJumpToLatestButton();
+  setComposerActionsOpen(false);
+  if (startsRun) {
+    markTabWorkingLocally(targetTabId);
+    setRunIndicatorActivity(attachments.length ? "Uploading attachments…" : "Sending prompt to Pi…");
+  }
+
+  let message = originalMessage;
+  try {
+    const prepared = attachments.length ? await prepareAttachmentsForPrompt(attachments, targetTabId) : { images: [], uploadedFiles: [], inlineImageIds: new Set() };
+    message = composeMessageWithAttachments(originalMessage, prepared.uploadedFiles, prepared.inlineImageIds);
+    if (kind === "prompt" && attachments.length === 0) message = resolveRpcSlashCommandMessage(message);
+    const bodyBase = { message };
+    if (prepared.images.length) bodyBase.images = prepared.images;
+    if (!message.startsWith("/")) {
+      rememberPromptHistory(message, { tabId: targetTabId });
+      if (kind === "prompt") rememberLastUserPrompt(message, { tabId: targetTabId });
+    }
+    if (startsRun && isCurrentTabContext(tabContext)) setRunIndicatorActivity("Sending prompt to Pi…");
+
+    let response;
+    if (kind === "steer") {
+      response = await api("/api/steer", { method: "POST", body: bodyBase, tabId: targetTabId });
+    } else if (kind === "follow-up") {
+      response = await api("/api/follow-up", { method: "POST", body: bodyBase, tabId: targetTabId });
+    } else {
+      const body = { ...bodyBase };
+      if (targetWasStreaming) body.streamingBehavior = streamingBehavior || busyBehavior;
+      response = await api("/api/prompt", { method: "POST", body, tabId: targetTabId });
+    }
+    applyResponseTab(response);
+    if (response?.command === "native_slash_command" && /^\/new(?:\s|$)/.test(message)) forgetLastUserPrompt(targetTabId);
+    const targetStillActive = isCurrentTabContext(tabContext);
+    if (startsRun && response?.command === "native_slash_command") {
+      markTabIdleLocally(targetTabId);
+      if (targetStillActive) clearRunIndicatorActivity();
+    } else if (targetStillActive && kind === "steer" && currentState?.isStreaming) {
+      setRunIndicatorActivity("Steering sent; waiting for the next output or action…");
+    } else if (targetStillActive && kind === "follow-up" && currentState?.isStreaming) {
+      setRunIndicatorActivity("Follow-up queued; current agent run is still active…");
+    }
+    if (targetStillActive && response?.command === "native_slash_command") {
+      applyNativeSlashCommandEffects(response, message, tabContext);
+    }
+    if (usesPromptInput) {
+      clearAttachments(targetTabId);
+      if (targetStillActive) {
+        elements.promptInput.value = "";
+        resizePromptInput();
+      } else {
+        tabDrafts.set(targetTabId, "");
+      }
+    }
+    if (targetStillActive) {
+      hideCommandSuggestions();
+      if (response?.command !== "native_slash_command") scheduleRefreshState(120, tabContext);
+    } else if (response?.command !== "native_slash_command") {
+      scheduleRefreshTabs(300);
+    }
+  } catch (error) {
+    if (startsRun) {
+      markTabIdleLocally(targetTabId);
+      if (isCurrentTabContext(tabContext)) clearRunIndicatorActivity();
+    }
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(error.message, "error");
+      addTransientMessage({ role: "error", title: message.startsWith("/") ? message.split(/\s+/, 1)[0] : "error", content: error.message, level: "error" });
+    }
+    if (throwOnError) throw error;
+  }
+}
+
+function hasQueuedDialogRequest(id) {
+  if (!id) return false;
+  const key = String(id);
+  return String(activeDialog?.id || "") === key || dialogQueue.some((request) => String(request?.id || "") === key);
+}
+
+function removeQueuedDialogRequests(ids = []) {
+  const idSet = new Set(ids.map((id) => String(id)).filter(Boolean));
+  if (idSet.size === 0) return false;
+  for (let i = dialogQueue.length - 1; i >= 0; i -= 1) {
+    if (idSet.has(String(dialogQueue[i]?.id || ""))) dialogQueue.splice(i, 1);
+  }
+  if (activeDialog && idSet.has(String(activeDialog.id || ""))) {
+    if (elements.dialog.open) elements.dialog.close();
+    activeDialog = null;
+    showNextDialog();
+    return true;
+  }
+  return false;
+}
+
+function handleExtensionUiRequest(request) {
+  request.tabId ||= activeTabId;
+  switch (request.method) {
+    case "notify": {
+      const level = request.notifyType === "error" ? "error" : request.notifyType === "warning" ? "warn" : "info";
+      const message = request.message || "notification";
+      addEvent(message, level);
+      addTransientMessage({ role: "extension", title: "extension output", content: message, level });
+      return;
+    }
+    case "setStatus": {
+      const statusKey = request.statusKey || "extension";
+      if (request.statusText) {
+        statusEntries.set(statusKey, request.statusText);
+        if (statusKey === GIT_FOOTER_WEBUI_STATUS_KEY) cacheGitFooterWebuiPayload(request.statusText, request.tabId);
+      } else {
+        statusEntries.delete(statusKey);
+      }
+      if (statusKey === STATS_WEBUI_STATUS_KEY) handleStatsWebuiStatus(request.statusText);
+      if (statusKey === BTW_WEBUI_STATUS_KEY) handleBtwWebuiStatus(request.statusText);
+      if (statusKey === "pi-remote-webui") handleRemoteWebuiStatus(request.statusText);
+      updateOptionalFeatureAvailability();
+      if (statusKey === GIT_FOOTER_WEBUI_STATUS_KEY) {
+        if (currentState?.isStreaming || runIndicatorLocallyActive) return;
+        if (isInteractiveDropdownOpen()) {
+          deferredUiRenderCallbacks.set("footer", renderFooter);
+          return;
+        }
+        renderFooter();
+        return;
+      }
+      renderStatus();
+      return;
+    }
+    case "setWidget": {
+      const widgetKey = request.widgetKey || request.id;
+      const requestTabId = request.tabId || activeTabId;
+      if (widgetKey === "pi-remote-webui") {
+        setWidgetForTab(requestTabId, widgetKey, { ...request, widgetLines: undefined });
+        if (Array.isArray(request.widgetLines)) {
+          mirrorRemoteWebuiWidgetToTranscript(widgetKey, request.widgetLines, request);
+          showRemoteWebuiQrPopup(widgetKey, request.widgetLines, request);
+        } else {
+          closeRemoteWebuiQrPopup();
+        }
+      } else {
+        if (!setWidgetForTab(requestTabId, widgetKey, request)) return;
+      }
+      updateOptionalFeatureAvailability();
+      renderWidgets();
+      return;
+    }
+    case "setTitle":
+      if (request.title) document.title = request.title;
+      return;
+    case "set_editor_text":
+      elements.promptInput.value = request.text || "";
+      resizePromptInput();
+      elements.promptInput.focus();
+      renderCommandSuggestions();
+      return;
+    case "select":
+    case "confirm":
+    case "input":
+    case "editor":
+      if (isRemoteWebuiQrPopupLoading()) closeRemoteWebuiQrPopup();
+      if (hasQueuedDialogRequest(request.id)) return;
+      if (request.pendingExtensionUiRequestCount === undefined) {
+        const tab = tabs.find((item) => item.id === request.tabId);
+        if (setTabPendingBlockerCount(request.tabId, Math.max(1, tabPendingBlockerCount(tab) + 1))) renderTabs();
+      }
+      if (!request.replayed) notifyBlockedTab(request.tabId, { request, count: request.pendingExtensionUiRequestCount });
+      if (request.replayed) addEvent(`recovered pending ${request.method} request`, "warn");
+      setRunIndicatorActivity(`Waiting for your ${request.method} response…`);
+      dialogQueue.push(request);
+      showNextDialog();
+      return;
+    default:
+      addEvent(`Unsupported extension UI request: ${request.method}`, "warn");
+  }
+}
+
+async function sendDialogResponse(payload) {
+  const { tabId = activeTabId, ...body } = payload;
+  const tabContext = activeTabContext(tabId);
+  const responseId = String(body.id || "");
+  try {
+    const response = await api("/api/extension-ui-response", { method: "POST", body, tabId });
+    if (!applyResponseTab(response) && decrementTabPendingBlockerCount(tabId)) renderTabs();
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  } finally {
+    if (!isCurrentTabContext(tabContext)) return;
+    if (responseId && activeDialog && String(activeDialog.id || "") !== responseId) return;
+    if (elements.dialog.open) elements.dialog.close();
+    activeDialog = null;
+    if (runIndicatorIsActive()) setRunIndicatorActivity("Continuing after your response…");
+    showNextDialog();
+  }
+}
+
+function addDialogButton(label, handler, className) {
+  const button = make("button", className, label);
+  button.type = "button";
+  button.addEventListener("click", handler);
+  elements.dialogActions.append(button);
+  return button;
+}
+
+function showNextDialog() {
+  if (activeDialog || dialogQueue.length === 0) return;
+  activeDialog = dialogQueue.shift();
+  const request = activeDialog;
+
+  const prompt = normalizeDialogPrompt(request);
+  const detectedReleasePrompt = request.method === "select" ? releaseDialogPromptParts(prompt) : null;
+  const releasePrompt = detectedReleasePrompt && isOptionalFeatureEnabled(detectedReleasePrompt.featureId) ? detectedReleasePrompt : null;
+  const displayPrompt = releasePrompt || prompt;
+  const isGuardrailDialog = isGuardrailDialogPrompt(displayPrompt);
+  const isReleaseDialog = !!releasePrompt;
+  elements.dialog.classList.toggle("guardrail-dialog", isGuardrailDialog);
+  elements.dialog.classList.toggle("release-dialog", isReleaseDialog);
+  elements.dialogTitle.textContent = displayPrompt.title;
+  if (isReleaseDialog) renderReleaseDialogMessage(elements.dialogMessage, displayPrompt.message);
+  else renderAnsiText(elements.dialogMessage, displayPrompt.message);
+  elements.dialogMessage.hidden = !displayPrompt.plainMessage;
+  elements.dialogBody.replaceChildren();
+  elements.dialogActions.replaceChildren();
+
+  const cancel = () => sendDialogResponse({ type: "extension_ui_response", id: request.id, cancelled: true, tabId: request.tabId });
+
+  if (request.method === "select") {
+    const options = make("div", "dialog-options");
+    for (const option of request.options || []) {
+      const optionLabel = String(option);
+      const button = make("button", undefined, optionLabel);
+      button.type = "button";
+      if (isGuardrailDialog && /^Block$/i.test(optionLabel)) button.classList.add("guardrail-safe-action");
+      if (isGuardrailDialog && /^Allow/i.test(optionLabel)) button.classList.add("guardrail-allow-action");
+      if (isReleaseDialog && /^(?:Yes|All eligible packages\b|Publish selected packages \([1-9]\d*\))/.test(optionLabel)) button.classList.add("primary", "release-publish-action");
+      if (isReleaseDialog && /^Publish selected packages$/i.test(optionLabel)) button.classList.add("release-publish-disabled-action");
+      if (isReleaseDialog && /^\[x\]/.test(optionLabel)) button.classList.add("release-target-option", "release-target-selected");
+      if (isReleaseDialog && /^\[ \]/.test(optionLabel)) button.classList.add("release-target-option");
+      if (isReleaseDialog && /^(?:No|Cancel)$/i.test(optionLabel)) button.classList.add("release-cancel-action");
+      button.addEventListener("click", () => sendDialogResponse({ type: "extension_ui_response", id: request.id, value: optionLabel, tabId: request.tabId }));
+      options.append(button);
+    }
+    elements.dialogBody.append(options);
+    addDialogButton("Cancel", cancel);
+  } else if (request.method === "confirm") {
+    addDialogButton("Cancel", cancel);
+    addDialogButton("No", () => sendDialogResponse({ type: "extension_ui_response", id: request.id, confirmed: false, tabId: request.tabId }));
+    addDialogButton("Yes", () => sendDialogResponse({ type: "extension_ui_response", id: request.id, confirmed: true, tabId: request.tabId }), "primary");
+  } else if (request.method === "input") {
+    const input = make("input", "dialog-input");
+    input.value = request.prefill || "";
+    input.placeholder = request.placeholder || "";
+    elements.dialogBody.append(input);
+    addDialogButton("Cancel", cancel);
+    addDialogButton("Submit", () => sendDialogResponse({ type: "extension_ui_response", id: request.id, value: input.value, tabId: request.tabId }), "primary");
+    setTimeout(() => input.focus(), 0);
+  } else if (request.method === "editor") {
+    const textarea = make("textarea", "dialog-editor");
+    textarea.value = request.prefill || "";
+    elements.dialogBody.append(textarea);
+    addDialogButton("Cancel", cancel);
+    addDialogButton("Submit", () => sendDialogResponse({ type: "extension_ui_response", id: request.id, value: textarea.value, tabId: request.tabId }), "primary");
+    setTimeout(() => textarea.focus(), 0);
+  }
+
+  elements.dialog.showModal();
+}
+
+function handleInactiveTabEvent(event) {
+  if (event.type === "extension_ui_request" && EXTENSION_UI_BLOCKING_METHODS.has(event.method)) {
+    if (!event.replayed) notifyBlockedTab(event.tabId, { request: event, count: event.pendingExtensionUiRequestCount });
+    renderTabs();
+  } else if (event.type === "agent_end") {
+    notifyAgentDone(event.tabId, { activity: event.tabActivity, tabTitle: event.tabTitle });
+  }
+}
+
+function handleEvent(event) {
+  if (eventHasTabActivityPayload(event)) ingestEventTabActivity(event);
+  if (event?.type === "auto_retry_start" || event?.type === "auto_retry_end") trackAutoRetryStateFromEvent(event);
+  if (eventMayAffectSkillUsage(event)) trackSkillsFromEvent(event);
+  if (!eventTargetsActiveTab(event)) {
+    handleInactiveTabEvent(event);
+    return;
+  }
+  const tabContext = activeTabContext(event.tabId || activeTabId);
+  switch (event.type) {
+    case "webui_connected":
+      setWebuiVersion(event.version);
+      setWebuiDevServer(isWebuiDevMetadata(event));
+      if (Object.prototype.hasOwnProperty.call(event, "activeRun")) {
+        setAppRunnerData(event.tabId || activeTabId, { cwd: event.cwd, activeRun: event.activeRun });
+        renderAppRunnerControls();
+        renderWidgets();
+      }
+      addEvent(`connected to ${event.tabTitle || "terminal"} for ${event.cwd}`);
+      scheduleForegroundReconcile("event stream reconnect", 0);
+      break;
+    case "webui_tab_renamed":
+      applyTabMetadata(event.tab || { id: event.tabId, title: event.tabTitle, activity: event.tabActivity });
+      addEvent(`${event.previousTabTitle || "terminal"} renamed to ${event.tabTitle || "terminal"}`);
+      break;
+    case "pi_process_start":
+      addEvent(`started pi rpc pid ${event.pid}`);
+      refreshTabs().catch((error) => addEvent(error.message, "error"));
+      break;
+    case "webui_tab_restarting":
+      addEvent(`restarting ${event.tabTitle || "terminal"} in ${event.cwd}`);
+      break;
+    case "webui_tab_reloading":
+      addEvent(`reloading ${event.tabTitle || "terminal"} native Pi resources`);
+      addTransientMessage({ role: "native", title: "/reload", content: `Reloading ${event.tabTitle || "terminal"} native Pi resources…`, level: "info" });
+      break;
+    case "webui_tab_reloaded":
+      addEvent(`${event.tabTitle || "terminal"} reloaded`);
+      addTransientMessage({ role: "native", title: "/reload", content: `${event.tabTitle || "terminal"} reloaded. Keybindings, extensions, skills, prompts, and themes were refreshed by restarting the RPC tab${event.sessionFile ? ` and resuming ${event.sessionFile}` : ""}.`, level: "info" });
+      clearContextUsageUnknownAfterCompaction(event.tabId || activeTabId);
+      statusEntries.clear();
+      clearWidgetsForTab(event.tabId || activeTabId);
+      latestBtwWidgetPayload = null;
+      btwWidgetDismissedId = "";
+      btwWidgetComposerOpen = false;
+      btwWidgetInputDraft = "";
+      resetOptionalFeatureAvailability();
+      renderStatus();
+      renderWidgets();
+      refreshTabs().catch((error) => addEvent(error.message, "error"));
+      setTimeout(() => {
+        if (!isCurrentTabContext(tabContext)) return;
+        refreshAll(tabContext).catch((error) => {
+          if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+        });
+      }, 500);
+      break;
+    case "webui_extension_ui_cancelled":
+      removeQueuedDialogRequests(event.ids || []);
+      addEvent(`cancelled ${event.ids?.length || 0} pending extension UI request(s)`, "warn");
+      break;
+    case "webui_extension_ui_resolved": {
+      const closedActiveDialog = removeQueuedDialogRequests([event.id]);
+      if (closedActiveDialog) {
+        addEvent("extension UI request resolved");
+        if (runIndicatorIsActive() && !activeDialog) setRunIndicatorActivity("Continuing after extension UI response…");
+      }
+      break;
+    }
+    case "webui_app_runner_update":
+      setAppRunnerData(event.tabId || activeTabId, { cwd: event.cwd, activeRun: event.activeRun });
+      renderAppRunnerControls();
+      renderWidgets();
+      renderTabs();
+      break;
+    case "webui_cwd_changed":
+      addEvent(`${event.tabTitle || "terminal"} cwd changed to ${event.cwd}`);
+      setAppRunnerData(event.tabId || activeTabId, { cwd: event.cwd, activeRun: null, runners: [] });
+      renderAppRunnerControls();
+      renderWidgets();
+      renderTabs();
+      refreshTabs().catch((error) => addEvent(error.message, "error"));
+      refreshAppRunners(tabContext).catch((error) => addEvent(error.message, "error"));
+      scheduleRefreshFooter();
+      break;
+    case "webui_network_rebinding": {
+      const closing = !!event.closing;
+      const opening = event.opening === undefined ? !closing : !!event.opening;
+      addEvent(
+        closing
+          ? `webui network listener closing to ${event.host}:${event.port}; event stream will reconnect or disconnect`
+          : `webui network listener rebinding on ${event.host}:${event.port}; event stream will reconnect`,
+        "warn",
+      );
+      latestNetwork = { ...(latestNetwork || {}), opening, closing };
+      renderNetworkStatus();
+      break;
+    }
+    case "webui_remote_auth_changed":
+      latestNetwork = { ...(latestNetwork || {}), auth: event.auth || {} };
+      addEvent(`remote PIN auth ${event.auth?.enabled ? "enabled" : "disabled"}`, event.auth?.enabled ? "warn" : "info");
+      renderNetworkStatus();
+      break;
+    case "pi_process_exit":
+      addEvent(`pi rpc exited (${event.code ?? event.signal ?? "unknown"})`, "error");
+      clearRunIndicatorActivity();
+      refreshTabs().catch((error) => addEvent(error.message, "error"));
+      break;
+    case "pi_process_error":
+      addEvent(event.error || "pi rpc process error", "error");
+      clearRunIndicatorActivity();
+      refreshTabs().catch((error) => addEvent(error.message, "error"));
+      break;
+    case "pi_stderr":
+      addEvent(event.text.trim(), "warn");
+      break;
+    case "queue_update":
+      renderQueue(event);
+      scheduleRefreshState();
+      break;
+    case "agent_start":
+      if (currentState) currentState = { ...currentState, isStreaming: true };
+      setRunIndicatorActivity("Agent run started; waiting for first output or action…");
+      addEvent("agent started");
+      scheduleRefreshState();
+      renderFooter();
+      renderFeedbackTray();
+      break;
+    case "agent_end":
+      streamMessageActive = false;
+      addEvent("agent finished");
+      notifyAgentDone(event.tabId || activeTabId, { activity: event.tabActivity, tabTitle: event.tabTitle });
+      clearContextUsageUnknownAfterCompaction(event.tabId || activeTabId);
+      if (currentState) currentState = { ...currentState, isStreaming: false };
+      clearRunIndicatorActivity();
+      markTabOutputSeen();
+      requestGitFooterWebuiPayload(tabContext, { force: true });
+      scheduleRefreshState();
+      scheduleRefreshMessages();
+      scheduleRefreshFooter();
+      scheduleRefreshCodexUsage(2200);
+      renderFeedbackTray();
+      {
+        const workflowTabId = event.tabId || activeTabId;
+        const workflow = gitWorkflowForTab(workflowTabId, { create: false });
+        if (workflow?.active && workflow.step === "generating") {
+          loadGitWorkflowMessage({ requireFresh: true, retries: 3, runId: workflow.runId, tabId: workflowTabId });
+        } else if (workflow?.active && workflow.step === "branchNaming") {
+          loadGitWorkflowBranchName({ requireFresh: true, retries: 3, runId: workflow.runId, tabId: workflowTabId });
+        } else if (workflow?.active && workflow.step === "prGenerating") {
+          loadGitWorkflowPr({ requireFresh: true, retries: 3, runId: workflow.runId, tabId: workflowTabId });
+        }
+      }
+      break;
+    case "message_start":
+      if (event.message?.role === "assistant") {
+        resetStreamBubble();
+        streamMessageActive = true;
+        setRunIndicatorActivity("Starting assistant message…", { scroll: false });
+      }
+      break;
+    case "message_update":
+      handleMessageUpdate(event);
+      break;
+    case "message_end":
+      streamMessageActive = false;
+      if (runIndicatorIsActive()) setRunIndicatorActivity("Assistant message finished; waiting for the next step…", { scroll: false });
+      scheduleRefreshMessages();
+      scheduleRefreshState();
+      scheduleRefreshFooter();
+      break;
+    case "tool_execution_start":
+      streamToolCallSeen = true;
+      suppressStreamingAssistantTextBeforeToolCall();
+      removeStreamingToolCallCard();
+      handleToolExecutionStart(event);
+      setRunIndicatorActivity(`Running tool: ${runIndicatorToolName(event.toolName)}…`);
+      addEvent(`tool ${event.toolName} started`);
+      break;
+    case "tool_execution_update":
+      handleToolExecutionUpdate(event);
+      setRunIndicatorActivity(`Running tool: ${runIndicatorToolName(event.toolName)}…`, { scroll: false });
+      break;
+    case "tool_execution_end":
+      handleToolExecutionEnd(event);
+      setRunIndicatorActivity(`Tool ${runIndicatorToolName(event.toolName)} ${event.isError ? "failed" : "finished"}; waiting for the agent's next step…`);
+      addEvent(`tool ${event.toolName} ${event.isError ? "failed" : "finished"}`, event.isError ? "error" : "info");
+      // No transcript refresh here: the live tool card already shows the
+      // result via renderLiveToolRun, and message_end/agent_end reconcile the
+      // transcript. This avoids one fetch+render per tool call.
+      scheduleRefreshFooter();
+      break;
+    case "compaction_start":
+      if (currentState) currentState = { ...currentState, isCompacting: true };
+      markContextUsageUnknownAfterCompaction(event.tabId || activeTabId);
+      setRunIndicatorActivity(`Compacting context${event.reason ? ` (${event.reason})` : ""}…`);
+      addEvent(`compaction started (${event.reason})`);
+      renderStatus();
+      break;
+    case "compaction_end":
+      if (currentState) currentState = { ...currentState, isCompacting: false };
+      if (event.aborted) clearContextUsageUnknownAfterCompaction(event.tabId || activeTabId);
+      else markContextUsageUnknownAfterCompaction(event.tabId || activeTabId);
+      addEvent(`compaction ${event.aborted ? "aborted" : "finished"}`);
+      if (!currentState?.isStreaming) clearRunIndicatorActivity();
+      markTabOutputSeen();
+      renderStatus();
+      scheduleRefreshState();
+      scheduleRefreshMessages();
+      scheduleRefreshFooter();
+      break;
+    case "auto_retry_start": {
+      const seconds = Math.max(0, Math.ceil(Number(event.delayMs || 0) / 1000));
+      const retryText = `Retrying (${event.attempt || "?"}/${event.maxAttempts || "?"}) in ${seconds}s after: ${event.errorMessage || "model/provider error"}`;
+      setRunIndicatorActivity(retryText);
+      addEvent(retryText, "warn");
+      addTransientMessage({ role: "warn", title: "auto retry", content: retryText, level: "warn" });
+      break;
+    }
+    case "auto_retry_end":
+      if (event.success === false) {
+        const retryError = `Retry failed after ${event.attempt || "?"} attempt(s): ${event.finalError || "Unknown error"}`;
+        addEvent(retryError, "error");
+        addTransientMessage({ role: "error", title: "auto retry failed", content: retryError, level: "error" });
+      } else {
+        addEvent(`retry recovered after ${event.attempt || "?"} attempt(s)`);
+      }
+      break;
+    case "extension_error": {
+      const message = `${event.extensionPath || "extension"}${event.event ? ` during ${event.event}` : ""}: ${event.error || "unknown extension error"}`;
+      addEvent(message, "error");
+      addTransientMessage({ role: "error", title: "extension error", content: message, level: "error" });
+      break;
+    }
+    case "extension_ui_request":
+      handleExtensionUiRequest(event);
+      break;
+    case "response":
+      if (event.success === false) addEvent(`${event.command} failed: ${event.error || "unknown error"}`, "error");
+      else if (event.command === "get_state" && event.tabId === activeTabId) {
+        currentState = event.data || currentState;
+        syncActiveTabActivityFromState(currentState);
+        syncRunIndicatorFromState(currentState);
+        renderStatus();
+      } else if (["set_model", "cycle_model", "set_thinking_level", "cycle_thinking_level", "new_session", "compact"].includes(event.command)) {
+        if (event.command === "set_model") {
+          applyOptimisticModelSelection(event.data, tabContext);
+        } else if (event.command === "cycle_model") {
+          applyOptimisticModelSelection(event.data?.model, tabContext);
+        } else if (event.command === "set_thinking_level" || event.command === "cycle_thinking_level") {
+          applyOptimisticThinkingSelection(event.data, tabContext);
+        } else if (event.command === "new_session") {
+          const tabId = event.tabId || activeTabId;
+          clearContextUsageUnknownAfterCompaction(tabId);
+          forgetLastUserPrompt(tabId);
+          resetGitWorkflowForTab(tabId);
+        }
+        scheduleRefreshState();
+        scheduleRefreshMessages();
+        scheduleRefreshFooter();
+      }
+      break;
+    default:
+      break;
+  }
+}
+
+function connectEvents(tabContext = activeTabContext()) {
+  eventSource?.close();
+  eventSource = null;
+  if (!tabContext.tabId || !isCurrentTabContext(tabContext)) return;
+  const source = new EventSource(`/api/events?tab=${encodeURIComponent(tabContext.tabId)}`);
+  eventSource = source;
+  source.onmessage = (message) => {
+    if (eventSource !== source || !isCurrentTabContext(tabContext)) return;
+    try {
+      handleEvent(JSON.parse(message.data));
+    } catch (error) {
+      if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+    }
+  };
+  source.onerror = () => {
+    if (eventSource !== source || !isCurrentTabContext(tabContext)) return;
+    addEvent("event stream disconnected; browser will retry", "warn");
+    fetch("/api/health", { cache: "no-store" }).catch((error) => setBackendOffline(true, error));
+  };
+}
+
+elements.copyServerCommandButton?.addEventListener("click", copyServerStartCommand);
+elements.retryServerConnectionButton?.addEventListener("click", retryServerConnection);
+elements.commandSearchInput?.addEventListener("input", renderCommands);
+elements.createPromptListButton?.addEventListener("click", () => openPromptListDialog({ mode: "create" }));
+elements.loadPromptListButton?.addEventListener("click", () => openPromptListDialog({ mode: "load", list: loadedPromptList }));
+elements.runLoadedPromptListButton?.addEventListener("click", () => runLoadedPromptList());
+elements.promptListAddPromptButton?.addEventListener("click", () => {
+  const next = promptListEditorValues();
+  next.push("");
+  renderPromptListEditor(next);
+  setPromptListStatus("Added follow-up prompt.", "muted");
+  queueMicrotask(() => elements.promptListEditorRows?.querySelector(".prompt-list-editor-row:last-child textarea")?.focus());
+});
+elements.promptListDialogLoadButton?.addEventListener("click", () => setPromptListLoadPanelVisible(elements.promptListLoadPanel?.hidden !== false));
+elements.promptListLoadSelectedButton?.addEventListener("click", loadSelectedPromptListIntoEditor);
+elements.promptListDeleteSelectedButton?.addEventListener("click", deleteSelectedPromptList);
+elements.promptListSelect?.addEventListener("change", renderPromptListDialogControls);
+elements.promptListNameInput?.addEventListener("input", () => setPromptListStatus(""));
+elements.promptListSaveButton?.addEventListener("click", saveDisplayedPromptList);
+elements.promptListRunListButton?.addEventListener("click", () => runDisplayedPromptList());
+elements.promptListCloseButton?.addEventListener("click", () => elements.promptListDialog?.close());
+elements.promptListDialog?.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
+elements.attachmentTextCancelButton?.addEventListener("click", closeTextAttachmentEditor);
+elements.attachmentTextSaveButton?.addEventListener("click", saveTextAttachmentEdit);
+elements.attachmentTextEditor?.addEventListener("input", () => {
+  renderTextAttachmentEditorMeta();
+  setAttachmentTextStatus("Unsaved attachment edits.", "warn");
+});
+elements.attachmentTextDialog?.addEventListener("close", () => {
+  activeTextAttachmentEditor = null;
+  if (elements.attachmentTextEditor) elements.attachmentTextEditor.value = "";
+  setAttachmentTextStatus("");
+});
+elements.attachmentTextDialog?.addEventListener("keydown", (event) => {
+  if (!(event.ctrlKey || event.metaKey) || event.altKey || event.shiftKey || event.key.toLowerCase() !== "s") return;
+  event.preventDefault();
+  if (!elements.attachmentTextSaveButton?.disabled) saveTextAttachmentEdit();
+});
+elements.attachmentTextDialog?.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
+elements.skillEditorCancelButton?.addEventListener("click", closeSkillEditor);
+elements.skillEditorSaveButton?.addEventListener("click", saveSkillEditor);
+elements.skillEditorText?.addEventListener("input", () => setSkillEditorStatus("Unsaved skill edits.", "warn"));
+elements.skillEditorDialog?.addEventListener("close", () => {
+  activeSkillEditor = null;
+  if (elements.skillEditorText) elements.skillEditorText.value = "";
+  setSkillEditorStatus("");
+});
+elements.skillEditorDialog?.addEventListener("keydown", (event) => {
+  if (!(event.ctrlKey || event.metaKey) || event.altKey || event.shiftKey || event.key.toLowerCase() !== "s") return;
+  event.preventDefault();
+  if (!elements.skillEditorSaveButton?.disabled) saveSkillEditor();
+});
+elements.skillEditorDialog?.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
+elements.sendFeedbackButton.addEventListener("click", () => submitQueuedActionFeedback());
+elements.composer.addEventListener("submit", (event) => {
+  event.preventDefault();
+  sendPrompt("prompt");
+});
+elements.composerActionsButton.addEventListener("click", () => {
+  setComposerActionsOpen(!document.body.classList.contains("composer-actions-open"));
+});
+elements.busyPromptBehaviorTag?.addEventListener("click", (event) => {
+  event.preventDefault();
+  const nextOpen = !busyPromptBehaviorMenuOpen;
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setComposerActionsOpen(false);
+  setBusyPromptBehaviorMenuOpen(nextOpen);
+});
+elements.busyPromptBehaviorTag?.addEventListener("keydown", (event) => {
+  if (!["ArrowDown", "ArrowUp", "Enter", " "].includes(event.key)) return;
+  event.preventDefault();
+  const focusPrevious = event.key === "ArrowUp";
+  setBusyPromptBehaviorMenuOpen(true);
+  requestAnimationFrame(() => {
+    const items = busyPromptBehaviorMenuItems();
+    if (!items.length) return;
+    const currentIndex = Math.max(0, items.findIndex((item) => item.getAttribute("aria-checked") === "true"));
+    const targetIndex = focusPrevious ? (currentIndex - 1 + items.length) % items.length : currentIndex;
+    items[targetIndex]?.focus({ preventScroll: true });
+  });
+});
+elements.busyPromptBehaviorMenu?.addEventListener("click", (event) => {
+  const item = event.target?.closest?.("[data-busy-prompt-behavior]");
+  if (!item) return;
+  chooseBusyPromptBehaviorFromMenu(item.dataset.busyPromptBehavior);
+});
+elements.busyPromptBehaviorMenu?.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    setBusyPromptBehaviorMenuOpen(false);
+    elements.busyPromptBehaviorTag?.focus({ preventScroll: true });
+    return;
+  }
+  if (event.key === "ArrowDown" || event.key === "ArrowUp") {
+    event.preventDefault();
+    focusBusyPromptBehaviorMenuItem(event.key === "ArrowDown" ? 1 : -1);
+    return;
+  }
+  if (event.key === "Home" || event.key === "End") {
+    event.preventDefault();
+    const items = busyPromptBehaviorMenuItems();
+    items[event.key === "Home" ? 0 : items.length - 1]?.focus({ preventScroll: true });
+    return;
+  }
+  if (event.key === "Tab") {
+    setBusyPromptBehaviorMenuOpen(false);
+  }
+});
+elements.steerButton.addEventListener("click", () => sendPromptFromModeButton("steer", elements.steerButton));
+elements.followUpButton.addEventListener("click", () => sendPromptFromModeButton("follow-up", elements.followUpButton));
+elements.btwButton?.addEventListener("click", () => sendBtwPromptFromButton());
+elements.terminalTabsToggleButton.addEventListener("click", () => {
+  setMobileTabsExpanded(!document.body.classList.contains("mobile-tabs-expanded"));
+});
+elements.newTabButton.addEventListener("click", (event) => {
+  event.stopPropagation();
+  openNewTabMenu();
+});
+elements.newTabButton.addEventListener("keydown", (event) => {
+  if (event.key !== "ArrowDown" && event.key !== "ArrowUp" && event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  openNewTabMenu();
+  focusNewTabMenuItem(event.key === "ArrowUp" ? "last" : "first");
+});
+elements.newTabMenuPanel?.addEventListener("keydown", (event) => {
+  if (event.key === "Escape") {
+    event.preventDefault();
+    setNewTabMenuOpen(false);
+    elements.newTabButton.focus({ preventScroll: true });
+  } else if (event.key === "ArrowDown") {
+    event.preventDefault();
+    moveNewTabMenuFocus(1);
+  } else if (event.key === "ArrowUp") {
+    event.preventDefault();
+    moveNewTabMenuFocus(-1);
+  } else if (event.key === "Home") {
+    event.preventDefault();
+    focusNewTabMenuItem("first");
+  } else if (event.key === "End") {
+    event.preventDefault();
+    focusNewTabMenuItem("last");
+  }
+});
+elements.newTabMenu?.addEventListener("pointerenter", () => openNewTabMenu());
+elements.newTabMenu?.addEventListener("pointerleave", () => {
+  if (!elements.newTabMenu?.contains(document.activeElement)) setNewTabMenuOpen(false);
+});
+elements.newTabMenu?.addEventListener("focusin", () => openNewTabMenu());
+elements.newTabMenu?.addEventListener("focusout", () => {
+  setTimeout(() => {
+    if (!elements.newTabMenu?.contains(document.activeElement)) setNewTabMenuOpen(false);
+  }, 0);
+});
+elements.newTabCurrentDirectoryButton?.addEventListener("click", () => createTerminalTab(currentDirectoryForNewTab(), { triggerButton: elements.newTabCurrentDirectoryButton }));
+elements.newTabChooseDirectoryButton?.addEventListener("click", () => createTerminalTabFromChosenDirectory({ triggerButton: elements.newTabChooseDirectoryButton }));
+elements.newTabWorktreeButton?.addEventListener("click", () => openBranchWorktreePicker());
+elements.closeAllTabsButton.addEventListener("click", () => closeAllTerminalTabs());
+elements.commandPaletteButton?.addEventListener("click", () => openCommandPalette());
+elements.workspaceDashboardToggleButton?.addEventListener("click", () => setWorkspaceDashboardCollapsed(!workspaceDashboardCollapsed));
+elements.gitWorkflowButton.addEventListener("click", () => {
+  setComposerActionsOpen(false);
+  startGitWorkflow();
+});
+const publishMenuContainer = elements.publishButton.parentElement;
+elements.publishButton.addEventListener("click", () => {
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setPublishMenuOpen(true);
+});
+publishMenuContainer?.addEventListener("pointerenter", () => {
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setPublishMenuOpen(true);
+});
+publishMenuContainer?.addEventListener("pointerleave", () => setPublishMenuOpen(false));
+publishMenuContainer?.addEventListener("focusin", () => {
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setPublishMenuOpen(true);
+});
+publishMenuContainer?.addEventListener("focusout", () => {
+  setTimeout(() => {
+    if (!publishMenuContainer?.contains(document.activeElement)) setPublishMenuOpen(false);
+  }, 0);
+});
+const nativeCommandMenuContainer = elements.nativeCommandMenuButton.parentElement;
+elements.nativeCommandMenuButton.addEventListener("click", () => {
+  setPublishMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setNativeCommandMenuOpen(true);
+});
+nativeCommandMenuContainer?.addEventListener("pointerenter", () => {
+  setPublishMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setNativeCommandMenuOpen(true);
+});
+nativeCommandMenuContainer?.addEventListener("pointerleave", () => setNativeCommandMenuOpen(false));
+nativeCommandMenuContainer?.addEventListener("focusin", () => {
+  setPublishMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setNativeCommandMenuOpen(true);
+});
+nativeCommandMenuContainer?.addEventListener("focusout", () => {
+  setTimeout(() => {
+    if (!nativeCommandMenuContainer?.contains(document.activeElement)) setNativeCommandMenuOpen(false);
+  }, 0);
+});
+const appRunnerMenuContainer = elements.appRunnerMenuButton?.parentElement;
+elements.appRunnerInfoButton?.addEventListener("click", (event) => {
+  event.preventDefault();
+  event.stopPropagation();
+  openAppRunnerInfoDialog();
+});
+elements.appRunnerInfoCloseButton?.addEventListener("click", closeAppRunnerInfoDialog);
+elements.appRunnerMenuButton?.addEventListener("click", async () => {
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  const tabContext = activeTabContext();
+  try {
+    await refreshAppRunners(tabContext);
+    if (!isCurrentTabContext(tabContext)) return;
+    if (appRunnerMenuCanOpen()) setAppRunnerMenuOpen(true);
+    else if (!appRunnerIsRunning(activeAppRunnerData().activeRun)) openAppRunnerInfoDialog();
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message || String(error), "error");
+  }
+});
+appRunnerMenuContainer?.addEventListener("pointerenter", () => {
+  if (elements.appRunnerMenuButton?.disabled || !appRunnerMenuCanOpen()) return;
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setAppRunnerMenuOpen(true);
+});
+appRunnerMenuContainer?.addEventListener("pointerleave", () => setAppRunnerMenuOpen(false));
+appRunnerMenuContainer?.addEventListener("focusin", () => {
+  if (elements.appRunnerMenuButton?.disabled || !appRunnerMenuCanOpen()) return;
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setOptionsMenuOpen(false);
+  setAppRunnerMenuOpen(true);
+});
+appRunnerMenuContainer?.addEventListener("focusout", () => {
+  setTimeout(() => {
+    if (!appRunnerMenuContainer?.contains(document.activeElement)) setAppRunnerMenuOpen(false);
+  }, 0);
+});
+const optionsMenuContainer = elements.optionsMenuButton.parentElement;
+elements.optionsMenuButton.addEventListener("click", () => {
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(true);
+});
+optionsMenuContainer?.addEventListener("pointerenter", () => {
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(true);
+});
+optionsMenuContainer?.addEventListener("pointerleave", () => setOptionsMenuOpen(false));
+optionsMenuContainer?.addEventListener("focusin", () => {
+  setPublishMenuOpen(false);
+  setNativeCommandMenuOpen(false);
+  setAppRunnerMenuOpen(false);
+  setOptionsMenuOpen(true);
+});
+optionsMenuContainer?.addEventListener("focusout", () => {
+  setTimeout(() => {
+    if (!optionsMenuContainer?.contains(document.activeElement)) setOptionsMenuOpen(false);
+  }, 0);
+});
+elements.releaseNpmButton.addEventListener("click", () => runPublishWorkflow("/release-npm"));
+elements.releaseAurButton.addEventListener("click", () => runPublishWorkflow("/release-aur"));
+elements.nativeSkillsButton.addEventListener("click", () => runNativeCommandMenu("/skills"));
+elements.nativeToolsButton.addEventListener("click", () => runNativeCommandMenu("/tools"));
+elements.optionsCommandPaletteButton.addEventListener("click", () => openCommandPalette());
+elements.optionsResumeButton.addEventListener("click", () => runNativeCommandMenu("/resume"));
+elements.optionsReloadButton.addEventListener("click", () => runNativeCommandMenu("/reload"));
+elements.optionsRemoteButton.addEventListener("click", () => runNativeCommandMenu("/remote"));
+elements.optionsNameButton.addEventListener("click", () => runNativeCommandMenu("/name"));
+elements.optionsCloneButton.addEventListener("click", () => runNativeCommandMenu("/clone"));
+elements.optionsSettingsButton.addEventListener("click", () => runNativeCommandMenu("/settings"));
+elements.optionsExportButton.addEventListener("click", () => runNativeCommandMenu("/export"));
+elements.optionsForkButton.addEventListener("click", () => runNativeCommandMenu("/fork"));
+elements.optionsTreeButton.addEventListener("click", () => runNativeCommandMenu("/tree"));
+elements.optionsStatsButton?.addEventListener("click", () => openStatsOverlay({ refresh: true }));
+elements.statsOverlayRefreshButton?.addEventListener("click", () => requestStatsOverlayRefresh());
+elements.statsOverlayScope?.addEventListener("change", () => {
+  const custom = elements.statsOverlayScope?.value === "custom";
+  if (elements.statsOverlayCustomDays) elements.statsOverlayCustomDays.hidden = !custom;
+  if (custom) {
+    elements.statsOverlayCustomDays?.focus();
+    return;
+  }
+  requestStatsOverlayRefresh();
+});
+elements.statsOverlayCustomDays?.addEventListener("change", () => requestStatsOverlayRefresh());
+elements.statsOverlayCustomDays?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  requestStatsOverlayRefresh();
+});
+elements.statsOverlayCloseButton?.addEventListener("click", () => elements.statsOverlayDialog?.close());
+elements.statsOverlayDialog?.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
+elements.gitWorkflowSteps.addEventListener("click", (event) => {
+  const target = event.target instanceof Element ? event.target : null;
+  const button = target?.closest("[data-git-workflow-process]");
+  if (!button || !elements.gitWorkflowSteps.contains(button) || button.disabled) return;
+  selectGitWorkflowProcess(button.dataset.gitWorkflowProcess);
+});
+elements.gitWorkflowCancelButton.addEventListener("click", () => cancelGitWorkflow());
+elements.gitPrCancelButton?.addEventListener("click", () => resolveGitPrDialog(null));
+elements.gitPrCreateButton?.addEventListener("click", () => {
+  const title = elements.gitPrTitleInput?.value.trim() || "";
+  const body = elements.gitPrBodyEditor?.value.trimEnd() || "";
+  if (!title) {
+    setGitPrDialogStatus("PR title is required.", "error");
+    elements.gitPrTitleInput?.focus();
+    return;
+  }
+  if (!body.trim()) {
+    setGitPrDialogStatus("PR description is required.", "error");
+    elements.gitPrBodyEditor?.focus();
+    return;
+  }
+  resolveGitPrDialog({ title, body });
+});
+elements.gitPrDialog?.addEventListener("close", () => {
+  if (activeGitPrDialogResolve) resolveGitPrDialog(null);
+});
+elements.nativeCommandDialog.addEventListener("close", () => {
+  elements.nativeCommandSearch.oninput = null;
+  nativeCommandTabId = null;
+});
+elements.commandPaletteDialog?.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
+elements.commandPaletteDialog?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeCommandPalette();
+});
+elements.commandPaletteCloseButton?.addEventListener("click", closeCommandPalette);
+elements.commandPaletteInput?.addEventListener("input", () => {
+  commandPaletteIndex = 0;
+  renderCommandPalette();
+});
+elements.commandPaletteInput?.addEventListener("keydown", (event) => {
+  if (event.key === "ArrowDown") {
+    event.preventDefault();
+    setCommandPaletteIndex(commandPaletteIndex + 1);
+  } else if (event.key === "ArrowUp") {
+    event.preventDefault();
+    setCommandPaletteIndex(commandPaletteIndex - 1);
+  } else if (event.key === "Enter") {
+    event.preventDefault();
+    executeCommandPaletteItem();
+  } else if (event.key === "Escape") {
+    event.preventDefault();
+    closeCommandPalette();
+  }
+});
+elements.editRetryDialog?.querySelector("form")?.addEventListener("submit", (event) => event.preventDefault());
+elements.editRetryDialog?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeEditRetryDialog();
+});
+elements.editRetryDialog?.addEventListener("close", () => {
+  activeEditRetry = null;
+  setEditRetryBusy(false);
+});
+elements.editRetryCancelButton?.addEventListener("click", closeEditRetryDialog);
+elements.editRetryForkButton?.addEventListener("click", () => submitEditRetry({ send: false }));
+elements.editRetrySendButton?.addEventListener("click", () => submitEditRetry({ send: true }));
+
+function abortButtonHoldSeconds() {
+  return String(Math.round(ABORT_LONG_PRESS_MS / 1000));
+}
+
+function abortButtonReadyTitle() {
+  return `Hold Esc or the Abort button for ${abortButtonHoldSeconds()} seconds to abort the active Pi run`;
+}
+
+function suppressEmptyPromptEscapeAction({ untilKeyup = false, graceMs = EMPTY_PROMPT_ESCAPE_AFTER_ABORT_GRACE_MS } = {}) {
+  lastEmptyPromptEscapeTime = 0;
+  suppressEmptyPromptEscapeUntil = Math.max(suppressEmptyPromptEscapeUntil, Date.now() + graceMs);
+  if (untilKeyup) escapeAbortHoldSuppressesDoubleEscape = true;
+}
+
+function finishEscapeAbortHoldSuppression() {
+  if (!escapeAbortHoldSuppressesDoubleEscape) return;
+  escapeAbortHoldSuppressesDoubleEscape = false;
+  suppressEmptyPromptEscapeAction();
+}
+
+function shouldSuppressEmptyPromptEscapeAction() {
+  if (escapeAbortHoldSuppressesDoubleEscape) return true;
+  if (suppressEmptyPromptEscapeUntil > Date.now()) return true;
+  suppressEmptyPromptEscapeUntil = 0;
+  return false;
+}
+
+function clearAbortLongPressResetTimer() {
+  clearTimeout(abortLongPressResetTimer);
+  abortLongPressResetTimer = null;
+}
+
+function clearAbortLongPressCompletionTimers() {
+  clearTimeout(abortLongPressTimer);
+  clearInterval(abortLongPressTickTimer);
+  abortLongPressTimer = null;
+  abortLongPressTickTimer = null;
+}
+
+function isAbortLongPressActive() {
+  return abortLongPressStartedAt > 0;
+}
+
+function abortLongPressRemainingMs() {
+  if (!abortLongPressStartedAt || !abortLongPressDeadlineAt) return ABORT_LONG_PRESS_MS;
+  return Math.max(0, abortLongPressDeadlineAt - performance.now());
+}
+
+function formatAbortLongPressRemaining(ms) {
+  return (Math.ceil(Math.max(0, ms) / 100) / 10).toFixed(1);
+}
+
+function abortLongPressLabel() {
+  const remaining = formatAbortLongPressRemaining(abortLongPressRemainingMs());
+  return abortLongPressSource === "escape" ? `Hold Esc ${remaining}s` : `Hold ${remaining}s`;
+}
+
+function renderAbortLongPressAffordance() {
+  const label = abortLongPressLabel();
+  elements.abortButton.textContent = label;
+  elements.abortButton.title = `${label} more to abort the active Pi run`;
+  elements.abortButton.setAttribute("aria-label", elements.abortButton.title);
+}
+
+function completeAbortLongPress() {
+  if (!isAbortLongPressActive()) return;
+  if (abortLongPressReleasePending) return;
+  const source = abortLongPressSource;
+  if (source === "escape") suppressEmptyPromptEscapeAction({ untilKeyup: true });
+  clearAbortLongPressResetTimer();
+  clearAbortLongPressCompletionTimers();
+  abortLongPressHandled = true;
+  if (isAbortAvailable()) abortActiveRun({ source });
+  else {
+    resetAbortLongPressAffordance();
+    updateComposerModeButtons();
+  }
+}
+
+function tickAbortLongPressAffordance() {
+  if (!isAbortLongPressActive()) return;
+  renderAbortLongPressAffordance();
+  if (abortLongPressRemainingMs() <= 0) completeAbortLongPress();
+}
+
+function resumeAbortLongPressAffordance() {
+  if (!isAbortLongPressActive()) return;
+  clearAbortLongPressResetTimer();
+  abortLongPressReleasePending = false;
+  tickAbortLongPressAffordance();
+}
+
+function scheduleAbortLongPressReleaseReset() {
+  if (!isAbortLongPressActive()) return;
+  abortLongPressReleasePending = true;
+  clearAbortLongPressResetTimer();
+  abortLongPressResetTimer = setTimeout(() => {
+    abortLongPressResetTimer = null;
+    if (!abortLongPressReleasePending) return;
+    resetAbortLongPressAffordance();
+    updateComposerModeButtons();
+  }, ABORT_LONG_PRESS_RELEASE_GRACE_MS);
+}
+
+function resetAbortLongPressAffordance() {
+  clearAbortLongPressResetTimer();
+  clearAbortLongPressCompletionTimers();
+  abortLongPressStartedAt = 0;
+  abortLongPressDeadlineAt = 0;
+  abortLongPressSource = "long-press";
+  abortLongPressReleasePending = false;
+  elements.abortButton.classList.remove("long-pressing");
+  elements.abortButton.style.removeProperty("--abort-long-press-duration");
+  if (!abortRequestInFlight) {
+    elements.abortButton.textContent = "Abort";
+    elements.abortButton.title = isAbortAvailable() ? abortButtonReadyTitle() : "Abort is available while Pi is running";
+    elements.abortButton.setAttribute("aria-label", elements.abortButton.title);
+  }
+}
+
+async function abortActiveRun({ source = "button" } = {}) {
+  if (abortRequestInFlight || !isAbortAvailable()) return;
+  const tabContext = activeTabContext();
+  abortRequestInFlight = true;
+  resetAbortLongPressAffordance();
+  updateComposerModeButtons();
+  const hadActiveBash = isUserBashActive(tabContext.tabId);
+  const hadActiveRun = runIndicatorIsActive();
+  try {
+    if (hadActiveBash) {
+      const command = userBashByTab.get(tabContext.tabId)?.command || "bash";
+      setRunIndicatorActivity(`Abort requested${source === "escape" ? " from Esc" : source === "long-press" ? " from long-press" : ""}; stopping bash…`);
+      await api("/api/abort-bash", { method: "POST", body: {}, tabId: tabContext.tabId });
+      if (!isCurrentTabContext(tabContext)) return;
+      addTransientMessage({ role: "native", title: "bash aborted", content: `⛔ Abort requested for bash command:\n${command}`, level: "warn" });
+      return;
+    }
+    if (hadActiveRun) setRunIndicatorActivity(`Abort requested${source === "escape" ? " from Esc" : source === "long-press" ? " from long-press" : ""}; checking whether Pi stopped…`);
+    await api("/api/abort", { method: "POST", body: {}, tabId: tabContext.tabId });
+    if (!isCurrentTabContext(tabContext)) return;
+    addAbortTranscriptNotice({ activeRun: hadActiveRun });
+    scheduleAbortStateChecks(tabContext);
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) {
+      addEvent(error.message, "error");
+      addAbortTranscriptNotice({ errorMessage: error.message });
+    }
+  } finally {
+    abortRequestInFlight = false;
+    updateComposerModeButtons();
+  }
+}
+
+function startAbortLongPress(event, { source = "long-press" } = {}) {
+  if (!isAbortAvailable() || abortRequestInFlight) return false;
+  if (source !== "escape" && event?.button !== undefined && event.button !== 0) return false;
+  if (source === "escape") suppressEmptyPromptEscapeAction({ untilKeyup: true, graceMs: ABORT_LONG_PRESS_MS + EMPTY_PROMPT_ESCAPE_AFTER_ABORT_GRACE_MS });
+  if (isAbortLongPressActive()) {
+    resumeAbortLongPressAffordance();
+    return true;
+  }
+  resetAbortLongPressAffordance();
+  abortLongPressHandled = false;
+  abortLongPressReleasePending = false;
+  abortLongPressSource = source;
+  abortLongPressStartedAt = performance.now();
+  abortLongPressDeadlineAt = abortLongPressStartedAt + ABORT_LONG_PRESS_MS;
+  elements.abortButton.style.setProperty("--abort-long-press-duration", `${ABORT_LONG_PRESS_MS}ms`);
+  elements.abortButton.classList.add("long-pressing");
+  renderAbortLongPressAffordance();
+  abortLongPressTickTimer = setInterval(tickAbortLongPressAffordance, ABORT_LONG_PRESS_TICK_MS);
+  abortLongPressTimer = setTimeout(tickAbortLongPressAffordance, ABORT_LONG_PRESS_MS + 10);
+  return true;
+}
+
+elements.abortButton.addEventListener("pointerdown", startAbortLongPress);
+for (const eventName of ["pointerup", "pointerleave", "pointercancel", "blur"]) {
+  elements.abortButton.addEventListener(eventName, resetAbortLongPressAffordance);
+}
+elements.abortButton.addEventListener("keydown", (event) => {
+  if (event.key !== " " && event.key !== "Enter") return;
+  if (startAbortLongPress(event)) event.preventDefault();
+});
+elements.abortButton.addEventListener("keyup", (event) => {
+  if (event.key === " " || event.key === "Enter") resetAbortLongPressAffordance();
+});
+elements.abortButton.addEventListener("click", (event) => {
+  event.preventDefault();
+  if (abortLongPressHandled) abortLongPressHandled = false;
+});
+elements.newSessionButton.addEventListener("click", async () => {
+  setComposerActionsOpen(false);
+  const tabContext = activeTabContext();
+  if (!confirm("Start a new Pi session?")) return;
+  try {
+    const response = await api("/api/new-session", { method: "POST", body: {}, tabId: tabContext.tabId });
+    applyResponseTab(response);
+    forgetLastUserPrompt(tabContext.tabId);
+    resetGitWorkflowForTab(tabContext.tabId);
+    if (!isCurrentTabContext(tabContext)) return;
+    await refreshAll(tabContext);
+    if (isCurrentTabContext(tabContext)) focusPromptInput({ defer: true });
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  }
+});
+elements.compactButton.addEventListener("click", async () => {
+  setComposerActionsOpen(false);
+  await requestManualCompaction({ triggerButton: elements.compactButton });
+});
+function toggleModelSearchInput() {
+  if (elements.modelSearchInput?.hidden) showModelSearchInput();
+  else hideModelSearchInput();
+}
+
+elements.modelControlLabel?.addEventListener("click", (event) => {
+  event.preventDefault();
+  toggleModelSearchInput();
+});
+elements.modelControlLabel?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  toggleModelSearchInput();
+});
+elements.modelSelect?.addEventListener("pointerdown", (event) => {
+  if (!elements.modelSearchInput || !elements.modelSearchInput.hidden) return;
+  event.preventDefault();
+  showModelSearchInput();
+});
+elements.modelSelect?.addEventListener("focus", () => showModelSearchInput());
+elements.modelSearchInput?.addEventListener("input", () => {
+  populateModelSelect(availableModels, elements.modelSearchInput.value);
+  syncModelSelectToState();
+});
+elements.modelSearchInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    elements.setModelButton?.click();
+  } else if (event.key === "Escape") {
+    elements.modelSearchInput.value = "";
+    populateModelSelect(availableModels, "");
+    syncModelSelectToState();
+    elements.modelSearchInput.focus();
+  }
+});
+elements.setModelButton.addEventListener("click", async () => {
+  if (!elements.modelSelect.value) return;
+  const tabContext = activeTabContext();
+  try {
+    const selected = JSON.parse(elements.modelSelect.value);
+    const response = await api("/api/model", { method: "POST", body: selected, tabId: tabContext.tabId });
+    if (isCurrentTabContext(tabContext)) {
+      applyOptimisticModelSelection(response.data || selected, tabContext);
+      await refreshState(tabContext);
+    }
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  }
+});
+elements.setThinkingButton.addEventListener("click", async () => {
+  const tabContext = activeTabContext();
+  try {
+    const response = await api("/api/thinking", { method: "POST", body: { level: elements.thinkingSelect.value }, tabId: tabContext.tabId });
+    if (isCurrentTabContext(tabContext)) {
+      applyOptimisticThinkingSelection(response.data, tabContext);
+      if (response.data?.pending) {
+        addEvent(response.data.message || `Thinking level ${response.data.level} will apply to the next prompt.`, "info");
+      } else if (response.data?.level) {
+        const requested = response.data.requestedLevel;
+        const effective = response.data.level;
+        addEvent(requested && requested !== effective ? `Thinking level set to ${effective} (requested ${requested}).` : `Thinking level set to ${effective}.`, "info");
+      }
+      await refreshState(tabContext);
+    }
+  } catch (error) {
+    if (isCurrentTabContext(tabContext)) addEvent(error.message, "error");
+  }
+});
+elements.themeControlLabel?.addEventListener("click", (event) => {
+  event.preventDefault();
+  toggleThemeSearchInput();
+});
+elements.themeControlLabel?.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter" && event.key !== " ") return;
+  event.preventDefault();
+  toggleThemeSearchInput();
+});
+elements.themeSelect?.addEventListener("pointerdown", (event) => {
+  if (!elements.themeSearchInput || !elements.themeSearchInput.hidden) return;
+  event.preventDefault();
+  showThemeSearchInput();
+});
+elements.themeSelect?.addEventListener("focus", () => showThemeSearchInput());
+elements.themeSearchInput?.addEventListener("input", () => populateThemeSelect(availableThemes, elements.themeSearchInput.value));
+elements.themeSearchInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    const [theme] = populateThemeSelect(availableThemes, elements.themeSearchInput.value);
+    if (theme) setThemeByName(theme.name, { persist: true, announce: true }).catch((error) => addEvent(error.message || String(error), "error"));
+  } else if (event.key === "Escape") {
+    elements.themeSearchInput.value = "";
+    populateThemeSelect(availableThemes, "");
+    elements.themeSearchInput.focus();
+  }
+});
+elements.themeSelect.addEventListener("change", () => {
+  setThemeByName(elements.themeSelect.value, { persist: true, announce: true }).catch((error) => addEvent(error.message || String(error), "error"));
+});
+if (elements.backgroundChooseButton && elements.backgroundInput) {
+  elements.backgroundChooseButton.addEventListener("click", () => elements.backgroundInput.click());
+  elements.backgroundInput.addEventListener("change", () => {
+    const [file] = Array.from(elements.backgroundInput.files || []);
+    elements.backgroundInput.value = "";
+    setCustomBackgroundFromFile(file).catch((error) => addEvent(error.message || String(error), "error"));
+  });
+}
+if (elements.backgroundClearButton) {
+  elements.backgroundClearButton.addEventListener("click", () => clearCustomBackground().catch((error) => addEvent(error.message || String(error), "error")));
+}
+elements.remoteAuthToggle.addEventListener("change", () => toggleRemoteAuth().catch((error) => addEvent(error.message || String(error), "error")));
+elements.openNetworkButton.addEventListener("click", openToNetwork);
+elements.remoteQrCopyButton?.addEventListener("click", () => copyRemoteWebuiQrUrl().catch((error) => addEvent(error.message || String(error), "error")));
+elements.remoteQrOpenButton?.addEventListener("click", openRemoteWebuiQrUrl);
+elements.remoteQrCloseButton?.addEventListener("click", closeRemoteWebuiQrPopup);
+elements.remoteQrCloseMenuButton?.addEventListener("click", closeRemoteWebuiQrPopup);
+elements.remoteQrDialog?.addEventListener("close", () => {
+  latestRemoteWebuiQrUrl = "";
+  elements.remoteQrDialog?.classList.remove("is-loading");
+});
+elements.serverActionSelect.addEventListener("change", updateServerActionButton);
+elements.runServerActionButton.addEventListener("click", () => runSelectedServerAction().catch((error) => addEvent(error.message || String(error), "error")));
+elements.updateNotificationUpdateButton?.addEventListener("click", () => runPiUpdateAndRestart().catch((error) => addEvent(error.message || String(error), "error")));
+elements.updateNotificationUpdateAllButton?.addEventListener("click", () => runPiUpdateAndRestart({ all: true }).catch((error) => addEvent(error.message || String(error), "error")));
+elements.updateNotificationDismissButton?.addEventListener("click", () => hideUpdateNotification({ remember: true }));
+updateServerActionButton();
+elements.agentDoneNotificationsToggle.addEventListener("change", () => {
+  setAgentDoneNotificationsEnabled(elements.agentDoneNotificationsToggle.checked, {
+    requestPermission: elements.agentDoneNotificationsToggle.checked,
+    announce: true,
+  }).catch((error) => {
+    addEvent(error.message, "error");
+    renderAgentDoneNotificationsToggle();
+  });
+});
+if (elements.thinkingVisibilityToggle) {
+  elements.thinkingVisibilityToggle.addEventListener("change", () => {
+    setThinkingOutputVisible(elements.thinkingVisibilityToggle.checked, { announce: true });
+  });
+}
+if (elements.terminalTabsLayoutSelect) {
+  elements.terminalTabsLayoutSelect.addEventListener("change", () => {
+    setTerminalTabsLayout(elements.terminalTabsLayoutSelect.value, { announce: true });
+  });
+}
+elements.toggleSidePanelButton.addEventListener("click", () => {
+  setSidePanelCollapsed(true);
+});
+elements.sidePanelExpandButton.addEventListener("click", () => {
+  setSidePanelCollapsed(false, { focusPanel: true });
+});
+elements.sidePanelBackdrop.addEventListener("click", () => {
+  setSidePanelCollapsed(true);
+});
+elements.stickyUserPromptButton?.addEventListener("click", jumpToStickyUserPrompt);
+elements.jumpToLatestButton.addEventListener("click", jumpToLatest);
+elements.chat.addEventListener("wheel", noteChatUserScrollIntent, { passive: true });
+elements.chat.addEventListener("touchmove", noteChatUserScrollIntent, { passive: true });
+elements.chat.addEventListener("keydown", (event) => {
+  if (CHAT_SCROLL_KEYS.has(event.key)) noteChatUserScrollIntent(event);
+}, { passive: true });
+elements.chat.addEventListener("scroll", () => {
+  syncAutoFollowFromChatScroll();
+  markTabOutputSeen();
+  updateStickyUserPromptButton();
+}, { passive: true });
+document.addEventListener("pointerdown", beginPointerActivation, { capture: true, passive: true });
+document.addEventListener("pointerup", finishPointerActivation, { capture: true, passive: true });
+document.addEventListener("pointercancel", cancelPointerActivation, { capture: true, passive: true });
+window.addEventListener("blur", cancelPointerActivation, { passive: true });
+document.addEventListener("pointerdown", (event) => {
+  if (openTerminalTabGroupKey && !event.target?.closest?.(".terminal-tab-group")) {
+    clearOpenTerminalTabGroup(openTerminalTabGroupKey);
+  }
+  if (newTabMenuOpen && !event.target?.closest?.(".terminal-new-tab-menu")) {
+    setNewTabMenuOpen(false);
+  }
+  if (document.body.classList.contains("composer-actions-open") && !elements.composer.contains(event.target)) {
+    setComposerActionsOpen(false);
+  }
+  if (publishMenuOpen && !event.target?.closest?.(".composer-publish-menu")) {
+    setPublishMenuOpen(false);
+  }
+  if (nativeCommandMenuOpen && !event.target?.closest?.(".composer-native-command-menu")) {
+    setNativeCommandMenuOpen(false);
+  }
+  if (appRunnerMenuOpen && !event.target?.closest?.(".composer-app-runner-menu")) {
+    setAppRunnerMenuOpen(false);
+  }
+  if (optionsMenuOpen && !event.target?.closest?.(".composer-options-menu")) {
+    setOptionsMenuOpen(false);
+  }
+  if (busyPromptBehaviorMenuOpen && !event.target?.closest?.(".composer-context-tags, .composer-busy-mode-menu")) {
+    setBusyPromptBehaviorMenuOpen(false);
+  }
+  if (document.body.classList.contains("mobile-tabs-expanded") && !elements.tabBar.contains(event.target) && !elements.terminalTabsToggleButton.contains(event.target)) {
+    setNewTabMenuOpen(false);
+    setMobileTabsExpanded(false);
+  }
+  if (isFooterPickerOpen() && !elements.statusBar.contains(event.target)) {
+    setFooterModelPickerOpen(false);
+    setFooterThinkingPickerOpen(false);
+    setFooterBranchPickerOpen(false);
+  }
+}, { passive: true });
+document.addEventListener("pointermove", (event) => {
+  if (openTerminalTabGroupKey && !event.target?.closest?.(".terminal-tab-group")) {
+    clearOpenTerminalTabGroup(openTerminalTabGroupKey);
+  }
+  rememberPointerPosition(event);
+}, { passive: true });
+
+function isTextEntryTarget(target) {
+  if (!target) return false;
+  const tag = String(target.tagName || "").toLowerCase();
+  return target.isContentEditable || tag === "textarea" || tag === "input" || tag === "select";
+}
+
+function shouldHandleNativeAppShortcut(event) {
+  if (event.defaultPrevented) return false;
+  if (elements.dialog?.open || elements.pathPickerDialog?.open || elements.gitChangesDialog?.open || elements.commandPaletteDialog?.open || elements.editRetryDialog?.open || elements.nativeCommandDialog?.open || elements.appRunnerInfoDialog?.open) return false;
+  return event.target === elements.promptInput || !isTextEntryTarget(event.target);
+}
+
+function handleNativeAppShortcut(event) {
+  if (!shouldHandleNativeAppShortcut(event)) return;
+  const key = event.key;
+  const lowerKey = String(key || "").toLowerCase();
+  const ctrlOrMeta = event.ctrlKey || event.metaKey;
+
+  if (ctrlOrMeta && !event.altKey && !event.shiftKey && lowerKey === "k") {
+    event.preventDefault();
+    openCommandPalette();
+    return;
+  }
+  if (ctrlOrMeta && !event.altKey && lowerKey === "l") {
+    event.preventDefault();
+    openNativeModelSelector();
+    return;
+  }
+  if (ctrlOrMeta && !event.altKey && lowerKey === "p") {
+    event.preventDefault();
+    cycleModelFromShortcut(event.shiftKey ? "backward" : "forward");
+    return;
+  }
+  if (ctrlOrMeta && !event.altKey && !event.shiftKey && lowerKey === "t") {
+    event.preventDefault();
+    setThinkingOutputVisible(!thinkingOutputVisible, { announce: true });
+    return;
+  }
+  if (ctrlOrMeta && !event.altKey && !event.shiftKey && lowerKey === "o") {
+    event.preventDefault();
+    setToolOutputGloballyExpanded(!toolOutputGloballyExpanded, { announce: true });
+    return;
+  }
+  if (ctrlOrMeta && !event.altKey && !event.shiftKey && lowerKey === "c") {
+    if (clearPromptFromShortcut()) event.preventDefault();
+    return;
+  }
+  if (!event.ctrlKey && !event.metaKey && !event.altKey && event.shiftKey && key === "Tab") {
+    event.preventDefault();
+    cycleThinkingFromShortcut();
+    return;
+  }
+  if (!event.ctrlKey && !event.metaKey && event.altKey && key === "Enter") {
+    event.preventDefault();
+    if (hasComposerPayload()) sendPrompt("follow-up");
+    return;
+  }
+  if (!event.ctrlKey && !event.metaKey && event.altKey && key === "ArrowUp") {
+    event.preventDefault();
+    restoreQueuedMessagesToComposerFromShortcut();
+  }
+}
+
+// --- Transcript search (Ctrl/Cmd+F) ---
+let chatSearchMatches = [];
+let chatSearchIndex = -1;
+let chatSearchTimer = null;
+
+function chatSearchQueryText() {
+  return (elements.chatSearchInput?.value || "").trim().toLowerCase();
+}
+
+function collectChatSearchMatches(query) {
+  if (!query) return [];
+  const matches = [];
+  for (const bubble of elements.chat.querySelectorAll(".message")) {
+    if (bubble === runIndicatorBubble || bubble.classList.contains("runIndicator")) continue;
+    if ((bubble.textContent || "").toLowerCase().includes(query)) matches.push(bubble);
+  }
+  return matches;
+}
+
+function clearChatSearchHighlights() {
+  for (const bubble of elements.chat.querySelectorAll(".message.search-current")) bubble.classList.remove("search-current");
+}
+
+function updateChatSearchCount() {
+  if (!elements.chatSearchCount) return;
+  const query = chatSearchQueryText();
+  elements.chatSearchCount.textContent = !query ? "" : chatSearchMatches.length === 0 ? "0/0" : `${chatSearchIndex + 1}/${chatSearchMatches.length}`;
+}
+
+function focusChatSearchMatch() {
+  const bubble = chatSearchMatches[chatSearchIndex];
+  if (!bubble) return;
+  if (!bubble.isConnected) {
+    runChatSearch({ navigate: false });
+    return;
+  }
+  clearChatSearchHighlights();
+  bubble.classList.add("search-current");
+  const query = chatSearchQueryText();
+  for (const details of bubble.querySelectorAll("details")) {
+    if (!details.open && (details.textContent || "").toLowerCase().includes(query)) details.open = true;
+  }
+  autoFollowChat = false;
+  lastChatProgrammaticScrollAt = performance.now();
+  bubble.scrollIntoView({ block: "center", behavior: "instant" });
+  updateJumpToLatestButton();
+  updateChatSearchCount();
+}
+
+function runChatSearch({ navigate = false } = {}) {
+  const query = chatSearchQueryText();
+  clearChatSearchHighlights();
+  chatSearchMatches = collectChatSearchMatches(query);
+  if (chatSearchIndex >= chatSearchMatches.length || chatSearchIndex < 0) chatSearchIndex = chatSearchMatches.length - 1;
+  updateChatSearchCount();
+  if (navigate) focusChatSearchMatch();
+}
+
+function stepChatSearch(step) {
+  if (chatSearchMatches.some((bubble) => !bubble.isConnected)) runChatSearch();
+  if (!chatSearchMatches.length) {
+    runChatSearch();
+    if (!chatSearchMatches.length) return;
+  }
+  chatSearchIndex = (chatSearchIndex + step + chatSearchMatches.length) % chatSearchMatches.length;
+  focusChatSearchMatch();
+}
+
+function openChatSearch() {
+  if (!elements.chatSearchBar) return;
+  elements.chatSearchBar.hidden = false;
+  elements.chatSearchInput?.focus();
+  elements.chatSearchInput?.select();
+  if (chatSearchQueryText()) runChatSearch();
+}
+
+function closeChatSearch() {
+  if (!elements.chatSearchBar || elements.chatSearchBar.hidden) return;
+  elements.chatSearchBar.hidden = true;
+  clearChatSearchHighlights();
+  chatSearchMatches = [];
+  chatSearchIndex = -1;
+  updateChatSearchCount();
+}
+
+elements.chatSearchInput?.addEventListener("input", () => {
+  clearTimeout(chatSearchTimer);
+  chatSearchTimer = setTimeout(() => {
+    chatSearchIndex = -1;
+    runChatSearch({ navigate: true });
+  }, 150);
+});
+elements.chatSearchInput?.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    event.preventDefault();
+    stepChatSearch(event.shiftKey ? -1 : 1);
+  } else if (event.key === "Escape") {
+    event.preventDefault();
+    event.stopPropagation();
+    closeChatSearch();
+  }
+});
+elements.chatSearchPrevButton?.addEventListener("click", () => stepChatSearch(-1));
+elements.chatSearchNextButton?.addEventListener("click", () => stepChatSearch(1));
+elements.chatSearchCloseButton?.addEventListener("click", closeChatSearch);
+window.addEventListener("keydown", (event) => {
+  if ((event.ctrlKey || event.metaKey) && !event.altKey && !event.shiftKey && event.key.toLowerCase() === "f") {
+    event.preventDefault();
+    openChatSearch();
+  }
+});
+
+window.addEventListener("keydown", handleNativeAppShortcut, { capture: true });
+document.addEventListener("visibilitychange", () => {
+  if (document.visibilityState === "visible") scheduleForegroundReconcile("visibility resume", 0);
+  else resetAbortLongPressAffordance();
+});
+window.addEventListener("pageshow", () => scheduleForegroundReconcile("page show", 0));
+window.addEventListener("focus", () => scheduleForegroundReconcile("window focus"));
+window.addEventListener("online", () => scheduleForegroundReconcile("network online", 0));
+window.addEventListener("storage", (event) => {
+  if (event.key === OPTIONAL_FEATURES_STORAGE_KEY) reconcileDisabledOptionalFeaturesFromStorage();
+});
+window.addEventListener("keydown", (event) => {
+  if (event.key !== "Escape") return;
+  if (event.defaultPrevented) return;
+  if (elements.dialog?.open || elements.pathPickerDialog?.open || elements.gitChangesDialog?.open || elements.commandPaletteDialog?.open || elements.editRetryDialog?.open) return;
+  if (publishMenuOpen) {
+    setPublishMenuOpen(false);
+    return;
+  }
+  if (nativeCommandMenuOpen) {
+    setNativeCommandMenuOpen(false);
+    return;
+  }
+  if (appRunnerMenuOpen) {
+    setAppRunnerMenuOpen(false);
+    return;
+  }
+  if (optionsMenuOpen) {
+    setOptionsMenuOpen(false);
+    return;
+  }
+  if (busyPromptBehaviorMenuOpen) {
+    setBusyPromptBehaviorMenuOpen(false);
+    elements.busyPromptBehaviorTag?.focus({ preventScroll: true });
+    return;
+  }
+  if (newTabMenuOpen) {
+    setNewTabMenuOpen(false);
+    return;
+  }
+  if (document.body.classList.contains("composer-actions-open")) {
+    setComposerActionsOpen(false);
+    return;
+  }
+  if (document.body.classList.contains("mobile-tabs-expanded")) {
+    setNewTabMenuOpen(false);
+    setMobileTabsExpanded(false);
+    return;
+  }
+  if (isFooterPickerOpen()) {
+    setFooterModelPickerOpen(false);
+    setFooterThinkingPickerOpen(false);
+    setFooterBranchPickerOpen(false);
+    return;
+  }
+  if (!elements.commandSuggest.hidden) {
+    hideCommandSuggestions();
+    return;
+  }
+  if (isSidePanelOverlayView() && !document.body.classList.contains("side-panel-collapsed")) {
+    setSidePanelCollapsed(true);
+    return;
+  }
+  if (isAbortAvailable()) {
+    event.preventDefault();
+    if (abortLongPressSource === "escape" && isAbortLongPressActive()) resumeAbortLongPressAffordance();
+    else if (!event.repeat) startAbortLongPress(event, { source: "escape" });
+    return;
+  }
+  if (shouldSuppressEmptyPromptEscapeAction()) {
+    event.preventDefault();
+    return;
+  }
+  if (event.repeat) {
+    event.preventDefault();
+    return;
+  }
+  if (document.activeElement === elements.promptInput && !elements.promptInput.value.trim() && doubleEscapeAction !== "none") {
+    const now = Date.now();
+    if (now - lastEmptyPromptEscapeTime < 500) {
+      event.preventDefault();
+      lastEmptyPromptEscapeTime = 0;
+      runNativeCommandMenu(`/${doubleEscapeAction}`).catch((error) => addEvent(error.message || String(error), "error"));
+      return;
+    }
+    lastEmptyPromptEscapeTime = now;
+  }
+});
+window.addEventListener("keyup", (event) => {
+  if (event.key !== "Escape") return;
+  if (abortLongPressSource === "escape") scheduleAbortLongPressReleaseReset();
+  finishEscapeAbortHoldSuppression();
+}, { capture: true });
+window.addEventListener("blur", () => {
+  if (abortLongPressSource === "escape") scheduleAbortLongPressReleaseReset();
+  else resetAbortLongPressAffordance();
+  finishEscapeAbortHoldSuppression();
+});
+
+elements.gitChangesRefreshButton?.addEventListener("click", refreshGitChangesDialog);
+elements.gitChangesPullButton?.addEventListener("click", () => pullGitChangesDialog().catch((error) => addEvent(error.message || String(error), "error")));
+elements.gitChangesCloseButton?.addEventListener("click", closeGitChangesDialog);
+elements.gitChangesBody?.addEventListener("scroll", updateGitChangesCurrentFileHeader, { passive: true });
+elements.gitChangesBody?.addEventListener("click", (event) => {
+  const currentHeader = event.target.closest(".git-current-file-header[data-git-current-file]");
+  if (currentHeader) {
+    const path = currentHeader.dataset.gitCurrentFile || "";
+    const file = elements.gitChangesBody?.querySelector(`.git-diff-file[data-git-diff-file=\"${CSS.escape(path)}\"]`);
+    if (!file) return;
+    file.open = !file.open;
+    updateGitChangesCurrentFileHeader();
+    return;
+  }
+  const button = event.target.closest("[data-git-changes-jump-file]");
+  if (!button) return;
+  const path = button.dataset.gitChangesJumpFile || "";
+  const file = elements.gitChangesBody?.querySelector(`.git-diff-file[data-git-diff-file=\"${CSS.escape(path)}\"]`);
+  if (!file) return;
+  file.open = true;
+  file.scrollIntoView({ block: "start", behavior: "smooth" });
+  requestAnimationFrame(updateGitChangesCurrentFileHeader);
+});
+elements.gitChangesDialog?.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closeGitChangesDialog();
+});
+elements.gitChangesDialog?.addEventListener("close", () => {
+  gitChangesRequestSerial += 1;
+  gitChangesState = { ...gitChangesState, loading: false, pulling: false };
+});
+
+elements.refreshCodexUsageButton?.addEventListener("click", () => {
+  refreshCodexUsage({ forceAuthRefresh: true }).finally(() => scheduleRefreshCodexUsage());
+});
+elements.pathPickerCreateNameInput.addEventListener("input", updateCreateDirectoryControls);
+elements.pathPickerCreateNameInput.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  createPathPickerDirectory().catch((error) => addEvent(error.message, "error"));
+});
+elements.pathPickerCreateButton.addEventListener("click", () => createPathPickerDirectory().catch((error) => addEvent(error.message, "error")));
+elements.pathPickerSearchInput.addEventListener("input", renderPathPickerDirectoryList);
+elements.pathPickerSearchInput.addEventListener("keydown", (event) => {
+  if (event.key !== "Enter") return;
+  event.preventDefault();
+  const onlyMatch = pathPickerState?.filteredDirectories?.length === 1 ? pathPickerState.filteredDirectories[0] : null;
+  if (onlyMatch) loadPathPickerDirectory(onlyMatch.cwd);
+});
+elements.pathPickerClearSearchButton.addEventListener("click", () => clearPathPickerSearch({ focus: true }));
+elements.pathPickerAddFastPickButton.addEventListener("click", () => addCurrentFastPick().catch((error) => addEvent(error.message, "error")));
+elements.pathPickerCancelButton.addEventListener("click", () => closePathPicker(null));
+elements.pathPickerChooseButton.addEventListener("click", () => closePathPicker(pathPickerState?.cwd || null));
+elements.pathPickerDialog.addEventListener("cancel", (event) => {
+  event.preventDefault();
+  closePathPicker(null);
+});
+elements.pathPickerDialog.addEventListener("close", () => {
+  if (pathPickerState) closePathPicker(null);
+});
+
+if (elements.attachButton && elements.attachmentInput) {
+  elements.attachButton.addEventListener("click", () => elements.attachmentInput.click());
+  elements.attachmentInput.addEventListener("change", () => {
+    addAttachmentFiles(elements.attachmentInput.files, "picker");
+    elements.attachmentInput.value = "";
+  });
+}
+elements.promptInput.addEventListener("paste", handleAttachmentPaste);
+elements.composer.addEventListener("dragover", handleComposerDragOver);
+elements.composer.addEventListener("dragleave", handleComposerDragLeave);
+elements.composer.addEventListener("drop", handleComposerDrop);
+
+elements.promptInput.addEventListener("keydown", (event) => {
+  if (event.defaultPrevented) return;
+  if (shouldSendPromptFromEnter(event)) {
+    event.preventDefault();
+    hideCommandSuggestions();
+    sendPrompt("prompt");
+    return;
+  }
+
+  if (!elements.commandSuggest.hidden) {
+    if (event.key === "ArrowDown") {
+      event.preventDefault();
+      setActiveCommandSuggestion(commandSuggestIndex + 1);
+      return;
+    }
+    if (event.key === "ArrowUp") {
+      event.preventDefault();
+      setActiveCommandSuggestion(commandSuggestIndex - 1);
+      return;
+    }
+    if (event.key === "Tab" && activeSuggestionCount() > 0) {
+      event.preventDefault();
+      insertCommandSuggestion();
+      return;
+    }
+    if (event.key === "Escape") {
+      event.preventDefault();
+      hideCommandSuggestions();
+    }
+  }
+
+  if (!event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && event.key === "ArrowUp" && recallPreviousPromptFromHistory()) {
+    event.preventDefault();
+    return;
+  }
+  if (!event.ctrlKey && !event.metaKey && !event.altKey && !event.shiftKey && event.key === "ArrowDown" && recallNextPromptFromHistory()) {
+    event.preventDefault();
+  }
+});
+
+elements.promptInput.addEventListener("input", () => {
+  resetPromptHistoryNavigation();
+  if (moveLongPromptInputToAttachment()) return;
+  resizePromptInput();
+  renderCommandSuggestions();
+});
+elements.promptInput.addEventListener("focus", () => {
+  syncMobileChatToBottomForInput();
+  setTimeout(updateVisualViewportVars, 0);
+});
+elements.promptInput.addEventListener("click", () => {
+  resetPromptHistoryNavigation();
+  updateVisualViewportVars();
+  syncMobileChatToBottomForInput();
+  renderCommandSuggestions();
+});
+elements.promptInput.addEventListener("keyup", (event) => {
+  if (["ArrowDown", "ArrowUp", "Enter", "Tab", "Escape"].includes(event.key)) return;
+  renderCommandSuggestions({ keepIndex: true });
+});
+elements.promptInput.addEventListener("blur", () => {
+  setTimeout(() => {
+    if (document.activeElement !== elements.promptInput) hideCommandSuggestions();
+    updateVisualViewportVars();
+  }, 120);
+});
+
+resizePromptInput();
+focusPromptInput({ defer: true });
+restoreStoredSkillUsage();
+restoreBusyPromptBehaviorSetting();
+updateComposerModeButtons();
+updateOptionalFeatureAvailability();
+refreshOptionalFeaturePackageStatuses({ announce: true });
+renderAppRunnerControls();
+renderLoadedPromptListPreview();
+loadLastUserPromptCache();
+loadPromptHistoryCache();
+installViewportHandlers();
+currentThemeName = storedThemeName();
+renderBackgroundControl();
+initializeThemes().catch((error) => {
+  addEvent(`failed to load themes: ${error.message}`, "warn");
+  initializeCustomBackground().catch((backgroundError) => addEvent(`failed to initialize background: ${backgroundError.message}`, "warn"));
+});
+initializeFastPicks().catch((error) => addEvent(`failed to initialize path fast picks: ${error.message}`, "error"));
+restoreAgentDoneNotificationsSetting();
+restoreThinkingVisibilitySetting();
+restoreTerminalTabsLayoutSetting();
+restoreTerminalCustomGroups();
+restoreToolOutputExpansionSetting();
+restoreWorkspaceDashboardState();
+initializeTerminalHeaderTooltips();
+restoreSidePanelSectionState();
+bindSidePanelSectionToggles();
+restoreSidePanelState();
+initializeCodexUsage();
+initializeUpdateNotifications();
+bindMobileViewChanges();
+bindSidePanelOverlayViewChanges();
+registerPwaServiceWorker();
+renderServerOfflinePanel();
+initializeTabs().catch((error) => addEvent(error.message, "error"));
