@@ -2,3 +2,5 @@ node_modules/
 *.tgz
 .DS_Store
 elestio-dashboard-design-system/
+modal.png
+modal-test.png
