@@ -9069,14 +9069,14 @@ button.workspace-dashboard-chip {
 /* Baked here (appended to styles.css) because bin/pi-webui.mjs serves a   */
 /* hardcoded static whitelist — a separate CSS file would 404. These       */
 /* rules are last in the cascade and use !important so they win.           */
-/* Palette: bg #091020, text #E6E9F0, accent #EC5822, hover #F6AB38.        */
+/* Palette: bg #091020, text #E6E9F0, accent #EC5822, hover #EC5822.        */
 /* ===================================================================== */
 :root, body {
   --ctp-base:#091020 !important; --ctp-mantle:#0E1626 !important; --ctp-crust:#070C18 !important;
   --ctp-surface:#213047 !important; --ctp-overlay:#3A4456 !important;
   --ctp-text:#E6E9F0 !important; --ctp-subtext:#B8C0CC !important; --ctp-text-rgb:230,233,240 !important;
   --ctp-red:#EF4444 !important; --ctp-maroon:#F87171 !important; --ctp-green:#22C55E !important;
-  --ctp-teal:#22D3EE !important; --ctp-yellow:#F6AB38 !important; --ctp-peach:#EC5822 !important;
+  --ctp-teal:#22D3EE !important; --ctp-yellow:#EC5822 !important; --ctp-peach:#EC5822 !important;
   --ctp-blue:#00A8EB !important; --ctp-sapphire:#00A8EB !important; --ctp-sky:#38BDF8 !important;
   --ctp-mauve:#EC5822 !important; --ctp-lavender:#EC5822 !important; --ctp-pink:#EC5822 !important;
   --accent:#EC5822 !important; --panel-2:#0E1626 !important; --panel-3:#131D30 !important;
@@ -9088,11 +9088,11 @@ html, body, .layout, .chat-panel, #chat, .composer, #composer, .workspace-dashbo
 }
 /* Single strong accent: Send / primary buttons */
 button.primary, #sendButton { background-color:#EC5822 !important; color:#fff !important; border:1px solid #EC5822 !important; }
-button.primary:hover, #sendButton:hover { background-color:#F6AB38 !important; border-color:#F6AB38 !important; }
-article { border-color:#F6AB38 !important; }
-.composer-busy-mode-tag.follow-up { color:#F6AB38 !important; }
-.message-role { color:#F6AB38 !important; }
-.run-indicator-text { color:#F6AB38 !important; }   /* "Agent is running" (était var(--ctp-teal) = cyan) */
+button.primary:hover, #sendButton:hover { background-color:#EC5822 !important; border-color:#EC5822 !important; }
+article { border-color:#EC5822 !important; }
+.composer-busy-mode-tag.follow-up { color:#EC5822 !important; }
+.message-role { color:#EC5822 !important; }
+.run-indicator-text { color:#EC5822 !important; }   /* "Agent is running" (était var(--ctp-teal) = cyan) */
 /* ----- Lockdown: hide chrome ----- */
 .terminal-tabs-shell, #tabBar, #terminalTabsToggleButton, #commandPaletteButton, #closeAllTabsButton { display:none !important; } /* whole top bar */
 #sidePanel, #sidePanelExpandButton, #sidePanelBackdrop, #toggleSidePanelButton,
