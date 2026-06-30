@@ -1,7 +1,7 @@
 # @elestio/pi-webui
 
 > **Elestio frozen fork** of [`@firstpick/pi-package-webui@0.5.8`](https://www.npmjs.com/package/@firstpick/pi-package-webui) (MIT).
-> The Elestio theme, customer lock-down, steer-mode default, neutralized PWA service worker, and
+> The Elestio "Refined Light" design-system theme, customer lock-down, steer-mode default, neutralized PWA service worker, and
 > removal of the safety-guard / optional companion extensions are **baked into the source** here
 > (previously applied as runtime patches by the backend launch scripts). Pinned to
 > `@earendil-works/pi-coding-agent@0.80.2`. See [`NOTICE`](./NOTICE) for the full change list and

@@ -10,8 +10,11 @@ This package is a frozen, customized fork of:
 
 Changes made by Elestio in this fork (all baked into source, no runtime patching):
 
-  - public/styles.css ......... Elestio brand theme + customer lock-down appended at the
-                                end of the file. NOTE: a separate CSS file is NOT possible —
+  - public/styles.css ......... Elestio "Refined Light" design-system theme + customer
+                                lock-down appended at the end of the file (light panel, accent
+                                #EC5822, dark terminal cards, cream Thinking blocks). It remaps
+                                pi-webui's Catppuccin Mocha variables to the Elestio light
+                                palette. NOTE: a separate CSS file is NOT possible —
                                 bin/pi-webui.mjs (normalizeStaticPath) serves a hardcoded
                                 static whitelist, so any non-whitelisted file 404s. The CSS
                                 must live inside styles.css.

@@ -9065,53 +9065,82 @@ button.workspace-dashboard-chip {
 }
 
 /* ===================================================================== */
-/* Elestio fork (@elestio/pi-webui): brand theme + customer lock-down.    */
-/* Baked here (appended to styles.css) because bin/pi-webui.mjs serves a   */
-/* hardcoded static whitelist — a separate CSS file would 404. These       */
-/* rules are last in the cascade and use !important so they win.           */
-/* Palette: bg #091020, text #E6E9F0, accent #EC5822, hover #F6AB38.        */
+/* Elestio fork (@elestio/pi-webui): LIGHT design-system re-skin.          */
+/* Implements elestio-dashboard-design-system "Refined Light" (Final/1a).  */
+/* Appended to styles.css because bin/pi-webui.mjs (normalizeStaticPath)   */
+/* serves a hardcoded static whitelist — a separate CSS file would 404.    */
+/* Last in the cascade + !important so it wins over Catppuccin Mocha.      */
+/* Palette: app #ECEAE5, panel #fff, text #091020, accent #EC5822,         */
+/* hover #D44D1A, surfaces #F8FAFC/#F2F2F4, border #E4E7EC; code cards stay */
+/* dark (#0D1117). Inter is already pi-webui's UI font.                    */
 /* ===================================================================== */
 :root, body {
-  --ctp-base:#091020 !important; --ctp-mantle:#0E1626 !important; --ctp-crust:#070C18 !important;
-  --ctp-surface:#213047 !important; --ctp-overlay:#3A4456 !important;
-  --ctp-text:#E6E9F0 !important; --ctp-subtext:#B8C0CC !important; --ctp-text-rgb:230,233,240 !important;
-  --ctp-red:#EF4444 !important; --ctp-maroon:#F87171 !important; --ctp-green:#22C55E !important;
-  --ctp-teal:#22D3EE !important; --ctp-yellow:#F6AB38 !important; --ctp-peach:#EC5822 !important;
+  --theme-color-scheme: light !important;
+  color-scheme: light !important;
+
+  /* Catppuccin core remapped to Elestio light tokens */
+  --ctp-base:#FFFFFF !important;      /* panel surface */
+  --ctp-mantle:#F8FAFC !important;    /* light surface: status / input / footers */
+  --ctp-crust:#ECEAE5 !important;     /* outer app background */
+  --ctp-surface:#F2F2F4 !important;   /* chips / subtle fills */
+  --ctp-overlay:#97A0AD !important;   /* muted text / icons */
+  --ctp-text:#091020 !important;      /* primary text */
+  --ctp-subtext:#3D444E !important;   /* secondary text */
+  --ctp-base-rgb:255,255,255 !important;
+  --ctp-mantle-rgb:248,250,252 !important;
+  --ctp-crust-rgb:236,234,229 !important;
+  --ctp-surface-rgb:242,242,244 !important;
+  --ctp-overlay-rgb:151,160,173 !important;
+  --ctp-text-rgb:9,16,32 !important;
+  --ctp-subtext-rgb:61,68,78 !important;
+
+  /* Semantic hues (orange accent replaces mauve/lavender/pink) */
+  --ctp-red:#EF4444 !important; --ctp-maroon:#DC2626 !important;
+  --ctp-green:#22C55E !important; --ctp-teal:#16A34A !important;
+  --ctp-yellow:#D97706 !important; --ctp-peach:#EC5822 !important;
   --ctp-blue:#00A8EB !important; --ctp-sapphire:#00A8EB !important; --ctp-sky:#38BDF8 !important;
   --ctp-mauve:#EC5822 !important; --ctp-lavender:#EC5822 !important; --ctp-pink:#EC5822 !important;
-  --accent:#EC5822 !important; --panel-2:#0E1626 !important; --panel-3:#131D30 !important;
+
+  /* Derived semantic vars -> flat light */
+  --bg:#ECEAE5 !important;
+  --panel:#FFFFFF !important; --panel-2:#F8FAFC !important; --panel-3:#F8FAFC !important;
+  --text:#091020 !important; --muted:#97A0AD !important;
+  --border:#E4E7EC !important;
+  --accent:#EC5822 !important; --accent-2:#22C55E !important; --accent-3:#EC5822 !important;
+  --danger:#EF4444 !important; --warning:#D97706 !important; --ok:#22C55E !important;
+  --button-primary-text:#FFFFFF !important;
+  --shadow:rgba(9,16,32,0.08) !important;
+
+  /* Kill neon gradients / glows from the dark theme */
+  --glow-mauve:transparent !important; --glow-blue:transparent !important;
+  --glow-pink:transparent !important; --glow-teal:transparent !important;
+  --panel-gradient:#FFFFFF !important; --neon-gradient:#EC5822 !important;
+  --context-card-gradient:#F8FAFC !important;
+  --context-active-color:#22C55E !important; --context-active-glow:transparent !important;
+  --background-glow-pink:transparent !important; --background-glow-blue:transparent !important;
+  --background-glow-teal:transparent !important;
+  --theme-background-image:none !important; --theme-background-overlay:none !important;
 }
-/* No gradients / glows anywhere — flat fills only */
+
+/* Flat: no gradient images / glows / shadows leaking from the dark theme */
 *, *::before, *::after { background-image:none !important; box-shadow:none !important; text-shadow:none !important; }
-html, body, .layout, .chat-panel, #chat, .composer, #composer, .workspace-dashboard, .widget-area, .statusbar {
-  background-color:#091020 !important; color:#E6E9F0 !important;
-}
-/* Single strong accent: Send / primary buttons */
-button.primary, #sendButton { background-color:#EC5822 !important; color:#fff !important; border:1px solid #EC5822 !important; }
-button.primary:hover, #sendButton:hover { background-color:#F6AB38 !important; border-color:#F6AB38 !important; }
-article { border-color:#F6AB38 !important; }
-.composer-busy-mode-tag.follow-up { color:#F6AB38 !important; }
-.message-role { color:#F6AB38 !important; }
-.run-indicator-text { color:#F6AB38 !important; }   /* "Agent is running" (était var(--ctp-teal) = cyan) */
+
+/* Base surfaces: white panel on warm-gray app background */
+html, body { background-color:#ECEAE5 !important; color:#091020 !important; }
+.layout, .chat-panel, #chat, .composer, #composer, .workspace-dashboard, .widget-area,
+.statusbar, .message-list, #messageList { background-color:#FFFFFF !important; color:#091020 !important; }
+
 /* ----- Lockdown: hide chrome ----- */
-.terminal-tabs-shell, #tabBar, #terminalTabsToggleButton, #commandPaletteButton, #closeAllTabsButton { display:none !important; } /* whole top bar */
+.terminal-tabs-shell, #tabBar, #terminalTabsToggleButton, #commandPaletteButton, #closeAllTabsButton { display:none !important; }
 #sidePanel, #sidePanelExpandButton, #sidePanelBackdrop, #toggleSidePanelButton,
 #workspaceDashboardToggleButton, #workspaceDashboard { display:none !important; }
 #composerActionsButton, #composerActionsPanel, #newSessionButton, #compactButton, #gitWorkflowButton,
 #publishButton, #nativeCommandMenuButton, #optionsMenuButton, #appRunnerMenu { display:none !important; }
 #attachButton, #attachmentInput, #btwButton { display:none !important; }
-#steerButton, #followUpButton, #abortButton { display:none !important; }  /* boutons contextuels entre input et Send */
-#statusBar { display:none !important; }                                /* footer: PI/API/CWD/GIT/MODEL/EFFORT */
-#stickyUserPromptButton { display:none !important; }                   /* "Last user prompt" */
-/* Input : pas de bleu — texte clair, bordure sobre, focus/caret orange */
-#promptInput, #composer textarea { color:#E6E9F0 !important; caret-color:#EC5822 !important; }
-.composer, .composer-input-row, #promptInput, #composer textarea { border-color:#3A4456 !important; }
-.composer:focus-within, .composer-input-row:focus-within, #promptInput:focus, #composer textarea:focus { border-color:#EC5822 !important; outline-color:#EC5822 !important; }
-/* Scrollbar du chat en orange Elestio */
-#chat { scrollbar-color:#EC5822 transparent !important; scrollbar-width:thin !important; }
-#chat::-webkit-scrollbar { width:10px !important; }
-#chat::-webkit-scrollbar-thumb { background-color:#EC5822 !important; border-radius:6px !important; }
-#chat::-webkit-scrollbar-track { background:transparent !important; }
+#steerButton, #followUpButton, #abortButton { display:none !important; }   /* contextual buttons between input and Send */
+#statusBar { display:none !important; }                                     /* technical footer: PI/API/CWD/GIT/MODEL/EFFORT */
+#stickyUserPromptButton { display:none !important; }
+
 /* ----- Layout: full-width chat + Send on the input line (right) ----- */
 .layout { grid-template-columns: minmax(0, 1fr) !important; padding:0 !important; gap:0 !important; }
 .chat-panel { width:100% !important; max-width:none !important; }
@@ -9120,3 +9149,51 @@ article { border-color:#F6AB38 !important; }
 .composer-input-row { flex:1 1 auto !important; min-width:0 !important; }
 .composer-row { flex:0 0 auto !important; width:auto !important; margin:0 !important; }
 .composer-row .spacer { display:none !important; }
+
+/* ----- Composer input: light surface, orange focus/caret ----- */
+.composer, .composer-input-row { background:#F8FAFC !important; border:1.5px solid #E4E7EC !important; border-radius:10px !important; }
+.composer:focus-within, .composer-input-row:focus-within { border-color:#EC5822 !important; outline-color:#EC5822 !important; }
+#promptInput, #composer textarea, .composer textarea { color:#091020 !important; caret-color:#EC5822 !important; background:transparent !important; }
+#promptInput::placeholder, #composer textarea::placeholder { color:#97A0AD !important; }
+
+/* ----- Send / primary button: orange, white text, hover #D44D1A ----- */
+button.primary, #sendButton { background-color:#EC5822 !important; color:#fff !important; border:1px solid #EC5822 !important; border-radius:10px !important; }
+button.primary:hover, #sendButton:hover { background-color:#D44D1A !important; border-color:#D44D1A !important; }
+
+/* ----- Messages: flat white cards, neutral borders ----- */
+.message { background:#FFFFFF !important; border-color:#E4E7EC !important; color:#091020 !important; }
+.message-role { color:#71717A !important; }
+.message.thinking .message-role, .message.toolCall .message-role, .message.assistantEvent .message-role,
+.message.extension .message-role, .message.native .message-role, .message.notice .message-role,
+.message.toolExecution .message-role, .message.toolResult .message-role, .message.bashExecution .message-role { color:#EC5822 !important; }
+.message.warn .message-role { color:#D97706 !important; }
+.message.user, .message.userPrompt { background:#F8FAFC !important; }
+
+/* ----- Thinking / reasoning: cream card with orange left border ----- */
+.thinking-block, .message.thinking {
+  background:#FFFCF7 !important; border:1px solid #FDDCBB !important;
+  border-left:3px solid #EC5822 !important; border-radius:10px !important;
+}
+.thinking-block > summary { color:#EC5822 !important; font-weight:700 !important; letter-spacing:0.09em !important; text-transform:uppercase !important; }
+.thinking-block.streaming-thinking > summary::after { color:#16A34A !important; }
+.thinking-text { color:#3D444E !important; font-style:italic !important; }
+
+/* ----- Tool output / code: dark terminal cards inside the light UI ----- */
+.tool-output-code, pre { background:#0D1117 !important; color:#E6EDF3 !important; border-radius:8px !important; }
+.message.toolResult .message-body, .message.bashExecution .message-body, .message.toolExecution .message-body { background:#0D1117 !important; color:#E6EDF3 !important; border-radius:8px !important; }
+.tool-output-summary { color:#EC5822 !important; font-weight:700 !important; letter-spacing:0.06em !important; }
+.tool-output-preview-text { color:#8B949E !important; }
+/* inline code (not blocks) -> light chip, orange text (design thinking-card style) */
+:not(pre) > code { background:#FEF0EB !important; color:#EC5822 !important; border-radius:4px !important; }
+
+/* ----- Run indicator ("Agent is running"): light, green pulse ----- */
+.run-indicator-message { background:#F8FAFC !important; border-color:#E4E7EC !important; color:#3D444E !important; }
+.run-indicator-text { color:#3D444E !important; font-weight:600 !important; }
+.run-indicator-meta { color:#71717A !important; }
+.run-indicator-pulse { background:#22C55E !important; }
+
+/* ----- Scrollbars: light (not orange) ----- */
+#chat, .panel-body { scrollbar-color:#E4E7EC transparent !important; scrollbar-width:thin !important; }
+#chat::-webkit-scrollbar, .panel-body::-webkit-scrollbar { width:8px !important; }
+#chat::-webkit-scrollbar-thumb, .panel-body::-webkit-scrollbar-thumb { background-color:#E4E7EC !important; border-radius:6px !important; }
+#chat::-webkit-scrollbar-track, .panel-body::-webkit-scrollbar-track { background:transparent !important; }
