@@ -9154,6 +9154,9 @@ html, body { background-color:#FFFFFF !important; color:#091020 !important; }
 /* ----- Send / primary button ----- */
 button.primary, #sendButton { background-color:#EC5822 !important; color:#fff !important; border:1px solid #EC5822 !important; border-radius:10px !important; box-shadow:none !important; }
 button.primary:hover, #sendButton:hover { background-color:#EC5822 !important; border-color:#EC5822 !important; }
+/* composer: 10px margin, no border; prompt input borderless */
+#composer { margin:10px !important; border:none !important; }
+#promptInput { border:none !important; }
 
 /* ----- Message cards: white, light border ----- */
 .message { background:#FFFFFF !important; border:1px solid #E4E7EC !important; border-radius:12px !important; color:#091020 !important; box-shadow:0 1px 2px rgba(9,16,32,.05) !important; }
