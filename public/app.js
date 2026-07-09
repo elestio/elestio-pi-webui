@@ -954,13 +954,6 @@ const GIT_INIT_STACK_TOOLTIP = [
   "Choose a known stack or type one. The value is saved in this browser.",
   "If left blank, Pi will inspect the codebase and fall back to sane default .gitignore patterns.",
 ].join("\n");
-const MERMAID_MODULE_URL = "/vendor/mermaid/mermaid.esm.min.mjs";
-const MERMAID_LANGUAGES = new Set(["mermaid", "mmd"]);
-const MERMAID_MAX_TEXT_SIZE = 100_000;
-let mermaidModulePromise = null;
-let mermaidThemeSignature = "";
-let mermaidRenderSequence = 0;
-
 function make(tag, className, text) {
   const node = document.createElement(tag);
   if (className) node.className = className;
@@ -14118,7 +14111,7 @@ function setMarkdownCodeCopyButtonState(button, copied) {
 
 async function copyMarkdownCodeBlock(button) {
   const wrapper = button.closest(".markdown-code-block");
-  const codeNode = wrapper?.querySelector(":scope > pre.markdown-code > code, :scope > details.markdown-mermaid-source pre.markdown-code > code");
+  const codeNode = wrapper?.querySelector(":scope > pre.markdown-code > code");
   const text = codeNode?.textContent || "";
   if (!text) {
     addEvent("code block has no text to copy", "warn");
@@ -14153,144 +14146,7 @@ function attachMarkdownCodeCopyButton(wrapper, label = "Copy") {
   return button;
 }
 
-function normalizedMarkdownLanguage(language) {
-  return String(language || "").trim().toLowerCase();
-}
-
-function isMermaidLanguage(language) {
-  return MERMAID_LANGUAGES.has(normalizedMarkdownLanguage(language));
-}
-
-function mermaidCssVar(styles, name, fallback) {
-  return styles.getPropertyValue(name).trim() || fallback;
-}
-
-function mermaidConfig() {
-  const styles = getComputedStyle(document.documentElement);
-  const text = mermaidCssVar(styles, "--ctp-text", "#cdd6f4");
-  const subtext = mermaidCssVar(styles, "--ctp-subtext", "#bac2de");
-  const surface = mermaidCssVar(styles, "--ctp-surface", "#313244");
-  const base = mermaidCssVar(styles, "--ctp-base", "#1e1e2e");
-  const crust = mermaidCssVar(styles, "--ctp-crust", "#11111b");
-  const mauve = mermaidCssVar(styles, "--ctp-mauve", "#cba6f7");
-  const blue = mermaidCssVar(styles, "--ctp-blue", "#89b4fa");
-  const teal = mermaidCssVar(styles, "--ctp-teal", "#94e2d5");
-  const yellow = mermaidCssVar(styles, "--ctp-yellow", "#f9e2af");
-  const red = mermaidCssVar(styles, "--ctp-red", "#f38ba8");
-  return {
-    startOnLoad: false,
-    securityLevel: "strict",
-    logLevel: "error",
-    maxTextSize: MERMAID_MAX_TEXT_SIZE,
-    theme: "base",
-    flowchart: { htmlLabels: false },
-    themeVariables: {
-      darkMode: true,
-      background: "transparent",
-      mainBkg: base,
-      secondBkg: surface,
-      primaryColor: surface,
-      primaryTextColor: text,
-      primaryBorderColor: mauve,
-      secondaryColor: base,
-      secondaryTextColor: text,
-      secondaryBorderColor: blue,
-      tertiaryColor: crust,
-      tertiaryTextColor: text,
-      tertiaryBorderColor: teal,
-      lineColor: subtext,
-      textColor: text,
-      titleColor: teal,
-      nodeTextColor: text,
-      clusterBkg: crust,
-      clusterBorder: mauve,
-      edgeLabelBackground: base,
-      noteBkgColor: crust,
-      noteTextColor: text,
-      noteBorderColor: yellow,
-      errorBkgColor: crust,
-      errorTextColor: red,
-      fontFamily: 'Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-    },
-  };
-}
-
-function initializeMermaid(mermaid) {
-  const config = mermaidConfig();
-  const signature = JSON.stringify(config);
-  if (signature !== mermaidThemeSignature) {
-    mermaid.initialize(config);
-    mermaidThemeSignature = signature;
-  }
-}
-
-async function loadMermaid() {
-  if (!mermaidModulePromise) {
-    mermaidModulePromise = import(MERMAID_MODULE_URL)
-      .then((module) => module.default || module)
-      .catch((error) => {
-        mermaidModulePromise = null;
-        throw error;
-      });
-  }
-  const mermaid = await mermaidModulePromise;
-  initializeMermaid(mermaid);
-  return mermaid;
-}
-
-function mermaidRenderErrorMessage(error) {
-  return String(error?.str || error?.message || error || "Unknown Mermaid render error").trim();
-}
-
-async function renderMermaidDiagram(diagram, status, source) {
-  const token = `${Date.now().toString(36)}-${++mermaidRenderSequence}`;
-  diagram.dataset.mermaidRenderToken = token;
-  try {
-    if (source.length > MERMAID_MAX_TEXT_SIZE) throw new Error(`Mermaid diagram is too large (${source.length} characters, max ${MERMAID_MAX_TEXT_SIZE}).`);
-    const mermaid = await loadMermaid();
-    const id = `mermaid-${token.replace(/[^a-z0-9_-]/gi, "-")}`;
-    const { svg, bindFunctions } = await mermaid.render(id, source);
-    if (!diagram.isConnected || diagram.dataset.mermaidRenderToken !== token) return;
-    diagram.innerHTML = svg;
-    bindFunctions?.(diagram);
-    diagram.classList.add("rendered");
-    status.textContent = "";
-    status.hidden = true;
-  } catch (error) {
-    if (!diagram.isConnected || diagram.dataset.mermaidRenderToken !== token) return;
-    diagram.classList.add("render-error");
-    status.hidden = false;
-    status.classList.add("error");
-    status.textContent = `Mermaid render failed: ${mermaidRenderErrorMessage(error)}`;
-  }
-}
-
-function appendMarkdownMermaidBlock(parent, code) {
-  const source = String(code || "").replace(/\n+$/g, "");
-  const wrapper = make("div", "markdown-code-block markdown-mermaid-block");
-  wrapper.append(make("div", "markdown-code-language", "mermaid"));
-  const diagram = make("div", "markdown-mermaid-diagram");
-  diagram.setAttribute("role", "img");
-  diagram.setAttribute("aria-label", "Mermaid diagram");
-  const status = make("div", "markdown-mermaid-status muted", "Rendering Mermaid diagram…");
-  const sourceDetails = make("details", "markdown-mermaid-source");
-  sourceDetails.append(make("summary", undefined, "Mermaid source"));
-  const pre = make("pre", "code-block markdown-code");
-  const codeNode = make("code", "language-mermaid");
-  codeNode.textContent = source;
-  pre.append(codeNode);
-  sourceDetails.append(pre);
-  wrapper.append(diagram, status, sourceDetails);
-  attachMarkdownCodeCopyButton(wrapper, "Copy source");
-  parent.append(wrapper);
-  queueMicrotask(() => renderMermaidDiagram(diagram, status, source));
-}
-
 function appendMarkdownCodeBlock(parent, code, language = "", { closed = true } = {}) {
-  if (closed && isMermaidLanguage(language)) {
-    appendMarkdownMermaidBlock(parent, code);
-    return;
-  }
   const wrapper = make("div", "markdown-code-block");
   if (language) wrapper.append(make("div", "markdown-code-language", language));
   const pre = make("pre", "code-block markdown-code");

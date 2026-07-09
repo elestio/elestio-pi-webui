@@ -1,6 +1,6 @@
 {
   "name": "@elestio/pi-webui",
-  "version": "0.5.8-elestio.3",
+  "version": "0.5.8-elestio.4",
   "description": "Elestio frozen fork of @firstpick/pi-package-webui@0.5.8 with the Elestio theme, customer lock-down, steer-mode default, neutralized PWA service worker, and safety-guard/optional companions removed. Pinned to @earendil-works/pi-coding-agent@0.80.2.",
   "license": "MIT",
   "repository": {
@@ -31,12 +31,10 @@
     "test": "node tests/run-all.mjs"
   },
   "dependencies": {
-    "@earendil-works/pi-coding-agent": "0.80.2",
-    "mermaid": "^11.15.0"
+    "@earendil-works/pi-coding-agent": "0.80.2"
   },
   "bundleDependencies": [
-    "@earendil-works/pi-coding-agent",
-    "mermaid"
+    "@earendil-works/pi-coding-agent"
   ],
   "files": [
     "index.ts",

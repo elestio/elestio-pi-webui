@@ -25,6 +25,14 @@ Changes made by Elestio in this fork (all baked into source, no runtime patching
   - package.json .............. renamed to @elestio/pi-webui; removed all optionalDependencies
                                 (incl. @firstpick/pi-extension-safety-guard "Dangerous bash
                                 command" modal) and pruned pi.* resource arrays to ./index.ts
-                                only; pinned @earendil-works/pi-coding-agent to 0.80.2.
+                                only; pinned @earendil-works/pi-coding-agent to 0.80.2;
+                                bundleDependencies so npm pack yields a self-contained tarball
+                                (fast tar-based install on client VMs).
+  - mermaid removed ........... the mermaid dependency and its diagram rendering
+                                (mermaidStaticPath in bin/pi-webui.mjs, the /vendor/mermaid/
+                                static route, and the mermaid render pipeline in public/app.js
+                                + .markdown-mermaid-* styles) were removed. Fenced ```mermaid
+                                blocks now render as plain code blocks. This drops 111 npm
+                                packages / ~34 MB from the bundled asset.
 
 The original MIT license and copyright notice are retained in LICENSE.

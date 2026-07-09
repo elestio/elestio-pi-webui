@@ -527,7 +527,8 @@ assert.match(app, /copyMessageBubble\(button\)/, "message copy buttons should co
 assert.match(app, /function attachMarkdownCodeCopyButton\(wrapper, label = "Copy"\)/, "frontend should add copy controls to markdown code blocks");
 assert.match(app, /function copyMarkdownCodeBlock\(button\)[\s\S]*?await copyText\(text\)/, "markdown code block copy controls should use the shared clipboard helper");
 assert.match(app, /attachMarkdownCodeCopyButton\(wrapper\);/, "normal fenced code blocks should get copy buttons");
-assert.match(app, /attachMarkdownCodeCopyButton\(wrapper, "Copy source"\);/, "rendered Mermaid blocks should expose source copy buttons");
+// Elestio fork: mermaid rendering was removed, so there is no "Copy source" variant anymore.
+assert.doesNotMatch(app, /appendMarkdownMermaidBlock/, "mermaid rendering should stay removed from the frontend");
 assert.match(css, /\.markdown-code-copy-button \{[\s\S]*?position:\s*absolute/, "markdown code blocks should expose positioned copy buttons");
 assert.match(css, /\.markdown-code-block\.has-code-copy-action > \.code-block \{[\s\S]*?padding-top:/, "code block copy buttons should reserve vertical space above source text");
 assert.match(app, /retryServerConnectionButton.*retryServerConnection/s, "backend-offline recovery panel should wire a retry action");

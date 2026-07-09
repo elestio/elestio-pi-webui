@@ -125,19 +125,14 @@ try {
   assert.equal(gzipResponse.headers.get("content-encoding"), "gzip", "styles.css should fall back to gzip");
   await gzipResponse.arrayBuffer();
 
+  // Elestio fork: the mermaid dependency was removed on purpose (agent SysOp
+  // context never renders diagrams; it cost 111 npm packages / 76 MB in the
+  // bundled asset). The vendored path must stay a plain 404.
   const mermaidModuleResponse = await fetch(`http://127.0.0.1:${port}/vendor/mermaid/mermaid.esm.min.mjs`, {
     signal: AbortSignal.timeout(5_000),
   });
-  assert.equal(mermaidModuleResponse.status, 200, "Mermaid ESM module should be served from the vendored dependency path");
-  assert.match(mermaidModuleResponse.headers.get("content-type") || "", /text\/javascript/, "Mermaid ESM module should use a JavaScript MIME type");
-  const mermaidModuleText = await mermaidModuleResponse.text();
-  const mermaidChunkPath = mermaidModuleText.match(/\.\/(chunks\/mermaid\.esm\.min\/[A-Za-z0-9._-]+\.mjs)/)?.[1];
-  assert.ok(mermaidChunkPath, "Mermaid ESM module should reference same-directory chunks");
-  const mermaidChunkResponse = await fetch(`http://127.0.0.1:${port}/vendor/mermaid/${mermaidChunkPath}`, {
-    signal: AbortSignal.timeout(5_000),
-  });
-  assert.equal(mermaidChunkResponse.status, 200, "Mermaid ESM chunks should be served for dynamic imports");
-  assert.equal(await mermaidChunkResponse.text(), await readFile(join(root, "node_modules", "mermaid", "dist", mermaidChunkPath), "utf8"), "served Mermaid chunks should match the dependency files");
+  assert.equal(mermaidModuleResponse.status, 404, "removed /vendor/mermaid/ path should be a plain 404");
+  await mermaidModuleResponse.arrayBuffer();
 
   const tabsResponse = await request("127.0.0.1", "/api/tabs");
   assert.equal(tabsResponse.status, 200);
