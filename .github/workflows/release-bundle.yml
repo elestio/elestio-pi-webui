@@ -1,0 +1,30 @@
+name: release-bundle
+on:
+  push:
+    tags: ['v*']
+permissions:
+  contents: write
+jobs:
+  bundle:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: npm install --ignore-scripts --omit=dev --no-audit --no-fund
+      - run: npm pack
+      - name: Rename to backend contract
+        run: |
+          VER=$(node -p "require('./package.json').version")
+          [ "v$VER" = "$GITHUB_REF_NAME" ] || { echo "tag $GITHUB_REF_NAME != package version $VER"; exit 1; }
+          mv elestio-pi-webui-$VER.tgz elestio-pi-webui-$VER-bundled.tgz
+      - name: Sanity check the asset
+        run: |
+          VER=$(node -p "require('./package.json').version")
+          mkdir /tmp/check && tar -xzf elestio-pi-webui-$VER-bundled.tgz -C /tmp/check
+          [ "$(node -p "require('/tmp/check/package/package.json').version")" = "$VER" ]
+          head -1 /tmp/check/package/bin/pi-webui.mjs | grep -q '#!/usr/bin/env node'
+          node /tmp/check/package/node_modules/@earendil-works/pi-coding-agent/dist/cli.js --version
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: elestio-pi-webui-*-bundled.tgz
