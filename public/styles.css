@@ -9093,7 +9093,13 @@ html, body { background-color:#FFFFFF !important; color:#091020 !important; }
 #composerActionsButton, #composerActionsPanel, #newSessionButton, #compactButton, #gitWorkflowButton,
 #publishButton, #nativeCommandMenuButton, #optionsMenuButton, #appRunnerMenu { display:none !important; }
 #attachButton, #attachmentInput, #btwButton { display:none !important; }
-#steerButton, #followUpButton, #abortButton { display:none !important; }
+#steerButton, #followUpButton { display:none !important; }
+/* Elestio: keep the native Abort control exposed as a one-click red Stop button (chat-style). Its
+   visibility during a run is driven by app.js (the `hidden` attribute + global [hidden] rule). */
+#abortButton.composer-abort-button { background:#E5484D !important; color:#fff !important; border:1px solid #E5484D !important; box-shadow:none !important; }
+#abortButton.composer-abort-button:hover:not([disabled]) { background:#D93036 !important; border-color:#D93036 !important; }
+/* White stop square before the label (a ::before pseudo survives app.js textContent updates). */
+#abortButton.composer-abort-button::before { content:""; display:inline-block; width:0.72em; height:0.72em; margin-right:0.5em; border-radius:2px; background:#fff; vertical-align:-1px; }
 #statusBar { display:none !important; }
 #stickyUserPromptButton { display:none !important; }
 

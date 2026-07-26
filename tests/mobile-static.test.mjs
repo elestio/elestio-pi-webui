@@ -134,7 +134,8 @@ assert.match(html, /id="composerActionsPanel"/, "secondary composer controls sho
 assert.match(html, /<div class="composer-row">[\s\S]*id="abortButton"[\s\S]*id="btwButton"[\s\S]*id="sendButton"/, "Abort and /btw should live in the bottom composer row beside Send");
 assert.match(html, /id="btwButton"[\s\S]*class="composer-icon-button composer-btw-button"[\s\S]*?<svg class="composer-icon"/, "composer should expose an icon-only /btw side-question button");
 assert.doesNotMatch(html, /id="btwButton"[\s\S]*?<span>\/btw<\/span>[\s\S]*?id="sendButton"/, "/btw composer button should not show a text label");
-assert.match(html, /id="abortButton"[^>]*Hold Esc or the Abort button for 3 seconds/, "Abort should advertise guarded Esc and long-press affordances");
+assert.match(html, /id="abortButton"[^>]*Stop the current response/, "Stop button should describe its one-click action");
+assert.match(html, /id="abortButton"[^>]*hold Esc for 3 seconds/, "Stop button should still advertise the guarded Esc long-press affordance");
 assert.doesNotMatch(html, /class="side-panel-controls"[\s\S]*id="abortButton"/, "Abort should not be buried in the side-panel controls");
 assert.match(html, /id="publishButton"[\s\S]*?aria-controls="publishMenu"/, "composer should expose a Publish workflow menu button");
 assert.match(html, /id="releaseNpmButton"[^>]*data-command="\/release-npm"[\s\S]*?<span>NPM Release<\/span>/, "Publish menu should include the npm release workflow by label");

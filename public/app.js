@@ -2198,8 +2198,8 @@ function updateComposerModeButtons() {
   if (abortHoldActive) {
     renderAbortLongPressAffordance();
   } else {
-    const abortText = abortRequestInFlight ? "Aborting…" : "Abort";
-    const abortTitle = abortAvailable ? abortButtonReadyTitle() : "Abort is available while Pi is running";
+    const abortText = abortRequestInFlight ? "Stopping…" : "Stop";
+    const abortTitle = abortAvailable ? abortButtonReadyTitle() : "Stop is available while Pi is running";
     if (elements.abortButton.textContent !== abortText) elements.abortButton.textContent = abortText;
     if (elements.abortButton.title !== abortTitle) elements.abortButton.title = abortTitle;
     if (elements.abortButton.getAttribute("aria-label") !== abortTitle) elements.abortButton.setAttribute("aria-label", abortTitle);
@@ -20923,7 +20923,9 @@ function abortButtonHoldSeconds() {
 }
 
 function abortButtonReadyTitle() {
-  return `Hold Esc or the Abort button for ${abortButtonHoldSeconds()} seconds to abort the active Pi run`;
+  // Elestio: the on-screen Stop button is one-click (see its click handler). Esc keeps its
+  // hold-to-abort safety, so we surface it as the guarded keyboard alternative.
+  return `Stop the current response (or hold Esc for ${abortButtonHoldSeconds()} seconds)`;
 }
 
 function suppressEmptyPromptEscapeAction({ untilKeyup = false, graceMs = EMPTY_PROMPT_ESCAPE_AFTER_ABORT_GRACE_MS } = {}) {
@@ -21032,8 +21034,8 @@ function resetAbortLongPressAffordance() {
   elements.abortButton.classList.remove("long-pressing");
   elements.abortButton.style.removeProperty("--abort-long-press-duration");
   if (!abortRequestInFlight) {
-    elements.abortButton.textContent = "Abort";
-    elements.abortButton.title = isAbortAvailable() ? abortButtonReadyTitle() : "Abort is available while Pi is running";
+    elements.abortButton.textContent = "Stop";
+    elements.abortButton.title = isAbortAvailable() ? abortButtonReadyTitle() : "Stop is available while Pi is running";
     elements.abortButton.setAttribute("aria-label", elements.abortButton.title);
   }
 }
@@ -21093,20 +21095,18 @@ function startAbortLongPress(event, { source = "long-press" } = {}) {
   return true;
 }
 
-elements.abortButton.addEventListener("pointerdown", startAbortLongPress);
-for (const eventName of ["pointerup", "pointerleave", "pointercancel", "blur"]) {
-  elements.abortButton.addEventListener(eventName, resetAbortLongPressAffordance);
-}
-elements.abortButton.addEventListener("keydown", (event) => {
-  if (event.key !== " " && event.key !== "Enter") return;
-  if (startAbortLongPress(event)) event.preventDefault();
-});
-elements.abortButton.addEventListener("keyup", (event) => {
-  if (event.key === " " || event.key === "Enter") resetAbortLongPressAffordance();
-});
+// Elestio: the AI DevOps terminal is a chat-style session, so the on-screen Stop button aborts the
+// active run on a single click (like ChatGPT/Claude) instead of the upstream 3-second press-and-hold.
+// The Esc key keeps its hold-to-abort safety (see the global keydown handler) to guard against a
+// stray Escape; an on-screen click is a deliberate pointer action, so one click is safe here.
 elements.abortButton.addEventListener("click", (event) => {
   event.preventDefault();
-  if (abortLongPressHandled) abortLongPressHandled = false;
+  abortActiveRun({ source: "button" });
+});
+elements.abortButton.addEventListener("keydown", (event) => {
+  if (event.key !== " " && event.key !== "Enter") return;
+  event.preventDefault();
+  abortActiveRun({ source: "button" });
 });
 elements.newSessionButton.addEventListener("click", async () => {
   setComposerActionsOpen(false);
